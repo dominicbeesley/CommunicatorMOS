@@ -1,0 +1,17 @@
+TITLE:	MOS
+BASE:	ffae00
+FLAGS:	2
+COMMANDS:
+	MOS	
+	HELP	
+	LOAD	file [load_addr]
+	SAVE	file [from_addr] [to_addr|+len] [exec_addr] [load_addr]
+	KEY	key_num [string]
+	FX	fx_num [x] [y]
+	EXEC	[file]
+	RESET	
+	LCB	num
+	CLOSEALL	
+	DELETE	file
+	RENAME	file1 file2
+	CAT	[fs:][dir]

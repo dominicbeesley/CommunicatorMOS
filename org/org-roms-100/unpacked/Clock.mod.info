@@ -1,0 +1,6 @@
+TITLE:	Clock
+BASE:	fc0200
+FLAGS:	2
+COMMANDS:
+	Clock	
+	LTime	[format]

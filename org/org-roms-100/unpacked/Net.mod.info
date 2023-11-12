@@ -1,0 +1,15 @@
+TITLE:	Net
+BASE:	ff8900
+FLAGS:	34
+COMMANDS:
+	Net	
+	ACCESS	fse_list [LWR/WR]
+	BYE	
+	CDIR	dir_name
+	DIR	dir_name
+	FLIP	
+	INFO	fse_name
+	LIB	[dir_name]
+	LOGON	[fs number] user id [:CR] [password]
+	PASS	[:CR] old_password new_password
+	I	am [fs number] user id [:CR] [password]
