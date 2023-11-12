@@ -1,4 +1,4 @@
 TITLE:	Printer
-BASE:	fc8000
+BASE:	ff8000
 FLAGS:	67
 COMMANDS:
