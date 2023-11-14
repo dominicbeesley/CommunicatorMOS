@@ -157,6 +157,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_04_OPRDC":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_04_OPRDC",
+"Value":4,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_06_OPOSB":{
 "DataDescriptor":{
 "Length":1,
@@ -442,6 +459,23 @@
 "MultiMask":null,
 "Label":"DPSYS_OSB_Y",
 "Value":44267,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_OSWORD0_BUFPTR":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_OSWORD0_BUFPTR",
+"Value":42467,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -837,6 +871,40 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVAR_48_UNKNOWN_ULA":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_48_UNKNOWN_ULA",
+"Value":42312,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_51_FLASHCTDN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_51_FLASHCTDN",
+"Value":42321,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVAR_58_ESCBRK_EFFECT":{
 "DataDescriptor":{
 "Length":1,
@@ -918,6 +986,23 @@
 "MultiMask":null,
 "Label":"SYSVAR_FLAGS_SOMETHINGOSBYTEY",
 "Value":42334,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_FLASH_MARK":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_FLASH_MARK",
+"Value":42323,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1160,6 +1245,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVARS_OSWORD_0_PARMS":{
+"DataDescriptor":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_OSWORD_0_PARMS",
+"Value":42418,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVARS_REMV":{
 "DataDescriptor":{
 "Length":2,
@@ -1262,6 +1364,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"VDUMOD_OPX_14_FLASH_QRY":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_14_FLASH_QRY",
+"Value":20,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "VDUMOD_OPX_16_GETCHARXY":{
 "DataDescriptor":{
 "Length":1,
@@ -1292,6 +1411,23 @@
 "MultiMask":null,
 "Label":"VDUMOD_OPX_22_READSTATUS",
 "Value":34,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDUMOD_OPX_24_READVDUVAR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_24_READVDUVAR",
+"Value":24,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -2343,16 +2479,6 @@
 "Hint":"InlineData"},
 
 {
-"Low":14436,
-"High":14436,
-"Hint":"Code"},
-
-{
-"Low":14437,
-"High":14452,
-"Hint":"InlineData"},
-
-{
 "Low":14453,
 "High":14453,
 "Hint":"Code"},
@@ -2793,11 +2919,19 @@
 "14370":"OSBYTE 91 - read character from buffer",
 "14384":"OSBYTE 98 - examine buffer status",
 "14386":"OSBYTE 99 - write character to buffer",
+"14388":"OSBYTE 9A - write vdu ULA",
+"14394":"OSBYTE 9D - QRY",
+"14400":"OSBYTE A0 - read VDU variable",
+"14402":"OSBYTE A6-FF - read variable",
+"14404":"OSWORD \u003e E0 QRY",
+"14406":"OSWORD 0 - read line",
 "14829":"numbers A1..A6 get turned to A1; A2 if SEC entered below at e85b",
 "14833":"73..A2 get turned into 1C..4B",
 "14835":"; multiply by 2",
+"14839":"When OSWORD enters here A=98..B4",
 "14872":"if carry clear (OSWORD) A = first byte from long ptr",
-"14939":"do OSBYTE A2",
+"14939":"enter OSBYTE dispatcher with carry set to index into rest of table",
+"15296":"ESCape",
 "15428":"TODO: make this relative to SYSVARS/VDUVARS",
 "15430":"TODO: suspect this is superfluous?",
 "15457":";TODO: replace with jump",
@@ -3182,6 +3316,30 @@
 
 "13366":{
 "Text":"OSBYTE 99 - write character to buffer",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14574":{
+"Text":"OSBYTE 9A - write vdu ULA\r\n\r\nThis doesn\u0027t seem to work as documented on MDFS.net for the Electron instead it:\r\n\r\nULA/COPY = (OLD AND Y) EOR X\r\n\r\nreturns OLD in X",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"12489":{
+"Text":"OSBYTE 9D - Fast BPUT\r\n\r\nQRY - QRY - QRY this doesn\u0027t look right",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14540":{
+"Text":"OSBYTE A0 - read VDU variable",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15248":{
+"Text":"OSWORD 0 - readline\r\nAs per BBC - not sure what the implied bank for the pointer in the block is",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -4444,46 +4602,46 @@
 "LabelAnno":"None"},
 
 "14574":{
-"Label":"TFEE6EE",
+"Label":"OSBYTE_9A",
 "Value":16705262,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "12489":{
-"Label":"TFEDEC9",
+"Label":"OSBYTE_9D",
 "Value":16703177,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14540":{
-"Label":"TFEE6CC",
+"Label":"OSBYTE_A0",
 "Value":16705228,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "15432":{
-"Label":"TFEEA48",
+"Label":"OSBYTE_A6_FF",
 "Value":16706120,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14436":{
-"Label":"TFEE664",
+"Label":"QRY_Call_UKOSWORD",
 "Value":16705124,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "15248":{
-"Label":"TFEE990",
+"Label":"OSWORD_0",
 "Value":16705936,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "15203":{
 "Label":"TFEE963",
@@ -5286,6 +5444,55 @@
 "13405":{
 "Label":"noESC",
 "Value":16704093,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15668":{
+"Label":"resetFlashCounters",
+"Value":16706356,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"14839":{
+"Label":"dispatchOSWORDinA",
+"Value":16705527,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"15440":{
+"Label":"sk1",
+"Value":16706128,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15250":{
+"Label":"lp",
+"Value":16705938,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15276":{
+"Label":"OSW0_BELL",
+"Value":16705964,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15279":{
+"Label":"OSW0_inyecho",
+"Value":16705967,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15375":{
+"Label":"ESC_ret",
+"Value":16706063,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
@@ -8132,7 +8339,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6EE",
+"Label":"OSBYTE_9A",
 "Part":"Low"}},
 
 "14390":{
@@ -8156,7 +8363,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEDEC9",
+"Label":"OSBYTE_9D",
 "Part":"Low"}},
 
 "14396":{
@@ -8180,7 +8387,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6CC",
+"Label":"OSBYTE_A0",
 "Part":"Low"}},
 
 "14402":{
@@ -8188,7 +8395,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEEA48",
+"Label":"OSBYTE_A6_FF",
 "Part":"Low"}},
 
 "14404":{
@@ -8196,7 +8403,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE664",
+"Label":"QRY_Call_UKOSWORD",
 "Part":"Low"}},
 
 "14406":{
@@ -8204,7 +8411,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE990",
+"Label":"OSWORD_0",
 "Part":"Low"}},
 
 "14408":{
@@ -8383,6 +8590,14 @@
 "Label":"VDUMOD_OPX_16_GETCHARXY",
 "Part":"Low"}},
 
+"14541":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_24_READVDUVAR",
+"Part":"Low"}},
+
 "14596":{
 "Length":2,
 "Format":"NumericLE",
@@ -8517,6 +8732,62 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"15250":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_X",
+"Part":"Low"}},
+
+"15253":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_OSWORD_0_PARMS",
+"Part":"Low"}},
+
+"15261":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_X",
+"Part":"Low"}},
+
+"15263":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSWORD0_BUFPTR",
+"Part":"Low"}},
+
+"15271":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSWORD0_BUFPTR",
+"Part":"Low"}},
+
+"15283":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"15291":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_04_OPRDC",
+"Part":"Low"}},
+
 "15430":{
 "Length":2,
 "Format":"NumericLE",
@@ -8587,6 +8858,38 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_OSB_IND",
+"Part":"Low"}},
+
+"15672":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_48_UNKNOWN_ULA",
+"Part":"Low"}},
+
+"15675":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_FLASH_MARK",
+"Part":"Low"}},
+
+"15678":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_51_FLASHCTDN",
+"Part":"Low"}},
+
+"15681":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_14_FLASH_QRY",
 "Part":"Low"}},
 
 "15861":{
@@ -8796,5 +9099,9 @@
 "Bank":0},
 
 "14201":{
+"FollowPbr":false,
+"Bank":0},
+
+"15248":{
 "FollowPbr":false,
 "Bank":0}}}
