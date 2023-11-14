@@ -837,6 +837,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVAR_58_ESCBRK_EFFECT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_58_ESCBRK_EFFECT",
+"Value":42328,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVAR_BRKADDR_SAVE":{
 "DataDescriptor":{
 "Length":3,
@@ -939,6 +956,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVAR_RS232_MODE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_RS232_MODE",
+"Value":42309,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVAR_SOFTKEY_CONS":{
 "DataDescriptor":{
 "Length":1,
@@ -1024,6 +1058,57 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVARS_6C_ESCCHAR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_6C_ESCCHAR",
+"Value":42348,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVARS_75_ESCACTION":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_75_ESCACTION",
+"Value":42357,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVARS_B0_INKEYCTDN":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_B0_INKEYCTDN",
+"Value":42416,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVARS_CNPV":{
 "DataDescriptor":{
 "Length":2,
@@ -1054,6 +1139,40 @@
 "MultiMask":null,
 "Label":"SYSVARS_ELK_BUFFER_BUSY",
 "Value":42435,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVARS_INSV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_INSV",
+"Value":42282,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVARS_REMV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_REMV",
+"Value":42284,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1126,6 +1245,40 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"VDUMOD_OPX_10_GETCURSOR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_10_GETCURSOR",
+"Value":16,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDUMOD_OPX_16_GETCHARXY":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_16_GETCHARXY",
+"Value":22,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "VDUMOD_OPX_22_READSTATUS":{
 "DataDescriptor":{
 "Length":1,
@@ -1173,6 +1326,40 @@
 "MultiMask":null,
 "Label":"VDUMOD_OPX_A",
 "Value":10,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDUMOD_OPX_C_HIMEM":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_C_HIMEM",
+"Value":12,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDUMOD_OPX_E_HIMEMBYX":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_E_HIMEMBYX",
+"Value":14,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"}}},
@@ -2571,6 +2758,8 @@
 "12592":"Get current input stream",
 "12612":"sound flag??",
 "13084":"Does OSBYTE \u00269D",
+"13393":"Ignore ESCape",
+"13402":"Set ESCape condition",
 "13681":"jump to address - why not just jmp (X) as bank is 0?",
 "14254":"OSBYTE 0 - Get Host OS",
 "14256":"OSBYTE 1 - R/W user flag",
@@ -2595,6 +2784,15 @@
 "14330":"OSBYTE 7D - Set ESCape",
 "14332":"OSBYTE 7E - Acknowledge ESCape condition",
 "14334":"OSBYTE 7F - Check for EOF",
+"14338":"OSBYTE 81 - INKEY",
+"14344":"OSBYTE 84 - read top of memory HIMEM",
+"14346":"OSBYTE 85 - get HIMEM for MODE in X",
+"14348":"OSBYTE 86 - Get text cursor",
+"14350":"OSBYTE 87 - get char at XY and MODE",
+"14356":"OSBYTE 8A - place char in buffer",
+"14370":"OSBYTE 91 - read character from buffer",
+"14384":"OSBYTE 98 - examine buffer status",
+"14386":"OSBYTE 99 - write character to buffer",
 "14829":"numbers A1..A6 get turned to A1; A2 if SEC entered below at e85b",
 "14833":"73..A2 get turned into 1C..4B",
 "14835":"; multiply by 2",
@@ -2924,6 +3122,66 @@
 
 "12310":{
 "Text":"OSBYTE 7F - Check for EOF",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14957":{
+"Text":"OSBYTE 0 - print OS version or return in X",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14657":{
+"Text":"OSBYTE 81 - INKEY\r\n\r\n On entry: XY=16-bit argument\r\n On exit:  XY=returned character or state\r\n           Cy=when waiting for a character, no character returned",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14520":{
+"Text":"OSBYTE 84 - read top of memory HIMEM\r\n\r\nQRY what does this actually return",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14525":{
+"Text":"OSBYTE 85 - get HIMEM for MODE in X",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14530":{
+"Text":"OSBYTE 86 - Get text cursor\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14535":{
+"Text":"OSBYTE 87 - get char at XY and MODE\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"13281":{
+"Text":"OSBYTE 8A - place char in buffer\r\n\r\n   X=buffer number\r\n   Y=character to place",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"13202":{
+"Text":"OSBYTE 91 - read character from buffer",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"13198":{
+"Text":"OSBYTE 98 - examing buffer status",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"13366":{
+"Text":"OSBYTE 99 - write character to buffer",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -4123,67 +4381,67 @@
 "LabelAnno":"None"},
 
 "14657":{
-"Label":"TFEE741",
+"Label":"OSBYTE_81",
 "Value":16705345,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14520":{
-"Label":"TFEE6B8",
+"Label":"OSBYTE_84",
 "Value":16705208,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14525":{
-"Label":"TFEE6BD",
+"Label":"OSBYTE_85",
 "Value":16705213,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14530":{
-"Label":"TFEE6C2",
+"Label":"OSBYTE_86",
 "Value":16705218,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14535":{
-"Label":"TFEE6C7",
+"Label":"OSBYTE_87",
 "Value":16705223,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "13281":{
-"Label":"TFEE1E1",
+"Label":"OSBYTE_8A",
 "Value":16703969,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "13202":{
-"Label":"TFEE192",
+"Label":"OSBYTE_91",
 "Value":16703890,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "13198":{
-"Label":"TFEE18E",
+"Label":"OSBYTE_98",
 "Value":16703886,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "13366":{
-"Label":"TFEE236",
+"Label":"OSBYTE_99",
 "Value":16704054,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14574":{
 "Label":"TFEE6EE",
@@ -4347,11 +4605,11 @@
 "LabelAnno":"None"},
 
 "12310":{
-"Label":"TFEDE16",
+"Label":"OSBYTE_7F",
 "Value":16702998,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14453":{
 "Label":"OSBYTE_7E",
@@ -4988,6 +5246,48 @@
 "Value":16709076,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"12320":{
+"Label":"ret",
+"Value":16703008,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"13408":{
+"Label":"INKEY_ctdn",
+"Value":16704096,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"13282":{
+"Label":"callINSV",
+"Value":16703970,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"13203":{
+"Label":"callREMV",
+"Value":16703891,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"13388":{
+"Label":"doESCape",
+"Value":16704076,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"13405":{
+"Label":"noESC",
+"Value":16704093,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -7211,6 +7511,62 @@
 "Label":"SYSVAR_VDU_QLEN",
 "Part":"Low"}},
 
+"13210":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_REMV",
+"Part":"Low"}},
+
+"13289":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_INSV",
+"Part":"Low"}},
+
+"13367":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_RS232_MODE",
+"Part":"Low"}},
+
+"13373":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_6C_ESCCHAR",
+"Part":"Low"}},
+
+"13377":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_75_ESCACTION",
+"Part":"Low"}},
+
+"13388":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_58_ESCBRK_EFFECT",
+"Part":"Low"}},
+
+"13415":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_B0_INKEYCTDN",
+"Part":"Low"}},
+
 "13676":{
 "Length":3,
 "Format":"NumericLE",
@@ -7560,7 +7916,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEDE16",
+"Label":"OSBYTE_7F",
 "Part":"Low"}},
 
 "14336":{
@@ -7576,7 +7932,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE741",
+"Label":"OSBYTE_81",
 "Part":"Low"}},
 
 "14340":{
@@ -7600,7 +7956,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6B8",
+"Label":"OSBYTE_84",
 "Part":"Low"}},
 
 "14346":{
@@ -7608,7 +7964,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6BD",
+"Label":"OSBYTE_85",
 "Part":"Low"}},
 
 "14348":{
@@ -7616,7 +7972,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6C2",
+"Label":"OSBYTE_86",
 "Part":"Low"}},
 
 "14350":{
@@ -7624,7 +7980,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6C7",
+"Label":"OSBYTE_87",
 "Part":"Low"}},
 
 "14352":{
@@ -7648,7 +8004,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE1E1",
+"Label":"OSBYTE_8A",
 "Part":"Low"}},
 
 "14358":{
@@ -7704,7 +8060,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE192",
+"Label":"OSBYTE_91",
 "Part":"Low"}},
 
 "14372":{
@@ -7760,7 +8116,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE18E",
+"Label":"OSBYTE_98",
 "Part":"Low"}},
 
 "14386":{
@@ -7768,7 +8124,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE236",
+"Label":"OSBYTE_99",
 "Part":"Low"}},
 
 "14388":{
@@ -7993,6 +8349,38 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"VDUMOD_OPX_22_READSTATUS",
+"Part":"Low"}},
+
+"14521":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_C_HIMEM",
+"Part":"Low"}},
+
+"14526":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_E_HIMEMBYX",
+"Part":"Low"}},
+
+"14531":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_10_GETCURSOR",
+"Part":"Low"}},
+
+"14536":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_16_GETCHARXY",
 "Part":"Low"}},
 
 "14596":{
@@ -8400,5 +8788,13 @@
 "Bank":0},
 
 "9125":{
+"FollowPbr":false,
+"Bank":0},
+
+"13412":{
+"FollowPbr":false,
+"Bank":0},
+
+"14201":{
 "FollowPbr":false,
 "Bank":0}}}
