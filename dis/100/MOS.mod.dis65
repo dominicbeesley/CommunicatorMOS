@@ -208,6 +208,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_20_OPSEV":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Set Event - QRY - set escape when called with A=0003",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_20_OPSEV",
+"Value":32,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_26_OPBHA":{
 "DataDescriptor":{
 "Length":1,
@@ -238,6 +255,40 @@
 "MultiMask":null,
 "Label":"COP_29_OPRFR",
 "Value":41,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_44_OPOPN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_44_OPOPN",
+"Value":68,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_45_OPCLS":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Close file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_45_OPCLS",
+"Value":69,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -274,6 +325,23 @@
 "Value":44032,
 "Source":"Project",
 "Type":"Constant",
+"LabelAnno":"None"},
+
+"DPSYS_D1_EXEC_handle":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_D1_EXEC_handle",
+"Value":44241,
+"Source":"Project",
+"Type":"ExternalAddr",
 "LabelAnno":"None"},
 
 "DPSYS_OSB_A":{
@@ -684,6 +752,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"SYS_ESCAPE_FLAG_QRY":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYS_ESCAPE_FLAG_QRY",
+"Value":65299,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSFNK":{
 "DataDescriptor":{
 "Length":256,
@@ -988,6 +1073,23 @@
 "Value":65408,
 "Source":"Project",
 "Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"VDUMOD_OPX_22_READSTATUS":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDUMOD_OPX_22_READSTATUS",
+"Value":34,
+"Source":"Project",
+"Type":"Constant",
 "LabelAnno":"None"},
 
 "VDUMOD_OPX_8_EXPLODE":{
@@ -1903,44 +2005,14 @@
 "Hint":"InlineData"},
 
 {
-"Low":14434,
-"High":14434,
-"Hint":"Code"},
-
-{
-"Low":14435,
-"High":14435,
-"Hint":"InlineData"},
-
-{
-"Low":14436,
-"High":14436,
-"Hint":"Code"},
-
-{
-"Low":14437,
-"High":14452,
-"Hint":"InlineData"},
-
-{
 "Low":14453,
 "High":14453,
 "Hint":"Code"},
 
 {
-"Low":14454,
-"High":14480,
-"Hint":"InlineData"},
-
-{
 "Low":14481,
 "High":14481,
 "Hint":"Code"},
-
-{
-"Low":14482,
-"High":14496,
-"Hint":"InlineData"},
 
 {
 "Low":14505,
@@ -2216,6 +2288,7 @@
 "16282":16711935,
 "16331":16711935,
 "16396":3145728,
+"18238":48,
 "19322":3145728,
 "19325":3145728,
 "19328":3145728,
@@ -2323,8 +2396,19 @@
 "14292":"OSBYTE 13 - Wait vsync",
 "14294":"OSBYTE 14 - Explode and reset font",
 "14306":"OSBYTE 1A - Handset detection",
-"14310":"OSBYTE 1C - unknown",
-"14312":"OSBYTE 1D - unknown",
+"14310":"OSBYTE 73 - blank / restore palette",
+"14312":"OSBYTE 74 reset sound system",
+"14314":"OSBYTE 75 - read VDU status byte",
+"14316":"OSBYTE 76 - reflect keyboard in LEDS",
+"14318":"OSBYTE 77 - Close all SPOOL / EXEC files",
+"14320":"OSBYTE 78 - Write key pressed data",
+"14322":"OSBYTE 79 - Keyboard scan",
+"14324":"OSBYTE_7A - keyboard scan from \u002610",
+"14326":"OSBYTE 7B - printer dormancy warning",
+"14328":"OSBYTE 7C - Clear ESCape, inform tube",
+"14330":"OSBYTE 7D - Set ESCape",
+"14332":"OSBYTE 7E - Acknowledge ESCape condition",
+"14334":"OSBYTE 7F - Check for EOF",
 "14829":"numbers A1..A6 get turned to A1; A2 if SEC entered below at e85b",
 "14833":"73..A2 get turned into 1C..4B",
 "14835":"; multiply by 2",
@@ -2532,6 +2616,66 @@
 
 "14510":{
 "Text":"OSBYTE 1C - unknown VDU operation\r\n\r\ncalls VDU module with A=X, X=#\u0026A",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15920":{
+"Text":"OSBYTE 74\r\n\r\nReset the sound system - Electron",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14310":{
+"Text":"--- break in numbers here restart at 73 ---",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14515":{
+"Text":"OSBYTE 75 - read VDU status byte",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15499":{
+"Text":"OSBYTE 76 - reflect keyboard in LEDS\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"16404":{
+"Text":"OSBYTE 77 - close all EXEC / SPOOL files",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15521":{
+"Text":"OSBYTE 78 - write key pressed data",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14481":{
+"Text":"OSBYTE 7C - Clear ESCape, inform tube",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14497":{
+"Text":"OSBYTE 7D - Set ESCape",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14453":{
+"Text":"OSBYTE 7E - Acknowledge ESCape condition",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"12310":{
+"Text":"OSBYTE 7F - Check for EOF",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -3710,7 +3854,7 @@
 "LabelAnno":"None"},
 
 "14892":{
-"Label":"osb_A1toA6",
+"Label":"exitNotImpl",
 "Value":16705580,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
@@ -3962,77 +4106,77 @@
 "LabelAnno":"Generated"},
 
 "14453":{
-"Label":"TFEE675",
+"Label":"OSBYTE_7E",
 "Value":16705141,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14497":{
-"Label":"TFEE6A1",
+"Label":"OSBYTE_7D",
 "Value":16705185,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14481":{
-"Label":"TFEE691",
+"Label":"OSBYTE_7C",
 "Value":16705169,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "12544":{
-"Label":"TFEDF00",
+"Label":"OSBYTE_7B_null",
 "Value":16703232,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14786":{
-"Label":"TFEE7C2",
+"Label":"OSBYTE_7A",
 "Value":16705474,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14788":{
-"Label":"TFEE7C4",
+"Label":"OSBYTE_79",
 "Value":16705476,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "15521":{
-"Label":"TFEEAA1",
+"Label":"OSBYTE_78",
 "Value":16706209,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "13030":{
-"Label":"TFEE0E6",
+"Label":"OSBYTE77a",
 "Value":16703718,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "15499":{
-"Label":"TFEEA8B",
+"Label":"OSBYTE_76",
 "Value":16706187,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "14515":{
-"Label":"TFEE6B3",
+"Label":"OSBYTE_75",
 "Value":16705203,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "15920":{
-"Label":"SOUND_RESET_ALL_CHANS_QRY",
+"Label":"OSBYTE_74",
 "Value":16706608,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -4251,6 +4395,55 @@
 "14569":{
 "Label":"phkCallModVDU",
 "Value":16705257,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"14903":{
+"Label":"OSB_plpplaSECSEV",
+"Value":16705591,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"14894":{
+"Label":"OSB_plaplaplpplaSECSEV",
+"Value":16705582,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"15561":{
+"Label":"skCC",
+"Value":16706249,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"16404":{
+"Label":"OSBYTE_77",
+"Value":16707092,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1949":{
+"Label":"VEK_KEY_QRY",
+"Value":65452,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"12547":{
+"Label":"FlushAllBuffers",
+"Value":16703235,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18388":{
+"Label":"CheckEOF_QRY",
+"Value":16709076,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"}},
@@ -5838,6 +6031,38 @@
 "Label":"DPLOC_SYS",
 "Part":"Low"}},
 
+"6012":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"6116":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"6141":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"6156":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_44_OPOPN",
+"Part":"Low"}},
+
 "12612":{
 "Length":3,
 "Format":"NumericLE",
@@ -6131,7 +6356,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"SOUND_RESET_ALL_CHANS_QRY",
+"Label":"OSBYTE_74",
 "Part":"Low"}},
 
 "14314":{
@@ -6139,7 +6364,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6B3",
+"Label":"OSBYTE_75",
 "Part":"Low"}},
 
 "14316":{
@@ -6147,7 +6372,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEEA8B",
+"Label":"OSBYTE_76",
 "Part":"Low"}},
 
 "14318":{
@@ -6155,7 +6380,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE0E6",
+"Label":"OSBYTE77a",
 "Part":"Low"}},
 
 "14320":{
@@ -6163,7 +6388,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEEAA1",
+"Label":"OSBYTE_78",
 "Part":"Low"}},
 
 "14322":{
@@ -6171,7 +6396,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE7C4",
+"Label":"OSBYTE_79",
 "Part":"Low"}},
 
 "14324":{
@@ -6179,7 +6404,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE7C2",
+"Label":"OSBYTE_7A",
 "Part":"Low"}},
 
 "14326":{
@@ -6187,7 +6412,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEDF00",
+"Label":"OSBYTE_7B_null",
 "Part":"Low"}},
 
 "14328":{
@@ -6195,7 +6420,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE691",
+"Label":"OSBYTE_7C",
 "Part":"Low"}},
 
 "14330":{
@@ -6203,7 +6428,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE6A1",
+"Label":"OSBYTE_7D",
 "Part":"Low"}},
 
 "14332":{
@@ -6211,7 +6436,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEE675",
+"Label":"OSBYTE_7E",
 "Part":"Low"}},
 
 "14334":{
@@ -6614,6 +6839,22 @@
 "Label":"TFEE6E1",
 "Part":"Low"}},
 
+"14483":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYS_ESCAPE_FLAG_QRY",
+"Part":"Low"}},
+
+"14502":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_20_OPSEV",
+"Part":"Low"}},
+
 "14506":{
 "Length":2,
 "Format":"NumericLE",
@@ -6628,6 +6869,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"VDUMOD_OPX_A",
+"Part":"Low"}},
+
+"14516":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDUMOD_OPX_22_READSTATUS",
 "Part":"Low"}},
 
 "14596":{
@@ -6820,6 +7069,14 @@
 "Label":"SYSVAR_CFS_TIMEOUT",
 "Part":"Low"}},
 
+"15601":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_IND",
+"Part":"Low"}},
+
 "15605":{
 "Length":2,
 "Format":"NumericLE",
@@ -6928,7 +7185,47 @@
 "Length":7,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
-"SymbolRef":null}},
+"SymbolRef":null},
+
+"16415":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_D1_EXEC_handle",
+"Part":"Low"}},
+
+"16417":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_D1_EXEC_handle",
+"Part":"Low"}},
+
+"16421":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"16437":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_44_OPOPN",
+"Part":"Low"}},
+
+"16444":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_D1_EXEC_handle",
+"Part":"Low"}}},
 
 "LvTables":{
 },
