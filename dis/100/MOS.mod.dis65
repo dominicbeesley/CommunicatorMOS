@@ -157,6 +157,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_03_OPNLI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"OSNEWL",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_03_OPNLI",
+"Value":3,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_04_OPRDC":{
 "DataDescriptor":{
 "Length":1,
@@ -327,6 +344,142 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"DPCOP_AH":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of AH in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_AH",
+"Value":5,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_B":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of B(ank) in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_B",
+"Value":7,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_DP":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of DP in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_DP",
+"Value":8,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_K":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of K (program bank) in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_K",
+"Value":13,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_P":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of P in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_P",
+"Value":10,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_PC":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of PC in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_PC",
+"Value":11,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_X":{
+"DataDescriptor":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of X in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_X",
+"Value":3,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPCOP_Y":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"offset of Y in COP entry/exit frame",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPCOP_Y",
+"Value":1,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "DPLOC_SYS":{
 "DataDescriptor":{
 "Length":1,
@@ -344,6 +497,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"DPSYS":{
+"DataDescriptor":{
+"Length":256,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"System\u0027s direct page area",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS",
+"Value":44032,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "DPSYS_D1_EXEC_handle":{
 "DataDescriptor":{
 "Length":2,
@@ -357,6 +527,40 @@
 "MultiMask":null,
 "Label":"DPSYS_D1_EXEC_handle",
 "Value":44241,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_D6_OSW_DPSAV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"OSWORD caller\u0027s saved DP",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_D6_OSW_DPSAV",
+"Value":44246,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_D8_B_SAV":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"OSWORD saves caller\u0027s bank register",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_D8_B_SAV",
+"Value":216,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -476,6 +680,23 @@
 "MultiMask":null,
 "Label":"DPSYS_OSWORD0_BUFPTR",
 "Value":42467,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_PAGEMODE_CTR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_PAGEMODE_CTR",
+"Value":44137,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1177,6 +1398,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVARS_7C_OUTDEST":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"output destination - FX3",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_7C_OUTDEST",
+"Value":42364,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVARS_B0_INKEYCTDN":{
 "DataDescriptor":{
 "Length":2,
@@ -1343,6 +1581,74 @@
 "MultiMask":null,
 "Label":"tblB0JumpTableFF80_QRY",
 "Value":65408,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"VDU_07_BELL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDU_07_BELL",
+"Value":7,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDU_0D_CR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDU_0D_CR",
+"Value":13,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDU_15_DELLN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDU_15_DELLN",
+"Value":21,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"VDU_7F_BKSP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Backspace",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"VDU_7F_BKSP",
+"Value":127,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2749,6 +3055,11 @@
 "2100":16711935,
 "2133":16711935,
 "2134":16711935,
+"2691":304,
+"2740":48,
+"2745":48,
+"2880":304,
+"2994":48,
 "8635":3145776,
 "9349":3145776,
 "11282":3145776,
@@ -2819,6 +3130,7 @@
 "1973":"ABORT - causes a RESET",
 "1977":"NMI",
 "1981":"RESET",
+"2134":"Not sure what this sequence is for, reestablish caller\u0027s SEI or SED flags - seems dodgy",
 "2137":"8",
 "2138":"7",
 "2139":"5",
@@ -2844,14 +3156,16 @@
 "2194":"now Exnn or Fxnn",
 "2198":"QRY - this looks like a bug? they must all surely be \u003e= e000?!?!",
 "2200":"subtract df3e to put in range ",
-"2205":"OPWRC = OSWRCH",
-"2207":"OPWRS = Write String Immediate",
-"2209":"OPWRA = Write string at BHA",
-"2211":"OPNLI = OSNEWL - write CR/LF",
-"2213":"OPRDC = read character",
-"2215":"OPCLI = OSCLI = execute command",
-"2217":"OPOSB - OSBYTE",
-"2219":"OPOSW - OSWORD",
+"2205":"OPWRC 00 = OSWRCH",
+"2207":"OPWRS 01 = Write String Immediate",
+"2209":"OPWRA 02 = Write string at BHA",
+"2211":"OPNLI 03 = OSNEWL - write CR/LF",
+"2213":"OPRDC 04 = read character",
+"2215":"OPCLI 05 = OSCLI = execute command",
+"2217":"OPOSB 06 - OSBYTE",
+"2219":"OPOSW 07 - OSWORD",
+"2251":"OPBYX 17 - Convert BYXD to BHA",
+"2273":"OPRLN 22 - Read a line to buffer",
 "2432":"this is the saved A register",
 "2589":"get passed X and check is \u003c 2 and use to determine type of terminator",
 "2642":"use BHA at 05 as pointer",
@@ -2862,9 +3176,18 @@
 "2682":"return in A, clear B",
 "2702":"back to COP DP that points at user stack",
 "2703":"and update saved registers with results of OSCLI",
+"2751":"caller A",
+"2753":"caller H,B",
+"2755":"caller DP",
+"2768":"caller\u0027s Bank",
+"2772":"caller\u0027s A (OSWORD number)",
+"2883":"store HA on stack frame at 05",
+"2889":"store caller\u0027s B at 07",
 "2895":"A(8)=Y(8)",
-"2897":"HA = YX",
-"2905":"if Y(16) is zero",
+"2896":"put Y in H",
+"2897":"get X in A",
+"2901":"check for 0 in Y",
+"2905":"if Y is zero",
 "2906":"add original X to DP and set B=0",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
@@ -2930,8 +3253,32 @@
 "14835":"; multiply by 2",
 "14839":"When OSWORD enters here A=98..B4",
 "14872":"if carry clear (OSWORD) A = first byte from long ptr",
+"14911":"caller\u0027s A - TODO: pointless push here? Check if to align with OSBYTE entry?",
 "14939":"enter OSBYTE dispatcher with carry set to index into rest of table",
+"15252":"TODO - remove",
+"15253":"TODO - use Y here",
+"15266":"Y is zero here; TODO: use STZ",
+"15276":"beep and go round the loop without incrementing Y",
+"15282":"TODO: pointless push - OPWRC preserves all regs",
+"15291":"read char from input stream",
 "15296":"ESCape",
+"15303":"rotate twice to see if output disabled",
+"15304":"restore A",
+"15305":"if VDU disabled skip forward",
+"15310":"if there\u0027s stuff in the VDU Q just output the char and continue",
+"15318":"if zero just loop around",
+"15320":"decrement pointer",
+"15321":"always branch round - TODO: change to more meaningful BRA",
+"15327":"check pointer for 0",
+"15328":"nothing in current line got back to reading",
+"15339":"preserve our Bank",
+"15340":"preserve A (char to store)",
+"15341":"get dest bank",
+"15345":"get back A",
+"15348":"back to our bank",
+"15349":"check for EOL",
+"15356":"too long - beep",
+"15361":"bad char silently store in buffer no increment",
 "15428":"TODO: make this relative to SYSVARS/VDUVARS",
 "15430":"TODO: suspect this is superfluous?",
 "15457":";TODO: replace with jump",
@@ -3045,7 +3392,7 @@
 "BackgroundColor":0},
 
 "2892":{
-"Text":"either: BYX contains the absolute address \r\nOR: Y(16) = 0 and X contains an offset from the direct page register D. The pointer is D+X.",
+"Text":"either: BYX contains the absolute address \r\nOR: Y(16) = 0 and X contains an offset from the direct page register D. The pointer is D+X.\r\n\r\nThis assumes a COP entry frame in DP\r\n\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -3340,6 +3687,42 @@
 
 "15248":{
 "Text":"OSWORD 0 - readline\r\nAs per BBC - not sure what the implied bank for the pointer in the block is",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15250":{
+"Text":"Copy bytes 2,3,4 to SYSVARS+B0 (different to BBC)\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15261":{
+"Text":"store the address pointer in DP",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2994":{
+"Text":"OPRLN 22 - Read a line to buffer",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2161":{
+"Text":"The callee stack will now look like this:\r\n\r\n+16   PBR\r\n+14   PC\r\n+13   P\r\n+11   DP\r\n+10   B\r\n+8    A\r\n+6    X\r\n+4    Y\r\n+1    FE/B673 - return address of COP dispatcher\r\n\r\nThe DP register will point at byte below Y\r\n\r\n+13   PBR\r\n+11   PC\r\n+10   P\r\n+8    DP\r\n+7    B\r\n+5    A\r\n+3    X\r\n+1    Y\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2751":{
+"Text":"The DP register will point at byte below Y BHA will have been rearranged if Y=0 so that BHA = 0/DP+X\r\n\r\n+13   PBR\r\n+11   PC\r\n+10   P\r\n+8    DP\r\n+7    B\r\n+5    A\r\n+3    X\r\n+1    Y",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2880":{
+"Text":"COP 17 - OPBYX\r\n\r\nConverts a BBC-type BYX pointer to a Communicator-type BHA pointer, ir Y is non-zero then YX Ls simply copied to HA. If Y is zero then X is taken as an ofTset from the direct page register D. BHA is calculated as the absolute value of this direct page address.\r\n\r\nEntry:\r\n    BYX points to an address, or Y = 0 and XD points to a direct page address.\r\nExit:\r\n    BHA points to equivalent address.\r\n\r\n    D preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -3916,11 +4299,11 @@
 "LabelAnno":"Generated"},
 
 "2880":{
-"Label":"TFEB940",
+"Label":"COP_17",
 "Value":16693568,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4965":{
 "Label":"TFEC165",
@@ -3993,11 +4376,11 @@
 "LabelAnno":"Generated"},
 
 "2994":{
-"Label":"TFEB9B2",
+"Label":"COP_22",
 "Value":16693682,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2977":{
 "Label":"TFEB9A1",
@@ -5495,6 +5878,62 @@
 "Value":16706063,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"14909":{
+"Label":"enterOSWORD_BHA",
+"Value":16705597,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"15288":{
+"Label":"loop",
+"Value":16705976,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15312":{
+"Label":"novdu",
+"Value":16706000,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15323":{
+"Label":"notbksp",
+"Value":16706011,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15339":{
+"Label":"storeInBuf",
+"Value":16706027,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15332":{
+"Label":"dellnlp",
+"Value":16706020,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15372":{
+"Label":"newlClcRet",
+"Value":16706060,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15280":{
+"Label":"badcharNoInc",
+"Value":16705968,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -6457,7 +6896,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB940",
+"Label":"COP_17",
 "Part":"Low"}},
 
 "2253":{
@@ -6545,7 +6984,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB9B2",
+"Label":"COP_22",
 "Part":"Low"}},
 
 "2275":{
@@ -7078,6 +7517,54 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPLOC_SYS",
+"Part":"Low"}},
+
+"2751":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_AH",
+"Part":"Low"}},
+
+"2753":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_B",
+"Part":"Low"}},
+
+"2755":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_DP",
+"Part":"Low"}},
+
+"2757":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
+
+"2762":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_D6_OSW_DPSAV",
+"Part":"Low"}},
+
+"2768":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_D8_B_SAV",
 "Part":"Low"}},
 
 "6012":{
@@ -8726,6 +9213,38 @@
 "Label":"DPSYS_OSB_X",
 "Part":"Low"}},
 
+"14914":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_X",
+"Part":"Low"}},
+
+"14917":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_Y",
+"Part":"Low"}},
+
+"14921":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_A",
+"Part":"Low"}},
+
+"14924":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
+
 "14961":{
 "Length":31,
 "Format":"StringNullTerm",
@@ -8764,12 +9283,36 @@
 "Label":"DPSYS_OSWORD0_BUFPTR",
 "Part":"Low"}},
 
+"15266":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_PAGEMODE_CTR",
+"Part":"Low"}},
+
+"15269":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_X",
+"Part":"Low"}},
+
 "15271":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_OSWORD0_BUFPTR",
+"Part":"Low"}},
+
+"15276":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDU_07_BELL",
 "Part":"Low"}},
 
 "15283":{
@@ -8786,6 +9329,78 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_04_OPRDC",
+"Part":"Low"}},
+
+"15294":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_D8_B_SAV",
+"Part":"Low"}},
+
+"15299":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVARS_7C_OUTDEST",
+"Part":"Low"}},
+
+"15312":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDU_7F_BKSP",
+"Part":"Low"}},
+
+"15323":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDU_15_DELLN",
+"Part":"Low"}},
+
+"15330":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDU_7F_BKSP",
+"Part":"Low"}},
+
+"15332":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"15346":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSWORD0_BUFPTR",
+"Part":"Low"}},
+
+"15349":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VDU_0D_CR",
+"Part":"Low"}},
+
+"15372":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
 "Part":"Low"}},
 
 "15430":{
@@ -9103,5 +9718,13 @@
 "Bank":0},
 
 "15248":{
+"FollowPbr":false,
+"Bank":0},
+
+"2910":{
+"FollowPbr":false,
+"Bank":0},
+
+"14928":{
 "FollowPbr":false,
 "Bank":0}}}
