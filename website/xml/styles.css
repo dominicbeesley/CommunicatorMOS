@@ -1,0 +1,112 @@
+
+:root {
+	--dis-max-width: 700px;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text-color: #F0E0D0;
+		--back-color: #100A00;
+		--label-color: #FFC0B0;
+		--directive-color: #C0FFB0;
+		--operand-color: #C0FFB0;
+		--comment-color: #A0A0A0;
+	}
+
+long-comment {
+	white-space: pre;
+	color: var(--comment-color);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--text-color: black;
+		--back-color: white;
+		--label-color: red;
+		--directive-color: green;
+		--operand-color: green;
+		--comment-color: aliceblue;
+	}
+}
+
+dis65 {
+	position: relative;
+	width: 100%;
+	max-width: var(--dis-max-width);
+	margin: 0 auto;
+	font-family: Lucida, monospace;
+	font-size:11pt;
+	background: var(--back-color);
+	color: var(--text-color);
+}
+
+symbols symbol {
+	display:table-row;
+}
+
+symbols symbol::before {
+	display:table-cell;
+	content: attr(label);
+	width: 10em;
+	max-width: 10em;
+	overflow: hidden;
+	text-wrap: wrap;
+	word-break: break-all;
+}
+
+line {
+	position:relative;
+	display:block;
+	word-break: break-all;
+}
+
+line::after {
+	clear:both;
+	content:"";
+	display: table;
+}
+
+line label {
+	/* display:inline-block; */
+	float:left;
+	display:block;
+	color: var(--label-color);
+	width: 100%;
+}
+
+line opcode {
+	display:inline-block;
+	float:left;
+	width: 6em;
+	max-width: 6em;
+	margin-left: 5em;
+}
+
+line opcode[type="directive"] {
+	color:var(--directive-color);
+}
+
+line opcode[type="directive"]::before {
+	display:inline;
+	content: ".";
+}
+
+
+line operand {
+	display:inline-block;
+	float:left;
+	width: 20em;
+	max-width: 20em;
+}
+
+line operand[type="operand"] {
+	color: va;
+}
+
+line comment {
+	display:inline-block;
+	float:left;
+	width: 12em;
+	max-width: 12em;
+	color: var(--comment-color);
+}
