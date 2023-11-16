@@ -11,12 +11,9 @@
 		--directive-color: #C0FFB0;
 		--operand-color: #C0FFB0;
 		--comment-color: #A0A0A0;
+		--op-symbol-color: #A0A0F0;
 	}
 
-long-comment {
-	white-space: pre;
-	color: var(--comment-color);
-}
 
 @media (prefers-color-scheme: light) {
 	:root {
@@ -29,22 +26,28 @@ long-comment {
 	}
 }
 
-dis65 {
+body {
 	position: relative;
 	width: 100%;
 	max-width: var(--dis-max-width);
 	margin: 0 auto;
 	font-family: Lucida, monospace;
-	font-size:11pt;
+	font-size:10pt;
 	background: var(--back-color);
 	color: var(--text-color);
 }
 
-symbols symbol {
+.long-comment {
+	white-space: pre;
+	color: var(--comment-color);
+}
+
+
+.symbols .symbol {
 	display:table-row;
 }
 
-symbols symbol::before {
+.symbols .symbol::before {
 	display:table-cell;
 	content: attr(label);
 	width: 10em;
@@ -54,19 +57,19 @@ symbols symbol::before {
 	word-break: break-all;
 }
 
-line {
+.line {
 	position:relative;
 	display:block;
 	word-break: break-all;
 }
 
-line::after {
+.line::after {
 	clear:both;
 	content:"";
 	display: table;
 }
 
-line label {
+.line .label {
 	/* display:inline-block; */
 	float:left;
 	display:block;
@@ -74,39 +77,42 @@ line label {
 	width: 100%;
 }
 
-line opcode {
+.line .opcode {
 	display:inline-block;
 	float:left;
 	width: 6em;
 	max-width: 6em;
-	margin-left: 5em;
+	margin-left: 4em;
 }
 
-line opcode[type="directive"] {
+.line .opcode.directive {
 	color:var(--directive-color);
 }
 
-line opcode[type="directive"]::before {
+.line .opcode.directive::before {
 	display:inline;
 	content: ".";
 }
 
 
-line operand {
+.line .operand {
 	display:inline-block;
 	float:left;
-	width: 20em;
-	max-width: 20em;
+	width: 16em;
+	max-width: 16em;
 }
 
-line operand[type="operand"] {
+.line .operand[type="operand"] {
 	color: va;
 }
 
-line comment {
+.line .comment {
 	display:inline-block;
 	float:left;
-	width: 12em;
-	max-width: 12em;
 	color: var(--comment-color);
+}
+
+a.op-symbol {
+	text-decoration: none;
+	color: var(--op-symbol-color);
 }
