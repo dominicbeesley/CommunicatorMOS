@@ -21,6 +21,23 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"B0LST_MODULES_QRY":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0LST_MODULES_QRY",
+"Value":65038,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "BANK0_HW_IRQ6502":{
 "DataDescriptor":{
 "Length":2,
@@ -2995,6 +3012,11 @@
 "Hint":"Code"},
 
 {
+"Low":16462,
+"High":16462,
+"Hint":"Code"},
+
+{
 "Low":19322,
 "High":19322,
 "Hint":"Code"},
@@ -3055,11 +3077,13 @@
 "2100":16711935,
 "2133":16711935,
 "2134":16711935,
+"2489":304,
 "2691":304,
 "2740":48,
 "2745":48,
 "2880":304,
 "2994":48,
+"3703":304,
 "8635":3145776,
 "9349":3145776,
 "11282":3145776,
@@ -3169,6 +3193,7 @@
 "2219":"OPOSW 07 - OSWORD",
 "2251":"OPBYX 17 - Convert BYXD to BHA",
 "2273":"OPRLN 22 - Read a line to buffer",
+"2285":"OPCMD 22 - call a module",
 "2432":"this is the saved A register",
 "2589":"get passed X and check is \u003c 2 and use to determine type of terminator",
 "2642":"use BHA at 05 as pointer",
@@ -3192,6 +3217,15 @@
 "2901":"check for 0 in Y",
 "2905":"if Y is zero",
 "2906":"add original X to DP and set B=0",
+"3703":"get caller PC",
+"3705":"increment to point at the module name",
+"3706":"get caller\u0027s program bank into B",
+"3714":"look for the module",
+"3725":"an rti frame that will return to an rti",
+"3730":"place 0000 on the stack",
+"3733":"discard stacked byte",
+"3734":"push A (module B0 jump block)",
+"3738":"another single 0",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -3289,7 +3323,43 @@
 "15861":"or with sound suppression status",
 "15864":"if ne then exit",
 "16396":"GSINIT",
-"16430":"Get BHA pointer to first character of filename"},
+"16430":"Get BHA pointer to first character of filename",
+"17204":"this looks to be the return value, -1 means not found",
+"17210":"push BHA pointer",
+"17214":"back off stacked BHA by 14 TODO:why not do this before pushing!?",
+"17229":"get back list pointer",
+"17237":"if at head of list exit",
+"17252":"get character from stacked long BHA-14 pointer",
+"17254":"check it\u0027s a valid module name char",
+"17258":"point to current module name in list",
+"17259":"end of string",
+"17261":"check for equality",
+"17266":"no match, next module please",
+"17270":"we got to the end of the passed in string",
+"17272":"were we at the end of the module string?",
+"17275":"no, next module...",
+"17277":"retrieve passed in Y",
+"17284":"get module version number",
+"17286":"compare with passed in Y",
+"17288":"doesn\u0027t match, next module",
+"17290":"get back list entry pointer",
+"17292":"store in return value",
+"17294":"keep going - why TODO: check if this happens, document?",
+"17296":"get return value",
+"17298":"has it been set already?",
+"17301":"if it hasn\u0027t set current as result",
+"17310":"get winner\u0027s version",
+"17312":"save it",
+"17313":"get current module list entry",
+"17315":"get module pointer",
+"17319":"get current module version number",
+"17321":"mask off low part?!?!?",
+"17324":"compare",
+"17326":"discard pushed",
+"17335":"check for winner",
+"17349":"HA+=4",
+"17352":"DP=HA",
+"17353":"HA=[DP,2]"},
 
 "LongComments":{
 "-2147483647":{
@@ -3727,6 +3797,48 @@
 "2880":{
 "Text":"COP 17 - OPBYX\r\n\r\nConverts a BBC-type BYX pointer to a Communicator-type BHA pointer, ir Y is non-zero then YX Ls simply copied to HA. If Y is zero then X is taken as an ofTset from the direct page register D. BHA is calculated as the absolute value of this direct page address.\r\n\r\nEntry:\r\n    BYX points to an address, or Y = 0 and XD points to a direct page address.\r\nExit:\r\n    BHA points to equivalent address.\r\n\r\n    D preserved",
 "BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3703":{
+"Text":"COP 22 - OPCMD call a module\r\n\r\nAction:   Call the module whose name, tenninated by zero,follows cmmediately.\r\n\r\nOn entry: Any values required by the module to be passed in the registers.\r\n\r\nInline string which is the module name terminated by zero (\u002600).\r\n\r\nOn exit: Carry bit is setand X = 0 if the module was not found.",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"17200":{
+"Text":"\r\nEntry:  BHA is pointer to module name\r\n        Y is either 0 or required version number\r\n\r\nExit:   CC for found, pointer to module list entry in X\r\n        CS, X=-1 for not found\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18167":{
+"Text":"Check if the character passed in A is in \u0027!\u0027, \u0027.\u0027, \u00270\u0027..\u00279\u0027, \u0027A\u0027..\u0027Z\u0027, \u0027a\u0027..\u0027z\u0027",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2498":{
+"Text":"This skips over any string following the cop call",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2489":{
+"Text":"returns the string following the COP call as BHA",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3725":{
+"Text":"make an rti frame that will return to an rti",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3752":{
+"Text":"BHAXY are now as per caller\r\n\r\nstack contains\r\n\r\n+7  @rti long address for module to return to which will do another RTI - QRY why?\r\n+6  00 - bank 0\r\n+4  jump block entry in bank 0\r\n+3  00 - dummy flags\r\n+1  caller DP",
+"BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -4407,11 +4519,11 @@
 "LabelAnno":"Generated"},
 
 "2489":{
-"Label":"TFEB7B9",
+"Label":"copRetImmedStr",
 "Value":16693177,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3889":{
 "Label":"TFEBD31",
@@ -4421,11 +4533,11 @@
 "LabelAnno":"Generated"},
 
 "3703":{
-"Label":"TFEBC77",
+"Label":"COP_28",
 "Value":16694391,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3849":{
 "Label":"TFEBD09",
@@ -5937,6 +6049,132 @@
 "Value":16705968,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17200":{
+"Label":"findModule",
+"Value":16707888,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"16459":{
+"Label":"brlFindModule",
+"Value":16707147,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17344":{
+"Label":"retsec",
+"Value":16708032,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17331":{
+"Label":"unstackExit",
+"Value":16708019,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17229":{
+"Label":"modsrchlp",
+"Value":16707917,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17370":{
+"Label":"ret",
+"Value":16708058,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18216":{
+"Label":"retCLC",
+"Value":16708904,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18213":{
+"Label":"retsec",
+"Value":16708901,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18167":{
+"Label":"checkValidModnameChar",
+"Value":16708855,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17347":{
+"Label":"getModuleInfo",
+"Value":16708035,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17247":{
+"Label":"strmatchlp",
+"Value":16707935,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17270":{
+"Label":"skend",
+"Value":16707958,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17290":{
+"Label":"setWinner",
+"Value":16707978,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17296":{
+"Label":"checkVerGt",
+"Value":16707984,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3782":{
+"Label":"modNotFoundRetZ",
+"Value":16694470,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"2498":{
+"Label":"copExitImmedStr",
+"Value":16693186,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17436":{
+"Label":"retTxa",
+"Value":16708124,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17437":{
+"Label":"ret",
+"Value":16708125,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -5975,6 +6213,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"253":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
 
 "270":{
 "Length":2,
@@ -7019,7 +7265,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB7B9",
+"Label":"copRetImmedStr",
 "Part":"Low"}},
 
 "2283":{
@@ -7035,7 +7281,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBC77",
+"Label":"COP_28",
 "Part":"Low"}},
 
 "2287":{
@@ -9650,7 +9896,83 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_D1_EXEC_handle",
-"Part":"Low"}}},
+"Part":"Low"}},
+
+"17211":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
+"17234":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
+"17252":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17353":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18173":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18178":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18183":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18188":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18193":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18198":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18203":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18208":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null}},
 
 "LvTables":{
 },

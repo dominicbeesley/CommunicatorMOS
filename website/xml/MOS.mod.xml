@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="dis65.xslt"?>
-<dis65 project-name="MOS.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-11-16T15:55:32.3219761+00:00">
+<dis65 project-name="MOS.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-11-17T17:21:07.3434419+00:00">
   <symbols>
     <symbol type="global-addr" label="__ST_0" anno="none" source="user">$feb625</symbol>
     <symbol type="global-addr" label="__ST_14" anno="none" source="user">$fed17a</symbol>
@@ -21,6 +21,7 @@
     <symbol type="global-addr" label="_callModVduInt" anno="none" source="user">$fefe41</symbol>
     <symbol type="global-addr" label="_ST_AC_int" anno="none" source="user">$fed000</symbol>
     <symbol type="global-addr" label="B0CALL__ST" anno="none" source="user">$ff88</symbol>
+    <symbol type="external-addr" label="B0LST_MODULES_QRY" anno="none" source="project">$fe0e</symbol>
     <symbol type="non-unique-local-addr" label="badcharNoInc§003bb0" anno="none" source="user">$fee9b0</symbol>
     <symbol type="global-addr" label="badIVIB" anno="none" source="user">$feb5a9</symbol>
     <symbol type="external-addr" label="BANK0_HW_IRQ6502" anno="none" source="project">$fffe</symbol>
@@ -31,12 +32,15 @@
     <symbol type="external-addr" label="BANK0_MEM_IRQ6502" anno="none" source="project">$4040</symbol>
     <symbol type="global-addr" label="bra__ST_retstackedBHA_clc" anno="none" source="user">$fed216</symbol>
     <symbol type="global-addr" label="brkBadString" anno="none" source="user">$fed088</symbol>
+    <symbol type="global-addr" label="brlFindModule" anno="none" source="user">$feee4b</symbol>
     <symbol type="global-addr" label="callCNPV" anno="none" source="user">$fee780</symbol>
     <symbol type="global-addr" label="callDP_F6_SEC_ZeqX" anno="none" source="user">$feeaec</symbol>
     <symbol type="global-addr" label="callINSV" anno="none" source="user">$fee1e2</symbol>
     <symbol type="global-addr" label="callModVDU" anno="none" source="user">$fefe38</symbol>
     <symbol type="global-addr" label="callREMV" anno="none" source="user">$fee193</symbol>
     <symbol type="global-addr" label="CheckEOF_QRY" anno="none" source="user">$fef5d4</symbol>
+    <symbol type="global-addr" label="checkValidModnameChar" anno="none" source="user">$fef4f7</symbol>
+    <symbol type="non-unique-local-addr" label="checkVerGt§004390" anno="none" source="user">$fef190</symbol>
     <symbol type="global-addr" label="closeEXEC2" anno="none" source="user">$feee15</symbol>
     <symbol type="constant" label="COP_00_OPWRC" anno="none" source="project">$00</symbol>
     <symbol type="constant" label="COP_01_OPWRS" anno="none" source="project">$01</symbol>
@@ -49,12 +53,15 @@
     <symbol type="constant" label="COP_20_OPSEV" anno="none" source="project">$20</symbol>
     <symbol type="global-addr" label="COP_22" anno="none" source="user">$feb9b2</symbol>
     <symbol type="constant" label="COP_26_OPBHA" anno="none" source="project">$26</symbol>
+    <symbol type="global-addr" label="COP_28" anno="none" source="user">$febc77</symbol>
     <symbol type="constant" label="COP_29_OPRFR" anno="none" source="project">$29</symbol>
     <symbol type="constant" label="COP_44_OPOPN" anno="none" source="project">$44</symbol>
     <symbol type="constant" label="COP_45_OPCLS" anno="none" source="project">$45</symbol>
     <symbol type="global-addr" label="copBadCOP" anno="none" source="user">$feb761</symbol>
+    <symbol type="non-unique-local-addr" label="copExitImmedStr§0009c2" anno="none" source="user">$feb7c2</symbol>
     <symbol type="global-addr" label="copret8bitY" anno="none" source="user">$feb8ad</symbol>
     <symbol type="global-addr" label="copRetAeq1" anno="none" source="user">$feb77d</symbol>
+    <symbol type="global-addr" label="copRetImmedStr" anno="none" source="user">$feb7b9</symbol>
     <symbol type="global-addr" label="default__CCO" anno="none" source="user">$fedc48</symbol>
     <symbol type="global-addr" label="default__CO" anno="none" source="user">$feda12</symbol>
     <symbol type="global-addr" label="default__CRS" anno="none" source="user">$fedc1b</symbol>
@@ -116,11 +123,13 @@
     <symbol type="non-unique-local-addr" label="ex§0006e0" anno="none" source="user">$feb4e0</symbol>
     <symbol type="non-unique-local-addr" label="exitNotImpl§003a2c" anno="none" source="user">$fee82c</symbol>
     <symbol type="non-unique-local-addr" label="ext_sound_qry§003155" anno="none" source="user">$fedf55</symbol>
+    <symbol type="global-addr" label="findModule" anno="none" source="user">$fef130</symbol>
     <symbol type="global-addr" label="FlushAllBuffers" anno="none" source="user">$fedf03</symbol>
     <symbol type="global-addr" label="FnKey_LoadX" anno="none" source="user">$fee56b</symbol>
     <symbol type="global-addr" label="FnKey_LoadXpl1" anno="none" source="user">$fee563</symbol>
     <symbol type="global-addr" label="FnKey_StoreX" anno="none" source="user">$fee56f</symbol>
     <symbol type="global-addr" label="Fnkey_StoreXpl1" anno="none" source="user">$fee567</symbol>
+    <symbol type="global-addr" label="getModuleInfo" anno="none" source="user">$fef1c3</symbol>
     <symbol type="global-addr" label="gsread_clc_ret" anno="none" source="user">$fed039</symbol>
     <symbol type="global-addr" label="gsread_dec_digit" anno="none" source="user">$fed02c</symbol>
     <symbol type="global-addr" label="gsread_hex_digit" anno="none" source="user">$fed03c</symbol>
@@ -193,6 +202,7 @@
     <symbol type="local-or-global-addr" label="LFEBA76" anno="none" source="auto">$feba76</symbol>
     <symbol type="local-or-global-addr" label="LFEBAB1" anno="none" source="auto">$febab1</symbol>
     <symbol type="local-or-global-addr" label="LFEBB3F" anno="none" source="auto">$febb3f</symbol>
+    <symbol type="local-or-global-addr" label="LFEBCA8" anno="none" source="auto">$febca8</symbol>
     <symbol type="local-or-global-addr" label="LFEBD30" anno="none" source="auto">$febd30</symbol>
     <symbol type="local-or-global-addr" label="LFEBEF9" anno="none" source="auto">$febef9</symbol>
     <symbol type="local-or-global-addr" label="LFEBF40" anno="none" source="auto">$febf40</symbol>
@@ -607,6 +617,7 @@
     <symbol type="local-or-global-addr" label="LFEEE43" anno="none" source="auto">$feee43</symbol>
     <symbol type="local-or-global-addr" label="LFEEE46" anno="none" source="auto">$feee46</symbol>
     <symbol type="local-or-global-addr" label="LFEEE48" anno="none" source="auto">$feee48</symbol>
+    <symbol type="local-or-global-addr" label="LFEEE51" anno="none" source="auto">$feee51</symbol>
     <symbol type="local-or-global-addr" label="LFEEE54" anno="none" source="auto">$feee54</symbol>
     <symbol type="local-or-global-addr" label="LFEEE6F" anno="none" source="auto">$feee6f</symbol>
     <symbol type="local-or-global-addr" label="LFEEE89" anno="none" source="auto">$feee89</symbol>
@@ -640,12 +651,10 @@
     <symbol type="local-or-global-addr" label="LFEF0DF" anno="none" source="auto">$fef0df</symbol>
     <symbol type="local-or-global-addr" label="LFEF0E1" anno="none" source="auto">$fef0e1</symbol>
     <symbol type="local-or-global-addr" label="LFEF0E4" anno="none" source="auto">$fef0e4</symbol>
-    <symbol type="local-or-global-addr" label="LFEF1C3" anno="none" source="auto">$fef1c3</symbol>
-    <symbol type="local-or-global-addr" label="LFEF1DA" anno="none" source="auto">$fef1da</symbol>
+    <symbol type="local-or-global-addr" label="LFEF0F2" anno="none" source="auto">$fef0f2</symbol>
+    <symbol type="local-or-global-addr" label="LFEF121" anno="none" source="auto">$fef121</symbol>
+    <symbol type="local-or-global-addr" label="LFEF12C" anno="none" source="auto">$fef12c</symbol>
     <symbol type="local-or-global-addr" label="LFEF1DD" anno="none" source="auto">$fef1dd</symbol>
-    <symbol type="local-or-global-addr" label="LFEF21C" anno="none" source="auto">$fef21c</symbol>
-    <symbol type="local-or-global-addr" label="LFEF21D" anno="none" source="auto">$fef21d</symbol>
-    <symbol type="local-or-global-addr" label="LFEF21E" anno="none" source="auto">$fef21e</symbol>
     <symbol type="local-or-global-addr" label="LFEF223" anno="none" source="auto">$fef223</symbol>
     <symbol type="local-or-global-addr" label="LFEF22B" anno="none" source="auto">$fef22b</symbol>
     <symbol type="local-or-global-addr" label="LFEF231" anno="none" source="auto">$fef231</symbol>
@@ -699,9 +708,6 @@
     <symbol type="local-or-global-addr" label="LFEF482" anno="none" source="auto">$fef482</symbol>
     <symbol type="local-or-global-addr" label="LFEF4DE" anno="none" source="auto">$fef4de</symbol>
     <symbol type="local-or-global-addr" label="LFEF4F5" anno="none" source="auto">$fef4f5</symbol>
-    <symbol type="local-or-global-addr" label="LFEF4F7" anno="none" source="auto">$fef4f7</symbol>
-    <symbol type="local-or-global-addr" label="LFEF525" anno="none" source="auto">$fef525</symbol>
-    <symbol type="local-or-global-addr" label="LFEF528" anno="none" source="auto">$fef528</symbol>
     <symbol type="local-or-global-addr" label="LFEF53E" anno="none" source="auto">$fef53e</symbol>
     <symbol type="local-or-global-addr" label="LFEF54B" anno="none" source="auto">$fef54b</symbol>
     <symbol type="local-or-global-addr" label="LFEF564" anno="none" source="auto">$fef564</symbol>
@@ -771,6 +777,8 @@
     <symbol type="global-addr" label="makeBXYptr" anno="none" source="user">$feb94c</symbol>
     <symbol type="constant" label="MM_HANDLE_1_SPECIAL_QRY" anno="none" source="project">$01</symbol>
     <symbol type="constant" label="MMLEN" anno="none" source="project">$10</symbol>
+    <symbol type="global-addr" label="modNotFoundRetZ" anno="none" source="user">$febcc6</symbol>
+    <symbol type="non-unique-local-addr" label="modsrchlp§00434d" anno="none" source="user">$fef14d</symbol>
     <symbol type="global-addr" label="movPrg2B0" anno="none" source="user">$feb4cb</symbol>
     <symbol type="non-unique-local-addr" label="newlClcRet§003c0c" anno="none" source="user">$feea0c</symbol>
     <symbol type="non-unique-local-addr" label="noESC§00345d" anno="none" source="user">$fee25d</symbol>
@@ -842,8 +850,14 @@
     <symbol type="non-unique-local-addr" label="ret§002221" anno="none" source="user">$fed021</symbol>
     <symbol type="non-unique-local-addr" label="ret§003020" anno="none" source="user">$fede20</symbol>
     <symbol type="non-unique-local-addr" label="ret§003e2f" anno="none" source="user">$feec2f</symbol>
+    <symbol type="non-unique-local-addr" label="ret§0043da" anno="none" source="user">$fef1da</symbol>
+    <symbol type="non-unique-local-addr" label="ret§00441d" anno="none" source="user">$fef21d</symbol>
+    <symbol type="non-unique-local-addr" label="retCLC§004728" anno="none" source="user">$fef528</symbol>
     <symbol type="non-unique-local-addr" label="retSEC§000880" anno="none" source="user">$feb680</symbol>
     <symbol type="non-unique-local-addr" label="retsec§002482" anno="none" source="user">$fed282</symbol>
+    <symbol type="non-unique-local-addr" label="retsec§0043c0" anno="none" source="user">$fef1c0</symbol>
+    <symbol type="non-unique-local-addr" label="retsec§004725" anno="none" source="user">$fef525</symbol>
+    <symbol type="non-unique-local-addr" label="retTxa§00441c" anno="none" source="user">$fef21c</symbol>
     <symbol type="non-unique-local-addr" label="runninglow§00029a" anno="none" source="user">$feb09a</symbol>
     <symbol type="non-unique-local-addr" label="sec§002394" anno="none" source="user">$fed194</symbol>
     <symbol type="global-addr" label="Serv0_starCommand" anno="none" source="user">$feaf18</symbol>
@@ -853,6 +867,7 @@
     <symbol type="global-addr" label="Serv8_QRY" anno="none" source="user">$fee8e0</symbol>
     <symbol type="global-addr" label="ServiceEnter" anno="none" source="user">$feaef5</symbol>
     <symbol type="non-unique-local-addr" label="ServiceExitFail§00010b" anno="none" source="user">$feaf0b</symbol>
+    <symbol type="non-unique-local-addr" label="setWinner§00438a" anno="none" source="user">$fef18a</symbol>
     <symbol type="external-addr" label="sheila_UKA_TONE" anno="none" source="project">$45fe06</symbol>
     <symbol type="external-addr" label="sheila_ULA_CASSH" anno="none" source="project">$45fe04</symbol>
     <symbol type="external-addr" label="sheila_ULA_IRQ_CTL" anno="none" source="project">$45fe00</symbol>
@@ -862,6 +877,7 @@
     <symbol type="non-unique-local-addr" label="sk1§003c50" anno="none" source="user">$feea50</symbol>
     <symbol type="non-unique-local-addr" label="skCC§003cc9" anno="none" source="user">$feeac9</symbol>
     <symbol type="non-unique-local-addr" label="skDDtoE4§003c61" anno="none" source="user">$feea61</symbol>
+    <symbol type="non-unique-local-addr" label="skend§004376" anno="none" source="user">$fef176</symbol>
     <symbol type="non-unique-local-addr" label="skinc§0022ff" anno="none" source="user">$fed0ff</symbol>
     <symbol type="non-unique-local-addr" label="skipsound§003158" anno="none" source="user">$fedf58</symbol>
     <symbol type="non-unique-local-addr" label="sknocc§000a63" anno="none" source="user">$feb863</symbol>
@@ -893,6 +909,7 @@
     <symbol type="global-addr" label="starSAVE" anno="none" source="user">$fedfff</symbol>
     <symbol type="non-unique-local-addr" label="storeInBuf§003beb" anno="none" source="user">$fee9eb</symbol>
     <symbol type="external-addr" label="STPOINTER_FF0D" anno="none" source="project">$ff0d</symbol>
+    <symbol type="non-unique-local-addr" label="strmatchlp§00435f" anno="none" source="user">$fef15f</symbol>
     <symbol type="global-addr" label="strSYSTEM" anno="none" source="user">$feb62d</symbol>
     <symbol type="external-addr" label="SYS_ESCAPE_FLAG_QRY" anno="none" source="project">$ff13</symbol>
     <symbol type="external-addr" label="SYSFNK" anno="none" source="project">$ab00</symbol>
@@ -937,7 +954,6 @@
     <symbol type="global-addr" label="tblServices" anno="none" source="user">$feaf0e</symbol>
     <symbol type="global-addr" label="tblStarCommandDispatch" anno="none" source="user">$feaf22</symbol>
     <symbol type="global-addr" label="TFEB79D" anno="generated" source="user">$feb79d</symbol>
-    <symbol type="global-addr" label="TFEB7B9" anno="generated" source="user">$feb7b9</symbol>
     <symbol type="global-addr" label="TFEB7F4" anno="generated" source="user">$feb7f4</symbol>
     <symbol type="global-addr" label="TFEB87F" anno="generated" source="user">$feb87f</symbol>
     <symbol type="global-addr" label="TFEB886" anno="generated" source="user">$feb886</symbol>
@@ -960,7 +976,6 @@
     <symbol type="global-addr" label="TFEBB70" anno="generated" source="user">$febb70</symbol>
     <symbol type="global-addr" label="TFEBBA6" anno="generated" source="user">$febba6</symbol>
     <symbol type="global-addr" label="TFEBBEA" anno="generated" source="user">$febbea</symbol>
-    <symbol type="global-addr" label="TFEBC77" anno="generated" source="user">$febc77</symbol>
     <symbol type="global-addr" label="TFEBCCB" anno="generated" source="user">$febccb</symbol>
     <symbol type="global-addr" label="TFEBD09" anno="generated" source="user">$febd09</symbol>
     <symbol type="global-addr" label="TFEBD31" anno="generated" source="user">$febd31</symbol>
@@ -1031,6 +1046,7 @@
     <symbol type="global-addr" label="TFEFC27" anno="generated" source="user">$fefc27</symbol>
     <symbol type="global-addr" label="TFEFD07" anno="generated" source="user">$fefd07</symbol>
     <symbol type="global-addr" label="TFEFD44" anno="generated" source="user">$fefd44</symbol>
+    <symbol type="non-unique-local-addr" label="unstackExit§0043b3" anno="none" source="user">$fef1b3</symbol>
     <symbol type="constant" label="VDU_07_BELL" anno="none" source="project">$07</symbol>
     <symbol type="constant" label="VDU_0D_CR" anno="none" source="project">$0d</symbol>
     <symbol type="constant" label="VDU_15_DELLN" anno="none" source="project">$15</symbol>
@@ -1508,6 +1524,11 @@
       <operand>$acf6  {addr/2}</operand>
     </line>
     <line type="equ-directive">
+      <label anno="none" id="B0LST_MODULES_QRY">B0LST_MODULES_QRY</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$fe0e  {addr/2}</operand>
+    </line>
+    <line type="equ-directive">
       <label anno="none" id="tblB0JumpTableFE80_QRY">tblB0JumpTableFE80_QRY</label>
       <opcode type="directive">eq</opcode>
       <operand>$fe80  {addr/52}</operand>
@@ -1702,7 +1723,7 @@
     </line>
     <line type="code" address="fe/aefd">
       <opcode>pea</opcode>
-      <operand>$ac00</operand>
+      <operand><op-symbol anno="none" value="AC00" symbol="DPSYS">DPSYS</op-symbol></operand>
     </line>
     <line type="code" address="fe/af00">
       <opcode>pld</opcode>
@@ -2638,7 +2659,7 @@
     </line>
     <line type="code" address="fe/b0a9">
       <opcode>stal</opcode>
-      <operand>f:$00fe0e</operand>
+      <operand>f:<op-symbol anno="none" value="FE0E" symbol="B0LST_MODULES_QRY">B0LST_MODULES_QRY</op-symbol></operand>
     </line>
     <line type="code" address="fe/b0ad">
       <opcode>lda</opcode>
@@ -5814,7 +5835,7 @@
     </line>
     <line type="data" address="fe/b6e9">
       <opcode type="directive">dd2</opcode>
-      <operand><op-symbol anno="generated" value="FEB7B9" symbol="TFEB7B9">TFEB7B9</op-symbol> &amp; $ffff</operand>
+      <operand><op-symbol anno="none" value="FEB7B9" symbol="copRetImmedStr">copRetImmedStr</op-symbol> &amp; $ffff</operand>
     </line>
     <line type="data" address="fe/b6eb">
       <opcode type="directive">dd2</opcode>
@@ -5822,7 +5843,8 @@
     </line>
     <line type="data" address="fe/b6ed">
       <opcode type="directive">dd2</opcode>
-      <operand><op-symbol anno="generated" value="FEBC77" symbol="TFEBC77">TFEBC77</op-symbol> &amp; $ffff</operand>
+      <operand><op-symbol anno="none" value="FEBC77" symbol="COP_28">COP_28</op-symbol> &amp; $ffff</operand>
+      <comment>;OPCMD 22 - call a module</comment>
     </line>
     <line type="data" address="fe/b6ef">
       <opcode type="directive">dd2</opcode>
@@ -6255,8 +6277,14 @@
       <operand>$6b</operand>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+; returns the string following the COP call as BHA</long-comment>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
     <line type="code" address="fe/b7b9">
-      <label anno="none" id="TFEB7B9">TFEB7B9</label>
+      <label anno="none" id="copRetImmedStr">copRetImmedStr</label>
       <opcode>lda</opcode>
       <operand><op-symbol anno="none" value="B" symbol="DPCOP_PC">DPCOP_PC</op-symbol>+1</operand>
     </line>
@@ -6276,7 +6304,10 @@
       <opcode>sta</opcode>
       <operand><op-symbol anno="none" value="5" symbol="DPCOP_AH">DPCOP_AH</op-symbol></operand>
     </line>
+    <long-comment xml:space="preserve">
+; This skips over any string following the cop call</long-comment>
     <line type="code" address="fe/b7c2">
+      <label anno="none" local-id="@copExitImmedStr">@copExitImmedStr</label>
       <opcode>inc</opcode>
       <operand><op-symbol anno="none" value="B" symbol="DPCOP_PC">DPCOP_PC</op-symbol></operand>
     </line>
@@ -6286,22 +6317,20 @@
     </line>
     <line type="code" address="fe/b7c6">
       <opcode>and</opcode>
-      <operand>#$ff</operand>
+      <operand>#$00ff</operand>
     </line>
-    <line type="code" address="fe/b7c8">
-      <opcode>brk</opcode>
-      <operand>$d0</operand>
+    <line type="code" address="fe/b7c9">
+      <opcode>bne</opcode>
+      <operand>@copExitImmedStr</operand>
     </line>
-    <line type="blank" />
-    <line type="data" address="fe/b7ca">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f7</operand>
-    </line>
-    <line type="data" address="fe/b7cb">
-      <opcode type="directive">dd1</opcode>
-      <operand>$6b</operand>
+    <line type="code" address="fe/b7cb">
+      <opcode>rtl</opcode>
     </line>
     <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
     <line type="code" address="fe/b7cc">
       <label anno="none" id="LFEB7CC">LFEB7CC</label>
       <opcode>lda</opcode>
@@ -9649,18 +9678,38 @@
       <operand>$f8</operand>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+********************************************************************************<br />
+* COP 22 - OPCMD call a module                                                 *<br />
+*                                                                              *<br />
+* Action:   Call the module whose name, tenninated by zero,follows             *<br />
+* cmmediately.                                                                 *<br />
+*                                                                              *<br />
+* On entry: Any values required by the module to be passed in the registers.   *<br />
+*                                                                              *<br />
+* Inline string which is the module name terminated by zero (&amp;00).             *<br />
+*                                                                              *<br />
+* On exit: Carry bit is setand X = 0 if the module was not found.              *<br />
+********************************************************************************</long-comment>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
     <line type="code" address="fe/bc77">
-      <label anno="none" id="TFEBC77">TFEBC77</label>
+      <label anno="none" id="COP_28">COP_28</label>
       <opcode>lda</opcode>
       <operand><op-symbol anno="none" value="B" symbol="DPCOP_PC">DPCOP_PC</op-symbol></operand>
+      <comment>;get caller PC</comment>
     </line>
     <line type="code" address="fe/bc79">
       <opcode>inc</opcode>
       <operand>A</operand>
+      <comment>;increment to point at the module name</comment>
     </line>
     <line type="code" address="fe/bc7a">
       <opcode>pei</opcode>
       <operand>(<op-symbol anno="none" value="B" symbol="DPCOP_PC">DPCOP_PC</op-symbol>+1)</operand>
+      <comment>;get caller's program bank into B</comment>
     </line>
     <line type="code" address="fe/bc7c">
       <opcode>plb</opcode>
@@ -9670,157 +9719,110 @@
     </line>
     <line type="code" address="fe/bc7e">
       <opcode>ldy</opcode>
-      <operand>#$00</operand>
+      <operand>#$0000</operand>
     </line>
-    <line type="code" address="fe/bc80">
-      <opcode>brk</opcode>
-      <operand>$4b</operand>
+    <line type="code" address="fe/bc81">
+      <opcode>phk</opcode>
+    </line>
+    <line type="code" address="fe/bc82">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEEE4B" symbol="brlFindModule">brlFindModule</op-symbol></operand>
+      <comment>;look for the module</comment>
+    </line>
+    <line type="code" address="fe/bc85">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FEBCC6" symbol="modNotFoundRetZ">modNotFoundRetZ</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/bc87">
+      <opcode>phk</opcode>
+    </line>
+    <line type="code" address="fe/bc88">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEEE51" symbol="LFEEE51">LFEEE51</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/bc8b">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FEBCC6" symbol="modNotFoundRetZ">modNotFoundRetZ</op-symbol></operand>
+    </line>
+    <long-comment xml:space="preserve">
+; make an rti frame that will return to an rti</long-comment>
+    <line type="code" address="fe/bc8d">
+      <opcode>phd</opcode>
+      <comment>;an rti frame that will return to an rti</comment>
+    </line>
+    <line type="code" address="fe/bc8e">
+      <opcode>phk</opcode>
+    </line>
+    <line type="code" address="fe/bc8f">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FEBCA8" symbol="LFEBCA8">LFEBCA8</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/bc92">
+      <opcode>pea</opcode>
+      <operand>$0000</operand>
+      <comment>;place 0000 on the stack</comment>
+    </line>
+    <line type="code" address="fe/bc95">
+      <opcode>plb</opcode>
+      <comment>;discard stacked byte</comment>
+    </line>
+    <line type="code" address="fe/bc96">
+      <opcode>pha</opcode>
+      <comment>;push A (module B0 jump block)</comment>
+    </line>
+    <line type="code" address="fe/bc97">
+      <opcode>pea</opcode>
+      <operand>$0000</operand>
+    </line>
+    <line type="code" address="fe/bc9a">
+      <opcode>plb</opcode>
+      <comment>;another single 0</comment>
+    </line>
+    <line type="code" address="fe/bc9b">
+      <opcode>pei</opcode>
+      <operand>(<op-symbol anno="none" value="8" symbol="DPCOP_DP">DPCOP_DP</op-symbol>)</operand>
+    </line>
+    <line type="code" address="fe/bc9d">
+      <opcode>pei</opcode>
+      <operand>(<op-symbol anno="none" value="5" symbol="DPCOP_AH">DPCOP_AH</op-symbol>+1)</operand>
+    </line>
+    <line type="code" address="fe/bc9f">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="fe/bca0">
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="5" symbol="DPCOP_AH">DPCOP_AH</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/bca2">
+      <opcode>ldx</opcode>
+      <operand><op-symbol anno="none" value="3" symbol="DPCOP_X">DPCOP_X</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/bca4">
+      <opcode>ldy</opcode>
+      <operand><op-symbol anno="none" value="1" symbol="DPCOP_Y">DPCOP_Y</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/bca6">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="fe/bca7">
+      <opcode>pld</opcode>
+    </line>
+    <long-comment xml:space="preserve">
+; BHAXY are now as per caller<br />
+; <br />
+; stack contains<br />
+; <br />
+; +7  @rti long address for module to return to which will do another RTI - QRY<br />
+; why?<br />
+; +6  00 - bank 0<br />
+; +4  jump block entry in bank 0<br />
+; +3  00 - dummy flags<br />
+; +1  caller DP</long-comment>
+    <line type="code" address="fe/bca8">
+      <label anno="none" id="LFEBCA8">LFEBCA8</label>
+      <opcode>rti</opcode>
     </line>
     <line type="blank" />
-    <line type="data" address="fe/bc82">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/bc83">
-      <opcode type="directive">dd1</opcode>
-      <operand>$4b</operand>
-    </line>
-    <line type="data" address="fe/bc84">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ee</operand>
-    </line>
-    <line type="data" address="fe/bc85">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b0</operand>
-    </line>
-    <line type="data" address="fe/bc86">
-      <opcode type="directive">str</opcode>
-      <operand>“?K Q”</operand>
-    </line>
-    <line type="data" address="fe/bc8a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ee</operand>
-    </line>
-    <line type="data" address="fe/bc8b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b0</operand>
-    </line>
-    <line type="data" address="fe/bc8c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$39</operand>
-    </line>
-    <line type="data" address="fe/bc8d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0b</operand>
-    </line>
-    <line type="data" address="fe/bc8e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$4b</operand>
-    </line>
-    <line type="data" address="fe/bc8f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$62</operand>
-    </line>
-    <line type="data" address="fe/bc90">
-      <opcode type="directive">dd1</opcode>
-      <operand>$16</operand>
-    </line>
-    <line type="data" address="fe/bc91">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/bc92">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f4</operand>
-    </line>
-    <line type="data" address="fe/bc93">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/bc94">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/bc95">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ab</operand>
-    </line>
-    <line type="data" address="fe/bc96">
-      <opcode type="directive">dd1</opcode>
-      <operand>$48</operand>
-    </line>
-    <line type="data" address="fe/bc97">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f4</operand>
-    </line>
-    <line type="data" address="fe/bc98">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/bc99">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/bc9a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ab</operand>
-    </line>
-    <line type="data" address="fe/bc9b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d4</operand>
-    </line>
-    <line type="data" address="fe/bc9c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$08</operand>
-    </line>
-    <line type="data" address="fe/bc9d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d4</operand>
-    </line>
-    <line type="data" address="fe/bc9e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$06</operand>
-    </line>
-    <line type="data" address="fe/bc9f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ab</operand>
-    </line>
-    <line type="data" address="fe/bca0">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a5</operand>
-    </line>
-    <line type="data" address="fe/bca1">
-      <opcode type="directive">dd1</opcode>
-      <operand>$05</operand>
-    </line>
-    <line type="data" address="fe/bca2">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a6</operand>
-    </line>
-    <line type="data" address="fe/bca3">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/bca4">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a4</operand>
-    </line>
-    <line type="data" address="fe/bca5">
-      <opcode type="directive">dd1</opcode>
-      <operand>$01</operand>
-    </line>
-    <line type="data" address="fe/bca6">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ab</operand>
-    </line>
-    <line type="data" address="fe/bca7">
-      <opcode type="directive">dd1</opcode>
-      <operand>$2b</operand>
-    </line>
-    <line type="data" address="fe/bca8">
-      <opcode type="directive">dd1</opcode>
-      <operand>$40</operand>
-    </line>
     <line type="data" address="fe/bca9">
       <opcode type="directive">dd1</opcode>
       <operand>$c2</operand>
@@ -9937,27 +9939,21 @@
       <opcode type="directive">dd1</opcode>
       <operand>$fa</operand>
     </line>
-    <line type="data" address="fe/bcc6">
-      <opcode type="directive">dd1</opcode>
-      <operand>$64</operand>
+    <line type="blank" />
+    <line type="code" address="fe/bcc6">
+      <label anno="none" id="modNotFoundRetZ">modNotFoundRetZ</label>
+      <opcode>stz</opcode>
+      <operand><op-symbol anno="none" value="3" symbol="DPCOP_X">DPCOP_X</op-symbol></operand>
     </line>
-    <line type="data" address="fe/bcc7">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/bcc8">
-      <opcode type="directive">dd1</opcode>
-      <operand>$82</operand>
-    </line>
-    <line type="data" address="fe/bcc9">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f7</operand>
-    </line>
-    <line type="data" address="fe/bcca">
-      <opcode type="directive">dd1</opcode>
-      <operand>$fa</operand>
+    <line type="code" address="fe/bcc8">
+      <opcode>brl</opcode>
+      <operand>@copExitImmedStr</operand>
     </line>
     <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
     <line type="code" address="fe/bccb">
       <label anno="none" id="TFEBCCB">TFEBCCB</label>
       <opcode>lda</opcode>
@@ -44523,43 +44519,39 @@
       <operand><op-symbol anno="none" value="FEEE54" symbol="LFEEE54">LFEEE54</op-symbol></operand>
     </line>
     <line type="blank" />
-    <line type="data" address="fe/ee4b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$82</operand>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
     </line>
-    <line type="data" address="fe/ee4c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$e2</operand>
-    </line>
-    <line type="data" address="fe/ee4d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$02</operand>
-    </line>
-    <line type="data" address="fe/ee4e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$82</operand>
-    </line>
-    <line type="data" address="fe/ee4f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a1</operand>
-    </line>
-    <line type="data" address="fe/ee50">
-      <opcode type="directive">dd1</opcode>
-      <operand>$02</operand>
-    </line>
-    <line type="data" address="fe/ee51">
-      <opcode type="directive">dd1</opcode>
-      <operand>$82</operand>
-    </line>
-    <line type="data" address="fe/ee52">
-      <opcode type="directive">dd1</opcode>
-      <operand>$89</operand>
-    </line>
-    <line type="data" address="fe/ee53">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
+    <line type="code" address="fe/ee4b">
+      <label anno="none" id="brlFindModule">brlFindModule</label>
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FEF130" symbol="findModule">findModule</op-symbol></operand>
     </line>
     <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="fe/ee4e">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FEF0F2" symbol="LFEF0F2">LFEF0F2</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="fe/ee51">
+      <label anno="none" id="LFEEE51">LFEEE51</label>
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FEF1DD" symbol="LFEF1DD">LFEF1DD</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
     <line type="code" address="fe/ee54">
       <label anno="none" id="LFEEE54">LFEEE54</label>
       <opcode>php</opcode>
@@ -44633,7 +44625,7 @@
     </line>
     <line type="code" address="fe/ee72">
       <opcode>ldal</opcode>
-      <operand>f:$00fe0e</operand>
+      <operand>f:<op-symbol anno="none" value="FE0E" symbol="B0LST_MODULES_QRY">B0LST_MODULES_QRY</op-symbol></operand>
     </line>
     <line type="code" address="fe/ee76">
       <opcode>tax</opcode>
@@ -44655,7 +44647,7 @@
     </line>
     <line type="code" address="fe/ee81">
       <opcode>ldal</opcode>
-      <operand>f:$00fe0e</operand>
+      <operand>f:<op-symbol anno="none" value="FE0E" symbol="B0LST_MODULES_QRY">B0LST_MODULES_QRY</op-symbol></operand>
     </line>
     <line type="code" address="fe/ee85">
       <opcode>stal</opcode>
@@ -45143,7 +45135,7 @@
     </line>
     <line type="code" address="fe/ef5e">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FEF4F7" symbol="LFEF4F7">LFEF4F7</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FEF4F7" symbol="checkValidModnameChar">checkValidModnameChar</op-symbol></operand>
     </line>
     <line type="code" address="fe/ef61">
       <opcode>bcs</opcode>
@@ -45697,7 +45689,7 @@
     </line>
     <line type="code" address="fe/f07b">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FEF1C3" symbol="LFEF1C3">LFEF1C3</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FEF1C3" symbol="getModuleInfo">getModuleInfo</op-symbol></operand>
     </line>
     <line type="code" address="fe/f07e">
       <opcode>tcd</opcode>
@@ -45734,7 +45726,7 @@
     </line>
     <line type="code" address="fe/f08b">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FEF4F7" symbol="LFEF4F7">LFEF4F7</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FEF4F7" symbol="checkValidModnameChar">checkValidModnameChar</op-symbol></operand>
     </line>
     <line type="code" address="fe/f08e">
       <opcode>bcs</opcode>
@@ -45764,7 +45756,7 @@
     </line>
     <line type="code" address="fe/f09a">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FEF4F7" symbol="LFEF4F7">LFEF4F7</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FEF4F7" symbol="checkValidModnameChar">checkValidModnameChar</op-symbol></operand>
     </line>
     <line type="code" address="fe/f09d">
       <opcode>bcc</opcode>
@@ -46003,713 +45995,518 @@
       <opcode type="directive">dd1</opcode>
       <operand>$00</operand>
     </line>
-    <line type="data" address="fe/f0f2">
-      <opcode type="directive">dd1</opcode>
-      <operand>$08</operand>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
     </line>
-    <line type="data" address="fe/f0f3">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0b</operand>
+    <line type="code" address="fe/f0f2">
+      <label anno="none" id="LFEF0F2">LFEF0F2</label>
+      <opcode>php</opcode>
     </line>
-    <line type="data" address="fe/f0f4">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c2</operand>
+    <line type="code" address="fe/f0f3">
+      <opcode>phd</opcode>
     </line>
-    <line type="data" address="fe/f0f5">
-      <opcode type="directive">str</opcode>
-      <operand>“0K 0”</operand>
+    <line type="code" address="fe/f0f4">
+      <opcode>rep</opcode>
+      <operand>#$30</operand>
     </line>
-    <line type="data" address="fe/f0f9">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f1</operand>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
     </line>
-    <line type="data" address="fe/f0fa">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b0</operand>
+    <line type="code" address="fe/f0f6">
+      <opcode>phk</opcode>
     </line>
-    <line type="data" address="fe/f0fb">
-      <opcode type="directive">dd1</opcode>
-      <operand>$30</operand>
+    <line type="code" address="fe/f0f7">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF130" symbol="findModule">findModule</op-symbol></operand>
     </line>
-    <line type="data" address="fe/f0fc">
-      <opcode type="directive">dd1</opcode>
-      <operand>$4b</operand>
+    <line type="code" address="fe/f0fa">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FEF12C" symbol="LFEF12C">LFEF12C</op-symbol></operand>
     </line>
-    <line type="data" address="fe/f0fd">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
+    <line type="code" address="fe/f0fc">
+      <opcode>phk</opcode>
     </line>
-    <line type="data" address="fe/f0fe">
-      <opcode type="directive">dd1</opcode>
-      <operand>$dd</operand>
+    <line type="code" address="fe/f0fd">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF1DD" symbol="LFEF1DD">LFEF1DD</op-symbol></operand>
     </line>
-    <line type="data" address="fe/f0ff">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f1</operand>
+    <line type="code" address="fe/f100">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FEF12C" symbol="LFEF12C">LFEF12C</op-symbol></operand>
     </line>
-    <line type="data" address="fe/f100">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b0</operand>
+    <line type="code" address="fe/f102">
+      <opcode>tax</opcode>
     </line>
-    <line type="data" address="fe/f101">
-      <opcode type="directive">dd1</opcode>
-      <operand>$2a</operand>
+    <line type="code" address="fe/f103">
+      <opcode>sep</opcode>
+      <operand>#$20</operand>
     </line>
-    <line type="data" address="fe/f102">
-      <opcode type="directive">dd1</opcode>
-      <operand>$aa</operand>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm</operand>
     </line>
-    <line type="data" address="fe/f103">
-      <opcode type="directive">dd1</opcode>
-      <operand>$e2</operand>
+    <line type="code" address="fe/f105">
+      <opcode>ldal</opcode>
+      <operand>f:<op-symbol anno="none" value="7" symbol="DPCOP_B">DPCOP_B</op-symbol>,x</operand>
     </line>
-    <line type="data" address="fe/f104">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
+    <line type="code" address="fe/f109">
+      <opcode>inc</opcode>
+      <operand>A</operand>
     </line>
-    <line type="data" address="fe/f105">
-      <opcode type="directive">dd1</opcode>
-      <operand>$bf</operand>
+    <line type="code" address="fe/f10a">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FEF121" symbol="LFEF121">LFEF121</op-symbol></operand>
     </line>
-    <line type="data" address="fe/f106">
-      <opcode type="directive">dd1</opcode>
-      <operand>$07</operand>
-    </line>
-    <line type="data" address="fe/f107">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f108">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f109">
-      <opcode type="directive">dd1</opcode>
-      <operand>$1a</operand>
-    </line>
-    <line type="data" address="fe/f10a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d0</operand>
-    </line>
-    <line type="data" address="fe/f10b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$15</operand>
-    </line>
-    <line type="data" address="fe/f10c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$02</operand>
-    </line>
-    <line type="data" address="fe/f10d">
-      <opcode type="directive">dd1</opcode>
+    <line type="code" address="fe/f10c">
+      <opcode>cop</opcode>
       <operand>$0f</operand>
     </line>
-    <line type="data" address="fe/f10e">
-      <opcode type="directive">str</opcode>
-      <operand>“Use Count Overflow”</operand>
+    <line type="code" address="fe/f10e">
+      <opcode>eor</opcode>
+      <operand>$73,x</operand>
     </line>
-    <line type="data" address="fe/f120">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
+    <line type="code" address="fe/f110">
+      <opcode>adc</opcode>
+      <operand>$20</operand>
     </line>
-    <line type="data" address="fe/f121">
-      <opcode type="directive">dd1</opcode>
-      <operand>$9f</operand>
+    <line type="code" address="fe/f112">
+      <opcode>eor</opcode>
+      <operand>$6f,S</operand>
     </line>
-    <line type="data" address="fe/f122">
-      <opcode type="directive">dd1</opcode>
-      <operand>$07</operand>
+    <line type="code" address="fe/f114">
+      <opcode>adc</opcode>
+      <operand>$6e,x</operand>
     </line>
-    <line type="data" address="fe/f123">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
+    <line type="code" address="fe/f116">
+      <opcode>stz</opcode>
+      <operand>$20,x</operand>
     </line>
-    <line type="data" address="fe/f124">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
+    <line type="code" address="fe/f118">
+      <opcode>eorl</opcode>
+      <operand>$726576</operand>
     </line>
-    <line type="data" address="fe/f125">
-      <opcode type="directive">dd1</opcode>
+    <line type="code" address="fe/f11c">
+      <opcode>ror</opcode>
+      <operand>$6c</operand>
+    </line>
+    <line type="code" address="fe/f11e">
+      <opcode>adcl ▼</opcode>
+      <operand>$9f0077</operand>
+    </line>
+    <line type="code" address="fe/f121">
+      <label anno="none" id="LFEF121">LFEF121</label>
+      <opcode>stal ▼</opcode>
+      <operand>f:<op-symbol anno="none" value="7" symbol="DPCOP_B">DPCOP_B</op-symbol>,x</operand>
+    </line>
+    <line type="code" address="fe/f122">
+      <opcode>ora</opcode>
+      <operand>[$00]</operand>
+    </line>
+    <line type="code" address="fe/f124">
+      <opcode>brk ▼</opcode>
       <operand>$c2</operand>
     </line>
-    <line type="data" address="fe/f126">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/f127">
-      <opcode type="directive">dd1</opcode>
-      <operand>$8a</operand>
-    </line>
-    <line type="data" address="fe/f128">
-      <opcode type="directive">dd1</opcode>
-      <operand>$2b</operand>
-    </line>
-    <line type="data" address="fe/f129">
-      <opcode type="directive">dd1</opcode>
-      <operand>$28</operand>
-    </line>
-    <line type="data" address="fe/f12a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$18</operand>
-    </line>
-    <line type="data" address="fe/f12b">
-      <opcode type="directive">str</opcode>
-      <operand>“k+(8k”</operand>
-    </line>
-    <line type="data" address="fe/f130">
-      <opcode type="directive">dd1</opcode>
-      <operand>$08</operand>
-    </line>
-    <line type="data" address="fe/f131">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0b</operand>
-    </line>
-    <line type="data" address="fe/f132">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c2</operand>
-    </line>
-    <line type="data" address="fe/f133">
-      <opcode type="directive">dd1</opcode>
-      <operand>$30</operand>
-    </line>
-    <line type="data" address="fe/f134">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f4</operand>
-    </line>
-    <line type="data" address="fe/f135">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f136">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f137">
-      <opcode type="directive">dd1</opcode>
-      <operand>$5a</operand>
-    </line>
-    <line type="data" address="fe/f138">
-      <opcode type="directive">dd1</opcode>
-      <operand>$8b</operand>
-    </line>
-    <line type="data" address="fe/f139">
-      <opcode type="directive">dd1</opcode>
-      <operand>$8b</operand>
-    </line>
-    <line type="data" address="fe/f13a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$48</operand>
-    </line>
-    <line type="data" address="fe/f13b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f4</operand>
-    </line>
-    <line type="data" address="fe/f13c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0e</operand>
-    </line>
-    <line type="data" address="fe/f13d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$fe</operand>
-    </line>
-    <line type="data" address="fe/f13e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a3</operand>
-    </line>
-    <line type="data" address="fe/f13f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/f140">
-      <opcode type="directive">dd1</opcode>
-      <operand>$38</operand>
-    </line>
-    <line type="data" address="fe/f141">
-      <opcode type="directive">dd1</opcode>
-      <operand>$e9</operand>
-    </line>
-    <line type="data" address="fe/f142">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0e</operand>
-    </line>
-    <line type="data" address="fe/f143">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f144">
-      <opcode type="directive">dd1</opcode>
-      <operand>$83</operand>
-    </line>
-    <line type="data" address="fe/f145">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/f146">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a3</operand>
-    </line>
-    <line type="data" address="fe/f147">
-      <opcode type="directive">dd1</opcode>
-      <operand>$05</operand>
-    </line>
-    <line type="data" address="fe/f148">
-      <opcode type="directive">dd1</opcode>
-      <operand>$e9</operand>
-    </line>
-    <line type="data" address="fe/f149">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f14a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f14b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$83</operand>
-    </line>
-    <line type="data" address="fe/f14c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$05</operand>
-    </line>
-    <line type="data" address="fe/f14d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$fa</operand>
-    </line>
-    <line type="data" address="fe/f14e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$bf</operand>
-    </line>
-    <line type="data" address="fe/f14f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f150">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f151">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f152">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c9</operand>
-    </line>
-    <line type="data" address="fe/f153">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0e</operand>
-    </line>
-    <line type="data" address="fe/f154">
-      <opcode type="directive">dd1</opcode>
-      <operand>$fe</operand>
-    </line>
-    <line type="data" address="fe/f155">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f0</operand>
-    </line>
-    <line type="data" address="fe/f156">
-      <opcode type="directive">dd1</opcode>
-      <operand>$5c</operand>
-    </line>
-    <line type="data" address="fe/f157">
-      <opcode type="directive">dd1</opcode>
-      <operand>$48</operand>
-    </line>
-    <line type="data" address="fe/f158">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/f159">
-      <opcode type="directive">str</opcode>
-      <operand>↑“Cq* ”</operand>
-    </line>
-    <line type="data" address="fe/f15d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0d</operand>
-    </line>
-    <line type="data" address="fe/f15e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f15f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c8</operand>
-    </line>
-    <line type="data" address="fe/f160">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f0</operand>
-    </line>
-    <line type="data" address="fe/f161">
-      <opcode type="directive">dd1</opcode>
-      <operand>$eb</operand>
-    </line>
-    <line type="data" address="fe/f162">
-      <opcode type="directive">dd1</opcode>
-      <operand>$3b</operand>
-    </line>
-    <line type="data" address="fe/f163">
-      <opcode type="directive">dd1</opcode>
-      <operand>$5b</operand>
-    </line>
-    <line type="data" address="fe/f164">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b7</operand>
-    </line>
-    <line type="data" address="fe/f165">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/f166">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/f167">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f7</operand>
-    </line>
-    <line type="data" address="fe/f168">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f4</operand>
-    </line>
-    <line type="data" address="fe/f169">
-      <opcode type="directive">dd1</opcode>
-      <operand>$da</operand>
-    </line>
-    <line type="data" address="fe/f16a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$2b</operand>
-    </line>
-    <line type="data" address="fe/f16b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b0</operand>
-    </line>
-    <line type="data" address="fe/f16c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$09</operand>
-    </line>
-    <line type="data" address="fe/f16d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$57</operand>
-    </line>
-    <line type="data" address="fe/f16e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f16f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$29</operand>
-    </line>
-    <line type="data" address="fe/f170">
-      <opcode type="directive">dd1</opcode>
-      <operand>$df</operand>
-    </line>
-    <line type="data" address="fe/f171">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f172">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d0</operand>
-    </line>
-    <line type="data" address="fe/f173">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d9</operand>
-    </line>
-    <line type="data" address="fe/f174">
-      <opcode type="directive">dd1</opcode>
-      <operand>$80</operand>
-    </line>
-    <line type="data" address="fe/f175">
-      <opcode type="directive">dd1</opcode>
-      <operand>$e9</operand>
-    </line>
-    <line type="data" address="fe/f176">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b7</operand>
-    </line>
-    <line type="data" address="fe/f177">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f178">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/f179">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f7</operand>
-    </line>
-    <line type="data" address="fe/f17a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f4</operand>
-    </line>
-    <line type="data" address="fe/f17b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$90</operand>
-    </line>
-    <line type="data" address="fe/f17c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d0</operand>
-    </line>
-    <line type="data" address="fe/f17d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a3</operand>
-    </line>
-    <line type="data" address="fe/f17e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$07</operand>
-    </line>
-    <line type="data" address="fe/f17f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f0</operand>
-    </line>
-    <line type="data" address="fe/f180">
-      <opcode type="directive">dd1</opcode>
-      <operand>$0f</operand>
-    </line>
-    <line type="data" address="fe/f181">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a0</operand>
-    </line>
-    <line type="data" address="fe/f182">
-      <opcode type="directive">dd1</opcode>
-      <operand>$06</operand>
-    </line>
-    <line type="data" address="fe/f183">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f184">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b7</operand>
-    </line>
-    <line type="data" address="fe/f185">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f186">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c3</operand>
-    </line>
-    <line type="data" address="fe/f187">
-      <opcode type="directive">dd1</opcode>
-      <operand>$07</operand>
-    </line>
-    <line type="data" address="fe/f188">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d0</operand>
-    </line>
-    <line type="data" address="fe/f189">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c3</operand>
-    </line>
-    <line type="data" address="fe/f18a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$68</operand>
-    </line>
-    <line type="data" address="fe/f18b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$48</operand>
-    </line>
-    <line type="data" address="fe/f18c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$83</operand>
-    </line>
-    <line type="data" address="fe/f18d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$09</operand>
-    </line>
-    <line type="data" address="fe/f18e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$80</operand>
-    </line>
-    <line type="data" address="fe/f18f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$bd</operand>
-    </line>
-    <line type="data" address="fe/f190">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a3</operand>
-    </line>
-    <line type="data" address="fe/f191">
-      <opcode type="directive">dd1</opcode>
-      <operand>$09</operand>
-    </line>
-    <line type="data" address="fe/f192">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c9</operand>
-    </line>
-    <line type="data" address="fe/f193">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f194">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f195">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f0</operand>
-    </line>
-    <line type="data" address="fe/f196">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f3</operand>
-    </line>
-    <line type="data" address="fe/f197">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/f198">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c3</operand>
-    </line>
-    <line type="data" address="fe/f199">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f1</operand>
-    </line>
-    <line type="data" address="fe/f19a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$5b</operand>
-    </line>
-    <line type="data" address="fe/f19b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a0</operand>
-    </line>
-    <line type="data" address="fe/f19c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$06</operand>
-    </line>
-    <line type="data" address="fe/f19d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f19e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b7</operand>
-    </line>
-    <line type="data" address="fe/f19f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f1a0">
-      <opcode type="directive">dd1</opcode>
-      <operand>$48</operand>
-    </line>
-    <line type="data" address="fe/f1a1">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a3</operand>
-    </line>
-    <line type="data" address="fe/f1a2">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/f1a3">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/f1a4">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c3</operand>
-    </line>
-    <line type="data" address="fe/f1a5">
-      <opcode type="directive">dd1</opcode>
-      <operand>$f1</operand>
-    </line>
-    <line type="data" address="fe/f1a6">
-      <opcode type="directive">dd1</opcode>
-      <operand>$5b</operand>
-    </line>
-    <line type="data" address="fe/f1a7">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b7</operand>
-    </line>
-    <line type="data" address="fe/f1a8">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f1a9">
-      <opcode type="directive">dd1</opcode>
-      <operand>$29</operand>
-    </line>
-    <line type="data" address="fe/f1aa">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f1ab">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/f1ac">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c3</operand>
-    </line>
-    <line type="data" address="fe/f1ad">
-      <opcode type="directive">dd1</opcode>
-      <operand>$01</operand>
-    </line>
-    <line type="data" address="fe/f1ae">
-      <opcode type="directive">dd1</opcode>
-      <operand>$68</operand>
-    </line>
-    <line type="data" address="fe/f1af">
-      <opcode type="directive">dd1</opcode>
-      <operand>$90</operand>
-    </line>
-    <line type="data" address="fe/f1b0">
-      <opcode type="directive">dd1</opcode>
-      <operand>$9c</operand>
-    </line>
-    <line type="data" address="fe/f1b1">
-      <opcode type="directive">dd1</opcode>
-      <operand>$80</operand>
-    </line>
-    <line type="data" address="fe/f1b2">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d7</operand>
-    </line>
-    <line type="data" address="fe/f1b3">
-      <opcode type="directive">str</opcode>
-      <operand>“+++h”</operand>
-    </line>
-    <line type="data" address="fe/f1b7">
-      <opcode type="directive">dd1</opcode>
-      <operand>$c9</operand>
-    </line>
-    <line type="data" address="fe/f1b8">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f1b9">
-      <opcode type="directive">dd1</opcode>
-      <operand>$ff</operand>
-    </line>
-    <line type="data" address="fe/f1ba">
-      <opcode type="directive">dd1</opcode>
-      <operand>$2b</operand>
-    </line>
-    <line type="data" address="fe/f1bb">
-      <opcode type="directive">dd1</opcode>
-      <operand>$b0</operand>
-    </line>
-    <line type="data" address="fe/f1bc">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
-    </line>
-    <line type="data" address="fe/f1bd">
-      <opcode type="directive">dd1</opcode>
-      <operand>$28</operand>
-    </line>
-    <line type="data" address="fe/f1be">
-      <opcode type="directive">dd1</opcode>
-      <operand>$18</operand>
-    </line>
-    <line type="data" address="fe/f1bf">
-      <opcode type="directive">str</opcode>
-      <operand>“k(8k”</operand>
+    <line type="blank" />
+    <line type="code" address="fe/f125">
+      <opcode>rep</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm</operand>
+    </line>
+    <line type="code" address="fe/f127">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="fe/f128">
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="fe/f129">
+      <opcode>plp</opcode>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="fe/f12a">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="fe/f12b">
+      <opcode>rtl</opcode>
+    </line>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="fe/f12c">
+      <label anno="none" id="LFEF12C">LFEF12C</label>
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="fe/f12d">
+      <opcode>plp</opcode>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="fe/f12e">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="fe/f12f">
+      <opcode>rtl</opcode>
+    </line>
+    <line type="blank" />
+    <long-comment xml:space="preserve">
+; <br />
+; Entry:  BHA is pointer to module name<br />
+;         Y is either 0 or required version number<br />
+; <br />
+; Exit:   CC for found, pointer to module list entry in X<br />
+;         CS, X=-1 for not found</long-comment>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="fe/f130">
+      <label anno="none" id="findModule">findModule</label>
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="fe/f131">
+      <opcode>phd</opcode>
+    </line>
+    <line type="code" address="fe/f132">
+      <opcode>rep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="code" address="fe/f134">
+      <opcode>pea</opcode>
+      <operand>$ffff</operand>
+      <comment>;this looks to be the return value, -1 means not found</comment>
+    </line>
+    <line type="code" address="fe/f137">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="fe/f138">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="fe/f139">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="fe/f13a">
+      <opcode>pha</opcode>
+      <comment>;push BHA pointer</comment>
+    </line>
+    <line type="code" address="fe/f13b">
+      <opcode>pea</opcode>
+      <operand><op-symbol anno="none" value="FE0E" symbol="B0LST_MODULES_QRY">B0LST_MODULES_QRY</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/f13e">
+      <opcode>lda</opcode>
+      <operand>$03,S</operand>
+      <comment>;back off stacked BHA by 14 TODO:why not do this before pushing!?</comment>
+    </line>
+    <line type="code" address="fe/f140">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="fe/f141">
+      <opcode>sbc</opcode>
+      <operand>#$000e</operand>
+    </line>
+    <line type="code" address="fe/f144">
+      <opcode>sta</opcode>
+      <operand>$03,S</operand>
+    </line>
+    <line type="code" address="fe/f146">
+      <opcode>lda</opcode>
+      <operand>$05,S</operand>
+    </line>
+    <line type="code" address="fe/f148">
+      <opcode>sbc</opcode>
+      <operand>#$0000</operand>
+    </line>
+    <line type="code" address="fe/f14b">
+      <opcode>sta</opcode>
+      <operand>$05,S</operand>
+    </line>
+    <line type="code" address="fe/f14d">
+      <label anno="none" local-id="@modsrchlp">@modsrchlp</label>
+      <opcode>plx</opcode>
+      <comment>;get back list pointer</comment>
+    </line>
+    <line type="code" address="fe/f14e">
+      <opcode>ldal</opcode>
+      <operand>f:$000000,x</operand>
+    </line>
+    <line type="code" address="fe/f152">
+      <opcode>cmp</opcode>
+      <operand>#<op-symbol anno="none" value="FE0E" symbol="B0LST_MODULES_QRY">B0LST_MODULES_QRY</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/f155">
+      <opcode>beq</opcode>
+      <operand>@unstackExit</operand>
+      <comment>;if at head of list exit</comment>
+    </line>
+    <line type="code" address="fe/f157">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="fe/f158">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF1C3" symbol="getModuleInfo">getModuleInfo</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/f15b">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="fe/f15c">
+      <opcode>ldy</opcode>
+      <operand>#$000d</operand>
+    </line>
+    <line type="code" address="fe/f15f">
+      <label anno="none" local-id="@strmatchlp">@strmatchlp</label>
+      <opcode>iny</opcode>
+    </line>
+    <line type="code" address="fe/f160">
+      <opcode>beq</opcode>
+      <operand>@modsrchlp</operand>
+    </line>
+    <line type="code" address="fe/f162">
+      <opcode>tsc</opcode>
+    </line>
+    <line type="code" address="fe/f163">
+      <opcode>tcd</opcode>
+    </line>
+    <line type="code" address="fe/f164">
+      <opcode>lda</opcode>
+      <operand>[$03],y</operand>
+      <comment>;get character from stacked long BHA-14 pointer</comment>
+    </line>
+    <line type="code" address="fe/f166">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF4F7" symbol="checkValidModnameChar">checkValidModnameChar</op-symbol></operand>
+      <comment>;check it's a valid module name char</comment>
+    </line>
+    <line type="code" address="fe/f169">
+      <opcode>phx</opcode>
+    </line>
+    <line type="code" address="fe/f16a">
+      <opcode>pld</opcode>
+      <comment>;point to current module name in list</comment>
+    </line>
+    <line type="code" address="fe/f16b">
+      <opcode>bcs</opcode>
+      <operand>@skend</operand>
+      <comment>;end of string</comment>
+    </line>
+    <line type="code" address="fe/f16d">
+      <opcode>eor</opcode>
+      <operand>[$00],y</operand>
+      <comment>;check for equality</comment>
+    </line>
+    <line type="code" address="fe/f16f">
+      <opcode>and</opcode>
+      <operand>#$00df</operand>
+    </line>
+    <line type="code" address="fe/f172">
+      <opcode>bne</opcode>
+      <operand>@modsrchlp</operand>
+      <comment>;no match, next module please</comment>
+    </line>
+    <line type="code" address="fe/f174">
+      <opcode>bra</opcode>
+      <operand>@strmatchlp</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="fe/f176">
+      <label anno="none" local-id="@skend">@skend</label>
+      <opcode>lda</opcode>
+      <operand>[$00],y</operand>
+      <comment>;we got to the end of the passed in string</comment>
+    </line>
+    <line type="code" address="fe/f178">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF4F7" symbol="checkValidModnameChar">checkValidModnameChar</op-symbol></operand>
+      <comment>;were we at the end of the module string?</comment>
+    </line>
+    <line type="code" address="fe/f17b">
+      <opcode>bcc</opcode>
+      <operand>@modsrchlp</operand>
+      <comment>;no, next module...</comment>
+    </line>
+    <line type="code" address="fe/f17d">
+      <opcode>lda</opcode>
+      <operand>$07,S</operand>
+      <comment>;retrieve passed in Y</comment>
+    </line>
+    <line type="code" address="fe/f17f">
+      <opcode>beq</opcode>
+      <operand>@checkVerGt</operand>
+    </line>
+    <line type="code" address="fe/f181">
+      <opcode>ldy</opcode>
+      <operand>#$0006</operand>
+    </line>
+    <line type="code" address="fe/f184">
+      <opcode>lda</opcode>
+      <operand>[$00],y</operand>
+      <comment>;get module version number</comment>
+    </line>
+    <line type="code" address="fe/f186">
+      <opcode>cmp</opcode>
+      <operand>$07,S</operand>
+      <comment>;compare with passed in Y</comment>
+    </line>
+    <line type="code" address="fe/f188">
+      <opcode>bne</opcode>
+      <operand>@modsrchlp</operand>
+      <comment>;doesn't match, next module</comment>
+    </line>
+    <line type="code" address="fe/f18a">
+      <label anno="none" local-id="@setWinner">@setWinner</label>
+      <opcode>pla</opcode>
+      <comment>;get back list entry pointer</comment>
+    </line>
+    <line type="code" address="fe/f18b">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="fe/f18c">
+      <opcode>sta</opcode>
+      <operand>$09,S</operand>
+      <comment>;store in return value</comment>
+    </line>
+    <line type="code" address="fe/f18e">
+      <opcode>bra</opcode>
+      <operand>@modsrchlp</operand>
+      <comment>;keep going - why TODO: check if this happens, document?</comment>
+    </line>
+    <line type="blank" />
+    <line type="code" address="fe/f190">
+      <label anno="none" local-id="@checkVerGt">@checkVerGt</label>
+      <opcode>lda</opcode>
+      <operand>$09,S</operand>
+      <comment>;get return value</comment>
+    </line>
+    <line type="code" address="fe/f192">
+      <opcode>cmp</opcode>
+      <operand>#$ffff</operand>
+      <comment>;has it been set already?</comment>
+    </line>
+    <line type="code" address="fe/f195">
+      <opcode>beq</opcode>
+      <operand>@setWinner</operand>
+      <comment>;if it hasn't set current as result</comment>
+    </line>
+    <line type="code" address="fe/f197">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF1C3" symbol="getModuleInfo">getModuleInfo</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/f19a">
+      <opcode>tcd</opcode>
+    </line>
+    <line type="code" address="fe/f19b">
+      <opcode>ldy</opcode>
+      <operand>#$0006</operand>
+    </line>
+    <line type="code" address="fe/f19e">
+      <opcode>lda</opcode>
+      <operand>[$00],y</operand>
+      <comment>;get winner's version</comment>
+    </line>
+    <line type="code" address="fe/f1a0">
+      <opcode>pha</opcode>
+      <comment>;save it</comment>
+    </line>
+    <line type="code" address="fe/f1a1">
+      <opcode>lda</opcode>
+      <operand>$03,S</operand>
+      <comment>;get current module list entry</comment>
+    </line>
+    <line type="code" address="fe/f1a3">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FEF1C3" symbol="getModuleInfo">getModuleInfo</op-symbol></operand>
+      <comment>;get module pointer</comment>
+    </line>
+    <line type="code" address="fe/f1a6">
+      <opcode>tcd</opcode>
+    </line>
+    <line type="code" address="fe/f1a7">
+      <opcode>lda</opcode>
+      <operand>[$00],y</operand>
+      <comment>;get current module version number</comment>
+    </line>
+    <line type="code" address="fe/f1a9">
+      <opcode>and</opcode>
+      <operand>#$00ff</operand>
+      <comment>;mask off low part?!?!?</comment>
+    </line>
+    <line type="code" address="fe/f1ac">
+      <opcode>cmp</opcode>
+      <operand>$01,S</operand>
+      <comment>;compare</comment>
+    </line>
+    <line type="code" address="fe/f1ae">
+      <opcode>pla</opcode>
+      <comment>;discard pushed</comment>
+    </line>
+    <line type="code" address="fe/f1af">
+      <opcode>bcc</opcode>
+      <operand>@modsrchlp</operand>
+    </line>
+    <line type="code" address="fe/f1b1">
+      <opcode>bra</opcode>
+      <operand>@setWinner</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="fe/f1b3">
+      <label anno="none" local-id="@unstackExit">@unstackExit</label>
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="fe/f1b4">
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="fe/f1b5">
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="fe/f1b6">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="fe/f1b7">
+      <opcode>cmp</opcode>
+      <operand>#$ffff</operand>
+      <comment>;check for winner</comment>
+    </line>
+    <line type="code" address="fe/f1ba">
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="fe/f1bb">
+      <opcode>bcs</opcode>
+      <operand>@retsec</operand>
+    </line>
+    <line type="code" address="fe/f1bd">
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="fe/f1be">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="fe/f1bf">
+      <opcode>rtl</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="fe/f1c0">
+      <label anno="none" local-id="@retsec">@retsec</label>
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="fe/f1c1">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="fe/f1c2">
+      <opcode>rtl</opcode>
     </line>
     <line type="blank" />
     <line type="code" address="fe/f1c3">
-      <label anno="none" id="LFEF1C3">LFEF1C3</label>
+      <label anno="none" id="getModuleInfo">getModuleInfo</label>
       <opcode>phd</opcode>
     </line>
     <line type="code" address="fe/f1c4">
@@ -46718,13 +46515,16 @@
     <line type="code" address="fe/f1c5">
       <opcode>adc</opcode>
       <operand>#$0004</operand>
+      <comment>;HA+=4</comment>
     </line>
     <line type="code" address="fe/f1c8">
       <opcode>tcd</opcode>
+      <comment>;DP=HA</comment>
     </line>
     <line type="code" address="fe/f1c9">
       <opcode>lda</opcode>
-      <operand><op-symbol anno="none" value="1" symbol="DPCOP_Y">DPCOP_Y</op-symbol>+1</operand>
+      <operand>$02</operand>
+      <comment>;HA=[DP,2]</comment>
     </line>
     <line type="code" address="fe/f1cb">
       <opcode>and</opcode>
@@ -46735,7 +46535,7 @@
     </line>
     <line type="code" address="fe/f1cf">
       <opcode>bne</opcode>
-      <operand><op-symbol anno="none" value="FEF1DA" symbol="LFEF1DA">LFEF1DA</op-symbol></operand>
+      <operand>@ret</operand>
     </line>
     <line type="code" address="fe/f1d1">
       <opcode>lda</opcode>
@@ -46758,7 +46558,7 @@
       <opcode>clc</opcode>
     </line>
     <line type="code" address="fe/f1da">
-      <label anno="none" id="LFEF1DA">LFEF1DA</label>
+      <label anno="none" local-id="@ret">@ret</label>
       <opcode>tdc</opcode>
     </line>
     <line type="code" address="fe/f1db">
@@ -46771,11 +46571,11 @@
     <line type="code" address="fe/f1dd">
       <label anno="none" id="LFEF1DD">LFEF1DD</label>
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FEF1C3" symbol="LFEF1C3">LFEF1C3</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FEF1C3" symbol="getModuleInfo">getModuleInfo</op-symbol></operand>
     </line>
     <line type="code" address="fe/f1e0">
       <opcode>bcc</opcode>
-      <operand><op-symbol anno="none" value="FEF21C" symbol="LFEF21C">LFEF21C</op-symbol></operand>
+      <operand>@retTxa</operand>
     </line>
     <line type="code" address="fe/f1e2">
       <opcode>phd</opcode>
@@ -46793,7 +46593,7 @@
     </line>
     <line type="code" address="fe/f1ea">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF21D" symbol="LFEF21D">LFEF21D</op-symbol></operand>
+      <operand>@ret</operand>
     </line>
     <line type="code" address="fe/f1ec">
       <opcode>lda</opcode>
@@ -46835,7 +46635,7 @@
     </line>
     <line type="code" address="fe/f1fd">
       <opcode>lda</opcode>
-      <operand><op-symbol anno="none" value="FEF21E" symbol="LFEF21E">LFEF21E</op-symbol> &amp; $ffff</operand>
+      <operand>0+(@ret &amp; $ffff)+1</operand>
     </line>
     <line type="code" address="fe/f200">
       <opcode>stal</opcode>
@@ -46877,16 +46677,15 @@
       <opcode>pld</opcode>
     </line>
     <line type="code" address="fe/f21c">
-      <label anno="none" id="LFEF21C">LFEF21C</label>
+      <label anno="none" local-id="@retTxa">@retTxa</label>
       <opcode>txa</opcode>
     </line>
     <line type="code" address="fe/f21d">
-      <label anno="none" id="LFEF21D">LFEF21D</label>
+      <label anno="none" local-id="@ret">@ret</label>
       <opcode>rtl</opcode>
     </line>
     <line type="blank" />
     <line type="data" address="fe/f21e">
-      <label anno="none" id="LFEF21E">LFEF21E</label>
       <opcode type="directive">dd1</opcode>
       <operand>$0b</operand>
     </line>
@@ -48636,7 +48435,7 @@
     </line>
     <line type="code" address="fe/f4e8">
       <opcode>bcc</opcode>
-      <operand><op-symbol anno="none" value="FEF4F7" symbol="LFEF4F7">LFEF4F7</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FEF4F7" symbol="checkValidModnameChar">checkValidModnameChar</op-symbol></operand>
     </line>
     <line type="code" address="fe/f4ea">
       <opcode>cmp</opcode>
@@ -48669,12 +48468,15 @@
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+; Check if the character passed in A is in '!', '.', '0'..'9', 'A'..'Z',<br />
+; 'a'..'z'</long-comment>
     <line type="reg-width-directive">
       <opcode type="directive">rwid</opcode>
       <operand>shortm</operand>
     </line>
     <line type="code" address="fe/f4f7">
-      <label anno="none" id="LFEF4F7">LFEF4F7</label>
+      <label anno="none" id="checkValidModnameChar">checkValidModnameChar</label>
       <opcode>php</opcode>
     </line>
     <line type="code" address="fe/f4f8">
@@ -48691,70 +48493,70 @@
     </line>
     <line type="code" address="fe/f4fd">
       <opcode>cmp</opcode>
-      <operand>#$007b</operand>
+      <operand>#‘{’</operand>
     </line>
     <line type="code" address="fe/f500">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF525" symbol="LFEF525">LFEF525</op-symbol></operand>
+      <operand>@retsec</operand>
     </line>
     <line type="code" address="fe/f502">
       <opcode>cmp</opcode>
-      <operand>#$0061</operand>
+      <operand>#‘a’</operand>
     </line>
     <line type="code" address="fe/f505">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF528" symbol="LFEF528">LFEF528</op-symbol></operand>
+      <operand>@retCLC</operand>
     </line>
     <line type="code" address="fe/f507">
       <opcode>cmp</opcode>
-      <operand>#$005b</operand>
+      <operand>#‘[’</operand>
     </line>
     <line type="code" address="fe/f50a">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF525" symbol="LFEF525">LFEF525</op-symbol></operand>
+      <operand>@retsec</operand>
     </line>
     <line type="code" address="fe/f50c">
       <opcode>cmp</opcode>
-      <operand>#$0041</operand>
+      <operand>#‘A’</operand>
     </line>
     <line type="code" address="fe/f50f">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF528" symbol="LFEF528">LFEF528</op-symbol></operand>
+      <operand>@retCLC</operand>
     </line>
     <line type="code" address="fe/f511">
       <opcode>cmp</opcode>
-      <operand>#$003a</operand>
+      <operand>#‘:’</operand>
     </line>
     <line type="code" address="fe/f514">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF525" symbol="LFEF525">LFEF525</op-symbol></operand>
+      <operand>@retsec</operand>
     </line>
     <line type="code" address="fe/f516">
       <opcode>cmp</opcode>
-      <operand>#$0030</operand>
+      <operand>#‘0’</operand>
     </line>
     <line type="code" address="fe/f519">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEF528" symbol="LFEF528">LFEF528</op-symbol></operand>
+      <operand>@retCLC</operand>
     </line>
     <line type="code" address="fe/f51b">
       <opcode>cmp</opcode>
-      <operand>#$002e</operand>
+      <operand>#‘.’</operand>
     </line>
     <line type="code" address="fe/f51e">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FEF528" symbol="LFEF528">LFEF528</op-symbol></operand>
+      <operand>@retCLC</operand>
     </line>
     <line type="code" address="fe/f520">
       <opcode>cmp</opcode>
-      <operand>#$0021</operand>
+      <operand>#‘!’</operand>
     </line>
     <line type="code" address="fe/f523">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FEF528" symbol="LFEF528">LFEF528</op-symbol></operand>
+      <operand>@retCLC</operand>
     </line>
     <line type="code" address="fe/f525">
-      <label anno="none" id="LFEF525">LFEF525</label>
+      <label anno="none" local-id="@retsec">@retsec</label>
       <opcode>plp</opcode>
     </line>
     <line type="reg-width-directive">
@@ -48773,7 +48575,7 @@
       <operand>longm</operand>
     </line>
     <line type="code" address="fe/f528">
-      <label anno="none" id="LFEF528">LFEF528</label>
+      <label anno="none" local-id="@retCLC">@retCLC</label>
       <opcode>plp</opcode>
     </line>
     <line type="reg-width-directive">
@@ -49045,10 +48847,6 @@
       <opcode>rtl</opcode>
     </line>
     <line type="blank" />
-    <line type="reg-width-directive">
-      <opcode type="directive">rwid</opcode>
-      <operand>shortm,shortx</operand>
-    </line>
     <line type="code" address="fe/f5a2">
       <label anno="none" id="LFEF5A2">LFEF5A2</label>
       <opcode>phk</opcode>
@@ -49083,30 +48881,16 @@
     </line>
     <line type="code" address="fe/f5b2">
       <opcode>ldx</opcode>
-      <operand>#$16</operand>
+      <operand>#$0016</operand>
     </line>
-    <line type="code" address="fe/f5b4">
-      <opcode>brk</opcode>
-      <operand>$50</operand>
+    <line type="code" address="fe/f5b5">
+      <opcode>bvc</opcode>
+      <operand><op-symbol anno="none" value="FEF5BA" symbol="LFEF5BA">LFEF5BA</op-symbol></operand>
     </line>
-    <line type="blank" />
-    <line type="data" address="fe/f5b6">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
+    <line type="code" address="fe/f5b7">
+      <opcode>ldx</opcode>
+      <operand>#$001a</operand>
     </line>
-    <line type="data" address="fe/f5b7">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a2</operand>
-    </line>
-    <line type="data" address="fe/f5b8">
-      <opcode type="directive">dd1</opcode>
-      <operand>$1a</operand>
-    </line>
-    <line type="data" address="fe/f5b9">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="blank" />
     <line type="code" address="fe/f5ba">
       <label anno="none" id="LFEF5BA">LFEF5BA</label>
       <opcode>rtl</opcode>
@@ -49146,30 +48930,16 @@
     </line>
     <line type="code" address="fe/f5cb">
       <opcode>ldx</opcode>
-      <operand>#$18</operand>
+      <operand>#$0018</operand>
     </line>
-    <line type="code" address="fe/f5cd">
-      <opcode>brk</opcode>
-      <operand>$50</operand>
+    <line type="code" address="fe/f5ce">
+      <opcode>bvc</opcode>
+      <operand><op-symbol anno="none" value="FEF5D3" symbol="LFEF5D3">LFEF5D3</op-symbol></operand>
     </line>
-    <line type="blank" />
-    <line type="data" address="fe/f5cf">
-      <opcode type="directive">dd1</opcode>
-      <operand>$03</operand>
+    <line type="code" address="fe/f5d0">
+      <opcode>ldx</opcode>
+      <operand>#$001c</operand>
     </line>
-    <line type="data" address="fe/f5d0">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a2</operand>
-    </line>
-    <line type="data" address="fe/f5d1">
-      <opcode type="directive">dd1</opcode>
-      <operand>$1c</operand>
-    </line>
-    <line type="data" address="fe/f5d2">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="blank" />
     <line type="code" address="fe/f5d3">
       <label anno="none" id="LFEF5D3">LFEF5D3</label>
       <opcode>rtl</opcode>
@@ -49209,13 +48979,8 @@
     </line>
     <line type="code" address="fe/f5e4">
       <opcode>ldx</opcode>
-      <operand>#$1e</operand>
+      <operand>#$001e</operand>
     </line>
-    <line type="code" address="fe/f5e6">
-      <opcode>brk ▼</opcode>
-      <operand>$6b</operand>
-    </line>
-    <line type="blank" />
     <line type="code" address="fe/f5e7">
       <label anno="none" id="LFEF5E7">LFEF5E7</label>
       <opcode>rtl</opcode>
@@ -49314,6 +49079,10 @@
       <operand>$01</operand>
     </line>
     <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
     <line type="code" address="fe/f5ff">
       <label anno="none" id="LFEF5FF">LFEF5FF</label>
       <opcode>phd</opcode>

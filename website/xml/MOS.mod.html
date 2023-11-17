@@ -466,6 +466,11 @@
       <span class="operand">$acf6  {addr/2}</span>
     </span>
     <span class="line">
+      <a id="LBLLK-B0LST_MODULES_QRY"></a><span class="label" anno="none" id="LBL-B0LST_MODULES_QRY">B0LST_MODULES_QRY</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$fe0e  {addr/2}</span>
+    </span>
+    <span class="line">
       <a id="LBLLK-tblB0JumpTableFE80_QRY"></a><span class="label" anno="none" id="LBL-tblB0JumpTableFE80_QRY">tblB0JumpTableFE80_QRY</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$fe80  {addr/52}</span>
@@ -660,7 +665,7 @@
     </span>
     <span class="line">
       <span class="opcode ">pea</span>
-      <span class="operand">$ac00</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPSYS" title="AC00">DPSYS</a></span>
     </span>
     <span class="line">
       <span class="opcode ">pld</span>
@@ -1596,7 +1601,7 @@
     </span>
     <span class="line">
       <span class="opcode ">stal</span>
-      <span class="operand">f:$00fe0e</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-B0LST_MODULES_QRY" title="FE0E">B0LST_MODULES_QRY</a></span>
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
@@ -4772,7 +4777,7 @@
     </span>
     <span class="line">
       <span class="opcode directive">dd2</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-TFEB7B9" title="FEB7B9">TFEB7B9</a> &amp; $ffff</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-copRetImmedStr" title="FEB7B9">copRetImmedStr</a> &amp; $ffff</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd2</span>
@@ -4780,7 +4785,8 @@
     </span>
     <span class="line">
       <span class="opcode directive">dd2</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-TFEBC77" title="FEBC77">TFEBC77</a> &amp; $ffff</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-COP_28" title="FEBC77">COP_28</a> &amp; $ffff</span>
+      <span class="comment">;OPCMD 22 - call a module</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd2</span>
@@ -5213,8 +5219,14 @@
       <span class="operand">$6b</span>
     </span>
     <span class="line"></span>
+    <span class="long-comment">
+; returns the string following the COP call as BHA</span>
     <span class="line">
-      <a id="LBLLK-TFEB7B9"></a><span class="label" anno="none" id="LBL-TFEB7B9">TFEB7B9</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-copRetImmedStr"></a><span class="label" anno="none" id="LBL-copRetImmedStr">copRetImmedStr</span>
       <span class="opcode ">lda</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_PC" title="B">DPCOP_PC</a>+1</span>
     </span>
@@ -5234,7 +5246,10 @@
       <span class="opcode ">sta</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a></span>
     </span>
+    <span class="long-comment">
+; This skips over any string following the cop call</span>
     <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@copExitImmedStr</span>
       <span class="opcode ">inc</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_PC" title="B">DPCOP_PC</a></span>
     </span>
@@ -5244,22 +5259,20 @@
     </span>
     <span class="line">
       <span class="opcode ">and</span>
-      <span class="operand">#$ff</span>
+      <span class="operand">#$00ff</span>
     </span>
     <span class="line">
-      <span class="opcode ">brk</span>
-      <span class="operand">$d0</span>
+      <span class="opcode ">bne</span>
+      <span class="operand">@copExitImmedStr</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">rtl</span>
     </span>
     <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f7</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
     </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6b</span>
-    </span>
-    <span class="line"></span>
     <span class="line">
       <a id="LBLLK-LFEB7CC"></a><span class="label" anno="none" id="LBL-LFEB7CC">LFEB7CC</span>
       <span class="opcode ">lda</span>
@@ -8607,18 +8620,38 @@
       <span class="operand">$f8</span>
     </span>
     <span class="line"></span>
+    <span class="long-comment">
+********************************************************************************<span class="br"></span>
+* COP 22 - OPCMD call a module                                                 *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Action:   Call the module whose name, tenninated by zero,follows             *<span class="br"></span>
+* cmmediately.                                                                 *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* On entry: Any values required by the module to be passed in the registers.   *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Inline string which is the module name terminated by zero (&amp;00).             *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* On exit: Carry bit is setand X = 0 if the module was not found.              *<span class="br"></span>
+********************************************************************************</span>
     <span class="line">
-      <a id="LBLLK-TFEBC77"></a><span class="label" anno="none" id="LBL-TFEBC77">TFEBC77</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-COP_28"></a><span class="label" anno="none" id="LBL-COP_28">COP_28</span>
       <span class="opcode ">lda</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_PC" title="B">DPCOP_PC</a></span>
+      <span class="comment">;get caller PC</span>
     </span>
     <span class="line">
       <span class="opcode ">inc</span>
       <span class="operand">A</span>
+      <span class="comment">;increment to point at the module name</span>
     </span>
     <span class="line">
       <span class="opcode ">pei</span>
       <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_PC" title="B">DPCOP_PC</a>+1)</span>
+      <span class="comment">;get caller's program bank into B</span>
     </span>
     <span class="line">
       <span class="opcode ">plb</span>
@@ -8628,157 +8661,110 @@
     </span>
     <span class="line">
       <span class="opcode ">ldy</span>
-      <span class="operand">#$00</span>
+      <span class="operand">#$0000</span>
     </span>
     <span class="line">
-      <span class="opcode ">brk</span>
-      <span class="operand">$4b</span>
+      <span class="opcode ">phk</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-brlFindModule" title="FEEE4B">brlFindModule</a></span>
+      <span class="comment">;look for the module</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bcs</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-modNotFoundRetZ" title="FEBCC6">modNotFoundRetZ</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phk</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEE51" title="FEEE51">LFEEE51</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bcs</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-modNotFoundRetZ" title="FEBCC6">modNotFoundRetZ</a></span>
+    </span>
+    <span class="long-comment">
+; make an rti frame that will return to an rti</span>
+    <span class="line">
+      <span class="opcode ">phd</span>
+      <span class="comment">;an rti frame that will return to an rti</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phk</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">per</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEBCA8" title="FEBCA8">LFEBCA8</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pea</span>
+      <span class="operand">$0000</span>
+      <span class="comment">;place 0000 on the stack</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plb</span>
+      <span class="comment">;discard stacked byte</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pha</span>
+      <span class="comment">;push A (module B0 jump block)</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pea</span>
+      <span class="operand">$0000</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plb</span>
+      <span class="comment">;another single 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pei</span>
+      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_DP" title="8">DPCOP_DP</a>)</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pei</span>
+      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a>+1)</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plb</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ldx</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_X" title="3">DPCOP_X</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ldy</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plb</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="long-comment">
+; BHAXY are now as per caller<span class="br"></span>
+; <span class="br"></span>
+; stack contains<span class="br"></span>
+; <span class="br"></span>
+; +7  @rti long address for module to return to which will do another RTI - QRY<span class="br"></span>
+; why?<span class="br"></span>
+; +6  00 - bank 0<span class="br"></span>
+; +4  jump block entry in bank 0<span class="br"></span>
+; +3  00 - dummy flags<span class="br"></span>
+; +1  caller DP</span>
+    <span class="line">
+      <a id="LBLLK-LFEBCA8"></a><span class="label" anno="none" id="LBL-LFEBCA8">LFEBCA8</span>
+      <span class="opcode ">rti</span>
     </span>
     <span class="line"></span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$4b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ee</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“?K Q”</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ee</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$39</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$4b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$62</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$16</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ab</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ab</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$08</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$06</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ab</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a5</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$05</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a6</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$01</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ab</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$2b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$40</span>
-    </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$c2</span>
@@ -8895,27 +8881,21 @@
       <span class="opcode directive">dd1</span>
       <span class="operand">$fa</span>
     </span>
+    <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
+      <a id="LBLLK-modNotFoundRetZ"></a><span class="label" anno="none" id="LBL-modNotFoundRetZ">modNotFoundRetZ</span>
+      <span class="opcode ">stz</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_X" title="3">DPCOP_X</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$82</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$fa</span>
+      <span class="opcode ">brl</span>
+      <span class="operand">@copExitImmedStr</span>
     </span>
     <span class="line"></span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
+    </span>
     <span class="line">
       <a id="LBLLK-TFEBCCB"></a><span class="label" anno="none" id="LBL-TFEBCCB">TFEBCCB</span>
       <span class="opcode ">lda</span>
@@ -43482,42 +43462,38 @@
     </span>
     <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$82</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e2</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$02</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$82</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a1</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$02</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$82</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$89</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
+      <a id="LBLLK-brlFindModule"></a><span class="label" anno="none" id="LBL-brlFindModule">brlFindModule</span>
+      <span class="opcode ">brl</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-findModule" title="FEF130">findModule</a></span>
     </span>
     <span class="line"></span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">brl</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF0F2" title="FEF0F2">LFEF0F2</a></span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-LFEEE51"></a><span class="label" anno="none" id="LBL-LFEEE51">LFEEE51</span>
+      <span class="opcode ">brl</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF1DD" title="FEF1DD">LFEF1DD</a></span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
+    </span>
     <span class="line">
       <a id="LBLLK-LFEEE54"></a><span class="label" anno="none" id="LBL-LFEEE54">LFEEE54</span>
       <span class="opcode ">php</span>
@@ -43591,7 +43567,7 @@
     </span>
     <span class="line">
       <span class="opcode ">ldal</span>
-      <span class="operand">f:$00fe0e</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-B0LST_MODULES_QRY" title="FE0E">B0LST_MODULES_QRY</a></span>
     </span>
     <span class="line">
       <span class="opcode ">tax</span>
@@ -43613,7 +43589,7 @@
     </span>
     <span class="line">
       <span class="opcode ">ldal</span>
-      <span class="operand">f:$00fe0e</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-B0LST_MODULES_QRY" title="FE0E">B0LST_MODULES_QRY</a></span>
     </span>
     <span class="line">
       <span class="opcode ">stal</span>
@@ -44101,7 +44077,7 @@
     </span>
     <span class="line">
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF4F7" title="FEF4F7">LFEF4F7</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-checkValidModnameChar" title="FEF4F7">checkValidModnameChar</a></span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
@@ -44655,7 +44631,7 @@
     </span>
     <span class="line">
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF1C3" title="FEF1C3">LFEF1C3</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-getModuleInfo" title="FEF1C3">getModuleInfo</a></span>
     </span>
     <span class="line">
       <span class="opcode ">tcd</span>
@@ -44692,7 +44668,7 @@
     </span>
     <span class="line">
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF4F7" title="FEF4F7">LFEF4F7</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-checkValidModnameChar" title="FEF4F7">checkValidModnameChar</a></span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
@@ -44722,7 +44698,7 @@
     </span>
     <span class="line">
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF4F7" title="FEF4F7">LFEF4F7</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-checkValidModnameChar" title="FEF4F7">checkValidModnameChar</a></span>
     </span>
     <span class="line">
       <span class="opcode ">bcc</span>
@@ -44961,713 +44937,518 @@
       <span class="opcode directive">dd1</span>
       <span class="operand">$00</span>
     </span>
+    <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$08</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0b</span>
+      <a id="LBLLK-LFEF0F2"></a><span class="label" anno="none" id="LBL-LFEF0F2">LFEF0F2</span>
+      <span class="opcode ">php</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c2</span>
+      <span class="opcode ">phd</span>
     </span>
     <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“0K 0”</span>
+      <span class="opcode ">rep</span>
+      <span class="operand">#$30</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f1</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b0</span>
+      <span class="opcode ">phk</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$30</span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-findModule" title="FEF130">findModule</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$4b</span>
+      <span class="opcode ">bcs</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF12C" title="FEF12C">LFEF12C</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
+      <span class="opcode ">phk</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$dd</span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF1DD" title="FEF1DD">LFEF1DD</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f1</span>
+      <span class="opcode ">bcs</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF12C" title="FEF12C">LFEF12C</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b0</span>
+      <span class="opcode ">tax</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$2a</span>
+      <span class="opcode ">sep</span>
+      <span class="operand">#$20</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$aa</span>
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e2</span>
+      <span class="opcode ">ldal</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_B" title="7">DPCOP_B</a>,x</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
+      <span class="opcode ">inc</span>
+      <span class="operand">A</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$bf</span>
+      <span class="opcode ">bne</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF121" title="FEF121">LFEF121</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$07</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$1a</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$15</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$02</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
+      <span class="opcode ">cop</span>
       <span class="operand">$0f</span>
     </span>
     <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“Use Count Overflow”</span>
+      <span class="opcode ">eor</span>
+      <span class="operand">$73,x</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode ">adc</span>
+      <span class="operand">$20</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$9f</span>
+      <span class="opcode ">eor</span>
+      <span class="operand">$6f,S</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$07</span>
+      <span class="opcode ">adc</span>
+      <span class="operand">$6e,x</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode ">stz</span>
+      <span class="operand">$20,x</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode ">eorl</span>
+      <span class="operand">$726576</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
+      <span class="opcode ">ror</span>
+      <span class="operand">$6c</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">adcl ▼</span>
+      <span class="operand">$9f0077</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-LFEF121"></a><span class="label" anno="none" id="LBL-LFEF121">LFEF121</span>
+      <span class="opcode ">stal ▼</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_B" title="7">DPCOP_B</a>,x</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ora</span>
+      <span class="operand">[$00]</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">brk ▼</span>
       <span class="operand">$c2</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$8a</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$2b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$28</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$18</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“k+(8k”</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$08</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c2</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$30</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5a</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$8b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$8b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0e</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$fe</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$38</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0e</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$83</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$05</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$83</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$05</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$fa</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$bf</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0e</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$fe</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5c</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">↑“Cq* ”</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0d</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c8</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$eb</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$3b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$da</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$2b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$09</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$57</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$29</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$df</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$80</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$90</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$07</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0f</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$06</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$07</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$68</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$83</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$09</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$80</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$bd</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$09</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f1</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$06</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f1</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$29</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c3</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$01</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$68</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$90</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$9c</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$80</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“+++h”</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$c9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$2b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$28</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$18</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“k(8k”</span>
     </span>
     <span class="line"></span>
     <span class="line">
-      <a id="LBLLK-LFEF1C3"></a><span class="label" anno="none" id="LBL-LFEF1C3">LFEF1C3</span>
+      <span class="opcode ">rep</span>
+      <span class="operand">#$20</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">txa</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plp</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">clc</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">rtl</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-LFEF12C"></a><span class="label" anno="none" id="LBL-LFEF12C">LFEF12C</span>
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plp</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sec</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">rtl</span>
+    </span>
+    <span class="line"></span>
+    <span class="long-comment">
+; <span class="br"></span>
+; Entry:  BHA is pointer to module name<span class="br"></span>
+;         Y is either 0 or required version number<span class="br"></span>
+; <span class="br"></span>
+; Exit:   CC for found, pointer to module list entry in X<span class="br"></span>
+;         CS, X=-1 for not found</span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-findModule"></a><span class="label" anno="none" id="LBL-findModule">findModule</span>
+      <span class="opcode ">php</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phd</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">rep</span>
+      <span class="operand">#$30</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pea</span>
+      <span class="operand">$ffff</span>
+      <span class="comment">;this looks to be the return value, -1 means not found</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phy</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phb</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phb</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pha</span>
+      <span class="comment">;push BHA pointer</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pea</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-B0LST_MODULES_QRY" title="FE0E">B0LST_MODULES_QRY</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">$03,S</span>
+      <span class="comment">;back off stacked BHA by 14 TODO:why not do this before pushing!?</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sec</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sbc</span>
+      <span class="operand">#$000e</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sta</span>
+      <span class="operand">$03,S</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">$05,S</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sbc</span>
+      <span class="operand">#$0000</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sta</span>
+      <span class="operand">$05,S</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@modsrchlp</span>
+      <span class="opcode ">plx</span>
+      <span class="comment">;get back list pointer</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ldal</span>
+      <span class="operand">f:$000000,x</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">cmp</span>
+      <span class="operand">#<a class="op-symbol" href="#LBLLK-B0LST_MODULES_QRY" title="FE0E">B0LST_MODULES_QRY</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">beq</span>
+      <span class="operand">@unstackExit</span>
+      <span class="comment">;if at head of list exit</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pha</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-getModuleInfo" title="FEF1C3">getModuleInfo</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">tax</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ldy</span>
+      <span class="operand">#$000d</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@strmatchlp</span>
+      <span class="opcode ">iny</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">beq</span>
+      <span class="operand">@modsrchlp</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">tsc</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">tcd</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">[$03],y</span>
+      <span class="comment">;get character from stacked long BHA-14 pointer</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-checkValidModnameChar" title="FEF4F7">checkValidModnameChar</a></span>
+      <span class="comment">;check it's a valid module name char</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">phx</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pld</span>
+      <span class="comment">;point to current module name in list</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bcs</span>
+      <span class="operand">@skend</span>
+      <span class="comment">;end of string</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">eor</span>
+      <span class="operand">[$00],y</span>
+      <span class="comment">;check for equality</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">and</span>
+      <span class="operand">#$00df</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bne</span>
+      <span class="operand">@modsrchlp</span>
+      <span class="comment">;no match, next module please</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bra</span>
+      <span class="operand">@strmatchlp</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@skend</span>
+      <span class="opcode ">lda</span>
+      <span class="operand">[$00],y</span>
+      <span class="comment">;we got to the end of the passed in string</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-checkValidModnameChar" title="FEF4F7">checkValidModnameChar</a></span>
+      <span class="comment">;were we at the end of the module string?</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bcc</span>
+      <span class="operand">@modsrchlp</span>
+      <span class="comment">;no, next module...</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">$07,S</span>
+      <span class="comment">;retrieve passed in Y</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">beq</span>
+      <span class="operand">@checkVerGt</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ldy</span>
+      <span class="operand">#$0006</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">[$00],y</span>
+      <span class="comment">;get module version number</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">cmp</span>
+      <span class="operand">$07,S</span>
+      <span class="comment">;compare with passed in Y</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bne</span>
+      <span class="operand">@modsrchlp</span>
+      <span class="comment">;doesn't match, next module</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@setWinner</span>
+      <span class="opcode ">pla</span>
+      <span class="comment">;get back list entry pointer</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pha</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sta</span>
+      <span class="operand">$09,S</span>
+      <span class="comment">;store in return value</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bra</span>
+      <span class="operand">@modsrchlp</span>
+      <span class="comment">;keep going - why TODO: check if this happens, document?</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@checkVerGt</span>
+      <span class="opcode ">lda</span>
+      <span class="operand">$09,S</span>
+      <span class="comment">;get return value</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">cmp</span>
+      <span class="operand">#$ffff</span>
+      <span class="comment">;has it been set already?</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">beq</span>
+      <span class="operand">@setWinner</span>
+      <span class="comment">;if it hasn't set current as result</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-getModuleInfo" title="FEF1C3">getModuleInfo</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">tcd</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">ldy</span>
+      <span class="operand">#$0006</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">[$00],y</span>
+      <span class="comment">;get winner's version</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pha</span>
+      <span class="comment">;save it</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">$03,S</span>
+      <span class="comment">;get current module list entry</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-getModuleInfo" title="FEF1C3">getModuleInfo</a></span>
+      <span class="comment">;get module pointer</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">tcd</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">[$00],y</span>
+      <span class="comment">;get current module version number</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">and</span>
+      <span class="operand">#$00ff</span>
+      <span class="comment">;mask off low part?!?!?</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">cmp</span>
+      <span class="operand">$01,S</span>
+      <span class="comment">;compare</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pla</span>
+      <span class="comment">;discard pushed</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bcc</span>
+      <span class="operand">@modsrchlp</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bra</span>
+      <span class="operand">@setWinner</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@unstackExit</span>
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pla</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">cmp</span>
+      <span class="operand">#$ffff</span>
+      <span class="comment">;check for winner</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">pld</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">bcs</span>
+      <span class="operand">@retsec</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">plp</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">clc</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">rtl</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retsec</span>
+      <span class="opcode ">plp</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">sec</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">rtl</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <a id="LBLLK-getModuleInfo"></a><span class="label" anno="none" id="LBL-getModuleInfo">getModuleInfo</span>
       <span class="opcode ">phd</span>
     </span>
     <span class="line">
@@ -45676,13 +45457,16 @@
     <span class="line">
       <span class="opcode ">adc</span>
       <span class="operand">#$0004</span>
+      <span class="comment">;HA+=4</span>
     </span>
     <span class="line">
       <span class="opcode ">tcd</span>
+      <span class="comment">;DP=HA</span>
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="operand">$02</span>
+      <span class="comment">;HA=[DP,2]</span>
     </span>
     <span class="line">
       <span class="opcode ">and</span>
@@ -45693,7 +45477,7 @@
     </span>
     <span class="line">
       <span class="opcode ">bne</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF1DA" title="FEF1DA">LFEF1DA</a></span>
+      <span class="operand">@ret</span>
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
@@ -45716,7 +45500,7 @@
       <span class="opcode ">clc</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFEF1DA"></a><span class="label" anno="none" id="LBL-LFEF1DA">LFEF1DA</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@ret</span>
       <span class="opcode ">tdc</span>
     </span>
     <span class="line">
@@ -45729,11 +45513,11 @@
     <span class="line">
       <a id="LBLLK-LFEF1DD"></a><span class="label" anno="none" id="LBL-LFEF1DD">LFEF1DD</span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF1C3" title="FEF1C3">LFEF1C3</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-getModuleInfo" title="FEF1C3">getModuleInfo</a></span>
     </span>
     <span class="line">
       <span class="opcode ">bcc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF21C" title="FEF21C">LFEF21C</a></span>
+      <span class="operand">@retTxa</span>
     </span>
     <span class="line">
       <span class="opcode ">phd</span>
@@ -45751,7 +45535,7 @@
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF21D" title="FEF21D">LFEF21D</a></span>
+      <span class="operand">@ret</span>
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
@@ -45793,7 +45577,7 @@
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF21E" title="FEF21E">LFEF21E</a> &amp; $ffff</span>
+      <span class="operand">0+(@ret &amp; $ffff)+1</span>
     </span>
     <span class="line">
       <span class="opcode ">stal</span>
@@ -45835,16 +45619,15 @@
       <span class="opcode ">pld</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFEF21C"></a><span class="label" anno="none" id="LBL-LFEF21C">LFEF21C</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retTxa</span>
       <span class="opcode ">txa</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFEF21D"></a><span class="label" anno="none" id="LBL-LFEF21D">LFEF21D</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@ret</span>
       <span class="opcode ">rtl</span>
     </span>
     <span class="line"></span>
     <span class="line">
-      <a id="LBLLK-LFEF21E"></a><span class="label" anno="none" id="LBL-LFEF21E">LFEF21E</span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$0b</span>
     </span>
@@ -47594,7 +47377,7 @@
     </span>
     <span class="line">
       <span class="opcode ">bcc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF4F7" title="FEF4F7">LFEF4F7</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-checkValidModnameChar" title="FEF4F7">checkValidModnameChar</a></span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
@@ -47627,12 +47410,15 @@
       <span class="opcode ">rts</span>
     </span>
     <span class="line"></span>
+    <span class="long-comment">
+; Check if the character passed in A is in '!', '.', '0'..'9', 'A'..'Z',<span class="br"></span>
+; 'a'..'z'</span>
     <span class="line">
       <span class="opcode directive">rwid</span>
       <span class="operand">shortm</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFEF4F7"></a><span class="label" anno="none" id="LBL-LFEF4F7">LFEF4F7</span>
+      <a id="LBLLK-checkValidModnameChar"></a><span class="label" anno="none" id="LBL-checkValidModnameChar">checkValidModnameChar</span>
       <span class="opcode ">php</span>
     </span>
     <span class="line">
@@ -47649,70 +47435,70 @@
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$007b</span>
+      <span class="operand">#‘{’</span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF525" title="FEF525">LFEF525</a></span>
+      <span class="operand">@retsec</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$0061</span>
+      <span class="operand">#‘a’</span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF528" title="FEF528">LFEF528</a></span>
+      <span class="operand">@retCLC</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$005b</span>
+      <span class="operand">#‘[’</span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF525" title="FEF525">LFEF525</a></span>
+      <span class="operand">@retsec</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$0041</span>
+      <span class="operand">#‘A’</span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF528" title="FEF528">LFEF528</a></span>
+      <span class="operand">@retCLC</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$003a</span>
+      <span class="operand">#‘:’</span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF525" title="FEF525">LFEF525</a></span>
+      <span class="operand">@retsec</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$0030</span>
+      <span class="operand">#‘0’</span>
     </span>
     <span class="line">
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF528" title="FEF528">LFEF528</a></span>
+      <span class="operand">@retCLC</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$002e</span>
+      <span class="operand">#‘.’</span>
     </span>
     <span class="line">
       <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF528" title="FEF528">LFEF528</a></span>
+      <span class="operand">@retCLC</span>
     </span>
     <span class="line">
       <span class="opcode ">cmp</span>
-      <span class="operand">#$0021</span>
+      <span class="operand">#‘!’</span>
     </span>
     <span class="line">
       <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF528" title="FEF528">LFEF528</a></span>
+      <span class="operand">@retCLC</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFEF525"></a><span class="label" anno="none" id="LBL-LFEF525">LFEF525</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retsec</span>
       <span class="opcode ">plp</span>
     </span>
     <span class="line">
@@ -47731,7 +47517,7 @@
       <span class="operand">longm</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFEF528"></a><span class="label" anno="none" id="LBL-LFEF528">LFEF528</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retCLC</span>
       <span class="opcode ">plp</span>
     </span>
     <span class="line">
@@ -48004,10 +47790,6 @@
     </span>
     <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">rwid</span>
-      <span class="operand">shortm,shortx</span>
-    </span>
-    <span class="line">
       <a id="LBLLK-LFEF5A2"></a><span class="label" anno="none" id="LBL-LFEF5A2">LFEF5A2</span>
       <span class="opcode ">phk</span>
     </span>
@@ -48041,30 +47823,16 @@
     </span>
     <span class="line">
       <span class="opcode ">ldx</span>
-      <span class="operand">#$16</span>
+      <span class="operand">#$0016</span>
     </span>
     <span class="line">
-      <span class="opcode ">brk</span>
-      <span class="operand">$50</span>
-    </span>
-    <span class="line"></span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
+      <span class="opcode ">bvc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF5BA" title="FEF5BA">LFEF5BA</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a2</span>
+      <span class="opcode ">ldx</span>
+      <span class="operand">#$001a</span>
     </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$1a</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line"></span>
     <span class="line">
       <a id="LBLLK-LFEF5BA"></a><span class="label" anno="none" id="LBL-LFEF5BA">LFEF5BA</span>
       <span class="opcode ">rtl</span>
@@ -48104,30 +47872,16 @@
     </span>
     <span class="line">
       <span class="opcode ">ldx</span>
-      <span class="operand">#$18</span>
+      <span class="operand">#$0018</span>
     </span>
     <span class="line">
-      <span class="opcode ">brk</span>
-      <span class="operand">$50</span>
-    </span>
-    <span class="line"></span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
+      <span class="opcode ">bvc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEF5D3" title="FEF5D3">LFEF5D3</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a2</span>
+      <span class="opcode ">ldx</span>
+      <span class="operand">#$001c</span>
     </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$1c</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line"></span>
     <span class="line">
       <a id="LBLLK-LFEF5D3"></a><span class="label" anno="none" id="LBL-LFEF5D3">LFEF5D3</span>
       <span class="opcode ">rtl</span>
@@ -48167,13 +47921,8 @@
     </span>
     <span class="line">
       <span class="opcode ">ldx</span>
-      <span class="operand">#$1e</span>
+      <span class="operand">#$001e</span>
     </span>
-    <span class="line">
-      <span class="opcode ">brk ▼</span>
-      <span class="operand">$6b</span>
-    </span>
-    <span class="line"></span>
     <span class="line">
       <a id="LBLLK-LFEF5E7"></a><span class="label" anno="none" id="LBL-LFEF5E7">LFEF5E7</span>
       <span class="opcode ">rtl</span>
@@ -48272,6 +48021,10 @@
       <span class="operand">$01</span>
     </span>
     <span class="line"></span>
+    <span class="line">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
+    </span>
     <span class="line">
       <a id="LBLLK-LFEF5FF"></a><span class="label" anno="none" id="LBL-LFEF5FF">LFEF5FF</span>
       <span class="opcode ">phd</span>
