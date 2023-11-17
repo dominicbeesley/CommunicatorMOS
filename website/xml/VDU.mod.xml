@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="dis65.xslt"?>
-<dis65 project-name="VDU.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-11-17T17:30:16.3694658+00:00">
+<dis65 project-name="VDU.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-11-17T19:37:56.5560525+00:00">
   <symbols>
+    <symbol type="external-addr" label="DPVDU_JMPVEC" anno="none" source="project">$dc</symbol>
     <symbol type="local-or-global-addr" label="LFE553D" anno="none" source="auto">$fe553d</symbol>
     <symbol type="local-or-global-addr" label="LFE554D" anno="none" source="auto">$fe554d</symbol>
-    <symbol type="local-or-global-addr" label="LFE5551" anno="none" source="auto">$fe5551</symbol>
-    <symbol type="local-or-global-addr" label="LFE5572" anno="none" source="auto">$fe5572</symbol>
     <symbol type="local-or-global-addr" label="LFE5593" anno="none" source="auto">$fe5593</symbol>
     <symbol type="local-or-global-addr" label="LFE5594" anno="none" source="auto">$fe5594</symbol>
     <symbol type="local-or-global-addr" label="LFE55D3" anno="none" source="auto">$fe55d3</symbol>
@@ -37,7 +36,6 @@
     <symbol type="local-or-global-addr" label="LFE56B1" anno="none" source="auto">$fe56b1</symbol>
     <symbol type="local-or-global-addr" label="LFE56B7" anno="none" source="auto">$fe56b7</symbol>
     <symbol type="local-or-global-addr" label="LFE56B9" anno="none" source="auto">$fe56b9</symbol>
-    <symbol type="local-or-global-addr" label="LFE56D8" anno="none" source="auto">$fe56d8</symbol>
     <symbol type="local-or-global-addr" label="LFE56D9" anno="none" source="auto">$fe56d9</symbol>
     <symbol type="local-or-global-addr" label="LFE56F2" anno="none" source="auto">$fe56f2</symbol>
     <symbol type="local-or-global-addr" label="LFE56FA" anno="none" source="auto">$fe56fa</symbol>
@@ -59,6 +57,7 @@
     <symbol type="local-or-global-addr" label="LFE5775" anno="none" source="auto">$fe5775</symbol>
     <symbol type="local-or-global-addr" label="LFE577A" anno="none" source="auto">$fe577a</symbol>
     <symbol type="local-or-global-addr" label="LFE577B" anno="none" source="auto">$fe577b</symbol>
+    <symbol type="local-or-global-addr" label="LFE5780" anno="none" source="auto">$fe5780</symbol>
     <symbol type="local-or-global-addr" label="LFE5798" anno="none" source="auto">$fe5798</symbol>
     <symbol type="local-or-global-addr" label="LFE57A5" anno="none" source="auto">$fe57a5</symbol>
     <symbol type="local-or-global-addr" label="LFE57A7" anno="none" source="auto">$fe57a7</symbol>
@@ -450,6 +449,8 @@
     <symbol type="global-addr" label="Serv4_VDU" anno="none" source="user">$fe6c48</symbol>
     <symbol type="global-addr" label="ServiceRoutine" anno="none" source="user">$fe5513</symbol>
     <symbol type="global-addr" label="strVDU" anno="none" source="user">$fe7238</symbol>
+    <symbol type="global-addr" label="tblJmpVecHiBytes" anno="none" source="user">$fe5572</symbol>
+    <symbol type="global-addr" label="tblJmpVecLoBytes" anno="none" source="user">$fe5551</symbol>
     <symbol type="global-addr" label="tblServiceDispatch" anno="none" source="user">$fe7307</symbol>
     <symbol type="global-addr" label="TFE5910" anno="generated" source="user">$fe5910</symbol>
     <symbol type="global-addr" label="TFE5958" anno="generated" source="user">$fe5958</symbol>
@@ -489,10 +490,20 @@
     <symbol type="global-addr" label="TFE72FC" anno="generated" source="user">$fe72fc</symbol>
     <symbol type="global-addr" label="TFE72FF" anno="generated" source="user">$fe72ff</symbol>
     <symbol type="global-addr" label="TFE7306" anno="generated" source="user">$fe7306</symbol>
+    <symbol type="global-addr" label="VDU_0" anno="none" source="user">$fe56d8</symbol>
+    <symbol type="global-addr" label="VDU_2" anno="none" source="user">$fe5791</symbol>
+    <symbol type="global-addr" label="VDU_3" anno="none" source="user">$fe579c</symbol>
   </symbols>
   <lines>
     <long-comment xml:space="preserve">
 ; 6502bench SourceGen v1.8.5</long-comment>
+    <line type="equ-directive">
+      <label anno="none" id="DPVDU_JMPVEC">DPVDU_JMPVEC</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$dc    {addr/2}</operand>
+      <comment>;Jump vector for current VDU operation</comment>
+    </line>
+    <line type="blank" />
     <line type="ar-start-directive">
       <opcode type="directive">addrs</opcode>
       <operand>$fe5500</operand>
@@ -693,8 +704,11 @@
       <opcode type="directive">dd1</opcode>
       <operand>$ff</operand>
     </line>
+    <long-comment xml:space="preserve">
+; These are the low bytes of the handler routines for each of the 33 controld<br />
+; character rounties (the 33rd is backspace)</long-comment>
     <line type="data" address="fe/5551">
-      <label anno="none" id="LFE5551">LFE5551</label>
+      <label anno="none" id="tblJmpVecLoBytes">tblJmpVecLoBytes</label>
       <opcode type="directive">dd1</opcode>
       <operand>$d8</operand>
     </line>
@@ -826,70 +840,180 @@
       <opcode type="directive">dd1</opcode>
       <operand>$54</operand>
     </line>
+    <long-comment xml:space="preserve">
+; These are the high bytes and queue lengths of the handler routines for each of<br />
+; the 33 controld character rounties (the 33rd is backspace)<br />
+; <br />
+; The byte is encoded as:<br />
+; if top bit is set then the length is 0 and the high byte of the address is<br />
+; this byte anded with &amp;7F<br />
+; else the negative Q length is this byte or-ed with $F0 and the high byte of<br />
+; the routine is at this byte / 16 + $55</long-comment>
     <line type="data" address="fe/5572">
-      <label anno="none" id="LFE5572">LFE5572</label>
+      <label anno="none" id="tblJmpVecHiBytes">tblJmpVecHiBytes</label>
       <opcode type="directive">dd1</opcode>
       <operand>$d6</operand>
+      <comment>;VDU 0 - 56D8 0</comment>
     </line>
     <line type="data" address="fe/5573">
       <opcode type="directive">dd1</opcode>
       <operand>$2f</operand>
+      <comment>;VDU 1 - 5719 1</comment>
     </line>
     <line type="data" address="fe/5574">
-      <opcode type="directive">str</opcode>
-      <operand>↑“WWWWVrWXXWYYWWZ”</operand>
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 2 - 5791 0</comment>
+    </line>
+    <line type="data" address="fe/5575">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 3 - 579C 0</comment>
+    </line>
+    <line type="data" address="fe/5576">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 4 - 57A3 0</comment>
+    </line>
+    <line type="data" address="fe/5577">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 5 - 57AA 0</comment>
+    </line>
+    <line type="data" address="fe/5578">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d6</operand>
+      <comment>;VDU 6 - 56D8 0</comment>
+    </line>
+    <line type="data" address="fe/5579">
+      <opcode type="directive">dd1</opcode>
+      <operand>$f2</operand>
+      <comment>;VDU 7 - 7296 0</comment>
+    </line>
+    <line type="data" address="fe/557a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 8 - 57B2 0</comment>
+    </line>
+    <line type="data" address="fe/557b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d8</operand>
+      <comment>;VDU 9 - 5868 0</comment>
+    </line>
+    <line type="data" address="fe/557c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d8</operand>
+      <comment>;VDU 10 - 5894 0</comment>
+    </line>
+    <line type="data" address="fe/557d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 11 - 57EE 0</comment>
+    </line>
+    <line type="data" address="fe/557e">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d9</operand>
+      <comment>;VDU 12 - 5994 0</comment>
+    </line>
+    <line type="data" address="fe/557f">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d9</operand>
+      <comment>;VDU 13 - 59F5 0</comment>
+    </line>
+    <line type="data" address="fe/5580">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 14 - 5789 0</comment>
+    </line>
+    <line type="data" address="fe/5581">
+      <opcode type="directive">dd1</opcode>
+      <operand>$d7</operand>
+      <comment>;VDU 15 - 57A1 0</comment>
+    </line>
+    <line type="data" address="fe/5582">
+      <opcode type="directive">dd1</opcode>
+      <operand>$da</operand>
+      <comment>;VDU 16 - 5A03 0</comment>
     </line>
     <line type="data" address="fe/5583">
       <opcode type="directive">dd1</opcode>
       <operand>$5f</operand>
+      <comment>;VDU 17 - 5A32 1</comment>
     </line>
     <line type="data" address="fe/5584">
       <opcode type="directive">dd1</opcode>
       <operand>$5e</operand>
+      <comment>;VDU 18 - 5A4E 2</comment>
     </line>
     <line type="data" address="fe/5585">
       <opcode type="directive">dd1</opcode>
       <operand>$5b</operand>
+      <comment>;VDU 19 - 5ABC 5</comment>
     </line>
     <line type="data" address="fe/5586">
       <opcode type="directive">dd1</opcode>
       <operand>$da</operand>
+      <comment>;VDU 20 - 5A7D 0</comment>
     </line>
     <line type="data" address="fe/5587">
       <opcode type="directive">dd1</opcode>
       <operand>$d7</operand>
+      <comment>;VDU 21 - 5796 0</comment>
     </line>
     <line type="data" address="fe/5588">
-      <opcode type="directive">str</opcode>
-      <operand>“ogx{”</operand>
+      <opcode type="directive">dd1</opcode>
+      <operand>$6f</operand>
+      <comment>;VDU 22 - 5B66 1</comment>
+    </line>
+    <line type="data" address="fe/5589">
+      <opcode type="directive">dd1</opcode>
+      <operand>$67</operand>
+      <comment>;VDU 23 - 5B98 9</comment>
+    </line>
+    <line type="data" address="fe/558a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$78</operand>
+      <comment>;VDU 24 - 5CCC 8</comment>
+    </line>
+    <line type="data" address="fe/558b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$7b</operand>
+      <comment>;VDU 25 - 5C86 5</comment>
     </line>
     <line type="data" address="fe/558c">
       <opcode type="directive">dd1</opcode>
       <operand>$dc</operand>
+      <comment>;VDU 26 - 5C8D 0</comment>
     </line>
     <line type="data" address="fe/558d">
       <opcode type="directive">dd1</opcode>
       <operand>$d6</operand>
+      <comment>;VDU 27 - 56D8 0</comment>
     </line>
     <line type="data" address="fe/558e">
       <opcode type="directive">dd1</opcode>
       <operand>$4c</operand>
+      <comment>;VDU 28 - 5924 4</comment>
     </line>
     <line type="data" address="fe/558f">
       <opcode type="directive">dd1</opcode>
       <operand>$7c</operand>
+      <comment>;VDU 29 - 5CC2 4</comment>
     </line>
     <line type="data" address="fe/5590">
       <opcode type="directive">dd1</opcode>
       <operand>$d9</operand>
+      <comment>;VDU 30 - 59B3 0</comment>
     </line>
     <line type="data" address="fe/5591">
       <opcode type="directive">dd1</opcode>
       <operand>$4e</operand>
+      <comment>;VDU 31 - 59BE 2</comment>
     </line>
     <line type="data" address="fe/5592">
       <opcode type="directive">dd1</opcode>
       <operand>$dd</operand>
+      <comment>;VDU 127 - 5D54 0</comment>
     </line>
     <line type="data" address="fe/5593">
       <label anno="none" id="LFE5593">LFE5593</label>
@@ -1813,15 +1937,15 @@
     </line>
     <line type="code" address="fe/56ba">
       <opcode>lda</opcode>
-      <operand><op-symbol anno="none" value="FE5551" symbol="LFE5551">LFE5551</op-symbol> &amp; $ffff,y</operand>
+      <operand><op-symbol anno="none" value="FE5551" symbol="tblJmpVecLoBytes">tblJmpVecLoBytes</op-symbol> &amp; $ffff,y</operand>
     </line>
     <line type="code" address="fe/56bd">
       <opcode>sta</opcode>
-      <operand>$dc</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol></operand>
     </line>
     <line type="code" address="fe/56bf">
       <opcode>lda</opcode>
-      <operand><op-symbol anno="none" value="FE5572" symbol="LFE5572">LFE5572</op-symbol> &amp; $ffff,y</operand>
+      <operand><op-symbol anno="none" value="FE5572" symbol="tblJmpVecHiBytes">tblJmpVecHiBytes</op-symbol> &amp; $ffff,y</operand>
     </line>
     <line type="code" address="fe/56c2">
       <opcode>bmi</opcode>
@@ -1866,7 +1990,7 @@
     </line>
     <line type="code" address="fe/56d1">
       <opcode>sta</opcode>
-      <operand>$dd</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol>+1</operand>
     </line>
     <line type="code" address="fe/56d3">
       <opcode>bit</opcode>
@@ -1880,7 +2004,7 @@
       <opcode>clc</opcode>
     </line>
     <line type="code" address="fe/56d8">
-      <label anno="none" id="LFE56D8">LFE56D8</label>
+      <label anno="none" id="VDU_0">VDU_0</label>
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
@@ -2005,7 +2129,7 @@
     <line type="code" address="fe/5713">
       <label anno="none" id="LFE5713">LFE5713</label>
       <opcode>ldy</opcode>
-      <operand>$dd</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol>+1</operand>
     </line>
     <line type="code" address="fe/5715">
       <opcode>cpy</opcode>
@@ -2028,7 +2152,7 @@
     </line>
     <line type="code" address="fe/571d">
       <opcode>bcc</opcode>
-      <operand><op-symbol anno="none" value="FE56D8" symbol="LFE56D8">LFE56D8</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FE56D8" symbol="VDU_0">VDU_0</op-symbol></operand>
     </line>
     <line type="code" address="fe/571f">
       <opcode>txa</opcode>
@@ -2045,7 +2169,7 @@
     </line>
     <line type="code" address="fe/5725">
       <opcode>sta</opcode>
-      <operand>$dd</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol>+1</operand>
     </line>
     <line type="code" address="fe/5727">
       <opcode>tya</opcode>
@@ -2245,91 +2369,50 @@
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
-    <line type="data" address="fe/5780">
-      <opcode type="directive">str</opcode>
-      <operand>“ jl ”</operand>
+    <line type="code" address="fe/5780">
+      <label anno="none" id="LFE5780">LFE5780</label>
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="generated" value="FE6C6A" symbol="TFE6C6A">TFE6C6A</op-symbol></operand>
     </line>
-    <line type="data" address="fe/5784">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a4</operand>
+    <line type="code" address="fe/5783">
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FE72A4" symbol="LFE72A4">LFE72A4</op-symbol></operand>
     </line>
-    <line type="data" address="fe/5785">
-      <opcode type="directive">dd1</opcode>
-      <operand>$72</operand>
-    </line>
-    <line type="data" address="fe/5786">
-      <opcode type="directive">dd1</opcode>
-      <operand>$82</operand>
-    </line>
-    <line type="data" address="fe/5787">
-      <opcode type="directive">dd1</opcode>
-      <operand>$e1</operand>
-    </line>
-    <line type="data" address="fe/5788">
-      <opcode type="directive">dd1</opcode>
-      <operand>$14</operand>
-    </line>
-    <line type="data" address="fe/5789">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a0</operand>
-    </line>
-    <line type="data" address="fe/578a">
-      <opcode type="directive">dd1</opcode>
-      <operand>$00</operand>
-    </line>
-    <line type="data" address="fe/578b">
-      <opcode type="directive">dd1</opcode>
-      <operand>$84</operand>
-    </line>
-    <line type="data" address="fe/578c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$40</operand>
-    </line>
-    <line type="data" address="fe/578d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a9</operand>
-    </line>
-    <line type="data" address="fe/578e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$04</operand>
-    </line>
-    <line type="data" address="fe/578f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$d0</operand>
-    </line>
-    <line type="data" address="fe/5790">
-      <opcode type="directive">dd1</opcode>
-      <operand>$07</operand>
-    </line>
-    <line type="data" address="fe/5791">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
-    </line>
-    <line type="data" address="fe/5792">
-      <opcode type="directive">dd1</opcode>
-      <operand>$80</operand>
-    </line>
-    <line type="data" address="fe/5793">
-      <opcode type="directive">dd1</opcode>
-      <operand>$57</operand>
-    </line>
-    <line type="data" address="fe/5794">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a9</operand>
-    </line>
-    <line type="data" address="fe/5795">
-      <opcode type="directive">dd1</opcode>
-      <operand>$94</operand>
-    </line>
-    <line type="data" address="fe/5796">
-      <opcode type="directive">dd1</opcode>
-      <operand>$49</operand>
-    </line>
-    <line type="data" address="fe/5797">
-      <opcode type="directive">dd1</opcode>
-      <operand>$95</operand>
+    <line type="code" address="fe/5786">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="generated" value="FE6C6A" symbol="TFE6C6A">TFE6C6A</op-symbol></operand>
     </line>
     <line type="blank" />
+    <line type="code" address="fe/5789">
+      <opcode>ldy</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="fe/578b">
+      <opcode>sty</opcode>
+      <operand>$40</operand>
+    </line>
+    <line type="code" address="fe/578d">
+      <opcode>lda</opcode>
+      <operand>#$04</operand>
+    </line>
+    <line type="code" address="fe/578f">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FE5798" symbol="LFE5798">LFE5798</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="fe/5791">
+      <label anno="none" id="VDU_2">VDU_2</label>
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FE5780" symbol="LFE5780">LFE5780</op-symbol></operand>
+    </line>
+    <line type="code" address="fe/5794">
+      <opcode>lda</opcode>
+      <operand>#$94</operand>
+    </line>
+    <line type="code" address="fe/5796">
+      <opcode>eor</opcode>
+      <operand>#$95</operand>
+    </line>
     <line type="code" address="fe/5798">
       <label anno="none" id="LFE5798">LFE5798</label>
       <opcode>ora</opcode>
@@ -2340,31 +2423,23 @@
       <operand><op-symbol anno="none" value="FE57A7" symbol="LFE57A7">LFE57A7</op-symbol></operand>
     </line>
     <line type="blank" />
-    <line type="data" address="fe/579c">
-      <opcode type="directive">dd1</opcode>
-      <operand>$20</operand>
+    <line type="code" address="fe/579c">
+      <label anno="none" id="VDU_3">VDU_3</label>
+      <opcode>jsr</opcode>
+      <operand><op-symbol anno="none" value="FE5780" symbol="LFE5780">LFE5780</op-symbol></operand>
     </line>
-    <line type="data" address="fe/579d">
-      <opcode type="directive">dd1</opcode>
-      <operand>$80</operand>
+    <line type="code" address="fe/579f">
+      <opcode>lda</opcode>
+      <operand>#$0a</operand>
     </line>
-    <line type="data" address="fe/579e">
-      <opcode type="directive">dd1</opcode>
-      <operand>$57</operand>
+    <line type="code" address="fe/57a1">
+      <opcode>eor</opcode>
+      <operand>#$2f</operand>
     </line>
-    <line type="data" address="fe/579f">
-      <opcode type="directive">dd1</opcode>
-      <operand>$a9</operand>
+    <line type="code" address="fe/57a3">
+      <opcode>eor</opcode>
+      <operand>#$db</operand>
     </line>
-    <line type="data" address="fe/57a0">
-      <opcode type="directive">str</opcode>
-      <operand>$0a,“I/I”</operand>
-    </line>
-    <line type="data" address="fe/57a4">
-      <opcode type="directive">dd1</opcode>
-      <operand>$db</operand>
-    </line>
-    <line type="blank" />
     <line type="code" address="fe/57a5">
       <label anno="none" id="LFE57A5">LFE57A5</label>
       <opcode>and</opcode>
@@ -13170,7 +13245,7 @@
     </line>
     <line type="code" address="fe/67ae">
       <opcode>pei</opcode>
-      <operand>($dc)</operand>
+      <operand>(<op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol>)</operand>
     </line>
     <line type="code" address="fe/67b0">
       <opcode>php</opcode>
@@ -18965,7 +19040,7 @@
     </line>
     <line type="code" address="fe/6f7d">
       <opcode>ldy</opcode>
-      <operand>$dc</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol></operand>
     </line>
     <line type="code" address="fe/6f7f">
       <opcode>phy</opcode>
@@ -18991,7 +19066,7 @@
     </line>
     <line type="code" address="fe/6f8b">
       <opcode>sty</opcode>
-      <operand>$dc</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol></operand>
     </line>
     <line type="code" address="fe/6f8d">
       <opcode>sep</opcode>
@@ -21420,7 +21495,7 @@
     </line>
     <line type="code" address="fe/73bd">
       <opcode>lda</opcode>
-      <operand><op-symbol anno="none" value="FE5572" symbol="LFE5572">LFE5572</op-symbol> &amp; $ffff,y</operand>
+      <operand><op-symbol anno="none" value="FE5572" symbol="tblJmpVecHiBytes">tblJmpVecHiBytes</op-symbol> &amp; $ffff,y</operand>
     </line>
     <line type="code" address="fe/73c0">
       <opcode>bmi</opcode>
@@ -21440,7 +21515,7 @@
     </line>
     <line type="code" address="fe/73c8">
       <opcode>sta</opcode>
-      <operand>$dc</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol></operand>
     </line>
     <line type="code" address="fe/73ca">
       <opcode>lda</opcode>
@@ -21448,7 +21523,7 @@
     </line>
     <line type="code" address="fe/73cc">
       <opcode>sta</opcode>
-      <operand>$dd</operand>
+      <operand><op-symbol anno="none" value="DC" symbol="DPVDU_JMPVEC">DPVDU_JMPVEC</op-symbol>+1</operand>
     </line>
     <line type="code" address="fe/73ce">
       <opcode>bra</opcode>

@@ -8,6 +8,13 @@
     <span class="long-comment">
 ; 6502bench SourceGen v1.8.5</span>
     <span class="line">
+      <a id="LBLLK-DPVDU_JMPVEC"></a><span class="label" anno="none" id="LBL-DPVDU_JMPVEC">DPVDU_JMPVEC</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$dc    {addr/2}</span>
+      <span class="comment">;Jump vector for current VDU operation</span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
       <span class="opcode directive">addrs</span>
       <span class="operand">$fe5500</span>
     </span>
@@ -207,8 +214,11 @@
       <span class="opcode directive">dd1</span>
       <span class="operand">$ff</span>
     </span>
+    <span class="long-comment">
+; These are the low bytes of the handler routines for each of the 33 controld<span class="br"></span>
+; character rounties (the 33rd is backspace)</span>
     <span class="line">
-      <a id="LBLLK-LFE5551"></a><span class="label" anno="none" id="LBL-LFE5551">LFE5551</span>
+      <a id="LBLLK-tblJmpVecLoBytes"></a><span class="label" anno="none" id="LBL-tblJmpVecLoBytes">tblJmpVecLoBytes</span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$d8</span>
     </span>
@@ -340,70 +350,180 @@
       <span class="opcode directive">dd1</span>
       <span class="operand">$54</span>
     </span>
+    <span class="long-comment">
+; These are the high bytes and queue lengths of the handler routines for each of<span class="br"></span>
+; the 33 controld character rounties (the 33rd is backspace)<span class="br"></span>
+; <span class="br"></span>
+; The byte is encoded as:<span class="br"></span>
+; if top bit is set then the length is 0 and the high byte of the address is<span class="br"></span>
+; this byte anded with &amp;7F<span class="br"></span>
+; else the negative Q length is this byte or-ed with $F0 and the high byte of<span class="br"></span>
+; the routine is at this byte / 16 + $55</span>
     <span class="line">
-      <a id="LBLLK-LFE5572"></a><span class="label" anno="none" id="LBL-LFE5572">LFE5572</span>
+      <a id="LBLLK-tblJmpVecHiBytes"></a><span class="label" anno="none" id="LBL-tblJmpVecHiBytes">tblJmpVecHiBytes</span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$d6</span>
+      <span class="comment">;VDU 0 - 56D8 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$2f</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">↑“WWWWVrWXXWYYWWZ”</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5f</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5e</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$5b</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$da</span>
+      <span class="comment">;VDU 1 - 5719 1</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$d7</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“ogx{”</span>
+      <span class="comment">;VDU 2 - 5791 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
-      <span class="operand">$dc</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 3 - 579C 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 4 - 57A3 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 5 - 57AA 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$d6</span>
+      <span class="comment">;VDU 6 - 56D8 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
-      <span class="operand">$4c</span>
+      <span class="operand">$f2</span>
+      <span class="comment">;VDU 7 - 7296 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
-      <span class="operand">$7c</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 8 - 57B2 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d8</span>
+      <span class="comment">;VDU 9 - 5868 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d8</span>
+      <span class="comment">;VDU 10 - 5894 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 11 - 57EE 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$d9</span>
+      <span class="comment">;VDU 12 - 5994 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d9</span>
+      <span class="comment">;VDU 13 - 59F5 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 14 - 5789 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 15 - 57A1 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$da</span>
+      <span class="comment">;VDU 16 - 5A03 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$5f</span>
+      <span class="comment">;VDU 17 - 5A32 1</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$5e</span>
+      <span class="comment">;VDU 18 - 5A4E 2</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$5b</span>
+      <span class="comment">;VDU 19 - 5ABC 5</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$da</span>
+      <span class="comment">;VDU 20 - 5A7D 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d7</span>
+      <span class="comment">;VDU 21 - 5796 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$6f</span>
+      <span class="comment">;VDU 22 - 5B66 1</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$67</span>
+      <span class="comment">;VDU 23 - 5B98 9</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$78</span>
+      <span class="comment">;VDU 24 - 5CCC 8</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$7b</span>
+      <span class="comment">;VDU 25 - 5C86 5</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$dc</span>
+      <span class="comment">;VDU 26 - 5C8D 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d6</span>
+      <span class="comment">;VDU 27 - 56D8 0</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$4c</span>
+      <span class="comment">;VDU 28 - 5924 4</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$7c</span>
+      <span class="comment">;VDU 29 - 5CC2 4</span>
+    </span>
+    <span class="line">
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d9</span>
+      <span class="comment">;VDU 30 - 59B3 0</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$4e</span>
+      <span class="comment">;VDU 31 - 59BE 2</span>
     </span>
     <span class="line">
       <span class="opcode directive">dd1</span>
       <span class="operand">$dd</span>
+      <span class="comment">;VDU 127 - 5D54 0</span>
     </span>
     <span class="line">
       <a id="LBLLK-LFE5593"></a><span class="label" anno="none" id="LBL-LFE5593">LFE5593</span>
@@ -1327,15 +1447,15 @@
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE5551" title="FE5551">LFE5551</a> &amp; $ffff,y</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-tblJmpVecLoBytes" title="FE5551">tblJmpVecLoBytes</a> &amp; $ffff,y</span>
     </span>
     <span class="line">
       <span class="opcode ">sta</span>
-      <span class="operand">$dc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a></span>
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE5572" title="FE5572">LFE5572</a> &amp; $ffff,y</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-tblJmpVecHiBytes" title="FE5572">tblJmpVecHiBytes</a> &amp; $ffff,y</span>
     </span>
     <span class="line">
       <span class="opcode ">bmi</span>
@@ -1380,7 +1500,7 @@
     </span>
     <span class="line">
       <span class="opcode ">sta</span>
-      <span class="operand">$dd</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a>+1</span>
     </span>
     <span class="line">
       <span class="opcode ">bit</span>
@@ -1394,7 +1514,7 @@
       <span class="opcode ">clc</span>
     </span>
     <span class="line">
-      <a id="LBLLK-LFE56D8"></a><span class="label" anno="none" id="LBL-LFE56D8">LFE56D8</span>
+      <a id="LBLLK-VDU_0"></a><span class="label" anno="none" id="LBL-VDU_0">VDU_0</span>
       <span class="opcode ">rts</span>
     </span>
     <span class="line"></span>
@@ -1519,7 +1639,7 @@
     <span class="line">
       <a id="LBLLK-LFE5713"></a><span class="label" anno="none" id="LBL-LFE5713">LFE5713</span>
       <span class="opcode ">ldy</span>
-      <span class="operand">$dd</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a>+1</span>
     </span>
     <span class="line">
       <span class="opcode ">cpy</span>
@@ -1542,7 +1662,7 @@
     </span>
     <span class="line">
       <span class="opcode ">bcc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE56D8" title="FE56D8">LFE56D8</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-VDU_0" title="FE56D8">VDU_0</a></span>
     </span>
     <span class="line">
       <span class="opcode ">txa</span>
@@ -1559,7 +1679,7 @@
     </span>
     <span class="line">
       <span class="opcode ">sta</span>
-      <span class="operand">$dd</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a>+1</span>
     </span>
     <span class="line">
       <span class="opcode ">tya</span>
@@ -1760,90 +1880,49 @@
     </span>
     <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">“ jl ”</span>
+      <a id="LBLLK-LFE5780"></a><span class="label" anno="none" id="LBL-LFE5780">LFE5780</span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-TFE6C6A" title="FE6C6A">TFE6C6A</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a4</span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE72A4" title="FE72A4">LFE72A4</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
+      <span class="opcode ">brl</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-TFE6C6A" title="FE6C6A">TFE6C6A</a></span>
+    </span>
+    <span class="line"></span>
+    <span class="line">
+      <span class="opcode ">ldy</span>
+      <span class="operand">#$00</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$82</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e1</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$14</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$84</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
+      <span class="opcode ">sty</span>
       <span class="operand">$40</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a9</span>
+      <span class="opcode ">lda</span>
+      <span class="operand">#$04</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$04</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$07</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$80</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$57</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a9</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$94</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$49</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$95</span>
+      <span class="opcode ">bne</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE5798" title="FE5798">LFE5798</a></span>
     </span>
     <span class="line"></span>
+    <span class="line">
+      <a id="LBLLK-VDU_2"></a><span class="label" anno="none" id="LBL-VDU_2">VDU_2</span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE5780" title="FE5780">LFE5780</a></span>
+    </span>
+    <span class="line">
+      <span class="opcode ">lda</span>
+      <span class="operand">#$94</span>
+    </span>
+    <span class="line">
+      <span class="opcode ">eor</span>
+      <span class="operand">#$95</span>
+    </span>
     <span class="line">
       <a id="LBLLK-LFE5798"></a><span class="label" anno="none" id="LBL-LFE5798">LFE5798</span>
       <span class="opcode ">ora</span>
@@ -1855,30 +1934,22 @@
     </span>
     <span class="line"></span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
+      <a id="LBLLK-VDU_3"></a><span class="label" anno="none" id="LBL-VDU_3">VDU_3</span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE5780" title="FE5780">LFE5780</a></span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$80</span>
+      <span class="opcode ">lda</span>
+      <span class="operand">#$0a</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$57</span>
+      <span class="opcode ">eor</span>
+      <span class="operand">#$2f</span>
     </span>
     <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a9</span>
+      <span class="opcode ">eor</span>
+      <span class="operand">#$db</span>
     </span>
-    <span class="line">
-      <span class="opcode directive">str</span>
-      <span class="operand">$0a,“I/I”</span>
-    </span>
-    <span class="line">
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$db</span>
-    </span>
-    <span class="line"></span>
     <span class="line">
       <a id="LBLLK-LFE57A5"></a><span class="label" anno="none" id="LBL-LFE57A5">LFE57A5</span>
       <span class="opcode ">and</span>
@@ -12684,7 +12755,7 @@
     </span>
     <span class="line">
       <span class="opcode ">pei</span>
-      <span class="operand">($dc)</span>
+      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a>)</span>
     </span>
     <span class="line">
       <span class="opcode ">php</span>
@@ -18479,7 +18550,7 @@
     </span>
     <span class="line">
       <span class="opcode ">ldy</span>
-      <span class="operand">$dc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a></span>
     </span>
     <span class="line">
       <span class="opcode ">phy</span>
@@ -18505,7 +18576,7 @@
     </span>
     <span class="line">
       <span class="opcode ">sty</span>
-      <span class="operand">$dc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a></span>
     </span>
     <span class="line">
       <span class="opcode ">sep</span>
@@ -20934,7 +21005,7 @@
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFE5572" title="FE5572">LFE5572</a> &amp; $ffff,y</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-tblJmpVecHiBytes" title="FE5572">tblJmpVecHiBytes</a> &amp; $ffff,y</span>
     </span>
     <span class="line">
       <span class="opcode ">bmi</span>
@@ -20954,7 +21025,7 @@
     </span>
     <span class="line">
       <span class="opcode ">sta</span>
-      <span class="operand">$dc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a></span>
     </span>
     <span class="line">
       <span class="opcode ">lda</span>
@@ -20962,7 +21033,7 @@
     </span>
     <span class="line">
       <span class="opcode ">sta</span>
-      <span class="operand">$dd</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-DPVDU_JMPVEC" title="DC">DPVDU_JMPVEC</a>+1</span>
     </span>
     <span class="line">
       <span class="opcode ">bra</span>
