@@ -1,6 +1,6 @@
 XSLT=xsltproc
 
-TARGETS=MOS.mod
+TARGETS=MOS.mod VDU.mod
 
 
 all::$(addsuffix .html, $(TARGETS))

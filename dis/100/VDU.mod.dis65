@@ -21,7 +21,22 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
-}},
+"DPVDU_JMPVEC":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Jump vector for current VDU operation",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPVDU_JMPVEC",
+"Value":220,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"}}},
 
 "AddressMap":[{
 "Offset":0,
@@ -32,6 +47,21 @@
 "TypeHints":[{
 "Low":0,
 "High":0,
+"Hint":"Code"},
+
+{
+"Low":649,
+"High":649,
+"Hint":"Code"},
+
+{
+"Low":657,
+"High":657,
+"Hint":"Code"},
+
+{
+"Low":668,
+"High":668,
 "Hint":"Code"},
 
 {
@@ -239,14 +269,58 @@
 "High":7686,
 "Hint":"Code"}],
 "StatusFlagOverrides":{
-},
+"657":256},
 
 "Comments":{
-},
+"114":"VDU 0 - 56D8 0",
+"115":"VDU 1 - 5719 1",
+"116":"VDU 2 - 5791 0",
+"117":"VDU 3 - 579C 0",
+"118":"VDU 4 - 57A3 0",
+"119":"VDU 5 - 57AA 0",
+"120":"VDU 6 - 56D8 0",
+"121":"VDU 7 - 7296 0",
+"122":"VDU 8 - 57B2 0",
+"123":"VDU 9 - 5868 0",
+"124":"VDU 10 - 5894 0",
+"125":"VDU 11 - 57EE 0",
+"126":"VDU 12 - 5994 0",
+"127":"VDU 13 - 59F5 0",
+"128":"VDU 14 - 5789 0",
+"129":"VDU 15 - 57A1 0",
+"130":"VDU 16 - 5A03 0",
+"131":"VDU 17 - 5A32 1",
+"132":"VDU 18 - 5A4E 2",
+"133":"VDU 19 - 5ABC 5",
+"134":"VDU 20 - 5A7D 0",
+"135":"VDU 21 - 5796 0",
+"136":"VDU 22 - 5B66 1",
+"137":"VDU 23 - 5B98 9",
+"138":"VDU 24 - 5CCC 8",
+"139":"VDU 25 - 5C86 5",
+"140":"VDU 26 - 5C8D 0",
+"141":"VDU 27 - 56D8 0",
+"142":"VDU 28 - 5924 4",
+"143":"VDU 29 - 5CC2 4",
+"144":"VDU 30 - 59B3 0",
+"145":"VDU 31 - 59BE 2",
+"146":"VDU 127 - 5D54 0"},
 
 "LongComments":{
 "-2147483647":{
 "Text":"6502bench SourceGen v1.8.5",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"81":{
+"Text":"These are the low bytes of the handler routines for each of the 33 controld character rounties (the 33rd is backspace)",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"114":{
+"Text":"These are the high bytes and queue lengths of the handler routines for each of the 33 controld character rounties (the 33rd is backspace)\r\n\r\nThe byte is encoded as:\r\nif top bit is set then the length is 0 and the high byte of the address is this byte anded with \u00267F\r\nelse the negative Q length is this byte or-ed with $F0 and the high byte of the routine is at this byte / 16 + $55\r\n",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -568,6 +642,41 @@
 "Value":16675384,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"81":{
+"Label":"tblJmpVecLoBytes",
+"Value":16667985,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"114":{
+"Label":"tblJmpVecHiBytes",
+"Value":16668018,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"472":{
+"Label":"VDU_0",
+"Value":16668376,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"657":{
+"Label":"VDU_2",
+"Value":16668561,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"668":{
+"Label":"VDU_3",
+"Value":16668572,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -582,6 +691,218 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"114":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"115":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"116":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"117":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"118":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"119":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"120":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"121":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"122":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"123":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"124":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"125":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"126":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"127":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"128":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"129":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"130":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"131":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"132":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"133":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"134":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"135":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"136":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"137":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"138":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"139":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"140":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"141":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"142":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"143":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"144":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"145":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"146":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"147":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"445":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPVDU_JMPVEC",
+"Part":"Low"}},
 
 "7476":{
 "Length":3,
