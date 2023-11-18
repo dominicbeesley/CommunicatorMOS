@@ -38,7 +38,75 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
-"DPMODREF_X_QRY":{
+"COP_11_OPADF":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Allocate Fast Direct Page",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_11_OPADF",
+"Value":17,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_26_OPBHA":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_26_OPBHA",
+"Value":38,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_29_OPRFR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_29_OPRFR",
+"Value":41,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"DP_DP":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Our DP",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DP_DP",
+"Value":210,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPMODREF_MOS":{
 "DataDescriptor":{
 "Length":8,
 "Format":"NumericLE",
@@ -49,10 +117,44 @@
 "HasWidth":true,
 "Direction":"ReadWrite",
 "MultiMask":null,
-"Label":"DPMODREF_X_QRY",
+"Label":"DPMODREF_MOS",
 "Value":8,
 "Source":"Project",
 "Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPMODREF_VIEWDATA":{
+"DataDescriptor":{
+"Length":8,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPMODREF_VIEWDATA",
+"Value":0,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPORG_DP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"This holds pointer to alloc\u0027d DP in org DP",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPORG_DP",
+"Value":4,
+"Source":"Project",
+"Type":"Constant",
 "LabelAnno":"None"},
 
 "DPVDU_JMPVEC":{
@@ -162,6 +264,16 @@
 "Low":2533,
 "High":2533,
 "Hint":"Code"},
+
+{
+"Low":2617,
+"High":2620,
+"Hint":"InlineData"},
+
+{
+"Low":2631,
+"High":2639,
+"Hint":"InlineData"},
 
 {
 "Low":3023,
@@ -319,6 +431,11 @@
 "Hint":"Code"},
 
 {
+"Low":7521,
+"High":7522,
+"Hint":"InlineData"},
+
+{
 "Low":7526,
 "High":7548,
 "Hint":"InlineData"},
@@ -383,7 +500,17 @@
 "143":"VDU 29 - 5CC2 4",
 "144":"VDU 30 - 59B3 0",
 "145":"VDU 31 - 59BE 2",
-"146":"VDU 127 - 5D54 0"},
+"146":"VDU 127 - 5D54 0",
+"2535":"get ORG DP - i.e. the small",
+"2538":"allocate a 256 byte block of fast DP",
+"2541":"put it in HA",
+"2542":"pop ORG DP",
+"2543":"store our big DP pointer",
+"2545":"and move DP to this block",
+"2615":"get BHA pointer to \"MOS\"",
+"2625":"Get MOS module reference to DP+8",
+"7519":"allocate DP",
+"7521":"size in bytes"},
 
 "LongComments":{
 "-2147483647":{
@@ -406,6 +533,12 @@
 
 "7581":{
 "Text":"QRY - probably sound via MOS module?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2538":{
+"Text":"Stack\r\n\r\n\r\n+5 D on entry\r\n+4 saved P\r\n+1 saved BHA\r\n",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -909,6 +1042,27 @@
 "Value":16675401,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7490":{
+"Label":"callModViewData",
+"Value":16675394,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7485":{
+"Label":"longCallModViewData",
+"Value":16675389,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7519":{
+"Label":"allocDP",
+"Value":16675423,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -923,6 +1077,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"21":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPORG_DP",
+"Part":"Low"}},
 
 "114":{
 "Length":1,
@@ -1136,6 +1298,82 @@
 "Label":"DPVDU_JMPVEC",
 "Part":"Low"}},
 
+"2543":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPORG_DP",
+"Part":"Low"}},
+
+"2546":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DP_DP",
+"Part":"Low"}},
+
+"2615":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"2617":{
+"Length":4,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"2621":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPMODREF_MOS",
+"Part":"Low"}},
+
+"2625":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_29_OPRFR",
+"Part":"Low"}},
+
+"2629":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"2631":{
+"Length":9,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"2640":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPMODREF_VIEWDATA",
+"Part":"Low"}},
+
+"2644":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_29_OPRFR",
+"Part":"Low"}},
+
 "7476":{
 "Length":3,
 "Format":"NumericLE",
@@ -1158,13 +1396,19 @@
 "Label":"COP_06_OPOSB",
 "Part":"Low"}},
 
-"7585":{
+"7519":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPMODREF_X_QRY",
+"Label":"COP_11_OPADF",
 "Part":"Low"}},
+
+"7521":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "7687":{
 "Length":2,
