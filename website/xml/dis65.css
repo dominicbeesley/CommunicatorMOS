@@ -11,6 +11,7 @@
 		--directive-color: #C0FFB0;
 		--operand-color: #C0FFB0;
 		--comment-color: #A0A0A0;
+		--address-color: #A0A0A0;
 		--op-symbol-color: #A0A0F0;
 	}
 }
@@ -23,6 +24,8 @@
 		--directive-color: green;
 		--operand-color: green;
 		--comment-color: gray;
+		--address-color: gray;
+		--op-symbol-color: blue;
 	}
 }
 
@@ -75,6 +78,13 @@ body {
 	display:block;
 	color: var(--label-color);
 	width: 100%;
+	margin-left: 4em;
+}
+
+.line .address {
+	position: absolute;
+	left: 0;
+	color: var(--address-color);
 }
 
 .line .opcode {
@@ -82,7 +92,7 @@ body {
 	float:left;
 	width: 6em;
 	max-width: 6em;
-	margin-left: 4em;
+	margin-left: 10em;
 }
 
 .line .opcode.directive {

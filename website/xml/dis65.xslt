@@ -18,6 +18,16 @@
 		</html>
 	</xsl:template>
 
+	<xsl:template match="line">
+		<span class="line">
+		<xsl:if test="@address">
+			<span class="address"><xsl:value-of select="@address" /></span>
+		</xsl:if>
+		<xsl:apply-templates />
+		</span>
+	</xsl:template>
+
+
 	<xsl:template match="label">
 		<a id="LBLLK-{@id}"></a>
 		<span class="label" anno="{@anno}" id="LBL-{@id}">
