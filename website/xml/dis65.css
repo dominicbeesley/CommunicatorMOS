@@ -41,6 +41,8 @@ body {
 }
 
 .long-comment {
+	display:block;
+	margin-left: 4em;
 	white-space: pre;
 	color: var(--comment-color);
 }
@@ -87,12 +89,22 @@ body {
 	color: var(--address-color);
 }
 
+.line .address a {
+	color: var(--address-color);
+	text-decoration: none;
+}
+
+.line .address a:hover {
+	text-decoration: underline;
+}
+
+
 .line .opcode {
 	display:inline-block;
 	float:left;
-	width: 6em;
-	max-width: 6em;
-	margin-left: 10em;
+	width: 3.5em;
+	max-width: 3.5em;
+	margin-left: 8em;
 }
 
 .line .opcode.directive {
@@ -120,9 +132,14 @@ body {
 	display:inline-block;
 	float:left;
 	color: var(--comment-color);
+	max-width: 24em;
 }
 
 a.op-symbol {
 	text-decoration: none;
 	color: var(--op-symbol-color);
+}
+
+a.op-symbol:hover {
+	text-decoration: underline;
 }

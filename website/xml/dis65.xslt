@@ -19,9 +19,16 @@
 	</xsl:template>
 
 	<xsl:template match="line">
+		<xsl:variable name="anch">
+			<xsl:text>ADDR_</xsl:text>
+			<xsl:call-template name="url-encode">
+				<xsl:with-param name="str" select="@address" />
+			</xsl:call-template>
+		</xsl:variable>
 		<span class="line">
 		<xsl:if test="@address">
-			<span class="address"><xsl:value-of select="@address" /></span>
+			<a id="{$anch}"></a>
+			<span class="address"><a href="#{$anch}"><xsl:value-of select="@address" /></a></span>
 		</xsl:if>
 		<xsl:apply-templates />
 		</span>
@@ -52,5 +59,29 @@
 			<xsl:apply-templates />
 		</span>
 	</xsl:template>
+
+	<!-- simplified from https://stackoverflow.com/questions/2425516/xslt-version-1-url-encoding -->
+ 	<xsl:variable name="safe">!'()*-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~</xsl:variable>
+	<xsl:template name="url-encode">
+		<xsl:param name="str" />
+		<xsl:if test="$str">
+		  <xsl:variable name="first-char" select="substring($str,1,1)"/>
+      <xsl:choose>
+        <xsl:when test="contains($safe,$first-char)">
+          <xsl:value-of select="$first-char"/>
+        </xsl:when>
+        <xsl:otherwise>
+        	<xsl:text>_</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:if test="string-length($str) &gt; 1">
+        <xsl:call-template name="url-encode">
+          <xsl:with-param name="str" select="substring($str,2)"/>
+        </xsl:call-template>
+      </xsl:if>
+    </xsl:if>
+  </xsl:template>
+
+
 
 </xsl:stylesheet>
