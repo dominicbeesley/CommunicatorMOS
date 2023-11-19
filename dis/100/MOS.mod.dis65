@@ -21,6 +21,91 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"__MMAZB":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Allocate Bank 0 area",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMAZB",
+"Value":24,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__MMBAS":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Return Pool Base in BHA",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMBAS",
+"Value":14,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__MMFND":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Find a memory pool by task pool handle",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMFND",
+"Value":20,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"__MMFP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Free a pool",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMFP",
+"Value":2,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__MMTOP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Return the address of the top of the pool",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMTOP",
+"Value":18,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "B0LST_MODULES_QRY":{
 "DataDescriptor":{
 "Length":2,
@@ -3511,6 +3596,8 @@
 "3937":48,
 "4034":48,
 "4078":48,
+"4148":48,
+"4190":48,
 "4910":48,
 "6019":48,
 "6133":65584,
@@ -3655,9 +3742,18 @@
 "2215":"OPCLI 05 = OSCLI = execute command",
 "2217":"OPOSB 06 - OSBYTE",
 "2219":"OPOSW 07 - OSWORD",
+"2225":"OPBGT 0A - BGET",
+"2227":"OPBPT 0B - BPUT",
 "2231":"???? 0D - Throws a not implemented error",
 "2233":"OPCOM 0E - OSCLI with string in BHA",
+"2235":"OPERR 0E - Raise an error",
+"2237":"OPADP 10 - Allocate direct page",
+"2239":"OPADF 11 - Allocate direct page - supposed to be fast but isnt...or is it?",
+"2241":"OPFD  12 - QRY not in docco",
+"2243":"OPAST 13 - Allocate Stack",
+"2245":"OPFST 14 - Free Stack",
 "2251":"OPBYX 17 - Convert BYXD to BHA",
+"2257":"OPFZB 1A - free bank 0 memory",
 "2259":"OPARM 1B - call Arithmetic module",
 "2271":"OPPRE 21 - Allow preemption",
 "2273":"OPRLN 22 - Read a line to buffer",
@@ -3749,6 +3845,24 @@
 "3733":"discard stacked byte",
 "3734":"push A (module B0 jump block)",
 "3738":"another single 0",
+"3937":"Write a newline TODO: Use OPNLI",
+"3943":"QRY - this prints the message after the original caller\u0027s COP",
+"3990":"hang up the machine",
+"3992":"dump registers",
+"4037":"get 16 bit parameter into A",
+"4041":"step return address past it",
+"4043":"allocate ZP page pool",
+"4056":"check for 0",
+"4062":"try and free it - TODO why would it return 0, why try and free?",
+"4071":"get return bank",
+"4072":"get return address",
+"4074":"find the module that called us",
+"4078":"find memory pool just returned",
+"4085":"TODO this looks all wrong or am I missing something",
+"4090":"TODO this looks all wrong or am I missing something",
+"4176":"Store \"DEAD\" above stack?!?",
+"4218":"check for \"DEAD\" at the top of stack and panic if not there",
+"4223":"Free it",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -4399,6 +4513,54 @@
 "Text":"COP 21 - OPPRE - allow preemption\r\n\r\nAction: This call is used lo allow pre-emption of the current task at a convenient point. The call allows the MOS to check whether the user has selected another task. If another task has been requested then the call returns with the carry set, and the event must be acknowledged using OPAEV.\r\n\r\nOn entry: No requirements.\r\n\r\nOn exit:  If C = 0 then the module was not pre-empted.\r\n          If C = 1 then the module was pre-empted.\r\n          DBHAXY preserved\r\n",
 "BoxMode":true,
 "MaxWidth":80,
+"BackgroundColor":0},
+
+"3224":{
+"Text":"COP 0A - OPBGT - BGET\r\n\r\nAction: Read one byte from an open device or file. The channel must previously have been opened using OPOPN.\r\n\r\nOn entry: Y contains the handle from OPOPN.\r\nOn exit:  A contains the byte read from the file.\r\n          if C = I then an enor has occurred, and A is invalid.\r\n          No registers preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3233":{
+"Text":"COP 0B - OPBPT - BPUT\r\n\r\nAction: Write one byte to an open file or device. The channel must previously have been opened using OPOPN.\r\n\r\nOn entry: Y contains the file handle from OPOPN.\r\n          A contains the byte to be written.\r\nOn exit:  No registers preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3937":{
+"Text":"COP 0F - OPERR - system error\r\n\r\nAction: This is used as a debugging aid. When the call is executed, a fatal error is generated. A zero-terminated string immediately following the COP signature is printed, followed by a listing of the contents of the 6SSC8l6\u0027s registers. The register string is printed as:\r\n\r\n    address of COP OPERR signature byte (3 bytes)\r\n    status (I byte)\r\n    D (2 bytes)\r\n    BHA (3 bytes)\r\n    X (2 bytes)\r\n    Y (2 bytes)\r\nThe bytes are printed as pairs of hexadecimaldigits separated by spaces.\r\n\r\nOn entry: Inline error string.\r\nOn exit:  No exit the machine \"hangs\".",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4034":{
+"Text":"COP 10 - OPADP - Allocate direct page\r\n\r\nAction: This call is used to request a direct page of a certain size, the size being a 2 byte number which follows the call. The call returns with HA pointing to an address in bank zero which can be used as the base of the direct page.\r\n\r\nOn entry: Inline 2 byte size (in bytes) of direct page requested.\r\nOn exit:  C = 0 means that the direct page has been allocated, and HA \r\n          contains the address of the base.\r\n          C = 1 means that the call failed to allocate a direct page.\r\n          XY preserved\r\n          Note: D is not preserved.\r\n\r\nTODO: Check against original docuimentation (above) OPADF returns in D not in HA! check but it looks like DP and HA are set to the new value.\r\n\r\nQRY - OPADF and OPADP are the SAME - this must surely be a mistake? Or are they all fast?!",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4103":{
+"Text":"COP 12 - OPFD - Free direct page\r\n\r\nOn Entry:  DP to free in D\r\nOn Exit:   C = 0 freed ok\r\n\r\nQRY no docco",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4107":{
+"Text":"COP 1A - OPFZB - free bank 0 memory\r\n\r\nAction: Tells the operating system that space allocated in bank zero is finished with. This should be done every time space is no longer requited so that bank zero is not exhausted.\r\nOn entry: HA contains the address of the bank zero pool base.\r\nOn exit:  If C = 0 then the pool has been freed.\r\n          If C = 1 then the routine could not free the pool.\r\n          No registers preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4148":{
+"Text":"COP 13 - OPAST - Allocate Stack\r\n\r\nAction: This call is used to request a stack of a certain size, the size being a 2 byte number which follows the call. The call returns with HA containing an address which can be transferred to the stack pointer.\r\n\r\nOn entry: Inline 2 byte size (in bytes) of stack requested.\r\nOn exit:  C = 0 means that the stack has been allocated, and HA contains \r\n          the address to be transferred to the stack pointer.\r\n          C = 1 means that the call failed to allocate a stack.\r\n          DBXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4190":{
+"Text":"COP 14 - OPFST - Free a stack\r\n\r\nAction: Tells the operating system that space allocated to a stack is finished with. This should be done every time a stack is no longer required. Only space allocated by OPAST can be freed by this call.\r\n\r\nOn entry: HA contains an address within the stack. (This means that the \r\n          current value of the stack pointer can usually be used to free the\r\n          stack.)\r\n\r\nOn exit:  If C = 0 then the stack has been freed.\r\n          If C = I then the routine could not free the stack.\r\n          DBAXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
 "BackgroundColor":0}},
 
 "Notes":{
@@ -4896,18 +5058,18 @@
 "LabelAnno":"None"},
 
 "3224":{
-"Label":"TFEBA98",
+"Label":"COP_0A",
 "Value":16693912,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3233":{
-"Label":"TFEBAA1",
+"Label":"COP_0B",
 "Value":16693921,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2838":{
 "Label":"COP_0D",
@@ -4924,39 +5086,39 @@
 "LabelAnno":"None"},
 
 "3937":{
-"Label":"TFEBD61",
+"Label":"COP_0F",
 "Value":16694625,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4034":{
-"Label":"TFEBDC2",
+"Label":"COP_10",
 "Value":16694722,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4103":{
-"Label":"TFEBE07",
+"Label":"COP_12",
 "Value":16694791,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4148":{
-"Label":"TFEBE34",
+"Label":"COP_13",
 "Value":16694836,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4190":{
-"Label":"TFEBE5E",
+"Label":"COP_14",
 "Value":16694878,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2435":{
 "Label":"doOSASCI",
@@ -4994,11 +5156,11 @@
 "LabelAnno":"Generated"},
 
 "4107":{
-"Label":"TFEBE0B",
+"Label":"COP_1A",
 "Value":16694795,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2461":{
 "Label":"COP_1B",
@@ -6839,6 +7001,62 @@
 "Value":16695033,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"3992":{
+"Label":"dumpregs",
+"Value":16694680,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3990":{
+"Label":"here",
+"Value":16694678,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4065":{
+"Label":"fail",
+"Value":16694753,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1917":{
+"Label":"__MM",
+"Value":65420,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4146":{
+"Label":"retsec",
+"Value":16694834,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4067":{
+"Label":"allocOK",
+"Value":16694755,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4189":{
+"Label":"ret",
+"Value":16694877,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4231":{
+"Label":"retsec",
+"Value":16694919,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -8063,7 +8281,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBA98",
+"Label":"COP_0A",
 "Part":"Low"}},
 
 "2227":{
@@ -8071,7 +8289,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBAA1",
+"Label":"COP_0B",
 "Part":"Low"}},
 
 "2229":{
@@ -8103,7 +8321,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBD61",
+"Label":"COP_0F",
 "Part":"Low"}},
 
 "2237":{
@@ -8111,7 +8329,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBDC2",
+"Label":"COP_10",
 "Part":"Low"}},
 
 "2239":{
@@ -8119,7 +8337,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBDC2",
+"Label":"COP_10",
 "Part":"Low"}},
 
 "2241":{
@@ -8127,7 +8345,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBE07",
+"Label":"COP_12",
 "Part":"Low"}},
 
 "2243":{
@@ -8135,7 +8353,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBE34",
+"Label":"COP_13",
 "Part":"Low"}},
 
 "2245":{
@@ -8143,7 +8361,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBE5E",
+"Label":"COP_14",
 "Part":"Low"}},
 
 "2247":{
@@ -8191,7 +8409,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBE0B",
+"Label":"COP_1A",
 "Part":"Low"}},
 
 "2259":{
@@ -8984,12 +9202,106 @@
 "Label":"COP_00_OPWRC",
 "Part":"Low"}},
 
+"4043":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMAZB",
+"Part":"Low"}},
+
+"4046":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MM",
+"Part":"Low"}},
+
 "4074":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_2C_OPFMA",
+"Part":"Low"}},
+
+"4078":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFND",
+"Part":"Low"}},
+
+"4090":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4115":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFND",
+"Part":"Low"}},
+
+"4124":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"4135":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFP",
+"Part":"Low"}},
+
+"4157":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMAZB",
+"Part":"Low"}},
+
+"4166":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMTOP",
+"Part":"Low"}},
+
+"4195":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFND",
+"Part":"Low"}},
+
+"4204":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMTOP",
+"Part":"Low"}},
+
+"4223":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFP",
 "Part":"Low"}},
 
 "4345":{
@@ -11545,5 +11857,9 @@
 "Bank":0},
 
 "14928":{
+"FollowPbr":false,
+"Bank":0},
+
+"4111":{
 "FollowPbr":false,
 "Bank":0}}}
