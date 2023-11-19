@@ -3576,6 +3576,8 @@
 "2100":16711935,
 "2133":16711935,
 "2134":16711935,
+"2401":48,
+"2435":48,
 "2489":304,
 "2548":304,
 "2573":48,
@@ -3752,6 +3754,7 @@
 "2241":"OPFD  12 - QRY not in docco",
 "2243":"OPAST 13 - Allocate Stack",
 "2245":"OPFST 14 - Free Stack",
+"2247":"OPASC 15 - Write ASCII convert \u003cCR\u003e to \u003cCR\u003e\u003cLF\u003e",
 "2251":"OPBYX 17 - Convert BYXD to BHA",
 "2257":"OPFZB 1A - free bank 0 memory",
 "2259":"OPARM 1B - call Arithmetic module",
@@ -3860,7 +3863,7 @@
 "4078":"find memory pool just returned",
 "4085":"TODO this looks all wrong or am I missing something",
 "4090":"TODO this looks all wrong or am I missing something",
-"4176":"Store \"DEAD\" above stack?!?",
+"4176":"Store \"DEAD\" above stack - checked in OPFST (free)",
 "4218":"check for \"DEAD\" at the top of stack and panic if not there",
 "4223":"Free it",
 "8666":"ST 0 - return string \"SYSTEM\"",
@@ -4561,6 +4564,24 @@
 "Text":"COP 14 - OPFST - Free a stack\r\n\r\nAction: Tells the operating system that space allocated to a stack is finished with. This should be done every time a stack is no longer required. Only space allocated by OPAST can be freed by this call.\r\n\r\nOn entry: HA contains an address within the stack. (This means that the \r\n          current value of the stack pointer can usually be used to free the\r\n          stack.)\r\n\r\nOn exit:  If C = 0 then the stack has been freed.\r\n          If C = I then the routine could not free the stack.\r\n          DBAXY preserved\r\n",
 "BoxMode":true,
 "MaxWidth":80,
+"BackgroundColor":0},
+
+"2435":{
+"Text":"COP 15 - OPASC - BBC OPASCI\r\n\r\nAction: Send the byte in A to the VDU drivers. If the byte is \u00260D (carriage return) then send \u00260A, \u00260D to the VDU drivers (line feed+ carriage return).\r\n\r\nOn entry: A = character code.\r\nOn exit:  DBAXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2453":{
+"Text":"COP 00 - OPWRC - Write Char in A\r\n\r\nAction: Send the byte in A to the VDU drivers.\r\n\r\nOn entry: A = character code\r\nOn exit:  DBAXY preserved\r\n\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2443":{
+"Text":"COP 03 - OSNLI - BBC OSNEWL\r\n\r\nAction: Send LF CR to the VDU drivers. Line feed is ASCII 10 (decimal), carriage return is ASCII 13 (decimal).\r\n\r\nOn entry: No requirement\r\nOn exit:  DBAXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
 "BackgroundColor":0}},
 
 "Notes":{
@@ -4995,7 +5016,7 @@
 "LabelAnno":"None"},
 
 "2453":{
-"Label":"doOSWRCH",
+"Label":"COP_00",
 "Value":16693141,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -5016,7 +5037,7 @@
 "LabelAnno":"None"},
 
 "2443":{
-"Label":"doOSNEWL",
+"Label":"COP_03",
 "Value":16693131,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -5121,7 +5142,7 @@
 "LabelAnno":"None"},
 
 "2435":{
-"Label":"doOSASCI",
+"Label":"COP_15",
 "Value":16693123,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -8201,7 +8222,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOSWRCH",
+"Label":"COP_00",
 "Part":"Low"}},
 
 "2207":{
@@ -8225,7 +8246,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOSNEWL",
+"Label":"COP_03",
 "Part":"Low"}},
 
 "2213":{
@@ -8369,7 +8390,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOSASCI",
+"Label":"COP_15",
 "Part":"Low"}},
 
 "2249":{
