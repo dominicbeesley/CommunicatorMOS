@@ -10,7 +10,7 @@
 "EntryFlags":16187855,
 "AutoLabelStyle":"Simple",
 "AnalysisParams":{
-"AnalyzeUncategorizedData":true,
+"AnalyzeUncategorizedData":false,
 "DefaultTextScanMode":"LowHighAscii",
 "MinCharsForString":4,
 "SeekNearbyTargets":true,
@@ -242,6 +242,57 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_0A_OPBGT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"BGET",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_0A_OPBGT",
+"Value":10,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_0B_OPBPT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"BPUT",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_0B_OPBPT",
+"Value":11,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_0E_OPCOM":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Interpret command in BHA",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_0E_OPCOM",
+"Value":14,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_0F_OPERR":{
 "DataDescriptor":{
 "Length":1,
@@ -255,6 +306,23 @@
 "MultiMask":null,
 "Label":"COP_0F_OPERR",
 "Value":15,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_18_OPRLH":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Read hex number",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_18_OPRLH",
+"Value":24,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -276,6 +344,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_24_OPCVD":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Convert direct page index",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_24_OPCVD",
+"Value":36,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_26_OPBHA":{
 "DataDescriptor":{
 "Length":1,
@@ -293,6 +378,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_28_OPCMD":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_28_OPCMD",
+"Value":40,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_29_OPRFR":{
 "DataDescriptor":{
 "Length":1,
@@ -306,6 +408,40 @@
 "MultiMask":null,
 "Label":"COP_29_OPRFR",
 "Value":41,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_2C_OPFMA":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Find module by address",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_2C_OPFMA",
+"Value":44,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_34_OPRMI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Read module info",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_34_OPRMI",
+"Value":52,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -340,6 +476,57 @@
 "MultiMask":null,
 "Label":"COP_45_OPCLS",
 "Value":69,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_46_OPEND":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Check for EOF",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_46_OPEND",
+"Value":70,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_50_OPRLE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Read Load/Execute/Length of file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_50_OPRLE",
+"Value":80,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_51_OPWLE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Write Load/Exec address of file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_51_OPWLE",
+"Value":81,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -1914,6 +2101,51 @@
 "Hint":"InlineData"},
 
 {
+"Low":1019,
+"High":1023,
+"Hint":"InlineData"},
+
+{
+"Low":1065,
+"High":1071,
+"Hint":"InlineData"},
+
+{
+"Low":1072,
+"High":1072,
+"Hint":"Code"},
+
+{
+"Low":1080,
+"High":1084,
+"Hint":"InlineData"},
+
+{
+"Low":1127,
+"High":1141,
+"Hint":"InlineData"},
+
+{
+"Low":1146,
+"High":1185,
+"Hint":"InlineData"},
+
+{
+"Low":1190,
+"High":1195,
+"Hint":"InlineData"},
+
+{
+"Low":1295,
+"High":1323,
+"Hint":"InlineData"},
+
+{
+"Low":1724,
+"High":1733,
+"Hint":"InlineData"},
+
+{
 "Low":1853,
 "High":1853,
 "Hint":"Code"},
@@ -2219,6 +2451,11 @@
 "Hint":"Code"},
 
 {
+"Low":2466,
+"High":2476,
+"Hint":"InlineData"},
+
+{
 "Low":2489,
 "High":2489,
 "Hint":"Code"},
@@ -2279,9 +2516,19 @@
 "Hint":"Code"},
 
 {
+"Low":2814,
+"High":2832,
+"Hint":"InlineData"},
+
+{
 "Low":2838,
 "High":2838,
 "Hint":"Code"},
+
+{
+"Low":2840,
+"High":2879,
+"Hint":"InlineData"},
 
 {
 "Low":2880,
@@ -2307,6 +2554,16 @@
 "Low":2994,
 "High":2994,
 "Hint":"Code"},
+
+{
+"Low":3196,
+"High":3196,
+"Hint":"Code"},
+
+{
+"Low":3207,
+"High":3218,
+"Hint":"InlineData"},
 
 {
 "Low":3224,
@@ -2399,8 +2656,28 @@
 "Hint":"Code"},
 
 {
+"Low":3939,
+"High":3941,
+"Hint":"InlineData"},
+
+{
+"Low":3948,
+"High":3973,
+"Hint":"InlineData"},
+
+{
+"Low":3982,
+"High":3989,
+"Hint":"InlineData"},
+
+{
 "Low":4034,
 "High":4034,
+"Hint":"Code"},
+
+{
+"Low":4078,
+"High":4078,
 "Hint":"Code"},
 
 {
@@ -2437,6 +2714,11 @@
 "Low":4302,
 "High":4302,
 "Hint":"Code"},
+
+{
+"Low":4347,
+"High":4365,
+"Hint":"InlineData"},
 
 {
 "Low":4428,
@@ -2544,6 +2826,11 @@
 "Hint":"Code"},
 
 {
+"Low":5581,
+"High":5626,
+"Hint":"InlineData"},
+
+{
 "Low":5627,
 "High":5627,
 "Hint":"Code"},
@@ -2561,6 +2848,16 @@
 {
 "Low":5825,
 "High":5825,
+"Hint":"Code"},
+
+{
+"Low":6019,
+"High":6019,
+"Hint":"Code"},
+
+{
+"Low":6133,
+"High":6133,
 "Hint":"Code"},
 
 {
@@ -2624,13 +2921,93 @@
 "Hint":"Code"},
 
 {
+"Low":6440,
+"High":6452,
+"Hint":"InlineData"},
+
+{
 "Low":6465,
 "High":6465,
 "Hint":"Code"},
 
 {
+"Low":6512,
+"High":6522,
+"Hint":"InlineData"},
+
+{
+"Low":6547,
+"High":6558,
+"Hint":"InlineData"},
+
+{
+"Low":6726,
+"High":6738,
+"Hint":"InlineData"},
+
+{
+"Low":6744,
+"High":6744,
+"Hint":"Code"},
+
+{
+"Low":6752,
+"High":6752,
+"Hint":"Code"},
+
+{
+"Low":6760,
+"High":6760,
+"Hint":"Code"},
+
+{
+"Low":6776,
+"High":6776,
+"Hint":"Code"},
+
+{
+"Low":6793,
+"High":6801,
+"Hint":"InlineData"},
+
+{
+"Low":6804,
+"High":6804,
+"Hint":"Code"},
+
+{
+"Low":6806,
+"High":6816,
+"Hint":"InlineData"},
+
+{
+"Low":6819,
+"High":6819,
+"Hint":"Code"},
+
+{
+"Low":6821,
+"High":6831,
+"Hint":"InlineData"},
+
+{
 "Low":6837,
 "High":6837,
+"Hint":"Code"},
+
+{
+"Low":6849,
+"High":6849,
+"Hint":"Code"},
+
+{
+"Low":7119,
+"High":7141,
+"Hint":"InlineData"},
+
+{
+"Low":7153,
+"High":7153,
 "Hint":"Code"},
 
 {
@@ -3115,12 +3492,50 @@
 "2133":16711935,
 "2134":16711935,
 "2489":304,
+"2548":304,
+"2573":48,
+"2589":48,
 "2691":304,
+"2718":48,
 "2740":48,
 "2745":48,
+"2812":16,
+"2838":48,
 "2880":304,
+"2917":48,
 "2994":48,
+"3196":48,
+"3395":48,
 "3703":304,
+"3787":48,
+"3937":48,
+"4034":48,
+"4078":48,
+"4910":48,
+"6019":48,
+"6133":65584,
+"6251":48,
+"6256":48,
+"6261":48,
+"6266":48,
+"6271":48,
+"6276":48,
+"6281":48,
+"6286":48,
+"6291":48,
+"6296":48,
+"6438":48,
+"6465":48,
+"6696":48,
+"6744":48,
+"6752":48,
+"6760":48,
+"6776":48,
+"6804":48,
+"6819":48,
+"6837":48,
+"6849":48,
+"7153":48,
 "8635":3145776,
 "9349":3145776,
 "11282":3145776,
@@ -3240,9 +3655,68 @@
 "2215":"OPCLI 05 = OSCLI = execute command",
 "2217":"OPOSB 06 - OSBYTE",
 "2219":"OPOSW 07 - OSWORD",
+"2231":"???? 0D - Throws a not implemented error",
+"2233":"OPCOM 0E - OSCLI with string in BHA",
 "2251":"OPBYX 17 - Convert BYXD to BHA",
+"2259":"OPARM 1B - call Arithmetic module",
+"2271":"OPPRE 21 - Allow preemption",
 "2273":"OPRLN 22 - Read a line to buffer",
-"2285":"OPCMD 22 - call a module",
+"2285":"OPCMD 28 - call a module",
+"2291":"OPDIS 2B - ?",
+"2293":"2C",
+"2295":"2D",
+"2297":"2E",
+"2299":"2F",
+"2301":"30",
+"2303":"31",
+"2305":"32",
+"2307":"33",
+"2309":"34",
+"2311":"35",
+"2313":"36",
+"2315":"37",
+"2317":"38",
+"2319":"39",
+"2321":"3A",
+"2323":"3B",
+"2325":"3C",
+"2327":"3D",
+"2329":"3E",
+"2331":"3F",
+"2333":"40",
+"2335":"41",
+"2337":"42",
+"2339":"43",
+"2341":"44",
+"2343":"45",
+"2345":"46",
+"2347":"47",
+"2349":"48",
+"2351":"49",
+"2353":"4A",
+"2355":"4B",
+"2357":"4C",
+"2359":"4D",
+"2361":"4E",
+"2363":"4F",
+"2365":"50",
+"2367":"51",
+"2369":"52",
+"2371":"53",
+"2373":"54",
+"2375":"55",
+"2377":"56",
+"2379":"57",
+"2381":"58",
+"2383":"59",
+"2385":"5A",
+"2387":"5B",
+"2389":"5C",
+"2391":"5D",
+"2393":"5E",
+"2395":"OPOSX 5F - call OSWORD with pointer in X QRY",
+"2397":"60",
+"2399":"61",
 "2432":"this is the saved A register",
 "2589":"get passed X and check is \u003c 2 and use to determine type of terminator",
 "2642":"use BHA at 05 as pointer",
@@ -3490,25 +3964,25 @@
 "BackgroundColor":0},
 
 "2573":{
-"Text":"do OPWRS - write string immediate\r\n\r\nread characters from bytes following cop, check for 0 and pass on to write character routine\r\n",
+"Text":"COP 01 - OPWRS - write string immediate\r\n\r\nread characters from bytes following cop, check for 0 and pass on to write character routine\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "2589":{
-"Text":"do OPWRA - write string at BHA\r\n\r\nTODO: DOCO: NOTE: This seems to imply that X is set to 0 for 0 terminated, 1 for control terminated string - not in systems manual\r\n\r\n",
+"Text":"COP 02 - OPWRA - write string at BHA\r\n\r\nTODO: DOCO: NOTE: This seems to imply that X is set to 0 for 0 terminated, 1 for control terminated string - not in systems manual\r\n\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "2671":{
-"Text":"do OPRDC - read a character from input\r\n\r\nNo conditions\r\n\r\nOn exit: \r\nif C = 0 then A contains the ASCII value of the character.\r\nif C = 1 then\r\n  if HA = $1B (@SCESC) then the ESCAPE key was pressed\r\n  if HA = $00 (@SCPRE) then the current task was pre-empted.\r\n\r\nDBXY preserved",
+"Text":"COP 04 - OPRDC - read a character from input\r\n\r\nNo conditions\r\n\r\nOn exit: \r\nif C = 0 then A contains the ASCII value of the character.\r\nif C = 1 then\r\n  if HA = $1B (@SCESC) then the ESCAPE key was pressed\r\n  if HA = $00 (@SCPRE) then the current task was pre-empted.\r\n\r\nDBXY preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "2691":{
-"Text":"do OPCLI - execute command line\r\n\r\nAction: This call sends the address of a command line string to the operating system\u0027s command line interpreter. The string must be terminated by CR (ASCII \u00260D).\r\nOn entry: either: BYX contains the absolute address of the start of the command line\r\nOR: Y is 0 and X contains an offset from the direct page register D. The start of the command line is in the direct page at address D+X.\r\nOn exit: No registers preserved",
+"Text":"COP 05 - OPCLI - execute command line\r\n\r\nAction: This call sends the address of a command line string to the operating system\u0027s command line interpreter. The string must be terminated by CR (ASCII \u00260D).\r\nOn entry: either: BYX contains the absolute address of the start of the command line\r\nOR: Y is 0 and X contains an offset from the direct page register D. The start of the command line is in the direct page at address D+X.\r\nOn exit: No registers preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -3520,13 +3994,13 @@
 "BackgroundColor":0},
 
 "2718":{
-"Text":"do OPOSB = OSBYTE\r\n\r\nThis call caries out various operations, the specific operation depending on the contents of A on entry. Other data can be passed in X and Y. If results are generated, these are returned in X and Y. Only a very small subset of BBC OSBYTE calls is supported.\r\nOn entry: A contains the reason code. The reason code determines the function of the call.\r\n\r\nOn exit: X and Y will contain results if the call produces them.\r\n\r\nD preserved",
+"Text":"COP 06 - OPOSB = OSBYTE\r\n\r\nThis call caries out various operations, the specific operation depending on the contents of A on entry. Other data can be passed in X and Y. If results are generated, these are returned in X and Y. Only a very small subset of BBC OSBYTE calls is supported.\r\nOn entry: A contains the reason code. The reason code determines the function of the call.\r\n\r\nOn exit: X and Y will contain results if the call produces them.\r\n\r\nD preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "2745":{
-"Text":"do OPOSW = OSWORD\r\n\r\nAction: This call caries out various operations, the specific operation depending on the contents of A on entry. BYX points to a control block in memory, and this block contains data for the call, and will contain results from the call.\r\nOn entry: \r\nEITHER: BYX points to a control block in memory\r\nOR: Y = 0 and X contains an offset from the direct page register D. The start of the control block is in the direct page at address D+X.\r\nA contains the reason code. The reason code determines the function of the call.\r\nOn exit: D preserved\r\n\r\nFor OPOSW with A = 0 (read line from input)\r\nY = line length (including CR if applicable).\r\nIf C = 0 then CR termimated input. \r\nIf C = 1 then ESCAPE terminated input",
+"Text":"COP 07 - OPOSW = OSWORD\r\n\r\nAction: This call caries out various operations, the specific operation depending on the contents of A on entry. BYX points to a control block in memory, and this block contains data for the call, and will contain results from the call.\r\nOn entry: \r\nEITHER: BYX points to a control block in memory\r\nOR: Y = 0 and X contains an offset from the direct page register D. The start of the control block is in the direct page at address D+X.\r\nA contains the reason code. The reason code determines the function of the call.\r\nOn exit: D preserved\r\n\r\nFor OPOSW with A = 0 (read line from input)\r\nY = line length (including CR if applicable).\r\nIf C = 0 then CR termimated input. \r\nIf C = 1 then ESCAPE terminated input",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -3826,7 +4300,7 @@
 "BackgroundColor":0},
 
 "2994":{
-"Text":"OPRLN 22 - Read a line to buffer",
+"Text":"COP 22 - OPRLN - Read a line to buffer\r\n\r\nAction: This call will read a line of characters from the keyboard. The call uses a control block which gives the address at which the characters are to be put, the length of this buffer, and the number of characters to be sent to the VDU drivers. Ihis number can be zero in which case no characters are printed. \r\n\r\nDuring this call the current task may be pre-empted, in which case the carry flag will indicate as much. If either ESCAPE is pressed or a preempt occurs then the next cal1 must be to OPAEV to acknowledge the event.\r\n\r\nOn entry:  BHA points to a control block somewhere in memory. \r\n           The format of the control block is as follows.\r\n  +0 4 byte pointer to the keyboard buffer. \r\n       The least significant byte first (0) and the most significant byte \r\n       last (3). The most significant byte mu.stbe zero (\u002600}.\r\n  +4 2 byte buffer siz«. The buffer can be any size up to 6SS3S characters.\r\n  +6 2 byte prefix length. This is the number of characters in the buffer \r\n       which will be sent to the VDU drivers. Therefore it must not be \r\n       greater than the buffer size. If the prefix length is zero then no \r\n       characters are sent to the VDU drivers\r\n  +8 4 byte 0 word for future expansion\r\n\r\nOn exit:   If C = 0 then the lirte has been read and the characters are in \r\n           the buffer.\r\n           A contains the terminator of the input siring (CR ASCII 13 decimal).\r\n           The length of the string in the buffer is given by the 2 bytes at\r\n           offset +6 in the control block.\r\n           If C = 1 then\r\n           if HA = @SCESC% (£SCESC in MASM) then the ESCAPE key was pressed or\r\n           if HA = @SCPRE% (£SCPRE in MASM) then the current task was pre-\r\n           empted.\r\n           DBXY preserved\r\n           Offsets 0 to 5 remain the same.",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -3874,8 +4348,8 @@
 "BackgroundColor":0},
 
 "2489":{
-"Text":"returns the string following the COP call as BHA",
-"BoxMode":false,
+"Text":"COP 26 - OPBHA\r\n\r\nreturns the immediate string following the COP call as BHA",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
@@ -3888,6 +4362,42 @@
 "3752":{
 "Text":"BHAXY are now as per caller\r\n\r\nstack contains\r\n\r\n+7  @rti long address for module to return to which will do another RTI - QRY why?\r\n+6  00 - bank 0\r\n+4  jump block entry in bank 0\r\n+3  00 - dummy flags\r\n+1  caller DP",
 "BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2461":{
+"Text":"COP 1B - call the ARITHMETIC module\r\n\r\nOn Entry: Reason code in X, arithmetic stack pointer in BHA\r\n\r\nOn Exit:  BHA updated",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2548":{
+"Text":"COP 2B - OPDIS\r\n\r\nQRY",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2694":{
+"Text":"COP 0E OPCOM - execute command at BHA\r\n\r\nAction: This call sends the address of a command line string to the operating system\u0027s command line interpreter. The string must be terminated by CR (ASCII \u00260D).\r\nOn entry: BHA points to the start of the command\r\nOn exit: No registers preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2740":{
+"Text":"COP 5F - OPOSX - QRY\r\n\r\nlooks to call OSWORD but with a different pointer arrangement BYY?",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2838":{
+"Text":"COP 0D - ERR not implemented\r\n\r\nNot implemented - throws an error\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2917":{
+"Text":"COP 21 - OPPRE - allow preemption\r\n\r\nAction: This call is used lo allow pre-emption of the current task at a convenient point. The call allows the MOS to check whether the user has selected another task. If another task has been requested then the call returns with the carry set, and the event must be acknowledged using OPAEV.\r\n\r\nOn entry: No requirements.\r\n\r\nOn exit:  If C = 0 then the module was not pre-empted.\r\n          If C = 1 then the module was pre-empted.\r\n          DBHAXY preserved\r\n",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -4330,14 +4840,14 @@
 "LabelAnno":"None"},
 
 "2573":{
-"Label":"doOPWRS",
+"Label":"COP_01",
 "Value":16693261,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "2589":{
-"Label":"doOPWRA",
+"Label":"COP_02",
 "Value":16693277,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -4351,28 +4861,28 @@
 "LabelAnno":"None"},
 
 "2671":{
-"Label":"doOPRDC",
+"Label":"COP_04",
 "Value":16693359,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "2691":{
-"Label":"doOPCLI",
+"Label":"COP_05",
 "Value":16693379,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "2718":{
-"Label":"doOPOSB",
+"Label":"COP_06",
 "Value":16693406,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "2745":{
-"Label":"doOPOSW",
+"Label":"COP_07",
 "Value":16693433,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -4400,18 +4910,18 @@
 "LabelAnno":"Generated"},
 
 "2838":{
-"Label":"TFEB916",
+"Label":"COP_0D",
 "Value":16693526,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2694":{
-"Label":"TFEB886",
+"Label":"COP_OE",
 "Value":16693382,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3937":{
 "Label":"TFEBD61",
@@ -4491,11 +5001,11 @@
 "LabelAnno":"Generated"},
 
 "2461":{
-"Label":"TFEB79D",
+"Label":"COP_1B",
 "Value":16693149,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5320":{
 "Label":"TFEC2C8",
@@ -4533,11 +5043,11 @@
 "LabelAnno":"Generated"},
 
 "2917":{
-"Label":"TFEB965",
+"Label":"COP_21",
 "Value":16693605,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2994":{
 "Label":"COP_22",
@@ -4568,7 +5078,7 @@
 "LabelAnno":"Generated"},
 
 "2489":{
-"Label":"copRetImmedStr",
+"Label":"COP_26",
 "Value":16693177,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -4603,11 +5113,11 @@
 "LabelAnno":"Generated"},
 
 "2548":{
-"Label":"TFEB7F4",
+"Label":"COP_2B",
 "Value":16693236,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4946":{
 "Label":"TFEC152",
@@ -4953,11 +5463,11 @@
 "LabelAnno":"Generated"},
 
 "2740":{
-"Label":"TFEB8B4",
+"Label":"COP_5F",
 "Value":16693428,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4428":{
 "Label":"TFEBF4C",
@@ -6301,6 +6811,34 @@
 "Value":16703352,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4006":{
+"Label":"printHexA",
+"Value":16694694,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4015":{
+"Label":"printHexNyb",
+"Value":16694703,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4029":{
+"Label":"sk",
+"Value":16694717,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4345":{
+"Label":"bhaErrorNoMessage",
+"Value":16695033,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -6940,6 +7478,156 @@
 "Label":"LOWCALL__MM",
 "Part":"Low"}},
 
+"1017":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"1019":{
+"Length":5,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1063":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_28_OPCMD",
+"Part":"Low"}},
+
+"1065":{
+"Length":7,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1078":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"1080":{
+"Length":5,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1125":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"1127":{
+"Length":15,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1142":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0E_OPCOM",
+"Part":"Low"}},
+
+"1144":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"1146":{
+"Length":40,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1188":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"1190":{
+"Length":6,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1199":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_34_OPRMI",
+"Part":"Low"}},
+
+"1222":{
+"Length":24,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1293":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0F_OPERR",
+"Part":"Low"}},
+
+"1295":{
+"Length":29,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1442":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"1722":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"1724":{
+"Length":10,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1734":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0E_OPCOM",
+"Part":"Low"}},
+
 "1765":{
 "Length":3,
 "Format":"NumericLE",
@@ -7268,6 +7956,14 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"2022":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0F_OPERR",
+"Part":"Low"}},
+
 "2024":{
 "Length":27,
 "Format":"StringNullTerm",
@@ -7295,7 +7991,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOPWRS",
+"Label":"COP_01",
 "Part":"Low"}},
 
 "2209":{
@@ -7303,7 +7999,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOPWRA",
+"Label":"COP_02",
 "Part":"Low"}},
 
 "2211":{
@@ -7319,7 +8015,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOPRDC",
+"Label":"COP_04",
 "Part":"Low"}},
 
 "2215":{
@@ -7327,7 +8023,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOPCLI",
+"Label":"COP_05",
 "Part":"Low"}},
 
 "2217":{
@@ -7335,7 +8031,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOPOSB",
+"Label":"COP_06",
 "Part":"Low"}},
 
 "2219":{
@@ -7343,7 +8039,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doOPOSW",
+"Label":"COP_07",
 "Part":"Low"}},
 
 "2221":{
@@ -7391,7 +8087,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB916",
+"Label":"COP_0D",
 "Part":"Low"}},
 
 "2233":{
@@ -7399,7 +8095,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB886",
+"Label":"COP_OE",
 "Part":"Low"}},
 
 "2235":{
@@ -7503,7 +8199,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB79D",
+"Label":"COP_1B",
 "Part":"Low"}},
 
 "2261":{
@@ -7551,7 +8247,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB965",
+"Label":"COP_21",
 "Part":"Low"}},
 
 "2273":{
@@ -7591,7 +8287,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"copRetImmedStr",
+"Label":"COP_26",
 "Part":"Low"}},
 
 "2283":{
@@ -7631,7 +8327,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB7F4",
+"Label":"COP_2B",
 "Part":"Low"}},
 
 "2293":{
@@ -8047,7 +8743,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB8B4",
+"Label":"COP_5F",
 "Part":"Low"}},
 
 "2397":{
@@ -8076,6 +8772,20 @@
 
 "2403":{
 "Length":26,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"2464":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_28_OPCMD",
+"Part":"Low"}},
+
+"2466":{
+"Length":11,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
@@ -8142,6 +8852,230 @@
 "Label":"DPSYS_D8_B_SAV",
 "Part":"Low"}},
 
+"2812":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"2814":{
+"Length":19,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"2840":{
+"Length":40,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"2959":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_20_OPSEV",
+"Part":"Low"}},
+
+"3051":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"3071":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_04_OPRDC",
+"Part":"Low"}},
+
+"3104":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"3162":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"3205":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"3207":{
+"Length":12,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"3937":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"3939":{
+"Length":3,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"3946":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"3948":{
+"Length":26,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"3980":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"3982":{
+"Length":8,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"3995":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"4029":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"4074":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_2C_OPFMA",
+"Part":"Low"}},
+
+"4345":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"4347":{
+"Length":19,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"4910":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_2C_OPFMA",
+"Part":"Low"}},
+
+"4937":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"5579":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0F_OPERR",
+"Part":"Low"}},
+
+"5581":{
+"Length":46,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5710":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0A_OPBGT",
+"Part":"Low"}},
+
+"5786":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0B_OPBPT",
+"Part":"Low"}},
+
+"5918":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_50_OPRLE",
+"Part":"Low"}},
+
+"5968":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0A_OPBGT",
+"Part":"Low"}},
+
+"6004":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_46_OPEND",
+"Part":"Low"}},
+
 "6012":{
 "Length":2,
 "Format":"NumericLE",
@@ -8150,12 +9084,36 @@
 "Label":"COP_45_OPCLS",
 "Part":"Low"}},
 
+"6088":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0B_OPBPT",
+"Part":"Low"}},
+
 "6116":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"6123":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_24_OPCVD",
+"Part":"Low"}},
+
+"6125":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_51_OPWLE",
 "Part":"Low"}},
 
 "6141":{
@@ -8172,6 +9130,134 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_44_OPOPN",
+"Part":"Low"}},
+
+"6438":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6440":{
+"Length":13,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"6510":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6512":{
+"Length":11,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"6545":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6547":{
+"Length":12,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"6724":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6726":{
+"Length":13,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"6788":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"6791":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6793":{
+"Length":9,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"6804":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6806":{
+"Length":11,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"6819":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"6821":{
+"Length":11,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"7117":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0F_OPERR",
+"Part":"Low"}},
+
+"7119":{
+"Length":23,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"7159":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_18_OPRLH",
 "Part":"Low"}},
 
 "8666":{
