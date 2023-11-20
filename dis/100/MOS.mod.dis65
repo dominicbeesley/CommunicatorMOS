@@ -3941,6 +3941,7 @@
 "2275":"OPCVS 23 - Convert stack index",
 "2277":"OPCVD 24 - convert direct page index",
 "2279":"OPCRC 25 - superceded use OPSUM",
+"2281":"OPBHA 26 - Get BHA address of immediate string",
 "2285":"OPCMD 28 - call a module",
 "2291":"OPDIS 2B - ?",
 "2293":"2C",
