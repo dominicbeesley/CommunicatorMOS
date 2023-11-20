@@ -990,6 +990,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"DPSYS_DPECO":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Econet Direct Page Save QRY",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_DPECO",
+"Value":44189,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "DPSYS_GSREAD_flags":{
 "DataDescriptor":{
 "Length":1,
@@ -1020,6 +1037,23 @@
 "MultiMask":null,
 "Label":"DPSYS_GSREAD_ptr",
 "Value":44269,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_MOD_ECO":{
+"DataDescriptor":{
+"Length":6,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Econet module block",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_MOD_ECO",
+"Value":44191,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1139,6 +1173,40 @@
 "MultiMask":null,
 "Label":"DPVAR_ACD4_HANDSET_STATUS_QRY",
 "Value":44244,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"HW_ECONET":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HW_ECONET",
+"Value":4259840,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"HW_TYPE_DETECT_QRY":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"QRY Seems to detect different motherboard types",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HW_TYPE_DETECT_QRY",
+"Value":15794168,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1513,6 +1581,23 @@
 "MultiMask":null,
 "Label":"SYSFNK",
 "Value":43776,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_41_input_stream":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Currently selected input stream",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_41_input_stream",
+"Value":42305,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -3667,6 +3752,31 @@
 "Hint":"Code"},
 
 {
+"Low":17166,
+"High":17184,
+"Hint":"InlineData"},
+
+{
+"Low":17438,
+"High":17438,
+"Hint":"Code"},
+
+{
+"Low":17445,
+"High":17445,
+"Hint":"Code"},
+
+{
+"Low":17448,
+"High":17448,
+"Hint":"Code"},
+
+{
+"Low":17454,
+"High":17454,
+"Hint":"Code"},
+
+{
 "Low":19322,
 "High":19322,
 "Hint":"Code"},
@@ -3739,7 +3849,7 @@
 "2718":48,
 "2740":48,
 "2745":48,
-"2812":16,
+"2783":48,
 "2838":48,
 "2880":304,
 "2917":48,
@@ -3749,9 +3859,20 @@
 "3196":48,
 "3224":48,
 "3233":48,
+"3240":48,
+"3262":48,
+"3269":48,
+"3363":48,
 "3395":48,
+"3404":48,
+"3425":48,
+"3440":48,
+"3494":48,
+"3562":48,
 "3703":304,
 "3787":48,
+"3849":48,
+"3889":48,
 "3937":48,
 "4034":48,
 "4078":48,
@@ -3759,8 +3880,17 @@
 "4190":48,
 "4233":48,
 "4257":48,
+"4554":48,
+"4575":48,
+"4615":48,
+"4706":48,
+"4762":48,
+"4779":48,
+"4780":48,
 "4796":48,
+"4846":48,
 "4910":48,
+"4946":48,
 "4965":48,
 "5044":48,
 "5240":304,
@@ -3795,6 +3925,7 @@
 "6837":48,
 "6849":48,
 "7153":48,
+"8410":48,
 "8635":3145776,
 "9349":3145776,
 "11282":3145776,
@@ -3827,6 +3958,9 @@
 "19328":3145728,
 "19336":3145728,
 "19906":16711935,
+"20007":48,
+"20231":48,
+"20292":48,
 "20573":16711935},
 
 "Comments":{
@@ -3942,38 +4076,41 @@
 "2277":"OPCVD 24 - convert direct page index",
 "2279":"OPCRC 25 - superceded use OPSUM",
 "2281":"OPBHA 26 - Get BHA address of immediate string",
+"2283":"OPREF 27 - ?",
 "2285":"OPCMD 28 - call a module",
+"2287":"OPRFR 29 - reference a module",
+"2289":"OPURF 2A - Unreference a module",
 "2291":"OPDIS 2B - ?",
-"2293":"2C",
-"2295":"2D",
-"2297":"2E",
-"2299":"2F",
-"2301":"30",
-"2303":"31",
+"2293":"OPFMA 2C - find module by address",
+"2295":"OPWRM 2D - write module name",
+"2297":"OPFPO 2E - find pool owner",
+"2299":"OPIIQ 2F - intercept interrupt",
+"2301":"OPRIQ 30 - release interrupt",
+"2303":"OPMIQ 31 - modify interrupt",
 "2305":"OPSUM 32 - compute end around carry checksum",
-"2307":"33",
-"2309":"34",
-"2311":"35",
-"2313":"36",
+"2307":"OPSLM 33 - scan list of modules",
+"2309":"OPRMI 34 - read module info",
+"2311":"OPAM 35 - Add module",
+"2313":"OPNLU 36 - name lookup",
 "2315":"37",
-"2317":"38",
-"2319":"39",
-"2321":"3A",
+"2317":"OPAH 38 - allocate a 16 bit handle",
+"2319":"OPFH 39 - free handle",
+"2321":"OPCUH 3A - call device driver using handle",
 "2323":"3B",
-"2325":"3C",
-"2327":"3D",
-"2329":"3E",
-"2331":"3F",
-"2333":"40",
-"2335":"41",
-"2337":"42",
-"2339":"43",
-"2341":"44",
-"2343":"45",
-"2345":"46",
-"2347":"47",
-"2349":"48",
-"2351":"49",
+"2325":"OPDTD 3C - ???",
+"2327":"OPGSR 3D",
+"2329":"OPADY 3E - Add Y to BHA",
+"2331":"OPATR 3F - ???",
+"2333":"OPFTR 40 - ???",
+"2335":"OPECO 41 - call low-level Econet routines",
+"2337":"OPRHL 42 - ???",
+"2339":"OPXKC 43 - Examine keyboard character",
+"2341":"OPOPN 44 - open device driver",
+"2343":"OPCLS 45 - close device driver",
+"2345":"OPEND 46 - test for EOF",
+"2347":"OPMM 47 - call memory management module",
+"2349":"OPVER 48 - return OS version number",
+"2351":"OPFSC 49 - free screen",
 "2353":"4A",
 "2355":"4B",
 "2357":"4C",
@@ -4030,6 +4167,20 @@
 "3733":"discard stacked byte",
 "3734":"push A (module B0 jump block)",
 "3738":"another single 0",
+"3855":"adjust the address at offset 01 to be an RTL addres",
+"3859":"i.e. subtract 1",
+"3860":"store at offset 0",
+"3864":"zero offset 2,3 - QRY bank address address at 01 will always be 0",
+"3871":"make an RTLable address to an RTL",
+"3892":"HA = DPX",
+"3897":"Exit with SEC if DPX+4 is outside bank 0",
+"3899":"knock back to HA = DPX",
+"3902":"transfer to X",
+"3903":"clear DPX+0..DPX+7",
+"3923":"get back BHA (module name)",
+"3926":"long call actual module find",
+"3929":"get back DPX pointer",
+"3932":"store pointer at offset 1",
 "3937":"Write a newline TODO: Use OPNLI",
 "3943":"QRY - this prints the message after the original caller\u0027s COP",
 "3990":"hang up the machine",
@@ -4048,6 +4199,8 @@
 "4176":"Store \"DEAD\" above stack - checked in OPFST (free)",
 "4218":"check for \"DEAD\" at the top of stack and panic if not there",
 "4223":"Free it",
+"4625":"caller DP",
+"4640":"get back COP stack DP",
 "4796":"byte count into X",
 "4799":"sum",
 "4802":"zero offset",
@@ -4058,6 +4211,17 @@
 "4828":"add last carry in",
 "4834":"this looks to additionally check against any checksum after the block",
 "4838":"return Z for match QRY - check this",
+"4849":"if Y\u003c\u003e0 then skip MMFND and use passed Y",
+"4865":"QRY - TODO find out what __MMFND returns in X - undocumented!",
+"4870":"get head of modules list",
+"4873":"get next module",
+"4877":"check for back round to start",
+"4880":"exit with C = 1",
+"4882":"transfer A to X",
+"4910":"find the module",
+"4912":"branch if not found",
+"4921":"get chars from pointer on stack",
+"4931":"module name terminator",
 "4988":"zero the result",
 "5065":"TODO: beautiful - I think this can go?",
 "5248":"skip forward looking for quotes",
@@ -4088,6 +4252,8 @@
 "13393":"Ignore ESCape",
 "13402":"Set ESCape condition",
 "13681":"jump to address - why not just jmp (X) as bank is 0?",
+"14231":"convert to upper case",
+"14241":"set carry and return un modified A",
 "14254":"OSBYTE 0 - Get Host OS",
 "14256":"OSBYTE 1 - R/W user flag",
 "14258":"OSBYTE 2 - select input stream - manual lies, this does nothing",
@@ -4165,6 +4331,12 @@
 "15864":"if ne then exit",
 "16396":"GSINIT",
 "16430":"Get BHA pointer to first character of filename",
+"16456":"todo: remove?",
+"16459":"todo: remove?",
+"16462":"todo: remove?",
+"16465":"todo: remove?",
+"17157":"increment module reference count by 1",
+"17164":"panic if mod ref \u003e= 255",
 "17204":"this looks to be the return value, -1 means not found",
 "17210":"push BHA pointer",
 "17214":"back off stacked BHA by 14 TODO:why not do this before pushing!?",
@@ -4200,7 +4372,19 @@
 "17335":"check for winner",
 "17349":"HA+=4",
 "17352":"DP=HA",
-"17353":"HA=[DP,2]"},
+"17353":"HA=[DP,2]",
+"17393":"refernce count",
+"17399":"QRY what is at offset 8",
+"17405":"get phd, jsl opcodes",
+"17408":"store at offset 0",
+"17412":"get pld, rtl opcodes",
+"17415":"store at offset 5",
+"17419":"get program bank and high byte of module service",
+"17421":"store at offset 3",
+"17425":"get 16 bit low address of module",
+"17427":"store at offset 2",
+"17433":"store DPX at 0 - QRY why?",
+"20580":"This is where module calls return to by default"},
 
 "LongComments":{
 "-2147483647":{
@@ -4859,6 +5043,204 @@
 
 "4796":{
 "Text":"COP 32 - OPSUM - compute end-around-carry sum\r\n\r\nAction: Gives a sum of all the bits in a block whose start is pointed to by BHA and whose length in bytes is in Y.\r\n\r\nOn entry: BHA points to thestartof the block to be summed.\r\n          Y = length of block in bytes.\r\nOn exit:  If C = 0 then thesum has been computed and theresult is in HA.\r\n          If C = 1 then either the length was zero (Y = 0) or all the bytes \r\n          in the block were zero (HA = 0).\r\n          DXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3889":{
+"Text":"COP 27 - OPREF - OPRFR with different return structure\r\n\r\nOn Entry: X is a DP offset to an 8 byte block to receive a module pointer\r\n          BHA points to zero terminated module name\r\n\r\nOn Exit:  C = 0, offset 1,2 in block contain a pointer to code to call the\r\n          module\r\n          C = 1 for not found\r\n\r\nQRY\r\n\r\nThis looks to be called by OPRFR but OPRFR rearranges the returned block order\r\n\r\nThis find the module, and place a \r\n\r\n  phd\r\n  jsl \u003cmodule service entry\u003e\r\n  pld\r\n  rtl\r\n\r\nsomewhere in bank 0 and place a 16 bit pointer to this at offset 1, the rest of the block in zeroed",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3849":{
+"Text":"COP 29 - OPRFR - reference module\r\nAction: Set up entry and return addresses in an 8 byte block in direct page for the module whose name is pointed to by BHA.\r\nOn entry: BHA points to the module name which is terminated by zero (\u002600).\r\n          X points to the start of the 8 byte block in direct page which will \r\n          be initialised by the OPRFR routine.\r\n          Y = 0\r\nOn exit:  C = 0 means that the module was found and the block initialised. \r\n          C = 1 means that the module was not found.\r\n          DB preserved.",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"17438":{
+"Text":"This is a template module call that is copied to Bank 0 when a module is first referenced\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3787":{
+"Text":"COP 2A - OPURF - unreference module\r\nAction: Let the operating system know you no longer require access to a module.\r\nOn entry: X points to the start of the 8 byte block in direct page which was initialised when the module was referenced.\r\nOn exit:  C = 0 means that the module was found and unreferenced.\r\n          C = 1 means that the value in X was invalid.\r\n          DBHA preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4946":{
+"Text":"COP 2C - OPFMA - find module given address within module\r\n\r\nAction: Given an address in BHA, this call will reutm in BHA the address of the name of the module tat exists at that address. If no module exists at that address then the call returns with the carry bit set.\r\n\r\nOn entry: BHA points to somewhere within a module.\r\nOn exit:  If C = 0 then BHA points to the module name.\r\n          If C = 1 then the module was not found.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4910":{
+"Text":"COP 2D - OPWRM - write module name\r\n\r\nAction: Given an address in BHA. this call will send the name of the module which exists at that addressto the VDU drivers. If no module exists at that address then the call returns with the carry bit set.\r\n\r\nOn entry: BHA points to somewhere within a module.\r\nOn exit:  If C = 0 then the name of the module has been sent to the VDU drivers.\r\n          If C = 1 then the module was not found.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14227":{
+"Text":"Converts the char in A into an upper case module name char.\r\n\r\nOn Entry: A contains a character\r\n\r\nOn Exit:  If C = 0 A contains the original character, B contains the character \r\n          converted to uppercase\r\n          If C = 1 A contains the original character, B contains the original\r\n          character which was not in the range A..Z or a..z",
+"BoxMode":true,
+"MaxWidth":64,
+"BackgroundColor":0},
+
+"4846":{
+"Text":"COP 2E - OPFPO - find pool owner\r\n\r\nAction This call attempts to find the module which owns the memory pool pointed to by BHA.\r\n\r\nOn Entry: BHA points to the pool address.\r\n          Y = 0\r\nOn Exit:  If C = 0 then the pool owner has been found, and BHA ptnnts to an\r\n          address within the owner module.\r\n          If C = 1 then the owner was not found.\r\n          No registers preserved\r\n\r\nTODO DOCO: Further to documented API if Y non-zero on entry then BHA is ignored instead Y is used as a pool handle",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"20007":{
+"Text":"Action: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n          BHA points to the start address of the interrupt routine.\r\n          X contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n          Y contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n          D is set to the direct page required whilst in the interrupt \r\n          routine.\r\n          P flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"20292":{
+"Text":"COP 30 - OPRIQ - release interrupt\r\n\r\nAction: This call removes the specified interrupt service from the list\r\n\r\nOn entry: Y = handle returned by OPIIQ.\r\nOn exit:  C = 0 means that the call released the interrupt intercept.\r\n          C = 1 means that the call failed to release the interrupt intercept\r\n          No registers preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"20231":{
+"Text":"COP 30 - OPMIQ - Modify interrupt intercept\r\n\r\nAction: This call allows the modification of the address of the AND mask (by default set to a location coniaining \u0026FF), and the value of the AND mask contained in X. (X should be set to zero by OPIIQ before using OPMIQ. OPMIQ is then used to specify the required mask.)\r\n\r\nOn entry: Y = handle returned by OPIIQ.\r\n          BHA = 0 means do not modify the address of the AND mask.\r\n          BHA \u003c\u003e 0 means BHA is the new address of the AND mask.\r\n          X = 0 means do not modify the AND mask.\r\n          X \u003c\u003e 0 means X is the new AND mask.\r\nOn exit:  C = 0 means that the inieirupt intercept was modified.\r\n          C = 1 means that the interrupt intercept was not modified.\r\n          No registers preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3562":{
+"Text":"COP 33 - OPSLM - scan list of modules\r\nAction: This call returns with BHA pointing to a location containing the name of the next module in the list X and Y return hints used by the operating system to find this module quickly.\r\n\r\nOn entry: BHA either points to the name of the previous module, or to a free \r\n          area of memory containing a number of spaces terminated by zero (\u002600). \r\n          In the latter case, BHA is preserved, and the name of the first \r\n          module in the list is written to the location pointed to by BHA. \r\n          The first name in the list is either truncated or padded with \r\n          spaces to fit the number of spaces allocated on entry.\r\n          X = hint (retunted by previous OPSLM), or 0.\r\n          Y = hint (returned by previous OPSLM), or 0.\r\n\r\nOn exit:  BHA points to the name of the next module.\r\n          X = hint (number used by the operating system).\r\n          Y = hint (number used by the opeiatmg system).\r\n          No registers preserved\r\n\r\nTo call:\r\nExample:\r\nCOP\r\nEQUB@OPSLU% from BASIC",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3494":{
+"Text":"COP 34 - OPRMI - read module Info\r\nAction: Read information about the module whose name is pointed to by BHA. The entry address can be read, or the flag and code type bytes.\r\n\r\nOn entry: BHA points to module name\r\n          X = hint (returned by OPSLM) or 0.\r\n          Y = 0 to read entry address (address of BRL).\r\n          Y = 2 to read the code type bytes.\r\n          Y = 4 to read module version.\r\n          Note: this COP must be called in 16-bit XY mode to read the \r\n          module-type flags.\r\nOn exit:  C = 0 means that the module was found and module information read.\r\n          C = 1 means that the module was not found.\r\n          If C = 0 and Y = 0 then BHA contains the entry address of the \r\n          module, this being the address of the BRL, the first byte of \r\n          the module header.\r\n          If C = 0 and Y = 2 then HA contains code type bytes 0 and 1, X\r\n          contains code type bytes 2 and 3.\r\n          If C = 0 and Y = 4 then HA = version.\r\n          D preserved\r\n\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3440":{
+"Text":"Action: Adds a module to the list of modules held by the MOS.\r\n\r\nOn entry: Y holds the handle of the memory pool in which the module has been\r\n          loaded.\r\nOn exit:  C = 0 means that the module was added to the list.\r\n          C = 1 means that the module was not added to the list.\r\n          No registers preserved\r\n\r\nTODO: DOCO: Further to above when C = 1, X = 1 BHA contains a reason string",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3425":{
+"Text":"COP 36 - OPNLU - name lookup\r\n\r\nAction: This call checks a list of names to see if a qiecific name is present. If it is then the offset of the name from the start of the list is given in Y.\r\n\r\nOn entry: The 4 byte address at D,0 points to the start of the name list.\r\n          The 4 byte address at D,4 points to the name to be located.\r\n          If Y = 0 then the slash \"/\" character is used as a delimiter.\r\n          If Y \u003c\u003e 0 then the character whose ASCII code is in Y is used as \r\n          a delimiter.\r\nOn exit:  If C = 0 then the name is in the list at offset Y from the start \r\n          If C = 1 then the name is not in the list\r\n          No registers preserved\r\n\r\nTODO: Documentation correction the actual input addresses are D,X and D,X+4",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"17645":{
+"Text":"Action: This call checks a list of names to see if a qiecific name is present. If it is then the offset of the name from the start of the list is given in Y.\r\n\r\nOn entry: The 4 byte address at D,0 points to the start of the name list.\r\n          The 4 byte address at D,4 points to the name to be located.\r\n          If Y = 0 then the slash \"/\" character is used as a delimiter.\r\n          If Y \u003c\u003e 0 then the character whose ASCII code is in Y is used as \r\n          a delimiter.\r\nOn exit:  If C = 0 then the name is in the list at offset Y from the start \r\n          If C = 1 then the name is not in the list\r\n          No registers preserved\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3363":{
+"Text":"COP 38 - OPAH - allocate 16 bit handle\r\nAction: This call allocates a 16 bit handle lo the device whose name is pointed to by BHA. The handle is returned in Y.\r\n\r\nOn entry: BHA points to the device name. Device drivers are called with a \r\n          colon appended to the module name to distinguish them from files. \r\n          For example, to allocate a handle for the driver module MODEM, \r\n          BHA must point to \"MODEM:\"\r\n          Y = 0.\r\n\r\nOn exit: If C = 0 then handle was allocated and Y s handle.\r\n         If C = 1 then the call failed lo allocate a handle.\r\n         No registers preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3395":{
+"Text":"COP 39 - OPFH - free handle\r\n\r\nAction: This call frees the handle allocated by OPAH.\r\n\r\nOn entry: Y = handle.\r\nOn exit:  If C = 0 then the handle is freed. \r\n          If C = 1 then the call failed to free the handle.\r\n          No registers preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3404":{
+"Text":"COP 3A - OPCUH - call device driver using handle\r\n\r\nAction: Calls the device driver whose handle was allocated by OPAH.\r\n\r\nOn entry: Y = handle.\r\n          Other registers and/br data as required by device driver.\r\nOn exit:  HAXYB registers as returned from device driver.\r\n          If C = 0 then the codes returned from driver are valid.\r\n          If C = 1 then either the handle was invalid, or the codes returned \r\n          by the driver are invalid.\r\n          D preserved\r\n\r\nQRY - caller\u0027s X is used but not documented?",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6837":{
+"Text":"COP 3C - OPDTD - QRY",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4779":{
+"Text":"COP 3D - OPGSR - ???\r\n\r\nDoes an RTL",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4780":{
+"Text":"COP 3E - OPADY - add Y to BHA\r\nAction: BHA becomes BHA+Y. Y is zeroed.\r\n\r\nOn entry: No requirements\r\nOn exit:  BHA := BHA + Y\r\n          Y = 0\r\n          DBX preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4706":{
+"Text":"COP 3F - OPATR - ???",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4762":{
+"Text":"COP 40 - OPFTR - ??? free something see OPATR",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4615":{
+"Text":"COP 41 - OPECO call low - level Econet routines\r\nAction: This call performs data transfer to and from the Econet filing system. It performs several tasks depending upon the reason code in X.\r\nOn entry: X = reason code.\r\n          Other registers contain or point to arguments.\r\nOn exit:  C = 0 means that the call was successful. \r\n          If C = 1 and X \u003c\u003e 0 then the call failed and the error code is in X.\r\n          If C = 1 and X = 0 then the Econet module is not present\r\n          D preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4575":{
+"Text":"COP 42 - OPRHL - ???\r\n\r\nQRY - something Econet-ey",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4554":{
+"Text":"COP 43 - OPXKC - examine keyboard character\r\nAction: If keyboard buffer is not empty then A becomes the first character in the buffer. Note that the character is not removed from the keyboard buffer so repetition of this call will yield the same result. Consequently a call to OPXKC cannot cause a pre-empt tooccur.\r\n\r\nOn entry: No requirements\r\nOn exit:  If C = 0 then A = first character in keyboard buffer.\r\n          If C = I then keyboard buffer is empty.\r\n          DX preserved\r\n\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3240":{
+"Text":"COP 44 - OPOPN - open device driver\r\nAction: This call opens a device driver.\r\nOn entry: BHA points to the name (with colon). terminated by CR(\u00260D).\r\n          Y = \u002640 for input\r\n          Y = \u002680 Toroutput\r\n          Y = \u0026C0 for update\r\nOn exit:  C = 0 means that the device driver is open and Y = handle.\r\n          If C= I then the device failed to open, the error code is in X \r\n          and BHA points to a zeroterminated error message.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3262":{
+"Text":"COP 45 - OPCLS - close device driver\r\nAction: This call closes a device driver which has been opened using OPOPN.\r\n\r\nOn entry: Y = handle allocated by OPOPN.\r\nOn exit:  If C = 0 then driver is closed.\r\n          If C = 1 then the driver close failed, X = error code and BHA \r\n          points to a zero-terminated error message.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3269":{
+"Text":"COP 46 - OPEND - test for end of file\r\nAction: This call will test an open file to see if the end of file has been reached.\r\n\r\nOn entry: Y contains the file handle returned by OPOPN.\r\nOn exit:  If C = 0 then\r\n            If lsb A = 0 the end of file has not been reached,\r\n            If lsb A = 1 then the end of file has been reached.\r\n          Note: only the least significant bit of A (or HA) need be tested.\r\n          If C = 1 then the call failed.\r\n          X = error code (X = 0 means \"Not implemented on this driver\").\r\n          BHA points to a zero-terminated error message\r\n          DAXY preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2783":{
+"Text":"COP 47 - OPMM - call the memory management routine\r\n\r\nAction: This calls the memory management routine. The reason code is passed in X, and the pool handle is passed in Y. All handles arc 16-bit. so calls to OPMM must be made in 16-bit XY mode.\r\n\r\nOn entry: X = reason code.\r\n          Y = pool handle.\r\nOn exit:  If C = 0 then the call succeeded.\r\n          If C = I then the call failed. X = error code. BHA points to \r\n          zero-terminated error message.\r\n          D preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2429":{
+"Text":"COP 48 - OPVER - return version number\r\n\r\nAction: Puts the operating system version in A\r\n\r\nOn Entry: No requirements\r\nOn Exit:  A = version number\r\n          DBXY preserved\r\n\r\nreturns 1 in A",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5434":{
+"Text":"COP 49 - OPFSC - free screen\r\n\r\nAction: Frees a saved screen which is no longer required.\r\n\r\nOn entry: Y = screen pool handle allocated by OPSSC.\r\nOn exit:  If C = O then the screen is freed and the pool handle freed. \r\n          If C = 1 then the call failed.\r\n          D preserved\r",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -5547,11 +5929,11 @@
 "LabelAnno":"None"},
 
 "3889":{
-"Label":"TFEBD31",
+"Label":"COP_27",
 "Value":16694577,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3703":{
 "Label":"COP_28",
@@ -5561,18 +5943,18 @@
 "LabelAnno":"None"},
 
 "3849":{
-"Label":"TFEBD09",
+"Label":"COP_29",
 "Value":16694537,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3787":{
-"Label":"TFEBCCB",
+"Label":"COP_2A",
 "Value":16694475,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2548":{
 "Label":"COP_2B",
@@ -5582,46 +5964,46 @@
 "LabelAnno":"None"},
 
 "4946":{
-"Label":"TFEC152",
+"Label":"COP_2C",
 "Value":16695634,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4910":{
-"Label":"TFEC12E",
+"Label":"COP_2D",
 "Value":16695598,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4846":{
-"Label":"TFEC0EE",
+"Label":"COP_2E",
 "Value":16695534,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "20007":{
-"Label":"TFEFC27",
+"Label":"COP_2F",
 "Value":16710695,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "20292":{
-"Label":"TFEFD44",
+"Label":"COP_30",
 "Value":16710980,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "20231":{
-"Label":"TFEFD07",
+"Label":"COP_31",
 "Value":16710919,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4796":{
 "Label":"COP_32",
@@ -5631,151 +6013,151 @@
 "LabelAnno":"None"},
 
 "3562":{
-"Label":"TFEBBEA",
+"Label":"COP_33",
 "Value":16694250,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3494":{
-"Label":"TFEBBA6",
+"Label":"COP_34",
 "Value":16694182,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3440":{
-"Label":"TFEBB70",
+"Label":"COP_35",
 "Value":16694128,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3425":{
-"Label":"TFEBB61",
+"Label":"COP_36",
 "Value":16694113,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3363":{
-"Label":"TFEBB23",
+"Label":"COP_38",
 "Value":16694051,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3395":{
-"Label":"TFEBB43",
+"Label":"COP_39",
 "Value":16694083,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3404":{
-"Label":"TFEBB4C",
+"Label":"COP_3A",
 "Value":16694092,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6837":{
-"Label":"TFEC8B5",
+"Label":"COP_3C",
 "Value":16697525,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4779":{
-"Label":"TFEC0AB",
+"Label":"COP_3D",
 "Value":16695467,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4780":{
-"Label":"TFEC0AC",
+"Label":"COP_3E",
 "Value":16695468,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4706":{
-"Label":"TFEC062",
+"Label":"COP_3F",
 "Value":16695394,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4762":{
-"Label":"TFEC09A",
+"Label":"COP_40",
 "Value":16695450,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4615":{
-"Label":"TFEC007",
+"Label":"COP_41",
 "Value":16695303,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4575":{
-"Label":"TFEBFDF",
+"Label":"COP_42",
 "Value":16695263,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4554":{
-"Label":"TFEBFCA",
+"Label":"COP_43",
 "Value":16695242,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3240":{
-"Label":"TFEBAA8",
+"Label":"COP_44",
 "Value":16693928,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3262":{
-"Label":"TFEBABE",
+"Label":"COP_45",
 "Value":16693950,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3269":{
-"Label":"TFEBAC5",
+"Label":"COP_46",
 "Value":16693957,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2783":{
-"Label":"TFEB8DF",
+"Label":"COP_47",
 "Value":16693471,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2429":{
-"Label":"copRetAeq1",
+"Label":"COP_48",
 "Value":16693117,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "5434":{
-"Label":"TFEC33A",
+"Label":"COP_49",
 "Value":16696122,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4663":{
 "Label":"TFEC037",
@@ -6919,7 +7301,7 @@
 "LabelAnno":"None"},
 
 "18388":{
-"Label":"CheckEOF_QRY",
+"Label":"CheckEOF",
 "Value":16709076,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -7136,7 +7518,7 @@
 "LabelAnno":"None"},
 
 "17347":{
-"Label":"getModuleInfo",
+"Label":"getModCallBlock",
 "Value":16708035,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -7651,6 +8033,279 @@
 "Value":16695509,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3936":{
+"Label":"ret",
+"Value":16694624,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3888":{
+"Label":"ret",
+"Value":16694576,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20580":{
+"Label":"LFEFE63_anRTL",
+"Value":16711268,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"16462":{
+"Label":"brlGetModCallRef",
+"Value":16707150,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17138":{
+"Label":"getModCallRef",
+"Value":16707826,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17196":{
+"Label":"retsec",
+"Value":16707884,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17185":{
+"Label":"ok",
+"Value":16707873,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17373":{
+"Label":"getOrCreateModCallBlock",
+"Value":16708061,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17438":{
+"Label":"templateModCallBlock",
+"Value":16708126,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"3814":{
+"Label":"skq",
+"Value":16694502,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3845":{
+"Label":"retCLC",
+"Value":16694533,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3847":{
+"Label":"retSEC",
+"Value":16694535,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4964":{
+"Label":"ret",
+"Value":16695652,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17451":{
+"Label":"brlFindModuleByAddress",
+"Value":16708139,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18050":{
+"Label":"findModuleByAddress",
+"Value":16708738,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4945":{
+"Label":"ret",
+"Value":16695633,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4942":{
+"Label":"done",
+"Value":16695630,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"14244":{
+"Label":"ok",
+"Value":16704932,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"14241":{
+"Label":"notname",
+"Value":16704929,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"14251":{
+"Label":"retsec",
+"Value":16704939,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"14227":{
+"Label":"modNameToUpper",
+"Value":16704915,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4921":{
+"Label":"lp",
+"Value":16695609,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4908":{
+"Label":"retpld",
+"Value":16695596,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4907":{
+"Label":"retpldpld",
+"Value":16695595,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20021":{
+"Label":"YnZ",
+"Value":16710709,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20214":{
+"Label":"retSec",
+"Value":16710902,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20217":{
+"Label":"retY",
+"Value":16710905,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6819":{
+"Label":"cop26BadHandleX1",
+"Value":16697507,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6804":{
+"Label":"cop26BadModuleX1",
+"Value":16697492,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6791":{
+"Label":"cop26BadNameX1",
+"Value":16697479,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6832":{
+"Label":"retX1",
+"Value":16697520,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"3249":{
+"Label":"retCopXBHA",
+"Value":16693937,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17645":{
+"Label":"doNameSearch",
+"Value":16708333,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"3391":{
+"Label":"retsec",
+"Value":16694079,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6633":{
+"Label":"callDevHandle",
+"Value":16697321,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4759":{
+"Label":"retSecX0",
+"Value":16695447,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4656":{
+"Label":"noeconet",
+"Value":16695344,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20563":{
+"Label":"_callModEconet",
+"Value":16711251,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18848":{
+"Label":"closeDevice",
+"Value":16709536,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -9107,7 +9762,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBD31",
+"Label":"COP_27",
 "Part":"Low"}},
 
 "2285":{
@@ -9123,7 +9778,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBD09",
+"Label":"COP_29",
 "Part":"Low"}},
 
 "2289":{
@@ -9131,7 +9786,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBCCB",
+"Label":"COP_2A",
 "Part":"Low"}},
 
 "2291":{
@@ -9147,7 +9802,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC152",
+"Label":"COP_2C",
 "Part":"Low"}},
 
 "2295":{
@@ -9155,7 +9810,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC12E",
+"Label":"COP_2D",
 "Part":"Low"}},
 
 "2297":{
@@ -9163,7 +9818,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC0EE",
+"Label":"COP_2E",
 "Part":"Low"}},
 
 "2299":{
@@ -9171,7 +9826,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEFC27",
+"Label":"COP_2F",
 "Part":"Low"}},
 
 "2301":{
@@ -9179,7 +9834,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEFD44",
+"Label":"COP_30",
 "Part":"Low"}},
 
 "2303":{
@@ -9187,7 +9842,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEFD07",
+"Label":"COP_31",
 "Part":"Low"}},
 
 "2305":{
@@ -9203,7 +9858,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBBEA",
+"Label":"COP_33",
 "Part":"Low"}},
 
 "2309":{
@@ -9211,7 +9866,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBBA6",
+"Label":"COP_34",
 "Part":"Low"}},
 
 "2311":{
@@ -9219,7 +9874,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBB70",
+"Label":"COP_35",
 "Part":"Low"}},
 
 "2313":{
@@ -9227,7 +9882,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBB61",
+"Label":"COP_36",
 "Part":"Low"}},
 
 "2315":{
@@ -9243,7 +9898,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBB23",
+"Label":"COP_38",
 "Part":"Low"}},
 
 "2319":{
@@ -9251,7 +9906,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBB43",
+"Label":"COP_39",
 "Part":"Low"}},
 
 "2321":{
@@ -9259,7 +9914,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBB4C",
+"Label":"COP_3A",
 "Part":"Low"}},
 
 "2323":{
@@ -9275,7 +9930,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC8B5",
+"Label":"COP_3C",
 "Part":"Low"}},
 
 "2327":{
@@ -9283,7 +9938,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC0AB",
+"Label":"COP_3D",
 "Part":"Low"}},
 
 "2329":{
@@ -9291,7 +9946,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC0AC",
+"Label":"COP_3E",
 "Part":"Low"}},
 
 "2331":{
@@ -9299,7 +9954,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC062",
+"Label":"COP_3F",
 "Part":"Low"}},
 
 "2333":{
@@ -9307,7 +9962,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC09A",
+"Label":"COP_40",
 "Part":"Low"}},
 
 "2335":{
@@ -9315,7 +9970,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC007",
+"Label":"COP_41",
 "Part":"Low"}},
 
 "2337":{
@@ -9323,7 +9978,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBFDF",
+"Label":"COP_42",
 "Part":"Low"}},
 
 "2339":{
@@ -9331,7 +9986,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBFCA",
+"Label":"COP_43",
 "Part":"Low"}},
 
 "2341":{
@@ -9339,7 +9994,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBAA8",
+"Label":"COP_44",
 "Part":"Low"}},
 
 "2343":{
@@ -9347,7 +10002,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBABE",
+"Label":"COP_45",
 "Part":"Low"}},
 
 "2345":{
@@ -9355,7 +10010,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBAC5",
+"Label":"COP_46",
 "Part":"Low"}},
 
 "2347":{
@@ -9363,7 +10018,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB8DF",
+"Label":"COP_47",
 "Part":"Low"}},
 
 "2349":{
@@ -9371,7 +10026,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"copRetAeq1",
+"Label":"COP_48",
 "Part":"Low"}},
 
 "2351":{
@@ -9379,7 +10034,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC33A",
+"Label":"COP_49",
 "Part":"Low"}},
 
 "2353":{
@@ -9738,6 +10393,110 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"3384":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3793":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3803":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3815":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3827":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3831":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3839":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3843":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3855":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3867":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3871":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEFE63_anRTL",
+"Part":"Low"}},
+
+"3874":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3882":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3910":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3914":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3918":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3932":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "3937":{
 "Length":2,
 "Format":"NumericLE",
@@ -9912,6 +10671,132 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"4563":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_41_input_stream",
+"Part":"Low"}},
+
+"4575":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HW_TYPE_DETECT_QRY",
+"Part":"Low"}},
+
+"4581":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HW_ECONET",
+"Part":"Low"}},
+
+"4621":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
+
+"4625":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_DPECO",
+"Part":"Low"}},
+
+"4627":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"4629":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"4631":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"4706":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"4731":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4739":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4746":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4753":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4851":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFND",
+"Part":"Low"}},
+
+"4865":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4870":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
+"4877":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
 "4910":{
 "Length":2,
 "Format":"NumericLE",
@@ -9919,6 +10804,18 @@
 "SymbolRef":{
 "Label":"COP_2C_OPFMA",
 "Part":"Low"}},
+
+"4921":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4928":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
 
 "4937":{
 "Length":2,
@@ -11167,6 +12064,18 @@
 "SymbolRef":{
 "Label":"SYSFNK",
 "Part":"Low"}},
+
+"14233":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"14237":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
 
 "14254":{
 "Length":2,
@@ -12532,6 +13441,18 @@
 "Label":"DPSYS_D1_EXEC_handle",
 "Part":"Low"}},
 
+"17157":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17166":{
+"Length":19,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
 "17211":{
 "Length":3,
 "Format":"NumericLE",
@@ -12555,6 +13476,56 @@
 "SymbolRef":null},
 
 "17353":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17393":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17399":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17412":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"templateModCallBlock",
+"Part":"Low"}},
+
+"17415":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17419":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17421":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17427":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"17431":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Hex",
@@ -12606,7 +13577,39 @@
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Ascii",
-"SymbolRef":null}},
+"SymbolRef":null},
+
+"20563":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"20565":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"20567":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"20569":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_DPECO",
+"Part":"Low"}}},
 
 "LvTables":{
 },
