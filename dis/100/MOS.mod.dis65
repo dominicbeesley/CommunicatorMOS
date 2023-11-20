@@ -21,6 +21,40 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"__MMALA":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Allocate large asending area",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMALA",
+"Value":12,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__MMASA":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Allocate small ascending",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMASA",
+"Value":10,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__MMAZB":{
 "DataDescriptor":{
 "Length":1,
@@ -102,6 +136,108 @@
 "MultiMask":null,
 "Label":"__MMTOP",
 "Value":18,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__VDU_40":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"VDU module call 40 - QRY get screen size in HA",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__VDU_40",
+"Value":64,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"__VDU_42":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Vdu module command 42",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__VDU_42",
+"Value":66,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__VDU_44":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Copy screen contents to BHA",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__VDU_44",
+"Value":68,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__VDU_46":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Restore variables",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__VDU_46",
+"Value":70,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__VDU_48":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"restore the screen contents",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__VDU_48",
+"Value":72,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__VDU_4A":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"VDU module call 4A",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__VDU_4A",
+"Value":74,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -2906,6 +3042,21 @@
 "Hint":"Code"},
 
 {
+"Low":5472,
+"High":5497,
+"Hint":"InlineData"},
+
+{
+"Low":5498,
+"High":5498,
+"Hint":"Code"},
+
+{
+"Low":5532,
+"High":5532,
+"Hint":"Code"},
+
+{
 "Low":5579,
 "High":5579,
 "Hint":"Code"},
@@ -3592,6 +3743,8 @@
 "2838":48,
 "2880":304,
 "2917":48,
+"2965":48,
+"2977":48,
 "2994":48,
 "3196":48,
 "3224":48,
@@ -3605,7 +3758,19 @@
 "4148":48,
 "4190":48,
 "4233":48,
+"4257":48,
+"4796":48,
 "4910":48,
+"4965":48,
+"5044":48,
+"5240":304,
+"5320":48,
+"5359":48,
+"5388":48,
+"5418":48,
+"5498":48,
+"5513":48,
+"5579":48,
 "6019":48,
 "6133":65584,
 "6251":48,
@@ -3760,11 +3925,22 @@
 "2243":"OPAST 13 - Allocate Stack",
 "2245":"OPFST 14 - Free Stack",
 "2247":"OPASC 15 - Write ASCII convert \u003cCR\u003e to \u003cCR\u003e\u003cLF\u003e",
+"2249":"OPAEV 16 - Acknowledge Event",
 "2251":"OPBYX 17 - Convert BYXD to BHA",
+"2253":"OPRLH 18 - Read hex number",
+"2255":"OPRLS 19 - read literal string QRY not documented",
 "2257":"OPFZB 1A - free bank 0 memory",
 "2259":"OPARM 1B - call Arithmetic module",
+"2261":"OPSCX 1C - Save Context ",
+"2263":"OPRCX 1D - Restore Context",
+"2265":"OPSSC 1E - Save the screen",
+"2267":"OPRSC 1F - Restore the screen",
+"2269":"OPSEV 20 - QRY set even",
 "2271":"OPPRE 21 - Allow preemption",
 "2273":"OPRLN 22 - Read a line to buffer",
+"2275":"OPCVS 23 - Convert stack index",
+"2277":"OPCVD 24 - convert direct page index",
+"2279":"OPCRC 25 - superceded use OPSUM",
 "2285":"OPCMD 28 - call a module",
 "2291":"OPDIS 2B - ?",
 "2293":"2C",
@@ -3773,7 +3949,7 @@
 "2299":"2F",
 "2301":"30",
 "2303":"31",
-"2305":"32",
+"2305":"OPSUM 32 - compute end around carry checksum",
 "2307":"33",
 "2309":"34",
 "2311":"35",
@@ -3871,6 +4047,25 @@
 "4176":"Store \"DEAD\" above stack - checked in OPFST (free)",
 "4218":"check for \"DEAD\" at the top of stack and panic if not there",
 "4223":"Free it",
+"4796":"byte count into X",
+"4799":"sum",
+"4802":"zero offset",
+"4805":"if zero here then 1 byte left",
+"4814":"add to low part of stacked A",
+"4818":"pop A",
+"4819":"and return",
+"4828":"add last carry in",
+"4834":"this looks to additionally check against any checksum after the block",
+"4838":"return Z for match QRY - check this",
+"4988":"zero the result",
+"5065":"TODO: beautiful - I think this can go?",
+"5248":"skip forward looking for quotes",
+"5271":"check for \"\"",
+"5281":"store char",
+"5324":"Get VDU variables size QRY - VDU mod seems to return 000080",
+"5421":"check the pool handle and get the base",
+"5431":"copy screen back",
+"5439":"free the pool",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -4587,6 +4782,84 @@
 "Text":"COP 03 - OSNLI - BBC OSNEWL\r\n\r\nAction: Send LF CR to the VDU drivers. Line feed is ASCII 10 (decimal), carriage return is ASCII 13 (decimal).\r\n\r\nOn entry: No requirement\r\nOn exit:  DBAXY preserved\r\n",
 "BoxMode":true,
 "MaxWidth":80,
+"BackgroundColor":0},
+
+"4233":{
+"Text":"COP 16 - OPAEV - Acknowledge Event\r\n\r\nAction: This call acknowledges the occurrence of an event\r\n\r\nOn entry: HA contains the event mask which specifies the events to be\r\n          acknowledged. Possible event masks arc __EVESC to acknowledge the\r\n          ESCAPE event and __EVPRE to acknowledge the pre-emptevent\r\nOn exit:  If C = 0 then the specified event is acknowledged.\r\n          If C = 1 then an attempt was made to clear an event which had not\r\n          previously been set\r\n          DBAXY preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4965":{
+"Text":"COP 18 - OPRLH - Read hex number\r\n\r\nAction: BHA points to a line of hex in meniory. This call translates a\r\ncertain number of hex digits into nibbles stored starting at the location pointed to by DX. The number of nibbles required is in Y.\r\n\r\nOn entry: BHA points to line of hexcharacters.\r\n          DX points to location at which number is to be stored in direct \r\n          page.\r\n          Y contains the number of nibbles required.\r\nOn exit:  BHA points to the rest of the line.\r\n          If C = 0 then DX points to the Y nibbles in direct page.\r\n          If C = 1 then the call failed.\r\n          DXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5240":{
+"Text":"COP 19 - OPRLS - ?\r\n\r\nAppears to read a string surrounded by quotes into a buffer at DPX, length Y",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5320":{
+"Text":"COP 1C - OPSCX - Save context\r\n\r\nAction: Used by the menu program (and others) to save the context of the screen and the operating system variables when switching to a different task. It must be used only after an OPSSC call.\r\n\r\nOn entry: No Requirements.\r\nOn exit:  If C = 0 then the call succeeded and Y contains the context pool\r\n          handle.\r\n          If C = 1 then the call failed.\r\n          D preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5472":{
+"Text":"This appears to be a set of B0 locations that are saved on a context switch\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5359":{
+"Text":"COP 1D - OPRCX - Restore context\r\n\r\nAction: Used by the menu program (and othets) to restore a context previously saved using OPSCX. It must be used only before an OPRSC call.\r\n\r\nOn entry: Y = context pool handle allocated by OPSCX. Must be in 16bit XYmode.\r\nOn exit:  If C = O then the context is restored and the pool freed.\r\n          If C = I then the call failed.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5388":{
+"Text":"COP 1E - OPSSC - save the screen\r\n\r\nAction: Used by the menu program (and others) to save the contents of the screen display.\r\n\r\nOn entry: Must be in 16bit XY mode.\r\nOn exit: If C = 0 then the call succeeded and Y contains the screenpool handle.\r\n         If C = 1 then the call failed.\r\n         D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5418":{
+"Text":"COP 1F - OPRSC - restore the screen\r\n\r\nAction: Used by the menu program (and others) to restore the contents of a screen previously saved using OPSSC.\r\n\r\nOn entry: Y = screen pool handle allocated by OPSSC.\r\nOn exit:  If C = O then the screen is restored and the pool freed.\r\n          If C = 1 then the call failed.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4257":{
+"Text":"COP 20 - OPSEV - Set an event\r\n\r\nQRY\r\n\r\nOn Entry: HA contains even flags mask that are to be set\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2977":{
+"Text":"COP 23 - OPCVS - convert stack index\r\n\r\nAction: This call takes a stack pointer relative address and converts it to an absolute BHA address.\r\n\r\nOn entry: HA contains a 16 bit offset from the stack pointer.\r\nOn exit:  If C = 0 then BHA contains the absolute address (S+HA).\r\n          If C = 1 then the stack offset is invalid.\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2965":{
+"Text":"COP 24 - OPCVD - convert DP index\r\n\r\nAction: This call takes a direct page relative address and converts it to an absolute BHA address.\r\n\r\nOn entry: HA contains a 16 bit offset from the direct page register.\r\nOn exit:  If C = 0 then BHA contains the absolute address (D+HA).\r\n          If C = 1 then the direct page offset is invalid.\r\n          DXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5579":{
+"Text":"COP 25 - OPCRC - superceded use COP_32 OPSUM",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4796":{
+"Text":"COP 32 - OPSUM - compute end-around-carry sum\r\n\r\nAction: Gives a sum of all the bits in a block whose start is pointed to by BHA and whose length in bytes is in Y.\r\n\r\nOn entry: BHA points to thestartof the block to be summed.\r\n          Y = length of block in bytes.\r\nOn exit:  If C = 0 then thesum has been computed and theresult is in HA.\r\n          If C = 1 then either the length was zero (Y = 0) or all the bytes \r\n          in the block were zero (HA = 0).\r\n          DXY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
 "BackgroundColor":0}},
 
 "Notes":{
@@ -5154,11 +5427,11 @@
 "LabelAnno":"None"},
 
 "4233":{
-"Label":"TFEBE89",
+"Label":"COP_16",
 "Value":16694921,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2880":{
 "Label":"COP_17",
@@ -5168,18 +5441,18 @@
 "LabelAnno":"None"},
 
 "4965":{
-"Label":"TFEC165",
+"Label":"COP_18",
 "Value":16695653,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5240":{
-"Label":"TFEC278",
+"Label":"COP_19",
 "Value":16695928,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4107":{
 "Label":"COP_1A",
@@ -5196,39 +5469,39 @@
 "LabelAnno":"None"},
 
 "5320":{
-"Label":"TFEC2C8",
+"Label":"COP_1C",
 "Value":16696008,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5359":{
-"Label":"TFEC2EF",
+"Label":"COP_1D",
 "Value":16696047,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5388":{
-"Label":"TFEC30C",
+"Label":"COP_1E",
 "Value":16696076,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5418":{
-"Label":"TFEC32A",
+"Label":"COP_1F",
 "Value":16696106,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4257":{
-"Label":"TFEBEA1",
+"Label":"COP_20",
 "Value":16694945,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2917":{
 "Label":"COP_21",
@@ -5245,25 +5518,25 @@
 "LabelAnno":"None"},
 
 "2977":{
-"Label":"TFEB9A1",
+"Label":"COP_23",
 "Value":16693665,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2965":{
-"Label":"TFEB995",
+"Label":"COP_24",
 "Value":16693653,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5579":{
-"Label":"TFEC3CB",
+"Label":"COP_25",
 "Value":16696267,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2489":{
 "Label":"COP_26",
@@ -5350,11 +5623,11 @@
 "LabelAnno":"Generated"},
 
 "4796":{
-"Label":"TFEC0BC",
+"Label":"COP_32",
 "Value":16695484,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3562":{
 "Label":"TFEBBEA",
@@ -7083,6 +7356,300 @@
 "Value":16694919,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5027":{
+"Label":"secrts",
+"Value":16695715,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4988":{
+"Label":"zlp",
+"Value":16695676,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5211":{
+"Label":"incDPCOP_BHA",
+"Value":16695899,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5221":{
+"Label":"sk",
+"Value":16695909,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5222":{
+"Label":"decDPCOP_BHA",
+"Value":16695910,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5238":{
+"Label":"ret",
+"Value":16695926,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5067":{
+"Label":"daft",
+"Value":16695755,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5062":{
+"Label":"retclc",
+"Value":16695750,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5044":{
+"Label":"getCharBHAinc",
+"Value":16695732,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5120":{
+"Label":"retsec",
+"Value":16695808,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5069":{
+"Label":"parseHexDigit",
+"Value":16695757,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5104":{
+"Label":"retsec",
+"Value":16695792,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5098":{
+"Label":"sk09",
+"Value":16695786,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5106":{
+"Label":"scanHexBHA",
+"Value":16695794,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5022":{
+"Label":"clcret",
+"Value":16695710,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5043":{
+"Label":"ret",
+"Value":16695731,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5029":{
+"Label":"lp2",
+"Value":16695717,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5303":{
+"Label":"retsec",
+"Value":16695991,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5319":{
+"Label":"ret",
+"Value":16696007,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5305":{
+"Label":"staDPY",
+"Value":16695993,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5261":{
+"Label":"lp",
+"Value":16695949,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5281":{
+"Label":"noq",
+"Value":16695969,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5248":{
+"Label":"scanlp",
+"Value":16695936,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5289":{
+"Label":"decretok",
+"Value":16695977,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5292":{
+"Label":"zetend",
+"Value":16695980,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5562":{
+"Label":"BXXaddHA",
+"Value":16696250,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5577":{
+"Label":"sk",
+"Value":16696265,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5472":{
+"Label":"tblVarsToSaveCtx",
+"Value":16696160,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5498":{
+"Label":"restoreCTX",
+"Value":16696186,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5501":{
+"Label":"saveCTX",
+"Value":16696189,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5513":{
+"Label":"ctxReStLp",
+"Value":16696201,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5532":{
+"Label":"dores",
+"Value":16696220,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5538":{
+"Label":"sk",
+"Value":16696226,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5546":{
+"Label":"done",
+"Value":16696234,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5556":{
+"Label":"skres",
+"Value":16696244,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5387":{
+"Label":"ret",
+"Value":16696075,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"5443":{
+"Label":"ret",
+"Value":16696131,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"2993":{
+"Label":"ret",
+"Value":16693681,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"2976":{
+"Label":"ret",
+"Value":16693664,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4842":{
+"Label":"retzsec",
+"Value":16695530,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4804":{
+"Label":"lp",
+"Value":16695492,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4821":{
+"Label":"nla",
+"Value":16695509,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -8403,7 +8970,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBE89",
+"Label":"COP_16",
 "Part":"Low"}},
 
 "2251":{
@@ -8419,7 +8986,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC165",
+"Label":"COP_18",
 "Part":"Low"}},
 
 "2255":{
@@ -8427,7 +8994,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC278",
+"Label":"COP_19",
 "Part":"Low"}},
 
 "2257":{
@@ -8451,7 +9018,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC2C8",
+"Label":"COP_1C",
 "Part":"Low"}},
 
 "2263":{
@@ -8459,7 +9026,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC2EF",
+"Label":"COP_1D",
 "Part":"Low"}},
 
 "2265":{
@@ -8467,7 +9034,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC30C",
+"Label":"COP_1E",
 "Part":"Low"}},
 
 "2267":{
@@ -8475,7 +9042,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC32A",
+"Label":"COP_1F",
 "Part":"Low"}},
 
 "2269":{
@@ -8483,7 +9050,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBEA1",
+"Label":"COP_20",
 "Part":"Low"}},
 
 "2271":{
@@ -8507,7 +9074,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB9A1",
+"Label":"COP_23",
 "Part":"Low"}},
 
 "2277":{
@@ -8515,7 +9082,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB995",
+"Label":"COP_24",
 "Part":"Low"}},
 
 "2279":{
@@ -8523,7 +9090,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC3CB",
+"Label":"COP_25",
 "Part":"Low"}},
 
 "2281":{
@@ -8627,7 +9194,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC0BC",
+"Label":"COP_32",
 "Part":"Low"}},
 
 "2307":{
@@ -9359,6 +9926,240 @@
 "SymbolRef":{
 "Label":"COP_00_OPWRC",
 "Part":"Low"}},
+
+"5052":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5062":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5069":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5074":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5082":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5087":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5099":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5253":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5266":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5276":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"5320":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__VDU_4A",
+"Part":"Low"}},
+
+"5336":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMALA",
+"Part":"Low"}},
+
+"5350":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__VDU_42",
+"Part":"Low"}},
+
+"5359":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"5371":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__VDU_46",
+"Part":"Low"}},
+
+"5380":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFP",
+"Part":"Low"}},
+
+"5388":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__VDU_40",
+"Part":"Low"}},
+
+"5398":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMASA",
+"Part":"Low"}},
+
+"5409":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__VDU_44",
+"Part":"Low"}},
+
+"5418":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"5427":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__VDU_48",
+"Part":"Low"}},
+
+"5436":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMFP",
+"Part":"Low"}},
+
+"5472":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5474":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5476":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5478":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5480":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5482":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5484":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5486":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5488":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5490":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5492":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5494":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"5496":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "5579":{
 "Length":2,

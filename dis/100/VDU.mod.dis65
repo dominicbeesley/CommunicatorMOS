@@ -541,6 +541,12 @@
 "Text":"Stack\r\n\r\n\r\n+5 D on entry\r\n+4 saved P\r\n+1 saved BHA\r\n",
 "BoxMode":false,
 "MaxWidth":80,
+"BackgroundColor":0},
+
+"6829":{
+"Text":"Seems to copy VDU variables to BHA called by OPSCX in MOS\r\n",
+"BoxMode":true,
+"MaxWidth":80,
 "BackgroundColor":0}},
 
 "Notes":{
@@ -779,11 +785,11 @@
 "LabelAnno":"Generated"},
 
 "6829":{
-"Label":"TFE6FAD",
+"Label":"Serv42",
 "Value":16674733,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6967":{
 "Label":"TFE7037",
@@ -807,11 +813,11 @@
 "LabelAnno":"Generated"},
 
 "7412":{
-"Label":"TFE71F4",
+"Label":"Serv4A",
 "Value":16675316,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3860":{
 "Label":"TFE6414",
@@ -821,11 +827,11 @@
 "LabelAnno":"Generated"},
 
 "5972":{
-"Label":"TFE6C54",
+"Label":"Serv4E",
 "Value":16673876,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "7686":{
 "Label":"TFE7306",
@@ -1679,7 +1685,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFE6FAD",
+"Label":"Serv42",
 "Part":"Low"}},
 
 "7755":{
@@ -1711,7 +1717,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFE71F4",
+"Label":"Serv4A",
 "Part":"Low"}},
 
 "7763":{
@@ -1727,7 +1733,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFE6C54",
+"Label":"Serv4E",
 "Part":"Low"}},
 
 "7767":{
