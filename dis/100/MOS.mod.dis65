@@ -395,6 +395,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_02_OPWRA":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"OPWRA - write string at BHA",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_02_OPWRA",
+"Value":2,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "COP_03_OPNLI":{
 "DataDescriptor":{
 "Length":1,
@@ -752,6 +769,40 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_57_OPRLL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"read logical length (extent)",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_57_OPRLL",
+"Value":87,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_61_OPERC":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_61_OPERC",
+"Value":97,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "DP_ACBF_VDUMODREF":{
 "DataDescriptor":{
 "Length":8,
@@ -1054,6 +1105,23 @@
 "MultiMask":null,
 "Label":"DPSYS_MOD_ECO",
 "Value":44191,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_MOD_NET":{
+"DataDescriptor":{
+"Length":6,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Module block for high level network module QRY - find out name",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_MOD_NET",
+"Value":44207,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2902,6 +2970,16 @@
 "Hint":"Code"},
 
 {
+"Low":3328,
+"High":3340,
+"Hint":"InlineData"},
+
+{
+"Low":3345,
+"High":3355,
+"Hint":"InlineData"},
+
+{
 "Low":3363,
 "High":3363,
 "Hint":"Code"},
@@ -3024,6 +3102,16 @@
 {
 "Low":4347,
 "High":4365,
+"Hint":"InlineData"},
+
+{
+"Low":4370,
+"High":4389,
+"Hint":"InlineData"},
+
+{
+"Low":4394,
+"High":4416,
 "Hint":"InlineData"},
 
 {
@@ -3184,6 +3272,21 @@
 {
 "Low":6159,
 "High":6159,
+"Hint":"Code"},
+
+{
+"Low":6193,
+"High":6193,
+"Hint":"Code"},
+
+{
+"Low":6229,
+"High":6229,
+"Hint":"Code"},
+
+{
+"Low":6236,
+"High":6236,
 "Hint":"Code"},
 
 {
@@ -3870,6 +3973,7 @@
 "2573":48,
 "2589":48,
 "2671":48,
+"2687":48,
 "2691":304,
 "2718":48,
 "2740":48,
@@ -3887,6 +3991,7 @@
 "3240":48,
 "3262":48,
 "3269":48,
+"3278":48,
 "3363":48,
 "3395":48,
 "3404":48,
@@ -3905,9 +4010,12 @@
 "4190":48,
 "4233":48,
 "4257":48,
+"4302":48,
+"4428":48,
 "4554":48,
 "4575":48,
 "4615":48,
+"4663":48,
 "4706":48,
 "4762":48,
 "4779":48,
@@ -3923,11 +4031,18 @@
 "5359":48,
 "5388":48,
 "5418":48,
+"5444":48,
 "5498":48,
 "5513":48,
 "5579":48,
+"5637":48,
+"5815":48,
+"5825":48,
 "6019":48,
 "6133":65584,
+"6159":48,
+"6193":48,
+"6229":48,
 "6251":48,
 "6256":48,
 "6261":48,
@@ -3938,6 +4053,7 @@
 "6286":48,
 "6291":48,
 "6296":48,
+"6354":48,
 "6438":48,
 "6465":48,
 "6696":48,
@@ -4136,30 +4252,30 @@
 "2347":"OPMM 47 - call memory management module",
 "2349":"OPVER 48 - return OS version number",
 "2351":"OPFSC 49 - free screen",
-"2353":"4A",
-"2355":"4B",
-"2357":"4C",
-"2359":"4D",
-"2361":"4E",
-"2363":"4F",
-"2365":"50",
-"2367":"51",
-"2369":"52",
-"2371":"53",
-"2373":"54",
-"2375":"55",
-"2377":"56",
-"2379":"57",
-"2381":"58",
-"2383":"59",
-"2385":"5A",
-"2387":"5B",
-"2389":"5C",
-"2391":"5D",
-"2393":"5E",
+"2353":"OPNET 4A - high level Econet routines",
+"2355":"OPVH 4B - validate handle",
+"2357":"OPBGB 4C - get a block of bytes from a file",
+"2359":"OPBPB 4D - put a block of bytes to a file",
+"2361":"OPLOD 4E - load file",
+"2363":"OPSAV 4F - save a file",
+"2365":"OPRLE 50 - read file load/exec/length",
+"2367":"OPWLE 51 - write file load/exec",
+"2369":"OPRAT 52 - read attributes",
+"2371":"OPWAT 53 - write file attributes",
+"2373":"OPRSP 54 - read sequential pointer",
+"2375":"OPWSP 55 - write sequential pointer",
+"2377":"OPRPL 56 - read physical length",
+"2379":"OPRLL 57 - read logical length",
+"2381":"OPWLL 58 - write logical length",
+"2383":"OPRCH 59 - read catalogue header information",
+"2385":"OPRFN 5A - read object file names from directory",
+"2387":"OPDEL 5B - delete a named object",
+"2389":"OPREN 5C - rename object",
+"2391":"OPSTAR 5D - execute star command and print error",
+"2393":"OPFCX 5E - free vdu context including fonts",
 "2395":"OPOSX 5F - call OSWORD with pointer in X QRY",
-"2397":"60",
-"2399":"61",
+"2397":"OPDFR 60 - ???",
+"2399":"OPERC 61 - ???? error something ???",
 "2432":"this is the saved A register",
 "2589":"get passed X and check is \u003c 2 and use to determine type of terminator",
 "2642":"use BHA at 05 as pointer",
@@ -4409,6 +4525,7 @@
 "17425":"get 16 bit low address of module",
 "17427":"store at offset 2",
 "17433":"store DPX at 0 - QRY why?",
+"19299":"TODO - bcc before all the pushing and popping!",
 "20580":"This is where module calls return to by default"},
 
 "LongComments":{
@@ -5266,6 +5383,144 @@
 
 "5434":{
 "Text":"COP 49 - OPFSC - free screen\r\n\r\nAction: Frees a saved screen which is no longer required.\r\n\r\nOn entry: Y = screen pool handle allocated by OPSSC.\r\nOn exit:  If C = O then the screen is freed and the pool handle freed. \r\n          If C = 1 then the call failed.\r\n          D preserved\r",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4663":{
+"Text":"COP 4A - OPNET high-level Econet routines\r\nAction: This call performs several tasks depending upon the reason code in X.\r\nOn entry: X = reason code.\r\n          Other registers contain or point to arguments.\r\nOn exit:  C = 0 means that the call was successful.\r\n          If C = 1 then the call failed and the error code is in X.\r\n          If C = 1 and X = 0 then the Econei module is not present.\r\n          If C = 1 and X = 1 then BHA points to an error message.\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3278":{
+"Text":"COP 4B - OPVH - validate handle\r\n\r\nAction: Checks whether a handle is conect for the given device name.\r\nOn entry: BHA points to the zero-terminated device name.\r\n          Y = handle\r\nOn exit:  If C = 0 then handle valid.\r\n          If C = 1 then handle not valid.\r\n          DY preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5627":{
+"Text":"COP 4C - OPBGB get block\r\nAction: Reads the number of bytes specified in the control block from the currently open file whose handle is in Y, to the address in memory specified in the control block. The bytes are read from the file starting at the position given by the sequential pointer. The sequential pointer can be altered using OPWSP.\r\n\r\nOn Entry: Y = handle returned by OPOPN.\r\n          BHA points to a control block of the following form.\r\n          Offset\r\n          +0      Start address of memory (low byte first)\r\n          +4      Length of memory to be transferred (low byte first)\r\nOn Exit:  If C = 0 then X = O means transfer successful. \r\n                        X = 2 means that fewer bytes were transferred than\r\n                              specified in the control block, and the control\r\n                              block is updated to show the number of bytes \r\n                              that were transferred.\r\n          If C = 1 then the transfer was unsuccessful. X = error code. BHA\r\n          points to a zero terminated error message",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5637":{
+"Text":"COP 4D - OPBPB put block\r\nAction: Writes the number of bytes specified in the control block. from the address in memory specified in the control block, to the file whose handle is in Y. The bytes are written to the file starting at the position given by the sequential pointer. The sequential pointer can be altered using OPWSP.\r\nOn entry: Y = handle returned by OPOPN.\r\n          BHA points to a control block ot the following form.\r\n          Offset\r\n          +0 Start address of memory (low byte first)\r\n          +4 Length of memory to be transferred (low byte first)\r\nOn exit:  If C = 0 then transfer was successful.\r\n          If C = 1 then the transfer was unsuccessful. X = error code. BHA\r\n          points to a zero terminated error message.\r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5815":{
+"Text":"COP 4E - OPLOD - load file\r\n\r\nAction: Loads a file into memwy from the specified filing system.\r\n\r\nOn entry: BHA points to a control block of the following form.\r\n          Offset\r\n          +0     Pointer to name of file (low byte first)\r\n          +4     File LOAD address (low byte first)\r\n          +8     File EXEC address (low byte first)\r\n          +12    Initial memory location (low byte first)\r\n          +16    Length of memory area (low byte first)\r\n\r\n          A zero length parameter will cause anylength of file to be loaded. \r\n          The length is updated upon exit to show the number of bytes actually\r\n          loaded.\r\n          The load address and execution address are not parameters they are \r\n          set on exit to the file\u0027s values.\r\nOn exit:  If C = 0 and X = O then the file was loaded successfully and the \r\n          load and execution addresses are valid.\r\n          If C = 0 and X = 2 then the file was loaded successfully but the \r\n          load and execution addressess are invalid.\r\n          If C = 1 then the load was unsuccessful, X = error code. BHA points \r\n          to a zero-terminated error message.\r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5825":{
+"Text":"COP 4F - OPSAV - save file\r\n\r\nAction: Saves an area of memory to the specified filing system.\r\n\r\nOn entry: BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Pointer to name of file (low byte first)\r\n          +4   File LOAD address (low byte first)\r\n          +8   File EXEC address (low byte first)\r\n          +12  Initial memory location (low byte first)\r\n          +16  Length ot memory area (low byte first)\r\nOn exit:  If C = 0 and X = 0 then the file was saved successfully and the \r\n          load and execution addresses were successfully updated.\r\n          If C = 0 and X = 2 then the file was saved successfully but the \r\n          load and execution addresses were not successfully updated.\r\n          If C = 1 then the save was unsuccessful. X = error code. BHA points \r\n          to zero-terminated error message.\r\n          Y preserved.",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6159":{
+"Text":"COP 50 - OPRLE - read load address, execute address, and length of file\r\n\r\nAction: Reads the load address, execute address, and length of a file.\r\n\r\nOn Entry: BHA points to a contnd block of the following form.\r\n          Offset\r\n          +0   Pointer to name of file (low byte first)\r\n          +4   File LOAD address (low byte first)\r\n          +8   File EXEC address (low byte first)\r\n\r\n          The load address and execution address are not paramcters they \r\n          are set on exit to the file\u0027s values.\r\nOn Exit:  If C = 0 then the control block has been updated to give the load\r\n          and execute addresses, and the length is in XHA (2 bytes in X, \r\n          4 bytes in total).\r\n          If C = 1 then the call was unsuccessful, X = error code, \r\n          BHA points to a zero-terminated error message.\r\n          Y preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6251":{
+"Text":"COP 51 - OPWLE - write load address and execute address of file\r\n\r\nAction: Writes new load and execute addresses to a file.\r\n\r\nOn entry: BHA points to a control block of the following fonn.\r\n          Offset\r\n          +0   Pointer to name of file (low byte first)\r\n          +4   File LOAD address (low byte first)\r\n          +8   File EXEC address (low byte first)\r\nOn exit:  If C = 0 then the file has been updated.\r\n          If C = 1 then the update was unsuccessful. X = error code, \r\n          BHA points to a zero terminated error message.\r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6256":{
+"Text":"COP 52 - OPRAT - read attributes\r\n\r\nAction: Reads the 4-byte file attributes.\r\n\r\nOn entry: BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Pointer to name of file (low byte first)\r\n          +4   File attributes (low byte first)\r\n\r\nThe attributes have the following meanings:\r\nlow byte   bit 0     0 not readable by owner\r\n                     1 readable by owner\r\n           bit 1     0 not writable by owner\r\n                     1 writable by owner\r\n           bit 2     undefined\r\n           bit 3     0 not locked\r\n                     1 locked\r\n           bit 4     0 not readable by public\r\n                     1 readable by public\r\n           bit 5     0 not writable by public\r\n                     1 writable by public\r\n           bit 6     undefined\r\n           bit 7     undefined\r\nlow middle byte      days\r\nhigh middle byte \r\n           bits 0..3 months\r\n           bits 4..7 years since 1981\r\nhigh byte            undefined\r\nOn exit:   If C = 0 and X = l then a file was found and the attributes were\r\n           read successfully.\r\n           If C = 0 and X = 2 then a directory was found and the attributes \r\n           were read successfully.\r\n           If C = 1 then the call was unsuccessful, X = enor code, BHA points\r\n           to a zero-terminated error message.\r\n           Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6261":{
+"Text":"COP 53 - OPWAT - write file attributes\r\n\r\nAction: Writes the 4-byte file attributes\r\n\r\nFor parameters see OPRAT above",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6266":{
+"Text":"COP 54 - OPRSP - read sequential pointer\r\n\r\nAction: Reads the sequential pointer the position within a file at which the next read/write operation will occur.\r\n\r\nOn entry: Y = handle\r\n          BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Sequence number or logical length (low byte first)\r\n\r\nOn exit:  If C = 0 then the sequential pointer was read successfully into \r\n          the control block.\r\n          If C = 1 then the call was unsuccessful, X = error code, BHA points\r\n          to a zero-terminated error message.\r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6271":{
+"Text":"COP 55 - write sequential pointer\r\n\r\nAction: Writes a new value to the sequential pointer - the position within a file at which the next read/write operation will occur.\r\n\r\nParameters are as for COP 54 OPRSP\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6276":{
+"Text":"COP 56 - OPRPL - read physical length\r\n\r\nAction: Reads the physical length of a file, ie the actual length stored on the media.\r\n\r\nOn entry: BHA points to a contnd block of the following form.\r\n          Offset\r\n          +0   Pointer to name of file (low byte first)\r\n          +4   length (low byte first)\r\nOn exit:  If C = 0 then the physical length was read successfully into the\r\n          control block.\r\n          If C = 1 then the call was unsuccessful. X = error code, BHA points \r\n          to a zero-teiminaied error message.\r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6281":{
+"Text":"COP 57 - OPRLL - read logical length\r\nAction: Reads the logical length (extent) ot a file.\r\nOn entry: Y = handle\r\n          BHA points to a control block of the following form.\r\n          Offset\r\n          +0  Sequence number or length (low byte first)\r\nOn exit:  If C = 0 then the logical length was read successfully into the \r\n          control block.\r\n          If C = 1 then the call was unsuccessful, X = error code, BHA points\r\n          to a zero-terminated error message.\r\n          Y preserved",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6286":{
+"Text":"COP 58 - OPWLL - write logical length\r\n\r\nAction: Writes the logical length (extent) of a file.\r\n\r\nOn entry: Y = handle\r\n          BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Sequence number or length (low byte first)\r\nOn exit: If C = 0 then the logical length was written successfully.\r\n         If C = 1 then the call was unsuccessful. X = error code, BHA points \r\n         to a zero-tenninated error message.\r\n         Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6291":{
+"Text":"COP 50 - OPRCH - read catalogue header and information\r\n\r\nAction: Given the pathname, which may contain wildcards, this call will give the full directory name and information about that directory.\r\n\r\nOn entry: BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Pointer to name of directory (low byte first)\r\n          +4   Pointer to 49 byte long buffer area (low byte first)\r\n\r\nOn exit:  If C = 0, the 49 byte buffer area specified in the control block \r\n          returns with the following information.\r\n          BHA undefined\r\n          Buffer contents after call:\r\n          Offset\r\n          +0      0 = owner. \u0026FF = public\r\n          +1      Cycle number\r\n          +2      Boot option\r\n          +3..12  Directory name (without wildcards), left-justified padded \r\n                  with spaces\r\n          13..28  CSD disc name, same format (used to be last)\r\n          29..38  CSD name, same format\r\n          39..48  LIB name, same format\r\n          \r\n          If C = 1 then directory not found, X = error code, BHA points to \r\n          zero-terminated error message.\r\n          Y preserved\r\n\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6296":{
+"Text":"COP 5A - OPRFN - Read file (object) names from directory\r\n\r\nAction: Given the pathname, which may contain wildcards, this call will read the number and names of entries in the specified directory. The information is put in an area of memory whose start address is supplied. Each name is terminated by rero (\u002600).\r\n\r\nOn entry: BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Pointer to name of directory (low byte first)\r\n          +4   Pointer to start of memory area (low byte first)\r\n          +8   Type of info wanted\r\n          +10  Number of names\r\n          +12  Filing system work space (16 bytes)\r\n          (Initially the whole area should be zero)\r\n\r\n          The type of info values are:\r\n          0 for name only (maximum 16 bytes per name) ,\r\n          1 for short information (maximum 20 bytes per entry)\r\n          2 for full information (maximum 80 bytes per entry)\r\n\r\n          The actual content of these results is filing system dependent\r\n          The number of names is a parameter which can be set so the call \r\n          will read up to that number of entries. If there are any remaining \r\n          then the call can be used again, without disturbing the control \r\n          block, to carry on from where it left off. For the first call \r\n          however, the workspace should be zeroed.\r\nOn exit:  If C = 0 then X = the number of names read, and the names and \r\n          info are in memory separated by zeros.\r\n          If C = 1 then directory not found, X = error code, BHA points to \r\n          zero-terminated error message.\r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6465":{
+"Text":"COP 5B - OPDEL - delete anamed object\r\n\r\nAction: This call will attempt to delete a named object (ie a file or a directory) from a directory.\r\n\r\nOn entry: BHA points to the object name.\r\nOn exit: If C = 0 then the object was deleted.\r\n         If C = 1 then object not found or not deleted, X = error code. \r\n         BHA points to zero terminated error message.\r\n         Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6354":{
+"Text":"COP 5C - OPREN - rename an object\r\n\r\nAction: Will attempt to rename an object (file or directory).\r\n\r\nOn entry: BHA points to a control block of the following form.\r\n          Offset\r\n          +0   Pointer to old filename (low byte first)\r\n          +4   Pointer to new filename (low byte first)\r\nOn exit:  If C = 0 then the object has been renamed.\r\n          If C = I then object not found or not renamed. X = error code, BHA \r\n          points to zero terminated error message. \r\n          Y preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"2687":{
+"Text":"COP 5D - OPSTAR - execute command in BHA\r\n\r\nAction: QRY looks to call OPCOM and if there\u0027s an error prints the error",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"5444":{
+"Text":"COP 5E - OPFCX free context of VDU and MOS (including fonts)\r\n\r\nAction: Frees a saved context that is no longer required.\r\n\r\nOn entry: Y = context pool handle allocated by OPSCX.\r\nOn exit:  If C = 0 then the context is freed and the pool handle freed.\r\n          If C = 1 then the call failed to free the context\r\n          D preserved\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4428":{
+"Text":"COP 60 - OPDFR - ????",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"4302":{
+"Text":"OPERC 61 - ???? error something ???\r\n\r\nQRY - \r\n\r\nlooks if X \u0026 1 = 0 then \"Error (no message)\"\r\nthe string pointed to BHA is \u003c 4 ASCII chars \"Error (terse message)\"\r\nif it contains unprintable chars then \"Error (bad message)\"\r\nelse pass thru BHA",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -6185,151 +6440,151 @@
 "LabelAnno":"None"},
 
 "4663":{
-"Label":"TFEC037",
+"Label":"COP_4A",
 "Value":16695351,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "3278":{
-"Label":"TFEBACE",
+"Label":"COP_4B",
 "Value":16693966,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5627":{
-"Label":"TFEC3FB",
+"Label":"COP_4C",
 "Value":16696315,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5637":{
-"Label":"TFEC405",
+"Label":"COP_4D",
 "Value":16696325,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5815":{
-"Label":"TFEC4B7",
+"Label":"COP_4E",
 "Value":16696503,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5825":{
-"Label":"TFEC4C1",
+"Label":"COP_4F",
 "Value":16696513,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6159":{
-"Label":"TFEC60F",
+"Label":"COP_50",
 "Value":16696847,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6251":{
-"Label":"TFEC66B",
+"Label":"COP_51",
 "Value":16696939,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6256":{
-"Label":"TFEC670",
+"Label":"COP_52",
 "Value":16696944,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6261":{
-"Label":"TFEC675",
+"Label":"COP_53",
 "Value":16696949,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6266":{
-"Label":"TFEC67A",
+"Label":"COP_54",
 "Value":16696954,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6271":{
-"Label":"TFEC67F",
+"Label":"COP_55",
 "Value":16696959,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6276":{
-"Label":"TFEC684",
+"Label":"COP_56",
 "Value":16696964,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6281":{
-"Label":"TFEC689",
+"Label":"COP_57",
 "Value":16696969,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6286":{
-"Label":"TFEC68E",
+"Label":"COP_58",
 "Value":16696974,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6291":{
-"Label":"TFEC693",
+"Label":"COP_59",
 "Value":16696979,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6296":{
-"Label":"TFEC698",
+"Label":"COP_5A",
 "Value":16696984,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6465":{
-"Label":"TFEC741",
+"Label":"COP_5B",
 "Value":16697153,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "6354":{
-"Label":"TFEC6D2",
+"Label":"COP_5C",
 "Value":16697042,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2687":{
-"Label":"TFEB87F",
+"Label":"COP_5D",
 "Value":16693375,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "5444":{
-"Label":"TFEC344",
+"Label":"COP_5E",
 "Value":16696132,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2740":{
 "Label":"COP_5F",
@@ -6339,18 +6594,18 @@
 "LabelAnno":"None"},
 
 "4428":{
-"Label":"TFEBF4C",
+"Label":"COP_60",
 "Value":16695116,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "4302":{
-"Label":"TFEBECE",
+"Label":"COP_61",
 "Value":16694990,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2205":{
 "Label":"tblCOPDispatch",
@@ -8352,6 +8607,76 @@
 "Value":16701587,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"20556":{
+"Label":"_callModNetwork",
+"Value":16711244,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4700":{
+"Label":"retsec",
+"Value":16695388,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3356":{
+"Label":"retsecX1",
+"Value":16694044,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3326":{
+"Label":"retNotAHandle",
+"Value":16694014,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"3343":{
+"Label":"retBadModule",
+"Value":16694031,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19316":{
+"Label":"sk",
+"Value":16710004,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19295":{
+"Label":"doOPSTAR",
+"Value":16709983,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"5470":{
+"Label":"retsec",
+"Value":16696158,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"4368":{
+"Label":"bhaErrorBadErrorMEssage",
+"Value":16695056,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4392":{
+"Label":"bhaErrorTerse",
+"Value":16695080,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -10088,7 +10413,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC037",
+"Label":"COP_4A",
 "Part":"Low"}},
 
 "2355":{
@@ -10096,7 +10421,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBACE",
+"Label":"COP_4B",
 "Part":"Low"}},
 
 "2357":{
@@ -10104,7 +10429,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC3FB",
+"Label":"COP_4C",
 "Part":"Low"}},
 
 "2359":{
@@ -10112,7 +10437,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC405",
+"Label":"COP_4D",
 "Part":"Low"}},
 
 "2361":{
@@ -10120,7 +10445,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC4B7",
+"Label":"COP_4E",
 "Part":"Low"}},
 
 "2363":{
@@ -10128,7 +10453,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC4C1",
+"Label":"COP_4F",
 "Part":"Low"}},
 
 "2365":{
@@ -10136,7 +10461,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC60F",
+"Label":"COP_50",
 "Part":"Low"}},
 
 "2367":{
@@ -10144,7 +10469,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC66B",
+"Label":"COP_51",
 "Part":"Low"}},
 
 "2369":{
@@ -10152,7 +10477,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC670",
+"Label":"COP_52",
 "Part":"Low"}},
 
 "2371":{
@@ -10160,7 +10485,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC675",
+"Label":"COP_53",
 "Part":"Low"}},
 
 "2373":{
@@ -10168,7 +10493,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC67A",
+"Label":"COP_54",
 "Part":"Low"}},
 
 "2375":{
@@ -10176,7 +10501,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC67F",
+"Label":"COP_55",
 "Part":"Low"}},
 
 "2377":{
@@ -10184,7 +10509,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC684",
+"Label":"COP_56",
 "Part":"Low"}},
 
 "2379":{
@@ -10192,7 +10517,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC689",
+"Label":"COP_57",
 "Part":"Low"}},
 
 "2381":{
@@ -10200,7 +10525,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC68E",
+"Label":"COP_58",
 "Part":"Low"}},
 
 "2383":{
@@ -10208,7 +10533,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC693",
+"Label":"COP_59",
 "Part":"Low"}},
 
 "2385":{
@@ -10216,7 +10541,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC698",
+"Label":"COP_5A",
 "Part":"Low"}},
 
 "2387":{
@@ -10224,7 +10549,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC741",
+"Label":"COP_5B",
 "Part":"Low"}},
 
 "2389":{
@@ -10232,7 +10557,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC6D2",
+"Label":"COP_5C",
 "Part":"Low"}},
 
 "2391":{
@@ -10240,7 +10565,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEB87F",
+"Label":"COP_5D",
 "Part":"Low"}},
 
 "2393":{
@@ -10248,7 +10573,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEC344",
+"Label":"COP_5E",
 "Part":"Low"}},
 
 "2395":{
@@ -10264,7 +10589,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBF4C",
+"Label":"COP_60",
 "Part":"Low"}},
 
 "2399":{
@@ -10272,7 +10597,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFEBECE",
+"Label":"COP_61",
 "Part":"Low"}},
 
 "2401":{
@@ -10435,6 +10760,40 @@
 
 "3207":{
 "Length":12,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"3284":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"3326":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"3328":{
+"Length":13,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"3343":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"3345":{
+"Length":11,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
@@ -10717,6 +11076,26 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"4368":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"4370":{
+"Length":20,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"4394":{
+"Length":22,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
 "4563":{
 "Length":4,
 "Format":"NumericLE",
@@ -10779,6 +11158,38 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_MOD_ECO",
+"Part":"Low"}},
+
+"4667":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
+
+"4671":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_NET",
+"Part":"Low"}},
+
+"4673":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_NET",
+"Part":"Low"}},
+
+"4675":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_NET",
 "Part":"Low"}},
 
 "4706":{
@@ -11027,6 +11438,14 @@
 "Label":"__MMFP",
 "Part":"Low"}},
 
+"5444":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
 "5472":{
 "Length":2,
 "Format":"NumericLE",
@@ -11213,6 +11632,30 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_44_OPOPN",
+"Part":"Low"}},
+
+"6186":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_44_OPOPN",
+"Part":"Low"}},
+
+"6225":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_57_OPRLL",
+"Part":"Low"}},
+
+"6236":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_45_OPCLS",
 "Part":"Low"}},
 
 "6438":{
@@ -13642,6 +14085,62 @@
 "Format":"NumericLE",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"19297":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0E_OPCOM",
+"Part":"Low"}},
+
+"19306":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_61_OPERC",
+"Part":"Low"}},
+
+"19311":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_02_OPWRA",
+"Part":"Low"}},
+
+"19313":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"20556":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_NET",
+"Part":"Low"}},
+
+"20558":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_NET",
+"Part":"Low"}},
+
+"20560":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_NET",
+"Part":"Low"}},
 
 "20563":{
 "Length":2,
