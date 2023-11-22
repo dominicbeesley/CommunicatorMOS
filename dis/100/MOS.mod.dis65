@@ -21,6 +21,23 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"__EVESC":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"ESCape flag",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__EVESC",
+"Value":1,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__EVPRE":{
 "DataDescriptor":{
 "Length":1,
@@ -901,6 +918,23 @@
 "MultiMask":null,
 "Label":"COP_2D_OPWRM",
 "Value":45,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_32_OPSUM":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Compute end-around-carry sum",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_32_OPSUM",
+"Value":50,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -3430,6 +3464,11 @@
 "Hint":"Code"},
 
 {
+"Low":3753,
+"High":3753,
+"Hint":"Code"},
+
+{
 "Low":3787,
 "High":3787,
 "Hint":"Code"},
@@ -4535,7 +4574,12 @@
 "Hint":"Code"},
 
 {
-"Low":16396,
+"Low":16342,
+"High":16375,
+"Hint":"InlineData"},
+
+{
+"Low":16395,
 "High":16396,
 "Hint":"Code"},
 
@@ -4548,6 +4592,11 @@
 "Low":16462,
 "High":16462,
 "Hint":"Code"},
+
+{
+"Low":16587,
+"High":16590,
+"Hint":"InlineData"},
 
 {
 "Low":17166,
@@ -6623,6 +6672,24 @@
 
 "11409":{
 "Text":"stack is now\r\n+5  D on entry\r\n+3  block addr\r\n+1  block addr",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"3753":{
+"Text":"QRY - possible dead code?",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"16331":{
+"Text":"FFB0 - EV - ????\r\n\r\nWell known entry point not documented in Systems Documentation\r\n\r\nGiven an even mask in A test escape/preempt status",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"16395":{
+"Text":"TODO: dead code?\r\n",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -10456,6 +10523,27 @@
 "2963":{
 "Label":"noparent",
 "Value":16693651,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"16376":{
+"Label":"ok",
+"Value":16707064,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"16390":{
+"Label":"retCCPL",
+"Value":16707078,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1112":{
+"Label":"nomenu",
+"Value":16691800,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
@@ -16999,11 +17087,27 @@
 "Label":"COP_07_OPOSW",
 "Part":"Low"}},
 
-"16369":{
-"Length":7,
+"16340":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0F_OPERR",
+"Part":"Low"}},
+
+"16342":{
+"Length":34,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"16381":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__EVESC",
+"Part":"Low"}},
 
 "16415":{
 "Length":2,
@@ -17043,6 +17147,36 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_D1_EXEC_handle",
+"Part":"Low"}},
+
+"16585":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
+"16587":{
+"Length":4,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"16595":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_34_OPRMI",
+"Part":"Low"}},
+
+"16791":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_32_OPSUM",
 "Part":"Low"}},
 
 "17157":{
