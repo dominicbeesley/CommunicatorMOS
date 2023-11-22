@@ -1517,6 +1517,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"EXSYS_CO_A_SAVE":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"used in CCO",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"EXSYS_CO_A_SAVE",
+"Value":65285,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "EXSYS_CUR_COROUTINE":{
 "DataDescriptor":{
 "Length":2,
@@ -1530,6 +1547,23 @@
 "MultiMask":null,
 "Label":"EXSYS_CUR_COROUTINE",
 "Value":65296,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"EXSYS_HANDLEBLOCK_LONGPTR":{
+"DataDescriptor":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Value":65282,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -5109,6 +5143,18 @@
 "11583":"get coroutine block from hanbdle",
 "11586":"coroutine block into D",
 "11587":"if V set skip parent check",
+"11852":"we need to preserve A not on the stack as the stack will get switched",
+"11861":"store current stack at offset 0 in our block",
+"11916":"set ourselves as the parent",
+"11918":"get parent DP",
+"11920":"check for $40 in low byte of flags (has DP)",
+"11924":"get stored DP for child",
+"11926":"store in child DP",
+"11928":"save DP - again - TODO: there looks to be a lot of unnecessary stuff here",
+"11933":"get stack from offset 0 in block",
+"11935":"set up call DP",
+"11936":"the rtl below will now return to the address that was last stacked by the child coroutine",
+"11937":"get back A as passed in ",
 "12039":"there\u0027s a break handler set - call it",
 "12043":"check parent\u0027s for break handler",
 "12045":"write module name to VDU",
@@ -5308,7 +5354,7 @@
 "BackgroundColor":0},
 
 "11848":{
-"Text":"CCO - Call a Co-routine",
+"Text":"CCO - Call a Co-routine\r\n\r\nThis is used to call a coroutine from its creator (parent). On the first call the entry address given in the COCRE call is used. Subsequently, the address after the last CWT executed by the routine is used\r\n\r\nEntry: \r\n   Y       Handle of child\r\n   BHA,X,C Arguments to child coroutine\r\nExit: \r\n   BHA,X,C Results from child coroutine\r\n   B,D     Preserved\r\n\r\nNote: C is the C flag.",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -10211,6 +10257,27 @@
 "Value":16702395,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"11926":{
+"Label":"nodp",
+"Value":16702614,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"11941":{
+"Label":"plpRetCy",
+"Value":16702629,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"11946":{
+"Label":"plpRetSec",
+"Value":16702634,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -14824,6 +14891,114 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"11856":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"11861":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"11863":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"11865":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"11872":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"11884":{
+"Length":25,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"11909":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
+
+"11916":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
+
+"11920":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_flags",
+"Part":"Low"}},
+
+"11924":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_DP",
+"Part":"Low"}},
+
+"11926":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_DP",
+"Part":"Low"}},
+
+"11929":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"11933":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"11937":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CO_A_SAVE",
 "Part":"Low"}},
 
 "11997":{
