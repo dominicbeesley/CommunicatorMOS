@@ -37,6 +37,12 @@
       <span class="operand">1      {const}</span>
     </span>
     <span class="line">
+      <a id="LBLLK-__EVPRE"></a><span class="label" anno="none" id="LBL-__EVPRE">__EVPRE</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">2      {const}</span>
+      <span class="comment">;Event mask indicates a pre-empt</span>
+    </span>
+    <span class="line">
       <a id="LBLLK-__MMFP"></a><span class="label" anno="none" id="LBL-__MMFP">__MMFP</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$02    {const}</span>
@@ -777,6 +783,17 @@
       <span class="opcode directive">eq</span>
       <span class="operand">$ff00  {addr/80}</span>
       <span class="comment">;Looks to contain a set of memory handles</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-EXSYS_HANDLEBLOCK_LONGPTR"></a><span class="label" anno="none" id="LBL-EXSYS_HANDLEBLOCK_LONGPTR">EXSYS_HANDLEBLOCK_LONGPTR</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$ff02  {addr/3}</span>
+    </span>
+    <span class="line">
+      <a id="LBLLK-EXSYS_CO_A_SAVE"></a><span class="label" anno="none" id="LBL-EXSYS_CO_A_SAVE">EXSYS_CO_A_SAVE</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$ff05  {addr/2}</span>
+      <span class="comment">;used in CCO</span>
     </span>
     <span class="line">
       <a id="LBLLK-EXSYS_0D_BRKADDR_SAVE"></a><span class="label" anno="none" id="LBL-EXSYS_0D_BRKADDR_SAVE">EXSYS_0D_BRKADDR_SAVE</span>
@@ -6428,7 +6445,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_b975"></a><span class="address"><a href="#ADDR_fe_b975">fe/b975</a></span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEB993" title="FEB993">LFEB993</a></span>
+      <span class="operand">@noparent</span>
     </span>
     <span class="line"><a id="ADDR_fe_b977"></a><span class="address"><a href="#ADDR_fe_b977">fe/b977</a></span>
       <span class="opcode ">cmp</span>
@@ -6436,15 +6453,15 @@
     </span>
     <span class="line"><a id="ADDR_fe_b979"></a><span class="address"><a href="#ADDR_fe_b979">fe/b979</a></span>
       <span class="opcode ">bcc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEB993" title="FEB993">LFEB993</a></span>
+      <span class="operand">@noparent</span>
     </span>
     <span class="line"><a id="ADDR_fe_b97b"></a><span class="address"><a href="#ADDR_fe_b97b">fe/b97b</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDD83" title="FEDD83">LFEDD83</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-getCurCorParent" title="FEDD83">getCurCorParent</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_b97e"></a><span class="address"><a href="#ADDR_fe_b97e">fe/b97e</a></span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEB993" title="FEB993">LFEB993</a></span>
+      <span class="operand">@noparent</span>
     </span>
     <span class="line"><a id="ADDR_fe_b980"></a><span class="address"><a href="#ADDR_fe_b980">fe/b980</a></span>
       <span class="opcode ">xba</span>
@@ -6466,14 +6483,14 @@
     </span>
     <span class="line"><a id="ADDR_fe_b98a"></a><span class="address"><a href="#ADDR_fe_b98a">fe/b98a</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">#$00</span>
+      <span class="operand">#&gt;<a class="op-symbol" href="#LBLLK-__EVPRE" title="2">__EVPRE</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_b98c"></a><span class="address"><a href="#ADDR_fe_b98c">fe/b98c</a></span>
       <span class="opcode ">xba</span>
     </span>
     <span class="line"><a id="ADDR_fe_b98d"></a><span class="address"><a href="#ADDR_fe_b98d">fe/b98d</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">#$02</span>
+      <span class="operand">#<a class="op-symbol" href="#LBLLK-__EVPRE" title="2">__EVPRE</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_b98f"></a><span class="address"><a href="#ADDR_fe_b98f">fe/b98f</a></span>
       <span class="opcode ">cop</span>
@@ -6487,7 +6504,7 @@
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_b993"></a><span class="address"><a href="#ADDR_fe_b993">fe/b993</a></span>
-      <a id="LBLLK-LFEB993"></a><span class="label" anno="none" id="LBL-LFEB993">LFEB993</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@noparent</span>
       <span class="opcode ">clc</span>
     </span>
     <span class="line"><a id="ADDR_fe_b994"></a><span class="address"><a href="#ADDR_fe_b994">fe/b994</a></span>
@@ -19070,7 +19087,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_ce0a"></a><span class="address"><a href="#ADDR_fe_ce0a">fe/ce0a</a></span>
       <span class="opcode ">bne</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECE0F" title="FECE0F">LFECE0F</a></span>
+      <span class="operand">@ok</span>
     </span>
     <span class="line"><a id="ADDR_fe_ce0c"></a><span class="address"><a href="#ADDR_fe_ce0c">fe/ce0c</a></span>
       <span class="opcode ">plp</span>
@@ -19083,7 +19100,7 @@
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_ce0f"></a><span class="address"><a href="#ADDR_fe_ce0f">fe/ce0f</a></span>
-      <a id="LBLLK-LFECE0F"></a><span class="label" anno="none" id="LBL-LFECE0F">LFECE0F</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@ok</span>
       <span class="opcode ">phx</span>
     </span>
     <span class="line"><a id="ADDR_fe_ce10"></a><span class="address"><a href="#ADDR_fe_ce10">fe/ce10</a></span>
@@ -19252,7 +19269,7 @@
       <span class="operand">“Memory error: list of free blocks corrupted”</span>
     </span>
     <span class="line"><a id="ADDR_fe_cea1"></a><span class="address"><a href="#ADDR_fe_cea1">fe/cea1</a></span>
-      <a id="LBLLK-LFECEA1"></a><span class="label" anno="none" id="LBL-LFECEA1">LFECEA1</span>
+      <a id="LBLLK-allocHandleQRY"></a><span class="label" anno="none" id="LBL-allocHandleQRY">allocHandleQRY</span>
       <span class="opcode ">phd</span>
     </span>
     <span class="line"><a id="ADDR_fe_cea2"></a><span class="address"><a href="#ADDR_fe_cea2">fe/cea2</a></span>
@@ -19260,7 +19277,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_cea3"></a><span class="address"><a href="#ADDR_fe_cea3">fe/cea3</a></span>
       <span class="opcode ">pea</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-EXSYS" title="FF00">EXSYS</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_cea6"></a><span class="address"><a href="#ADDR_fe_cea6">fe/cea6</a></span>
       <span class="opcode ">pld</span>
@@ -19271,7 +19288,8 @@
     </span>
     <span class="line"><a id="ADDR_fe_ceaa"></a><span class="address"><a href="#ADDR_fe_ceaa">fe/ceaa</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+2],y</span>
+      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-EXSYS_HANDLEBLOCK_LONGPTR" title="FF02">EXSYS_HANDLEBLOCK_LONGPTR</a>],y</span>
+      <span class="comment">;getHandleBlockSize</span>
     </span>
     <span class="line"><a id="ADDR_fe_ceac"></a><span class="address"><a href="#ADDR_fe_ceac">fe/ceac</a></span>
       <span class="opcode ">and</span>
@@ -19285,7 +19303,7 @@
       <span class="opcode ">tay</span>
     </span>
     <span class="line"><a id="ADDR_fe_ceb2"></a><span class="address"><a href="#ADDR_fe_ceb2">fe/ceb2</a></span>
-      <a id="LBLLK-LFECEB2"></a><span class="label" anno="none" id="LBL-LFECEB2">LFECEB2</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@lp</span>
       <span class="opcode ">dey</span>
     </span>
     <span class="line"><a id="ADDR_fe_ceb3"></a><span class="address"><a href="#ADDR_fe_ceb3">fe/ceb3</a></span>
@@ -19301,14 +19319,14 @@
     </span>
     <span class="line"><a id="ADDR_fe_ceb8"></a><span class="address"><a href="#ADDR_fe_ceb8">fe/ceb8</a></span>
       <span class="opcode ">bne</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECEB2" title="FECEB2">LFECEB2</a></span>
+      <span class="operand">@lp</span>
     </span>
     <span class="line"><a id="ADDR_fe_ceba"></a><span class="address"><a href="#ADDR_fe_ceba">fe/ceba</a></span>
       <span class="opcode ">txa</span>
     </span>
     <span class="line"><a id="ADDR_fe_cebb"></a><span class="address"><a href="#ADDR_fe_cebb">fe/cebb</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand">[<a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1],y</span>
+      <span class="operand">[$02],y</span>
     </span>
     <span class="line"><a id="ADDR_fe_cebd"></a><span class="address"><a href="#ADDR_fe_cebd">fe/cebd</a></span>
       <span class="opcode ">pla</span>
@@ -22699,7 +22717,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_d47b"></a><span class="address"><a href="#ADDR_fe_d47b">fe/d47b</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECEA1" title="FECEA1">LFECEA1</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-allocHandleQRY" title="FECEA1">allocHandleQRY</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_d47e"></a><span class="address"><a href="#ADDR_fe_d47e">fe/d47e</a></span>
       <span class="opcode ">bcs</span>
@@ -24914,7 +24932,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_d9db"></a><span class="address"><a href="#ADDR_fe_d9db">fe/d9db</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECEA1" title="FECEA1">LFECEA1</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-allocHandleQRY" title="FECEA1">allocHandleQRY</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_d9de"></a><span class="address"><a href="#ADDR_fe_d9de">fe/d9de</a></span>
       <span class="opcode ">bcs</span>
@@ -25069,7 +25087,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_da2b"></a><span class="address"><a href="#ADDR_fe_da2b">fe/da2b</a></span>
       <span class="opcode directive">dd2</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-doCOServ2" title="FEDA4F">doCOServ2</a> &amp; $ffff</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-doCOCRE" title="FEDA4F">doCOCRE</a> &amp; $ffff</span>
       <span class="comment">;COPAR - 2 - initialize QRY</span>
     </span>
     <span class="line"><a id="ADDR_fe_da2d"></a><span class="address"><a href="#ADDR_fe_da2d">fe/da2d</a></span>
@@ -25139,9 +25157,16 @@
     </span>
     <span class="line"></span>
     <span class="long-comment">
-; __CO 1C - COMOD - ??? <span class="br"></span>
-; <span class="br"></span>
-; Looks to do OPRMI then calls init Service2</span>
+********************************************************************************<span class="br"></span>
+* __CO 1C - COMOD - ???                                                        *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Given an address in a module make a coroutine from the module's entry point  *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Entry:                                                                       *<span class="br"></span>
+*    BHA  contains an address somewhere within a module                        *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* QRY Looks to do OPRMI then drops through to COCRE                            *<span class="br"></span>
+********************************************************************************</span>
     <span class="line">
       <span class="opcode directive">rwid</span>
       <span class="operand">longm,longx</span>
@@ -25156,14 +25181,33 @@
     </span>
     <span class="line"><a id="ADDR_fe_da4b"></a><span class="address"><a href="#ADDR_fe_da4b">fe/da4b</a></span>
       <span class="opcode ">cop</span>
-      <span class="operand">$34</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-COP_34_OPRMI" title="34">COP_34_OPRMI</a></span>
+      <span class="comment">;get entry address</span>
     </span>
     <span class="line"><a id="ADDR_fe_da4d"></a><span class="address"><a href="#ADDR_fe_da4d">fe/da4d</a></span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDAC2" title="FEDAC2">LFEDAC2</a></span>
+      <span class="operand">@retsec</span>
     </span>
+    <span class="long-comment">
+********************************************************************************<span class="br"></span>
+* __CO 02 - COCRE - Create a coroutine                                         *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* This sets up the initial execution address of a new coroutine and declares   *<span class="br"></span>
+* its stack size.                                                              *<span class="br"></span>
+* Entry:                                                                       *<span class="br"></span>
+*    BHA Entry address of coroutine                                            *<span class="br"></span>
+*    D   Desired size of coroutine's stack                                     *<span class="br"></span>
+*    X   COCRE                                                                 *<span class="br"></span>
+* Exit:                                                                        *<span class="br"></span>
+*    C=0 Coroutine created successfully                                        *<span class="br"></span>
+*    Y   Handle to be used in subsequent calls                                 *<span class="br"></span>
+* or C=1 Coroutine could not be created                                        *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Notes: The stack size must be a non-zero multiple of 256 bytes - &amp;200 is a   *<span class="br"></span>
+* good size                                                                    *<span class="br"></span>
+********************************************************************************</span>
     <span class="line"><a id="ADDR_fe_da4f"></a><span class="address"><a href="#ADDR_fe_da4f">fe/da4f</a></span>
-      <a id="LBLLK-doCOServ2"></a><span class="label" anno="none" id="LBL-doCOServ2">doCOServ2</span>
+      <a id="LBLLK-doCOCRE"></a><span class="label" anno="none" id="LBL-doCOCRE">doCOCRE</span>
       <span class="opcode ">phd</span>
     </span>
     <span class="line"><a id="ADDR_fe_da50"></a><span class="address"><a href="#ADDR_fe_da50">fe/da50</a></span>
@@ -25178,6 +25222,7 @@
     <span class="line"><a id="ADDR_fe_da53"></a><span class="address"><a href="#ADDR_fe_da53">fe/da53</a></span>
       <span class="opcode ">ldx</span>
       <span class="operand">#<a class="op-symbol" href="#LBLLK-__MMAZB" title="18">__MMAZB</a></span>
+      <span class="comment">;allocate the stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_da56"></a><span class="address"><a href="#ADDR_fe_da56">fe/da56</a></span>
       <span class="opcode ">jsl</span>
@@ -25185,7 +25230,8 @@
     </span>
     <span class="line"><a id="ADDR_fe_da5a"></a><span class="address"><a href="#ADDR_fe_da5a">fe/da5a</a></span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDABF" title="FEDABF">LFEDABF</a></span>
+      <span class="operand">@retsecpop</span>
+      <span class="comment">;stack alloc failed</span>
     </span>
     <span class="line"><a id="ADDR_fe_da5c"></a><span class="address"><a href="#ADDR_fe_da5c">fe/da5c</a></span>
       <span class="opcode ">lda</span>
@@ -25194,10 +25240,11 @@
     <span class="line"><a id="ADDR_fe_da5f"></a><span class="address"><a href="#ADDR_fe_da5f">fe/da5f</a></span>
       <span class="opcode ">jsr</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-LFECE01" title="FECE01">LFECE01</a></span>
+      <span class="comment">;alloc a coroutine block??? QRY</span>
     </span>
     <span class="line"><a id="ADDR_fe_da62"></a><span class="address"><a href="#ADDR_fe_da62">fe/da62</a></span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDAB8" title="FEDAB8">LFEDAB8</a></span>
+      <span class="operand">@freestackretsec</span>
     </span>
     <span class="line"><a id="ADDR_fe_da64"></a><span class="address"><a href="#ADDR_fe_da64">fe/da64</a></span>
       <span class="opcode ">phx</span>
@@ -25207,22 +25254,30 @@
     </span>
     <span class="line"><a id="ADDR_fe_da66"></a><span class="address"><a href="#ADDR_fe_da66">fe/da66</a></span>
       <span class="opcode ">sty</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_DP" title="6">CO_off_DP</a></span>
+      <span class="comment">;stash handle in DP slot QRY</span>
     </span>
     <span class="line"><a id="ADDR_fe_da68"></a><span class="address"><a href="#ADDR_fe_da68">fe/da68</a></span>
       <span class="opcode ">stz</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_Parent" title="2">CO_off_Parent</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_da6a"></a><span class="address"><a href="#ADDR_fe_da6a">fe/da6a</a></span>
       <span class="opcode ">stz</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_X" title="3">DPCOP_X</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_flags" title="4">CO_off_flags</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_da6c"></a><span class="address"><a href="#ADDR_fe_da6c">fe/da6c</a></span>
       <span class="opcode ">phx</span>
+      <span class="comment">;stack X - pointer to coroutine block</span>
     </span>
+    <span class="long-comment">
+; stack contents<span class="br"></span>
+; +6    D on entry (stack size)<span class="br"></span>
+; +3    BHA address of coroutine start<span class="br"></span>
+; +1    B0 pointer to corouting block</span>
     <span class="line"><a id="ADDR_fe_da6d"></a><span class="address"><a href="#ADDR_fe_da6d">fe/da6d</a></span>
       <span class="opcode ">ldx</span>
       <span class="operand">#<a class="op-symbol" href="#LBLLK-__MMTOP" title="12">__MMTOP</a></span>
+      <span class="comment">;get top of stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_da70"></a><span class="address"><a href="#ADDR_fe_da70">fe/da70</a></span>
       <span class="opcode ">jsl</span>
@@ -25230,17 +25285,21 @@
     </span>
     <span class="line"><a id="ADDR_fe_da74"></a><span class="address"><a href="#ADDR_fe_da74">fe/da74</a></span>
       <span class="opcode ">sec</span>
+      <span class="comment">;assume in B0 (alloc'd with MMAZB)</span>
     </span>
     <span class="line"><a id="ADDR_fe_da75"></a><span class="address"><a href="#ADDR_fe_da75">fe/da75</a></span>
       <span class="opcode ">sbc</span>
       <span class="operand">#$0004</span>
+      <span class="comment">;subtract 4 to point at 3rd last byte</span>
     </span>
     <span class="line"><a id="ADDR_fe_da78"></a><span class="address"><a href="#ADDR_fe_da78">fe/da78</a></span>
       <span class="opcode ">tax</span>
+      <span class="comment">;put that in X</span>
     </span>
     <span class="line"><a id="ADDR_fe_da79"></a><span class="address"><a href="#ADDR_fe_da79">fe/da79</a></span>
       <span class="opcode ">lda</span>
       <span class="operand">$03,S</span>
+      <span class="comment">;get BHA on entry</span>
     </span>
     <span class="line"><a id="ADDR_fe_da7b"></a><span class="address"><a href="#ADDR_fe_da7b">fe/da7b</a></span>
       <span class="opcode ">stal</span>
@@ -25256,42 +25315,64 @@
     </span>
     <span class="line"><a id="ADDR_fe_da84"></a><span class="address"><a href="#ADDR_fe_da84">fe/da84</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1,x</span>
+      <span class="operand">f:$000002,x</span>
+      <span class="comment">;store bank - TODO: this looks like it may be a bug - it stores a 0 outside our pool!</span>
     </span>
     <span class="line"><a id="ADDR_fe_da88"></a><span class="address"><a href="#ADDR_fe_da88">fe/da88</a></span>
       <span class="opcode ">txa</span>
+      <span class="comment">;put X in A</span>
     </span>
     <span class="line"><a id="ADDR_fe_da89"></a><span class="address"><a href="#ADDR_fe_da89">fe/da89</a></span>
       <span class="opcode ">dec</span>
       <span class="operand">A</span>
+      <span class="comment">;decrement so it's suitable as a stack pointer</span>
     </span>
     <span class="line"><a id="ADDR_fe_da8a"></a><span class="address"><a href="#ADDR_fe_da8a">fe/da8a</a></span>
       <span class="opcode ">plx</span>
+      <span class="comment">;X = block addr</span>
     </span>
     <span class="line"><a id="ADDR_fe_da8b"></a><span class="address"><a href="#ADDR_fe_da8b">fe/da8b</a></span>
       <span class="opcode ">ply</span>
+      <span class="comment">;Y = HA on entry</span>
     </span>
     <span class="line"><a id="ADDR_fe_da8c"></a><span class="address"><a href="#ADDR_fe_da8c">fe/da8c</a></span>
       <span class="opcode ">plb</span>
+      <span class="comment">;B = B on entry</span>
     </span>
+    <span class="long-comment">
+; stack is now<span class="br"></span>
+; +1 is D on entry</span>
     <span class="line"><a id="ADDR_fe_da8d"></a><span class="address"><a href="#ADDR_fe_da8d">fe/da8d</a></span>
       <span class="opcode ">phx</span>
+      <span class="comment">;block addr</span>
     </span>
     <span class="line"><a id="ADDR_fe_da8e"></a><span class="address"><a href="#ADDR_fe_da8e">fe/da8e</a></span>
       <span class="opcode ">phx</span>
+      <span class="comment">;block addr</span>
     </span>
     <span class="line"><a id="ADDR_fe_da8f"></a><span class="address"><a href="#ADDR_fe_da8f">fe/da8f</a></span>
       <span class="opcode ">pld</span>
     </span>
     <span class="line"><a id="ADDR_fe_da90"></a><span class="address"><a href="#ADDR_fe_da90">fe/da90</a></span>
       <span class="opcode ">phd</span>
+      <span class="comment">;into D</span>
     </span>
+    <span class="long-comment">
+; stack is now<span class="br"></span>
+; +5  D on entry<span class="br"></span>
+; +3  block addr<span class="br"></span>
+; +1  block addr</span>
     <span class="line"><a id="ADDR_fe_da91"></a><span class="address"><a href="#ADDR_fe_da91">fe/da91</a></span>
       <span class="opcode ">tsx</span>
+      <span class="comment">;X=caller's stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_da92"></a><span class="address"><a href="#ADDR_fe_da92">fe/da92</a></span>
       <span class="opcode ">tcs</span>
+      <span class="comment">;set S = coroutine stack</span>
     </span>
+    <span class="long-comment">
+; coroutine stack is now<span class="br"></span>
+; +1      BHA of coroutine start addr</span>
     <span class="line"><a id="ADDR_fe_da93"></a><span class="address"><a href="#ADDR_fe_da93">fe/da93</a></span>
       <span class="opcode ">phd</span>
     </span>
@@ -25307,26 +25388,38 @@
     <span class="line"><a id="ADDR_fe_da97"></a><span class="address"><a href="#ADDR_fe_da97">fe/da97</a></span>
       <span class="opcode ">php</span>
     </span>
+    <span class="long-comment">
+; coroutine stack is now<span class="br"></span>
+; <span class="br"></span>
+; +7   BHA on entry<span class="br"></span>
+; +5   D block address<span class="br"></span>
+; +4   B on entry<span class="br"></span>
+; +2   HA-1 on entry<span class="br"></span>
+; +1   current flags</span>
     <span class="line"><a id="ADDR_fe_da98"></a><span class="address"><a href="#ADDR_fe_da98">fe/da98</a></span>
       <span class="opcode ">tsc</span>
+      <span class="comment">;coroutine stack pointer into A</span>
     </span>
     <span class="line"><a id="ADDR_fe_da99"></a><span class="address"><a href="#ADDR_fe_da99">fe/da99</a></span>
       <span class="opcode ">txs</span>
+      <span class="comment">;back to caller's stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_da9a"></a><span class="address"><a href="#ADDR_fe_da9a">fe/da9a</a></span>
       <span class="opcode ">plx</span>
+      <span class="comment">;X = block pointer</span>
     </span>
     <span class="line"><a id="ADDR_fe_da9b"></a><span class="address"><a href="#ADDR_fe_da9b">fe/da9b</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:$000000,x</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-CO_off_stack" title="0">CO_off_stack</a>,x</span>
+      <span class="comment">;store coroutine start stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_da9f"></a><span class="address"><a href="#ADDR_fe_da9f">fe/da9f</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECEA1" title="FECEA1">LFECEA1</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-allocHandleQRY" title="FECEA1">allocHandleQRY</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_daa2"></a><span class="address"><a href="#ADDR_fe_daa2">fe/daa2</a></span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDAAF" title="FEDAAF">LFEDAAF</a></span>
+      <span class="operand">@nohandles</span>
     </span>
     <span class="line"><a id="ADDR_fe_daa4"></a><span class="address"><a href="#ADDR_fe_daa4">fe/daa4</a></span>
       <span class="opcode ">lda</span>
@@ -25334,7 +25427,8 @@
     </span>
     <span class="line"><a id="ADDR_fe_daa7"></a><span class="address"><a href="#ADDR_fe_daa7">fe/daa7</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a>+1,x</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-CO_off_DP" title="6">CO_off_DP</a>,x</span>
+      <span class="comment">;zero the DP handle (used to stash stack handle)</span>
     </span>
     <span class="line"><a id="ADDR_fe_daab"></a><span class="address"><a href="#ADDR_fe_daab">fe/daab</a></span>
       <span class="opcode ">pla</span>
@@ -25350,22 +25444,26 @@
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_daaf"></a><span class="address"><a href="#ADDR_fe_daaf">fe/daaf</a></span>
-      <a id="LBLLK-LFEDAAF"></a><span class="label" anno="none" id="LBL-LFEDAAF">LFEDAAF</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@nohandles</span>
       <span class="opcode ">ldal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a>+1,x</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-CO_off_DP" title="6">CO_off_DP</a>,x</span>
+      <span class="comment">;get the handle for the stack we stashed earlier</span>
     </span>
     <span class="line"><a id="ADDR_fe_dab3"></a><span class="address"><a href="#ADDR_fe_dab3">fe/dab3</a></span>
       <span class="opcode ">pha</span>
+      <span class="comment">;push it</span>
     </span>
     <span class="line"><a id="ADDR_fe_dab4"></a><span class="address"><a href="#ADDR_fe_dab4">fe/dab4</a></span>
       <span class="opcode ">jsr</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-LFECDDA" title="FECDDA">LFECDDA</a></span>
+      <span class="comment">;free the block QRY?</span>
     </span>
     <span class="line"><a id="ADDR_fe_dab7"></a><span class="address"><a href="#ADDR_fe_dab7">fe/dab7</a></span>
       <span class="opcode ">ply</span>
+      <span class="comment">;get back stack handle</span>
     </span>
     <span class="line"><a id="ADDR_fe_dab8"></a><span class="address"><a href="#ADDR_fe_dab8">fe/dab8</a></span>
-      <a id="LBLLK-LFEDAB8"></a><span class="label" anno="none" id="LBL-LFEDAB8">LFEDAB8</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@freestackretsec</span>
       <span class="opcode ">ldx</span>
       <span class="operand">#<a class="op-symbol" href="#LBLLK-__MMFP" title="2">__MMFP</a></span>
     </span>
@@ -25374,7 +25472,7 @@
       <span class="operand"><a class="op-symbol" href="#LBLLK-__MM" title="FF8C">__MM</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dabf"></a><span class="address"><a href="#ADDR_fe_dabf">fe/dabf</a></span>
-      <a id="LBLLK-LFEDABF"></a><span class="label" anno="none" id="LBL-LFEDABF">LFEDABF</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retsecpop</span>
       <span class="opcode ">pla</span>
     </span>
     <span class="line"><a id="ADDR_fe_dac0"></a><span class="address"><a href="#ADDR_fe_dac0">fe/dac0</a></span>
@@ -25384,7 +25482,7 @@
       <span class="opcode ">pld</span>
     </span>
     <span class="line"><a id="ADDR_fe_dac2"></a><span class="address"><a href="#ADDR_fe_dac2">fe/dac2</a></span>
-      <a id="LBLLK-LFEDAC2"></a><span class="label" anno="none" id="LBL-LFEDAC2">LFEDAC2</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retsec</span>
       <span class="opcode ">sec</span>
     </span>
     <span class="line"><a id="ADDR_fe_dac3"></a><span class="address"><a href="#ADDR_fe_dac3">fe/dac3</a></span>
@@ -25417,7 +25515,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_dac5"></a><span class="address"><a href="#ADDR_fe_dac5">fe/dac5</a></span>
       <span class="opcode ">pea</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-EXSYS" title="FF00">EXSYS</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dac8"></a><span class="address"><a href="#ADDR_fe_dac8">fe/dac8</a></span>
       <span class="opcode ">pld</span>
@@ -25433,23 +25531,27 @@
     </span>
     <span class="line"><a id="ADDR_fe_dace"></a><span class="address"><a href="#ADDR_fe_dace">fe/dace</a></span>
       <span class="opcode ">beq</span>
-      <span class="operand">@notYeq0</span>
+      <span class="operand">@yeq0</span>
     </span>
     <span class="line"><a id="ADDR_fe_dad0"></a><span class="address"><a href="#ADDR_fe_dad0">fe/dad0</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">[$02],y</span>
+      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-EXSYS_HANDLEBLOCK_LONGPTR" title="FF02">EXSYS_HANDLEBLOCK_LONGPTR</a>],y</span>
+      <span class="comment">;coroutine handle's address from the handleblock</span>
     </span>
     <span class="line"><a id="ADDR_fe_dad2"></a><span class="address"><a href="#ADDR_fe_dad2">fe/dad2</a></span>
-      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@notYeq0</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@yeq0</span>
       <span class="opcode ">tcd</span>
+      <span class="comment">;put it in DP</span>
     </span>
     <span class="line"><a id="ADDR_fe_dad3"></a><span class="address"><a href="#ADDR_fe_dad3">fe/dad3</a></span>
       <span class="opcode ">lda</span>
       <span class="operand">$01,S</span>
+      <span class="comment">;get pushed DP parameter</span>
     </span>
     <span class="line"><a id="ADDR_fe_dad5"></a><span class="address"><a href="#ADDR_fe_dad5">fe/dad5</a></span>
       <span class="opcode ">sta</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_DP" title="6">CO_off_DP</a></span>
+      <span class="comment">;store in the block DP offset</span>
     </span>
     <span class="line"><a id="ADDR_fe_dad7"></a><span class="address"><a href="#ADDR_fe_dad7">fe/dad7</a></span>
       <span class="opcode ">lda</span>
@@ -25462,6 +25564,7 @@
     <span class="line"><a id="ADDR_fe_dadc"></a><span class="address"><a href="#ADDR_fe_dadc">fe/dadc</a></span>
       <span class="opcode ">sta</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_flags" title="4">CO_off_flags</a></span>
+      <span class="comment">;set flag to indicate we want DP setting on subsequent continues</span>
     </span>
     <span class="line"><a id="ADDR_fe_dade"></a><span class="address"><a href="#ADDR_fe_dade">fe/dade</a></span>
       <span class="opcode ">pld</span>
@@ -26282,7 +26385,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_dc1e"></a><span class="address"><a href="#ADDR_fe_dc1e">fe/dc1e</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+5</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CO_A_SAVE" title="FF05">EXSYS_CO_A_SAVE</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dc22"></a><span class="address"><a href="#ADDR_fe_dc22">fe/dc22</a></span>
       <span class="opcode ">tsc</span>
@@ -26340,7 +26443,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_dc37"></a><span class="address"><a href="#ADDR_fe_dc37">fe/dc37</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+5</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CO_A_SAVE" title="FF05">EXSYS_CO_A_SAVE</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dc3b"></a><span class="address"><a href="#ADDR_fe_dc3b">fe/dc3b</a></span>
       <span class="opcode ">tsc</span>
@@ -26371,6 +26474,19 @@
     <span class="long-comment">
 ********************************************************************************<span class="br"></span>
 * CCO - Call a Co-routine                                                      *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* This is used to call a coroutine from its creator (parent). On the first     *<span class="br"></span>
+* call the entry address given in the COCRE call is used. Subsequently, the    *<span class="br"></span>
+* address after the last CWT executed by the routine is used                   *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Entry:                                                                       *<span class="br"></span>
+*    Y       Handle of child                                                   *<span class="br"></span>
+*    BHA,X,C Arguments to child coroutine                                      *<span class="br"></span>
+* Exit:                                                                        *<span class="br"></span>
+*    BHA,X,C Results from child coroutine                                      *<span class="br"></span>
+*    B,D     Preserved                                                         *<span class="br"></span>
+*                                                                              *<span class="br"></span>
+* Note: C is the C flag.                                                       *<span class="br"></span>
 ********************************************************************************</span>
     <span class="line">
       <span class="opcode directive">rwid</span>
@@ -26393,11 +26509,12 @@
     </span>
     <span class="line"><a id="ADDR_fe_dc4c"></a><span class="address"><a href="#ADDR_fe_dc4c">fe/dc4c</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+5</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CO_A_SAVE" title="FF05">EXSYS_CO_A_SAVE</a></span>
+      <span class="comment">;we need to preserve A not on the stack as the stack will get switched</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc50"></a><span class="address"><a href="#ADDR_fe_dc50">fe/dc50</a></span>
       <span class="opcode ">pea</span>
-      <span class="operand">$ff00</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-EXSYS" title="FF00">EXSYS</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dc53"></a><span class="address"><a href="#ADDR_fe_dc53">fe/dc53</a></span>
       <span class="opcode ">pld</span>
@@ -26407,15 +26524,16 @@
     </span>
     <span class="line"><a id="ADDR_fe_dc55"></a><span class="address"><a href="#ADDR_fe_dc55">fe/dc55</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand">[$10]</span>
+      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-EXSYS_CUR_COROUTINE" title="FF10">EXSYS_CUR_COROUTINE</a>]</span>
+      <span class="comment">;store current stack at offset 0 in our block</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc57"></a><span class="address"><a href="#ADDR_fe_dc57">fe/dc57</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">[<a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1],y</span>
+      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-EXSYS_HANDLEBLOCK_LONGPTR" title="FF02">EXSYS_HANDLEBLOCK_LONGPTR</a>],y</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc59"></a><span class="address"><a href="#ADDR_fe_dc59">fe/dc59</a></span>
       <span class="opcode ">ldy</span>
-      <span class="operand">$10</span>
+      <span class="operand">&lt;<a class="op-symbol" href="#LBLLK-EXSYS_CUR_COROUTINE" title="FF10">EXSYS_CUR_COROUTINE</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dc5b"></a><span class="address"><a href="#ADDR_fe_dc5b">fe/dc5b</a></span>
       <a id="LBLLK-LFEDC5B"></a><span class="label" anno="none" id="LBL-LFEDC5B">LFEDC5B</span>
@@ -26427,7 +26545,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_dc60"></a><span class="address"><a href="#ADDR_fe_dc60">fe/dc60</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_PC" title="B">DPCOP_PC</a></span>
+      <span class="operand">$0b</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc62"></a><span class="address"><a href="#ADDR_fe_dc62">fe/dc62</a></span>
       <span class="opcode ">and</span>
@@ -26447,110 +26565,14 @@
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_dc6c"></a><span class="address"><a href="#ADDR_fe_dc6c">fe/dc6c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$49</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc6d"></a><span class="address"><a href="#ADDR_fe_dc6d">fe/dc6d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6e</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc6e"></a><span class="address"><a href="#ADDR_fe_dc6e">fe/dc6e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$76</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc6f"></a><span class="address"><a href="#ADDR_fe_dc6f">fe/dc6f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$61</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc70"></a><span class="address"><a href="#ADDR_fe_dc70">fe/dc70</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6c</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc71"></a><span class="address"><a href="#ADDR_fe_dc71">fe/dc71</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$69</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc72"></a><span class="address"><a href="#ADDR_fe_dc72">fe/dc72</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc73"></a><span class="address"><a href="#ADDR_fe_dc73">fe/dc73</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc74"></a><span class="address"><a href="#ADDR_fe_dc74">fe/dc74</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$63</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc75"></a><span class="address"><a href="#ADDR_fe_dc75">fe/dc75</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc76"></a><span class="address"><a href="#ADDR_fe_dc76">fe/dc76</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc77"></a><span class="address"><a href="#ADDR_fe_dc77">fe/dc77</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc78"></a><span class="address"><a href="#ADDR_fe_dc78">fe/dc78</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$75</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc79"></a><span class="address"><a href="#ADDR_fe_dc79">fe/dc79</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$74</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc7a"></a><span class="address"><a href="#ADDR_fe_dc7a">fe/dc7a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$69</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc7b"></a><span class="address"><a href="#ADDR_fe_dc7b">fe/dc7b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6e</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc7c"></a><span class="address"><a href="#ADDR_fe_dc7c">fe/dc7c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc7d"></a><span class="address"><a href="#ADDR_fe_dc7d">fe/dc7d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc7e"></a><span class="address"><a href="#ADDR_fe_dc7e">fe/dc7e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$68</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc7f"></a><span class="address"><a href="#ADDR_fe_dc7f">fe/dc7f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$61</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc80"></a><span class="address"><a href="#ADDR_fe_dc80">fe/dc80</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6e</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc81"></a><span class="address"><a href="#ADDR_fe_dc81">fe/dc81</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc82"></a><span class="address"><a href="#ADDR_fe_dc82">fe/dc82</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6c</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc83"></a><span class="address"><a href="#ADDR_fe_dc83">fe/dc83</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line"><a id="ADDR_fe_dc84"></a><span class="address"><a href="#ADDR_fe_dc84">fe/dc84</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode directive">zstr</span>
+      <span class="operand">“Invalid coroutine handle”</span>
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_dc85"></a><span class="address"><a href="#ADDR_fe_dc85">fe/dc85</a></span>
       <a id="LBLLK-LFEDC85"></a><span class="label" anno="none" id="LBL-LFEDC85">LFEDC85</span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_Parent" title="2">CO_off_Parent</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dc87"></a><span class="address"><a href="#ADDR_fe_dc87">fe/dc87</a></span>
       <span class="opcode ">beq</span>
@@ -26564,57 +26586,67 @@
     <span class="line"><a id="ADDR_fe_dc8c"></a><span class="address"><a href="#ADDR_fe_dc8c">fe/dc8c</a></span>
       <a id="LBLLK-LFEDC8C"></a><span class="label" anno="none" id="LBL-LFEDC8C">LFEDC8C</span>
       <span class="opcode ">sty</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_Parent" title="2">CO_off_Parent</a></span>
+      <span class="comment">;set ourselves as the parent</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc8e"></a><span class="address"><a href="#ADDR_fe_dc8e">fe/dc8e</a></span>
       <span class="opcode ">lda</span>
       <span class="operand">$01,S</span>
+      <span class="comment">;get parent DP</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc90"></a><span class="address"><a href="#ADDR_fe_dc90">fe/dc90</a></span>
       <span class="opcode ">bit</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_X" title="3">DPCOP_X</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_flags" title="4">CO_off_flags</a>-1</span>
+      <span class="comment">;check for $40 in low byte of flags (has DP)</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc92"></a><span class="address"><a href="#ADDR_fe_dc92">fe/dc92</a></span>
       <span class="opcode ">bvc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDC96" title="FEDC96">LFEDC96</a></span>
+      <span class="operand">@nodp</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc94"></a><span class="address"><a href="#ADDR_fe_dc94">fe/dc94</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_DP" title="6">CO_off_DP</a></span>
+      <span class="comment">;get stored DP for child</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc96"></a><span class="address"><a href="#ADDR_fe_dc96">fe/dc96</a></span>
-      <a id="LBLLK-LFEDC96"></a><span class="label" anno="none" id="LBL-LFEDC96">LFEDC96</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@nodp</span>
       <span class="opcode ">sta</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5">DPCOP_AH</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_DP" title="6">CO_off_DP</a></span>
+      <span class="comment">;store in child DP</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc98"></a><span class="address"><a href="#ADDR_fe_dc98">fe/dc98</a></span>
       <span class="opcode ">pha</span>
+      <span class="comment">;save DP - again - TODO: there looks to be a lot of unnecessary stuff here</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc99"></a><span class="address"><a href="#ADDR_fe_dc99">fe/dc99</a></span>
       <span class="opcode ">pea</span>
-      <span class="operand">$ff00</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-EXSYS" title="FF00">EXSYS</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dc9c"></a><span class="address"><a href="#ADDR_fe_dc9c">fe/dc9c</a></span>
       <span class="opcode ">pld</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc9d"></a><span class="address"><a href="#ADDR_fe_dc9d">fe/dc9d</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">[$10]</span>
+      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-EXSYS_CUR_COROUTINE" title="FF10">EXSYS_CUR_COROUTINE</a>]</span>
+      <span class="comment">;get stack from offset 0 in block</span>
     </span>
     <span class="line"><a id="ADDR_fe_dc9f"></a><span class="address"><a href="#ADDR_fe_dc9f">fe/dc9f</a></span>
       <span class="opcode ">pld</span>
+      <span class="comment">;set up call DP</span>
     </span>
     <span class="line"><a id="ADDR_fe_dca0"></a><span class="address"><a href="#ADDR_fe_dca0">fe/dca0</a></span>
       <span class="opcode ">tcs</span>
+      <span class="comment">;the rtl below will now return to the address that was last stacked by the child coroutine</span>
     </span>
     <span class="line"><a id="ADDR_fe_dca1"></a><span class="address"><a href="#ADDR_fe_dca1">fe/dca1</a></span>
       <span class="opcode ">ldal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+5</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CO_A_SAVE" title="FF05">EXSYS_CO_A_SAVE</a></span>
+      <span class="comment">;get back A as passed in </span>
     </span>
     <span class="line"><a id="ADDR_fe_dca5"></a><span class="address"><a href="#ADDR_fe_dca5">fe/dca5</a></span>
-      <a id="LBLLK-LFEDCA5"></a><span class="label" anno="none" id="LBL-LFEDCA5">LFEDCA5</span>
+      <a id="LBLLK-plpRetCy"></a><span class="label" anno="none" id="LBL-plpRetCy">plpRetCy</span>
       <span class="opcode ">bcs</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDCAA" title="FEDCAA">LFEDCAA</a></span>
+      <span class="operand">@plpRetSec</span>
     </span>
     <span class="line"><a id="ADDR_fe_dca7"></a><span class="address"><a href="#ADDR_fe_dca7">fe/dca7</a></span>
       <span class="opcode ">plp</span>
@@ -26627,7 +26659,7 @@
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_dcaa"></a><span class="address"><a href="#ADDR_fe_dcaa">fe/dcaa</a></span>
-      <a id="LBLLK-LFEDCAA"></a><span class="label" anno="none" id="LBL-LFEDCAA">LFEDCAA</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@plpRetSec</span>
       <span class="opcode ">plp</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcab"></a><span class="address"><a href="#ADDR_fe_dcab">fe/dcab</a></span>
@@ -26661,25 +26693,29 @@
     </span>
     <span class="line"><a id="ADDR_fe_dcb0"></a><span class="address"><a href="#ADDR_fe_dcb0">fe/dcb0</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+5</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CO_A_SAVE" title="FF05">EXSYS_CO_A_SAVE</a></span>
+      <span class="comment">;save AH - we're about to swap out stack so we can't stack it</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcb4"></a><span class="address"><a href="#ADDR_fe_dcb4">fe/dcb4</a></span>
       <span class="opcode ">ldal</span>
       <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CUR_COROUTINE" title="FF10">EXSYS_CUR_COROUTINE</a></span>
+      <span class="comment">;get pointer to this coroutine's block</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcb8"></a><span class="address"><a href="#ADDR_fe_dcb8">fe/dcb8</a></span>
       <span class="opcode ">tcd</span>
+      <span class="comment">;in DP</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcb9"></a><span class="address"><a href="#ADDR_fe_dcb9">fe/dcb9</a></span>
       <span class="opcode ">tsc</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcba"></a><span class="address"><a href="#ADDR_fe_dcba">fe/dcba</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand">$00</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_stack" title="0">CO_off_stack</a></span>
+      <span class="comment">;store stack at offset 0</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcbc"></a><span class="address"><a href="#ADDR_fe_dcbc">fe/dcbc</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_Parent" title="2">CO_off_Parent</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dcbe"></a><span class="address"><a href="#ADDR_fe_dcbe">fe/dcbe</a></span>
       <span class="opcode ">bne</span>
@@ -26688,41 +26724,51 @@
     <span class="line"><a id="ADDR_fe_dcc0"></a><span class="address"><a href="#ADDR_fe_dcc0">fe/dcc0</a></span>
       <span class="opcode ">brl</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-syserrCoRoutineError" title="FEDCE8">syserrCoRoutineError</a></span>
+      <span class="comment">;flag error - cannot call CWT when no parent?!?</span>
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_dcc3"></a><span class="address"><a href="#ADDR_fe_dcc3">fe/dcc3</a></span>
       <a id="LBLLK-LFEDCC3"></a><span class="label" anno="none" id="LBL-LFEDCC3">LFEDCC3</span>
       <span class="opcode ">stal</span>
       <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CUR_COROUTINE" title="FF10">EXSYS_CUR_COROUTINE</a></span>
+      <span class="comment">;make parent the current coroutine</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcc7"></a><span class="address"><a href="#ADDR_fe_dcc7">fe/dcc7</a></span>
       <span class="opcode ">pei</span>
       <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1)</span>
+      <span class="comment">;push the address of the parent block on the stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcc9"></a><span class="address"><a href="#ADDR_fe_dcc9">fe/dcc9</a></span>
       <span class="opcode ">stz</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="comment">;clear current co routine's parent</span>
     </span>
     <span class="line"><a id="ADDR_fe_dccb"></a><span class="address"><a href="#ADDR_fe_dccb">fe/dccb</a></span>
       <span class="opcode ">pld</span>
+      <span class="comment">;DP to point at parent block</span>
     </span>
     <span class="line"><a id="ADDR_fe_dccc"></a><span class="address"><a href="#ADDR_fe_dccc">fe/dccc</a></span>
       <span class="opcode ">lda</span>
       <span class="operand">$00</span>
+      <span class="comment">;load the parent's stack pointer</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcce"></a><span class="address"><a href="#ADDR_fe_dcce">fe/dcce</a></span>
       <span class="opcode ">tcs</span>
+      <span class="comment">;and switch to that stack</span>
     </span>
     <span class="line"><a id="ADDR_fe_dccf"></a><span class="address"><a href="#ADDR_fe_dccf">fe/dccf</a></span>
       <span class="opcode ">ldal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-MM_HANDLE_TAB" title="FF00">MM_HANDLE_TAB</a>+5</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-EXSYS_CO_A_SAVE" title="FF05">EXSYS_CO_A_SAVE</a></span>
+      <span class="comment">;return AH from coroutine</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcd3"></a><span class="address"><a href="#ADDR_fe_dcd3">fe/dcd3</a></span>
       <span class="opcode ">pld</span>
+      <span class="comment">;pull D - the DP of the parent coroutine</span>
     </span>
     <span class="line"><a id="ADDR_fe_dcd4"></a><span class="address"><a href="#ADDR_fe_dcd4">fe/dcd4</a></span>
       <span class="opcode ">bra</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDCA5" title="FEDCA5">LFEDCA5</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-plpRetCy" title="FEDCA5">plpRetCy</a></span>
+      <span class="comment">;continue coroutine</span>
     </span>
     <span class="line"></span>
     <span class="long-comment">
@@ -27034,7 +27080,7 @@
       <span class="operand">shortm,shortx</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd83"></a><span class="address"><a href="#ADDR_fe_dd83">fe/dd83</a></span>
-      <a id="LBLLK-LFEDD83"></a><span class="label" anno="none" id="LBL-LFEDD83">LFEDD83</span>
+      <a id="LBLLK-getCurCorParent"></a><span class="label" anno="none" id="LBL-getCurCorParent">getCurCorParent</span>
       <span class="opcode ">php</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd84"></a><span class="address"><a href="#ADDR_fe_dd84">fe/dd84</a></span>
@@ -27050,25 +27096,25 @@
     </span>
     <span class="line"><a id="ADDR_fe_dd87"></a><span class="address"><a href="#ADDR_fe_dd87">fe/dd87</a></span>
       <span class="opcode ">pea</span>
-      <span class="operand">$ff00</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-EXSYS" title="FF00">EXSYS</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dd8a"></a><span class="address"><a href="#ADDR_fe_dd8a">fe/dd8a</a></span>
       <span class="opcode ">pld</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd8b"></a><span class="address"><a href="#ADDR_fe_dd8b">fe/dd8b</a></span>
       <span class="opcode ">pei</span>
-      <span class="operand">($10)</span>
+      <span class="operand">(&lt;<a class="op-symbol" href="#LBLLK-EXSYS_CUR_COROUTINE" title="FF10">EXSYS_CUR_COROUTINE</a>)</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd8d"></a><span class="address"><a href="#ADDR_fe_dd8d">fe/dd8d</a></span>
       <span class="opcode ">pld</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd8e"></a><span class="address"><a href="#ADDR_fe_dd8e">fe/dd8e</a></span>
       <span class="opcode ">ldx</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1">DPCOP_Y</a>+1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-CO_off_Parent" title="2">CO_off_Parent</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_dd90"></a><span class="address"><a href="#ADDR_fe_dd90">fe/dd90</a></span>
       <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDD96" title="FEDD96">LFEDD96</a></span>
+      <span class="operand">@retsec</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd92"></a><span class="address"><a href="#ADDR_fe_dd92">fe/dd92</a></span>
       <span class="opcode ">pld</span>
@@ -27092,7 +27138,7 @@
       <span class="operand">longm,longx</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd96"></a><span class="address"><a href="#ADDR_fe_dd96">fe/dd96</a></span>
-      <a id="LBLLK-LFEDD96"></a><span class="label" anno="none" id="LBL-LFEDD96">LFEDD96</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retsec</span>
       <span class="opcode ">pld</span>
     </span>
     <span class="line"><a id="ADDR_fe_dd97"></a><span class="address"><a href="#ADDR_fe_dd97">fe/dd97</a></span>
@@ -27110,9 +27156,9 @@
     </span>
     <span class="line"></span>
     <span class="line"><a id="ADDR_fe_dd9a"></a><span class="address"><a href="#ADDR_fe_dd9a">fe/dd9a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6b</span>
+      <span class="opcode ">rtl</span>
     </span>
+    <span class="line"></span>
     <span class="line"><a id="ADDR_fe_dd9b"></a><span class="address"><a href="#ADDR_fe_dd9b">fe/dd9b</a></span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$29</span>
@@ -48420,7 +48466,7 @@
     </span>
     <span class="line"><a id="ADDR_fe_fce2"></a><span class="address"><a href="#ADDR_fe_fce2">fe/fce2</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECEA1" title="FECEA1">LFECEA1</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-allocHandleQRY" title="FECEA1">allocHandleQRY</a></span>
     </span>
     <span class="line"><a id="ADDR_fe_fce5"></a><span class="address"><a href="#ADDR_fe_fce5">fe/fce5</a></span>
       <span class="opcode ">sty</span>

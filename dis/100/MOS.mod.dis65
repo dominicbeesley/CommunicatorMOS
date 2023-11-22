@@ -21,6 +21,23 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"__EVPRE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Event mask indicates a pre-empt",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__EVPRE",
+"Value":2,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__MMALA":{
 "DataDescriptor":{
 "Length":1,
@@ -4223,6 +4240,11 @@
 "Hint":"Code"},
 
 {
+"Low":12186,
+"High":12186,
+"Hint":"Code"},
+
+{
 "Low":12215,
 "High":12228,
 "Hint":"InlineData"},
@@ -4780,6 +4802,7 @@
 "11949":16711935,
 "11990":48,
 "12160":48,
+"12187":48,
 "12473":3145728,
 "12545":3145728,
 "12587":3145728,
@@ -5088,6 +5111,7 @@
 "5421":"check the pool handle and get the base",
 "5431":"copy screen back",
 "5439":"free the pool",
+"8362":"getHandleBlockSize",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -5136,7 +5160,43 @@
 "11329":"COKILL - 18 - kill language",
 "11331":"COHELP - 1A - language help",
 "11333":"COMOD - 1C - ???",
+"11339":"get entry address",
+"11347":"allocate the stack",
+"11354":"stack alloc failed",
+"11359":"alloc a coroutine block??? QRY",
+"11366":"stash handle in DP slot QRY",
+"11372":"stack X - pointer to coroutine block",
+"11373":"get top of stack",
+"11380":"assume in B0 (alloc\u0027d with MMAZB)",
+"11381":"subtract 4 to point at 3rd last byte",
+"11384":"put that in X",
+"11385":"get BHA on entry",
+"11396":"store bank - TODO: this looks like it may be a bug - it stores a 0 outside our pool!",
+"11400":"put X in A",
+"11401":"decrement so it\u0027s suitable as a stack pointer",
+"11402":"X = block addr",
+"11403":"Y = HA on entry",
+"11404":"B = B on entry",
+"11405":"block addr",
+"11406":"block addr",
+"11408":"into D",
+"11409":"X=caller\u0027s stack",
+"11410":"set S = coroutine stack",
+"11416":"coroutine stack pointer into A",
+"11417":"back to caller\u0027s stack",
+"11418":"X = block pointer",
+"11419":"store coroutine start stack",
+"11431":"zero the DP handle (used to stash stack handle)",
+"11439":"get the handle for the stack we stashed earlier",
+"11443":"push it",
+"11444":"free the block QRY?",
+"11447":"get back stack handle",
 "11465":"if no handle default to one at offset $10 in table",
+"11472":"coroutine handle\u0027s address from the handleblock",
+"11474":"put it in DP",
+"11475":"get pushed DP parameter",
+"11477":"store in the block DP offset",
+"11484":"set flag to indicate we want DP setting on subsequent continues",
 "11509":"get K of old break handler",
 "11513":"get HA of old break handler",
 "11575":" clear V ",
@@ -5155,6 +5215,20 @@
 "11935":"set up call DP",
 "11936":"the rtl below will now return to the address that was last stacked by the child coroutine",
 "11937":"get back A as passed in ",
+"11952":"save AH - we\u0027re about to swap out stack so we can\u0027t stack it",
+"11956":"get pointer to this coroutine\u0027s block",
+"11960":"in DP",
+"11962":"store stack at offset 0",
+"11968":"flag error - cannot call CWT when no parent?!?",
+"11971":"make parent the current coroutine",
+"11975":"push the address of the parent block on the stack",
+"11977":"clear current co routine\u0027s parent",
+"11979":"DP to point at parent block",
+"11980":"load the parent\u0027s stack pointer",
+"11982":"and switch to that stack",
+"11983":"return AH from coroutine",
+"11987":"pull D - the DP of the parent coroutine",
+"11988":"continue coroutine",
 "12039":"there\u0027s a break handler set - call it",
 "12043":"check parent\u0027s for break handler",
 "12045":"write module name to VDU",
@@ -6512,7 +6586,43 @@
 "BackgroundColor":0},
 
 "11335":{
-"Text":"__CO 1C - COMOD - ??? \r\n\r\nLooks to do OPRMI then calls init Service2",
+"Text":"__CO 1C - COMOD - ??? \r\n\r\nGiven an address in a module make a coroutine from the module\u0027s entry point\r\n\r\nEntry:\r\n   BHA  contains an address somewhere within a module\r\n\r\nQRY Looks to do OPRMI then drops through to COCRE",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"11343":{
+"Text":"__CO 02 - COCRE - Create a coroutine\r\n\r\nThis sets up the initial execution address of a new coroutine and declares its stack size.\r\nEntry: \r\n   BHA Entry address of coroutine \r\n   D   Desired size of coroutine\u0027s stack\r\n   X   COCRE\r\nExit: \r\n   C=0 Coroutine created successfully\r\n   Y   Handle to be used in subsequent calls\r\nor C=1 Coroutine could not be created\r\n\r\nNotes: The stack size must be a non-zero multiple of 256 bytes - \u0026200 is a good size",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"11373":{
+"Text":"stack contents\r\n+6    D on entry (stack size)\r\n+3    BHA address of coroutine start\r\n+1    B0 pointer to corouting block\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"11405":{
+"Text":"stack is now\r\n+1 is D on entry\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"11411":{
+"Text":"coroutine stack is now\r\n+1      BHA of coroutine start addr\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"11416":{
+"Text":"coroutine stack is now\r\n\r\n+7   BHA on entry\r\n+5   D block address\r\n+4   B on entry\r\n+2   HA-1 on entry\r\n+1   current flags",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"11409":{
+"Text":"stack is now\r\n+5  D on entry\r\n+3  block addr\r\n+1  block addr",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -10078,7 +10188,7 @@
 "LabelAnno":"None"},
 
 "11343":{
-"Label":"doCOServ2",
+"Label":"doCOCRE",
 "Value":16702031,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -10176,7 +10286,7 @@
 "LabelAnno":"None"},
 
 "11474":{
-"Label":"notYeq0",
+"Label":"yeq0",
 "Value":16702162,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
@@ -10276,6 +10386,76 @@
 "11946":{
 "Label":"plpRetSec",
 "Value":16702634,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"11455":{
+"Label":"retsecpop",
+"Value":16702143,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"11458":{
+"Label":"retsec",
+"Value":16702146,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"11448":{
+"Label":"freestackretsec",
+"Value":16702136,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8207":{
+"Label":"ok",
+"Value":16698895,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8353":{
+"Label":"allocHandleQRY",
+"Value":16699041,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8370":{
+"Label":"lp",
+"Value":16699058,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"11439":{
+"Label":"nohandles",
+"Value":16702127,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"12163":{
+"Label":"getCurCorParent",
+"Value":16702851,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"12182":{
+"Label":"retsec",
+"Value":16702870,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"2963":{
+"Label":"noparent",
+"Value":16693651,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
@@ -12453,6 +12633,22 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"2954":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__EVPRE",
+"Part":"High"}},
+
+"2957":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__EVPRE",
+"Part":"Low"}},
+
 "2959":{
 "Length":2,
 "Format":"NumericLE",
@@ -13604,7 +13800,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MM_HANDLE_TAB",
+"Label":"EXSYS",
 "Part":"Low"}},
 
 "8362":{
@@ -13612,10 +13808,16 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MM_HANDLE_TAB",
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
 "Part":"Low"}},
 
 "8374":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8379":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Hex",
@@ -14534,7 +14736,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"doCOServ2",
+"Label":"doCOCRE",
 "Part":"Low"}},
 
 "11309":{
@@ -14641,6 +14843,14 @@
 "Label":"doCoMOD",
 "Part":"Low"}},
 
+"11339":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_34_OPRMI",
+"Part":"Low"}},
+
 "11347":{
 "Length":3,
 "Format":"NumericLE",
@@ -14649,12 +14859,66 @@
 "Label":"__MMAZB",
 "Part":"Low"}},
 
+"11366":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_DP",
+"Part":"Low"}},
+
+"11368":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
+
+"11370":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_flags",
+"Part":"Low"}},
+
 "11373":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"__MMTOP",
+"Part":"Low"}},
+
+"11396":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"11419":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_stack",
+"Part":"Low"}},
+
+"11431":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_DP",
+"Part":"Low"}},
+
+"11439":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_DP",
 "Part":"Low"}},
 
 "11448":{
@@ -14670,7 +14934,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MM_HANDLE_TAB",
+"Label":"EXSYS",
 "Part":"Low"}},
 
 "11465":{
@@ -14684,8 +14948,10 @@
 "11472":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
 
 "11477":{
 "Length":2,
@@ -15001,6 +15267,22 @@
 "Label":"EXSYS_CO_A_SAVE",
 "Part":"Low"}},
 
+"11962":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_stack",
+"Part":"Low"}},
+
+"11964":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
+
 "11997":{
 "Length":2,
 "Format":"NumericLE",
@@ -15168,6 +15450,30 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"12167":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"12171":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"12174":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
 
 "12196":{
 "Length":2,
