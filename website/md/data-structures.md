@@ -28,26 +28,25 @@ There are actually two types of CBIQ block
 
    | Offset | Purpose 
    |--------|--------------------------------------------------------------
-   |      0 | 
-   |      2 | BHA - Hardware address 
-   |      5 | AND mask for status register
-   |      6 | EOR mask for status register
-   |      7 | Pointer to second CBIQ block
-   |      9 | "$fd06" - QRY then some gymastics?
-   |      B | K - program bank of MOS module
-
+   |   0    | pointer to next lower priority handler in linked list from FE06
+   |   2..4 | BHA - Hardware address 
+   |   5    | AND mask for status register
+   |   6    | EOR mask for status register
+   |   7..8 | Pointer to second CBIQ block
+   |   9..B | pointer to FF byte in MOS ROM (ff/fd06)
+   
 
 #### CBIQ - second block
 
    | Offset | Purpose 
    |--------|--------------------------------------------------------------
-   |      0 | Interrupt priority
-   |      1 | Direct Page
-   |      3 | P Mode OR 4 - i.e. flags on entry with I flag forced on
-   |      4 | BHA - interrupt handler address
-   |      7 | 0000
-   |      9 | 0000
-   |      B | "$0E"
+   |   0    | Interrupt priority
+   |   1..2 | Direct Page
+   |   3    | P Mode OR 4 - i.e. flags on entry with I flag forced on
+   |   4..6 | BHA - interrupt handler address
+   |   7..8 | 0000
+   |   9..A | 0000
+   |   B    | "$0E" (type CBIQ)
 
 
 ## Interrupt Handlers
