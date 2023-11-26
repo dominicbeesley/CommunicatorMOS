@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="dis65.xslt"?>
-<dis65 project-name="MOS.mod" app-version="1.8.5" expression-style="Common" current-date="2023-11-25T23:14:03.3410776+00:00">
+<dis65 project-name="MOS.mod" app-version="1.8.5" expression-style="Common" current-date="2023-11-26T21:51:03.2139284+00:00">
   <symbols>
     <symbol type="global-addr" label="__CCO" anno="none" source="user">$ff94</symbol>
     <symbol type="global-addr" label="__CO" anno="none" source="user">$ff90</symbol>
@@ -55,7 +55,10 @@
     <symbol type="global-addr" label="_ST_AC_int" anno="none" source="user">$fed000</symbol>
     <symbol type="global-addr" label="allocHandleQRY" anno="none" source="user">$fecea1</symbol>
     <symbol type="global-addr" label="allocOK" anno="none" source="user">$febde3</symbol>
+    <symbol type="external-addr" label="B0LST_FREE_BLOCKS" anno="none" source="project">$fe00</symbol>
+    <symbol type="external-addr" label="B0LST_IRQ_HANDLER" anno="none" source="project">$fe06</symbol>
     <symbol type="external-addr" label="B0LST_MODULES_QRY" anno="none" source="project">$fe0e</symbol>
+    <symbol type="external-addr" label="B0LSTEND_FREE_BLOCKS" anno="none" source="project">$fe02</symbol>
     <symbol type="non-unique-local-addr" label="badcharNoInc§003bb0" anno="none" source="user">$fee9b0</symbol>
     <symbol type="non-unique-local-addr" label="badfilename§001926" anno="none" source="user">$fec726</symbol>
     <symbol type="external-addr" label="BANK0_HW_IRQ6502" anno="none" source="project">$fffe</symbol>
@@ -98,7 +101,6 @@
     <symbol type="global-addr" label="coDes2" anno="none" source="user">$fedb39</symbol>
     <symbol type="constant" label="COFLAG_hasBRKhandler" anno="none" source="project">$20</symbol>
     <symbol type="constant" label="COFLAG_HASDP" anno="none" source="project">$40</symbol>
-    <symbol type="global-addr" label="coGetHandleByBlockAddr_QRY" anno="none" source="user">$fecf40</symbol>
     <symbol type="global-addr" label="coHandleBRK" anno="none" source="user">$fedcfa</symbol>
     <symbol type="global-addr" label="coLangFn" anno="none" source="user">$fedbbb</symbol>
     <symbol type="global-addr" label="COP_00" anno="none" source="user">$feb795</symbol>
@@ -357,14 +359,17 @@
     <symbol type="external-addr" label="EXSYS_HANDLEBLOCK_LONGPTR" anno="none" source="project">$ff02</symbol>
     <symbol type="non-unique-local-addr" label="ext_sound_qry§003155" anno="none" source="user">$fedf55</symbol>
     <symbol type="non-unique-local-addr" label="fail§000fe1" anno="none" source="user">$febde1</symbol>
+    <symbol type="global-addr" label="findHandleByAddr" anno="none" source="user">$fecf40</symbol>
     <symbol type="global-addr" label="findModule" anno="none" source="user">$fef130</symbol>
     <symbol type="global-addr" label="findModuleByAddress" anno="none" source="user">$fef482</symbol>
     <symbol type="global-addr" label="FlushAllBuffers" anno="none" source="user">$fedf03</symbol>
+    <symbol type="non-unique-local-addr" label="fnd§002138" anno="none" source="user">$fecf38</symbol>
     <symbol type="global-addr" label="FnKey_LoadX" anno="none" source="user">$fee56b</symbol>
     <symbol type="global-addr" label="FnKey_LoadXpl1" anno="none" source="user">$fee563</symbol>
     <symbol type="global-addr" label="FnKey_StoreX" anno="none" source="user">$fee56f</symbol>
     <symbol type="global-addr" label="Fnkey_StoreXpl1" anno="none" source="user">$fee567</symbol>
     <symbol type="non-unique-local-addr" label="fpretsec§002b3b" anno="none" source="user">$fed93b</symbol>
+    <symbol type="global-addr" label="freeHandlePointerX" anno="none" source="user">$fecf1e</symbol>
     <symbol type="non-unique-local-addr" label="freestackretsec§002cb8" anno="none" source="user">$fedab8</symbol>
     <symbol type="constant" label="FSOP_16_BGET" anno="none" source="project">$16</symbol>
     <symbol type="constant" label="FSOP_18_BPUT" anno="none" source="project">$18</symbol>
@@ -374,7 +379,7 @@
     <symbol type="global-addr" label="getCharBHAinc" anno="none" source="user">$fec1b4</symbol>
     <symbol type="global-addr" label="getCurCorParent" anno="none" source="user">$fedd83</symbol>
     <symbol type="global-addr" label="getFileHandleInfo" anno="none" source="user">$fef53e</symbol>
-    <symbol type="global-addr" label="getHandleBlockInDP" anno="none" source="user">$feceda</symbol>
+    <symbol type="global-addr" label="getHandleYinDP" anno="none" source="user">$feceda</symbol>
     <symbol type="global-addr" label="getModCallBlock" anno="none" source="user">$fef1c3</symbol>
     <symbol type="global-addr" label="getModCallRef" anno="none" source="user">$fef0f2</symbol>
     <symbol type="global-addr" label="getOrCreateModCallBlock" anno="none" source="user">$fef1dd</symbol>
@@ -389,7 +394,16 @@
     <symbol type="non-unique-local-addr" label="here§000f96" anno="none" source="user">$febd96</symbol>
     <symbol type="non-unique-local-addr" label="here§0030c7" anno="none" source="user">$fedec7</symbol>
     <symbol type="constant" label="HND_off_B_type" anno="none" source="project">$0b</symbol>
+    <symbol type="constant" label="HND_type_10_CBHN" anno="none" source="project">$10</symbol>
     <symbol type="constant" label="HND_type_10_file" anno="none" source="project">$10</symbol>
+    <symbol type="constant" label="HND_type_12_CBDFR" anno="none" source="project">$12</symbol>
+    <symbol type="constant" label="HND_type_2_CBMEM" anno="none" source="project">$02</symbol>
+    <symbol type="constant" label="HND_type_4_CBSIND" anno="none" source="project">$04</symbol>
+    <symbol type="constant" label="HND_type_6_CBCO" anno="none" source="project">$06</symbol>
+    <symbol type="constant" label="HND_type_8_CBCO2" anno="none" source="project">$08</symbol>
+    <symbol type="constant" label="HND_type_A_CBLCB" anno="none" source="project">$0a</symbol>
+    <symbol type="constant" label="HND_type_C_CBMOD" anno="none" source="project">$0c</symbol>
+    <symbol type="constant" label="HND_type_E_CBIQ" anno="none" source="project">$0e</symbol>
     <symbol type="constant" label="HNDFILE_off_module" anno="none" source="project">$03</symbol>
     <symbol type="external-addr" label="HW_ECONET" anno="none" source="project">$410000</symbol>
     <symbol type="external-addr" label="HW_EXTIO" anno="none" source="project">$800000</symbol>
@@ -409,6 +423,7 @@
     <symbol type="global-addr" label="intstarLOADSAVE" anno="none" source="user">$fee001</symbol>
     <symbol type="non-unique-local-addr" label="inyret§00224f" anno="none" source="user">$fed04f</symbol>
     <symbol type="non-unique-local-addr" label="keyboard_found§00038c" anno="none" source="user">$feb18c</symbol>
+    <symbol type="global-addr" label="LFD06_anFF" anno="none" source="user">$fefd06</symbol>
     <symbol type="local-or-global-addr" label="LFE80" anno="none" source="auto">$fe80</symbol>
     <symbol type="local-or-global-addr" label="LFE84" anno="none" source="auto">$fe84</symbol>
     <symbol type="local-or-global-addr" label="LFE88" anno="none" source="auto">$fe88</symbol>
@@ -695,17 +710,10 @@
     <symbol type="local-or-global-addr" label="LFECCAF" anno="none" source="auto">$feccaf</symbol>
     <symbol type="local-or-global-addr" label="LFECDB5" anno="none" source="auto">$fecdb5</symbol>
     <symbol type="local-or-global-addr" label="LFECDC9" anno="none" source="auto">$fecdc9</symbol>
-    <symbol type="local-or-global-addr" label="LFECDDA" anno="none" source="auto">$fecdda</symbol>
-    <symbol type="local-or-global-addr" label="LFECE01" anno="none" source="auto">$fece01</symbol>
-    <symbol type="local-or-global-addr" label="LFECE1E" anno="none" source="auto">$fece1e</symbol>
     <symbol type="local-or-global-addr" label="LFECE4E" anno="none" source="auto">$fece4e</symbol>
     <symbol type="local-or-global-addr" label="LFECE57" anno="none" source="auto">$fece57</symbol>
     <symbol type="local-or-global-addr" label="LFECE69" anno="none" source="auto">$fece69</symbol>
     <symbol type="local-or-global-addr" label="LFECEC5" anno="none" source="auto">$fecec5</symbol>
-    <symbol type="local-or-global-addr" label="LFECF14" anno="none" source="auto">$fecf14</symbol>
-    <symbol type="local-or-global-addr" label="LFECF1E" anno="none" source="auto">$fecf1e</symbol>
-    <symbol type="local-or-global-addr" label="LFECF2B" anno="none" source="auto">$fecf2b</symbol>
-    <symbol type="local-or-global-addr" label="LFECF38" anno="none" source="auto">$fecf38</symbol>
     <symbol type="local-or-global-addr" label="LFECF59" anno="none" source="auto">$fecf59</symbol>
     <symbol type="local-or-global-addr" label="LFECF7F" anno="none" source="auto">$fecf7f</symbol>
     <symbol type="local-or-global-addr" label="LFECF9D" anno="none" source="auto">$fecf9d</symbol>
@@ -1201,16 +1209,6 @@
     <symbol type="local-or-global-addr" label="LFEFC0B" anno="none" source="auto">$fefc0b</symbol>
     <symbol type="local-or-global-addr" label="LFEFC12" anno="none" source="auto">$fefc12</symbol>
     <symbol type="local-or-global-addr" label="LFEFC1E" anno="none" source="auto">$fefc1e</symbol>
-    <symbol type="local-or-global-addr" label="LFEFC4C" anno="none" source="auto">$fefc4c</symbol>
-    <symbol type="local-or-global-addr" label="LFEFCC3" anno="none" source="auto">$fefcc3</symbol>
-    <symbol type="local-or-global-addr" label="LFEFCD5" anno="none" source="auto">$fefcd5</symbol>
-    <symbol type="local-or-global-addr" label="LFEFCF2" anno="none" source="auto">$fefcf2</symbol>
-    <symbol type="local-or-global-addr" label="LFEFD33" anno="none" source="auto">$fefd33</symbol>
-    <symbol type="local-or-global-addr" label="LFEFD3F" anno="none" source="auto">$fefd3f</symbol>
-    <symbol type="local-or-global-addr" label="LFEFD42" anno="none" source="auto">$fefd42</symbol>
-    <symbol type="local-or-global-addr" label="LFEFD54" anno="none" source="auto">$fefd54</symbol>
-    <symbol type="local-or-global-addr" label="LFEFD78" anno="none" source="auto">$fefd78</symbol>
-    <symbol type="local-or-global-addr" label="LFEFD7B" anno="none" source="auto">$fefd7b</symbol>
     <symbol type="local-or-global-addr" label="LFEFD7C" anno="none" source="auto">$fefd7c</symbol>
     <symbol type="local-or-global-addr" label="LFEFD85" anno="none" source="auto">$fefd85</symbol>
     <symbol type="local-or-global-addr" label="LFEFDEE" anno="none" source="auto">$fefdee</symbol>
@@ -1230,13 +1228,15 @@
     <symbol type="non-unique-local-addr" label="lp§001339" anno="none" source="user">$fec139</symbol>
     <symbol type="non-unique-local-addr" label="lp§00148d" anno="none" source="user">$fec28d</symbol>
     <symbol type="non-unique-local-addr" label="lp§0020b2" anno="none" source="user">$feceb2</symbol>
-    <symbol type="non-unique-local-addr" label="lp§0020ea" anno="none" source="user">$feceea</symbol>
+    <symbol type="non-unique-local-addr" label="lp§00212b" anno="none" source="user">$fecf2b</symbol>
     <symbol type="non-unique-local-addr" label="lp§002222" anno="none" source="user">$fed022</symbol>
     <symbol type="non-unique-local-addr" label="lp§003105" anno="none" source="user">$fedf05</symbol>
     <symbol type="non-unique-local-addr" label="lp§00374b" anno="none" source="user">$fee54b</symbol>
     <symbol type="non-unique-local-addr" label="lp§003b92" anno="none" source="user">$fee992</symbol>
     <symbol type="non-unique-local-addr" label="lp§003c6f" anno="none" source="user">$feea6f</symbol>
     <symbol type="non-unique-local-addr" label="lp§003e3b" anno="none" source="user">$feec3b</symbol>
+    <symbol type="non-unique-local-addr" label="lp§004ec3" anno="none" source="user">$fefcc3</symbol>
+    <symbol type="non-unique-local-addr" label="lp§004f54" anno="none" source="user">$fefd54</symbol>
     <symbol type="non-unique-local-addr" label="lp0§0006f8" anno="none" source="user">$feb4f8</symbol>
     <symbol type="non-unique-local-addr" label="lp2§0013a5" anno="none" source="user">$fec1a5</symbol>
     <symbol type="non-unique-local-addr" label="lpstart§00040d" anno="none" source="user">$feb20d</symbol>
@@ -1267,7 +1267,9 @@
     <symbol type="non-unique-local-addr" label="notosw§003a1a" anno="none" source="user">$fee81a</symbol>
     <symbol type="non-unique-local-addr" label="notq§002215" anno="none" source="user">$fed015</symbol>
     <symbol type="non-unique-local-addr" label="novdu§003bd0" anno="none" source="user">$fee9d0</symbol>
+    <symbol type="global-addr" label="obtainFreeBlock" anno="none" source="user">$fece01</symbol>
     <symbol type="non-unique-local-addr" label="ok§00200f" anno="none" source="user">$fece0f</symbol>
+    <symbol type="non-unique-local-addr" label="ok§0020ea" anno="none" source="user">$feceea</symbol>
     <symbol type="non-unique-local-addr" label="ok§002d68" anno="none" source="user">$fedb68</symbol>
     <symbol type="non-unique-local-addr" label="ok§0037a4" anno="none" source="user">$fee5a4</symbol>
     <symbol type="non-unique-local-addr" label="ok§003ff8" anno="none" source="user">$feedf8</symbol>
@@ -1327,6 +1329,7 @@
     <symbol type="global-addr" label="phkCallModVDU" anno="none" source="user">$fee6e9</symbol>
     <symbol type="non-unique-local-addr" label="plaerrBadFilename§001925" anno="none" source="user">$fec725</symbol>
     <symbol type="non-unique-local-addr" label="plaplberrCommandError§004643" anno="none" source="user">$fef443</symbol>
+    <symbol type="non-unique-local-addr" label="plpretclc§004f3f" anno="none" source="user">$fefd3f</symbol>
     <symbol type="global-addr" label="plpRetCy" anno="none" source="user">$fedca5</symbol>
     <symbol type="non-unique-local-addr" label="plpRetSec§002eaa" anno="none" source="user">$fedcaa</symbol>
     <symbol type="non-unique-local-addr" label="popsandret§00465a" anno="none" source="user">$fef45a</symbol>
@@ -1409,12 +1412,17 @@
     <symbol type="non-unique-local-addr" label="retsec§0043c0" anno="none" source="user">$fef1c0</symbol>
     <symbol type="non-unique-local-addr" label="retsec§004725" anno="none" source="user">$fef525</symbol>
     <symbol type="non-unique-local-addr" label="retSec§004ef6" anno="none" source="user">$fefcf6</symbol>
+    <symbol type="non-unique-local-addr" label="retsec§004f42" anno="none" source="user">$fefd42</symbol>
+    <symbol type="non-unique-local-addr" label="retsec§004f7b" anno="none" source="user">$fefd7b</symbol>
+    <symbol type="non-unique-local-addr" label="retSec2§004ef2" anno="none" source="user">$fefcf2</symbol>
     <symbol type="non-unique-local-addr" label="retsecclv§004666" anno="none" source="user">$fef466</symbol>
     <symbol type="non-unique-local-addr" label="retsecpop§002cbf" anno="none" source="user">$fedabf</symbol>
     <symbol type="non-unique-local-addr" label="retSecX0§001297" anno="none" source="user">$fec097</symbol>
     <symbol type="non-unique-local-addr" label="retsecX1§000d1c" anno="none" source="user">$febb1c</symbol>
     <symbol type="non-unique-local-addr" label="retSev§004614" anno="none" source="user">$fef414</symbol>
+    <symbol type="non-unique-local-addr" label="retsk§004f78" anno="none" source="user">$fefd78</symbol>
     <symbol type="non-unique-local-addr" label="retTxa§00441c" anno="none" source="user">$fef21c</symbol>
+    <symbol type="global-addr" label="returnXToFreeList" anno="none" source="user">$fecdda</symbol>
     <symbol type="global-addr" label="retX1" anno="none" source="user">$fec8b0</symbol>
     <symbol type="non-unique-local-addr" label="retY§004ef9" anno="none" source="user">$fefcf9</symbol>
     <symbol type="non-unique-local-addr" label="retzsec§0012ea" anno="none" source="user">$fec0ea</symbol>
@@ -1442,21 +1450,25 @@
     <symbol type="non-unique-local-addr" label="sk§001465" anno="none" source="user">$fec265</symbol>
     <symbol type="non-unique-local-addr" label="sk§0015a2" anno="none" source="user">$fec3a2</symbol>
     <symbol type="non-unique-local-addr" label="sk§0015c9" anno="none" source="user">$fec3c9</symbol>
+    <symbol type="non-unique-local-addr" label="sk§00201e" anno="none" source="user">$fece1e</symbol>
     <symbol type="non-unique-local-addr" label="sk§0020d8" anno="none" source="user">$feced8</symbol>
     <symbol type="non-unique-local-addr" label="sk§0047fb" anno="none" source="user">$fef5fb</symbol>
     <symbol type="non-unique-local-addr" label="sk§004b74" anno="none" source="user">$fef974</symbol>
+    <symbol type="non-unique-local-addr" label="sk§004f33" anno="none" source="user">$fefd33</symbol>
     <symbol type="non-unique-local-addr" label="sk09§0013ea" anno="none" source="user">$fec1ea</symbol>
     <symbol type="non-unique-local-addr" label="sk1§00061c" anno="none" source="user">$feb41c</symbol>
     <symbol type="non-unique-local-addr" label="sk1§003c50" anno="none" source="user">$feea50</symbol>
     <symbol type="non-unique-local-addr" label="sk2§0047ff" anno="none" source="user">$fef5ff</symbol>
     <symbol type="non-unique-local-addr" label="skCC§003cc9" anno="none" source="user">$feeac9</symbol>
     <symbol type="non-unique-local-addr" label="skDDtoE4§003c61" anno="none" source="user">$feea61</symbol>
+    <symbol type="non-unique-local-addr" label="skdone§004ed5" anno="none" source="user">$fefcd5</symbol>
     <symbol type="non-unique-local-addr" label="skend§004376" anno="none" source="user">$fef176</symbol>
     <symbol type="non-unique-local-addr" label="skinc§0022ff" anno="none" source="user">$fed0ff</symbol>
     <symbol type="non-unique-local-addr" label="skipsound§003158" anno="none" source="user">$fedf58</symbol>
     <symbol type="non-unique-local-addr" label="sknocc§000a63" anno="none" source="user">$feb863</symbol>
     <symbol type="non-unique-local-addr" label="skok§000a4e" anno="none" source="user">$feb84e</symbol>
     <symbol type="non-unique-local-addr" label="skok1§004e40" anno="none" source="user">$fefc40</symbol>
+    <symbol type="non-unique-local-addr" label="skok2§004e4c" anno="none" source="user">$fefc4c</symbol>
     <symbol type="non-unique-local-addr" label="skq§000ee6" anno="none" source="user">$febce6</symbol>
     <symbol type="non-unique-local-addr" label="skres§0015b4" anno="none" source="user">$fec3b4</symbol>
     <symbol type="global-addr" label="SOUND_CLR_QRY" anno="none" source="user">$feece0</symbol>
@@ -1555,6 +1567,7 @@
     <symbol type="global-addr" label="tblStarCommandDispatch" anno="none" source="user">$feaf22</symbol>
     <symbol type="global-addr" label="tblStrPtrOpts" anno="none" source="user">$fefb93</symbol>
     <symbol type="global-addr" label="tblVarsToSaveCtx" anno="none" source="user">$fec360</symbol>
+    <symbol type="global-addr" label="tblWellKnownHandlePointers" anno="none" source="user">$fecf14</symbol>
     <symbol type="global-addr" label="templateModCallBack2" anno="none" source="user">$feb3e2</symbol>
     <symbol type="global-addr" label="templateModCallBlock" anno="none" source="user">$fef21e</symbol>
     <symbol type="global-addr" label="TFED108" anno="generated" source="user">$fed108</symbol>
@@ -1673,6 +1686,12 @@
       <comment>;OPWRA - write string at BHA</comment>
     </line>
     <line type="equ-directive">
+      <label anno="none" id="HND_type_2_CBMEM">HND_type_2_CBMEM</label>
+      <opcode type="directive">eq</opcode>
+      <operand>2      {const}</operand>
+      <comment>;Handle type - Memory block</comment>
+    </line>
+    <line type="equ-directive">
       <label anno="none" id="COP_03_OPNLI">COP_03_OPNLI</label>
       <opcode type="directive">eq</opcode>
       <operand>3      {const}</operand>
@@ -1702,6 +1721,12 @@
       <operand>$04    {const}</operand>
     </line>
     <line type="equ-directive">
+      <label anno="none" id="HND_type_4_CBSIND">HND_type_4_CBSIND</label>
+      <opcode type="directive">eq</opcode>
+      <operand>4      {const}</operand>
+      <comment>;Handle type - module call reference - QRY</comment>
+    </line>
+    <line type="equ-directive">
       <label anno="none" id="CO_off_B">CO_off_B</label>
       <opcode type="directive">eq</opcode>
       <operand>5      {const}</operand>
@@ -1724,6 +1749,12 @@
       <opcode type="directive">eq</opcode>
       <operand>6      {const}</operand>
       <comment>;OSBYTE</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="HND_type_6_CBCO">HND_type_6_CBCO</label>
+      <opcode type="directive">eq</opcode>
+      <operand>6      {const}</operand>
+      <comment>;Handle type - coroutine</comment>
     </line>
     <line type="equ-directive">
       <label anno="none" id="COP_07_OPOSW">COP_07_OPOSW</label>
@@ -1749,6 +1780,12 @@
       <comment>;Contains a pointer to block that contains a pointer to a break handler in bank 0</comment>
     </line>
     <line type="equ-directive">
+      <label anno="none" id="HND_type_8_CBCO2">HND_type_8_CBCO2</label>
+      <opcode type="directive">eq</opcode>
+      <operand>8      {const}</operand>
+      <comment>;Handle type - coroutine break handler QRY</comment>
+    </line>
+    <line type="equ-directive">
       <label anno="none" id="VDUMOD_OPX_8_EXPLODE">VDUMOD_OPX_8_EXPLODE</label>
       <opcode type="directive">eq</opcode>
       <operand>8      {const}</operand>
@@ -1769,6 +1806,12 @@
       <opcode type="directive">eq</opcode>
       <operand>$0a    {const}</operand>
       <comment>;BGET</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="HND_type_A_CBLCB">HND_type_A_CBLCB</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$0a    {const}</operand>
+      <comment>;Handle type - ???</comment>
     </line>
     <line type="equ-directive">
       <label anno="none" id="VDUMOD_OPX_A">VDUMOD_OPX_A</label>
@@ -1805,6 +1848,12 @@
       <operand>$0c    {const}</operand>
     </line>
     <line type="equ-directive">
+      <label anno="none" id="HND_type_C_CBMOD">HND_type_C_CBMOD</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$0c    {const}</operand>
+      <comment>;Handle type - module QRY</comment>
+    </line>
+    <line type="equ-directive">
       <label anno="none" id="VDUMOD_OPX_C_HIMEM">VDUMOD_OPX_C_HIMEM</label>
       <opcode type="directive">eq</opcode>
       <operand>$0c    {const}</operand>
@@ -1832,6 +1881,12 @@
       <comment>;Interpret command in BHA</comment>
     </line>
     <line type="equ-directive">
+      <label anno="none" id="HND_type_E_CBIQ">HND_type_E_CBIQ</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$0e    {const}</operand>
+      <comment>;Handle type - Interrupt handler</comment>
+    </line>
+    <line type="equ-directive">
       <label anno="none" id="VDUMOD_OPX_E_HIMEMBYX">VDUMOD_OPX_E_HIMEMBYX</label>
       <opcode type="directive">eq</opcode>
       <operand>$0e    {const}</operand>
@@ -1846,6 +1901,12 @@
       <opcode type="directive">eq</opcode>
       <operand>$10    {const}</operand>
       <comment>;Allocate direct page</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="HND_type_10_CBHN">HND_type_10_CBHN</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$10    {const}</operand>
+      <comment>;Handle type - device handle</comment>
     </line>
     <line type="equ-directive">
       <label anno="none" id="HND_type_10_file">HND_type_10_file</label>
@@ -1869,6 +1930,12 @@
       <opcode type="directive">eq</opcode>
       <operand>$12    {const}</operand>
       <comment>;Return the address of the top of the pool</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="HND_type_12_CBDFR">HND_type_12_CBDFR</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$12    {const}</operand>
+      <comment>;Handle type - ???</comment>
     </line>
     <line type="equ-directive">
       <label anno="none" id="COP_13_OPAST">COP_13_OPAST</label>
@@ -2530,6 +2597,24 @@
       <label anno="none" id="DPSYS_OSB_IND">DPSYS_OSB_IND</label>
       <opcode type="directive">eq</opcode>
       <operand>$acf6  {addr/2}</operand>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="B0LST_FREE_BLOCKS">B0LST_FREE_BLOCKS</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$fe00  {addr/2}</operand>
+      <comment>;A list of free [handle block]s</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="B0LSTEND_FREE_BLOCKS">B0LSTEND_FREE_BLOCKS</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$fe02  {addr/2}</operand>
+      <comment>;points to the last entry in the free list</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="B0LST_IRQ_HANDLER">B0LST_IRQ_HANDLER</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$fe06  {addr/2}</operand>
+      <comment>;looks to be a list of interrupt handlers</comment>
     </line>
     <line type="equ-directive">
       <label anno="none" id="DP_HANDLE_VIDEO_QRY">DP_HANDLE_VIDEO_QRY</label>
@@ -5049,11 +5134,11 @@
     </line>
     <line type="code" address="fe/b3b6">
       <opcode>lda</opcode>
-      <operand>#$0004</operand>
+      <operand>#<op-symbol anno="none" value="4" symbol="HND_type_4_CBSIND" symbol-type="constant" symbol-source="project">HND_type_4_CBSIND</op-symbol></operand>
     </line>
     <line type="code" address="fe/b3b9">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/b3bc">
       <opcode>bcs</opcode>
@@ -9335,7 +9420,7 @@
     </line>
     <line type="code" address="fe/bb2f">
       <opcode>lda</opcode>
-      <operand>#$0010</operand>
+      <operand>#<op-symbol anno="none" value="10" symbol="HND_type_10_CBHN" symbol-type="constant" symbol-source="project">HND_type_10_CBHN</op-symbol></operand>
     </line>
     <line type="code" address="fe/bb32">
       <opcode>jsr</opcode>
@@ -11681,11 +11766,11 @@
     <line type="code" address="fe/bf4c">
       <label anno="none" id="COP_60">COP_60</label>
       <opcode>lda</opcode>
-      <operand>#$0012</operand>
+      <operand>#<op-symbol anno="none" value="12" symbol="HND_type_12_CBDFR" symbol-type="constant" symbol-source="project">HND_type_12_CBDFR</op-symbol></operand>
     </line>
     <line type="code" address="fe/bf4f">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/bf52">
       <opcode>bcs</opcode>
@@ -11867,7 +11952,7 @@
     </line>
     <line type="code" address="fe/bfbd">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/bfc0">
       <opcode>ply</opcode>
@@ -12711,7 +12796,7 @@
     <line type="code" address="fe/c0fc">
       <label anno="none" id="LFEC0FC">LFEC0FC</label>
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleBlockInDP" symbol-type="global-addr" symbol-source="user">getHandleBlockInDP</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleYinDP" symbol-type="global-addr" symbol-source="user">getHandleYinDP</op-symbol></operand>
     </line>
     <line type="code" address="fe/c0ff">
       <opcode>bcs</opcode>
@@ -20752,7 +20837,7 @@
     </line>
     <line type="code" address="fe/cdbb">
       <opcode>stal</opcode>
-      <operand>f:$00fe00</operand>
+      <operand>f:<op-symbol anno="none" value="FE00" symbol="B0LST_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LST_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/cdbf">
       <opcode>lda</opcode>
@@ -20760,7 +20845,7 @@
     </line>
     <line type="code" address="fe/cdc2">
       <opcode>stal</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/cdc6">
       <opcode>lda</opcode>
@@ -20775,7 +20860,7 @@
     </line>
     <line type="code" address="fe/cdcb">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/cdce">
       <opcode>pla</opcode>
@@ -20806,12 +20891,17 @@
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+; QRY Appears to return the block pointed to X to the free list<br />
+; <br />
+; On Entry:<br />
+;    X   is a pointer to a handle block</long-comment>
     <line type="reg-width-directive">
       <opcode type="directive">rwid</opcode>
       <operand>longm,longx</operand>
     </line>
     <line type="code" address="fe/cdda">
-      <label anno="none" id="LFECDDA">LFECDDA</label>
+      <label anno="none" id="returnXToFreeList">returnXToFreeList</label>
       <opcode>phy</opcode>
     </line>
     <line type="code" address="fe/cddb">
@@ -20826,6 +20916,7 @@
     </line>
     <line type="code" address="fe/cddf">
       <opcode>txy</opcode>
+      <comment>;Y=X</comment>
     </line>
     <line type="code" address="fe/cde0">
       <opcode>lda</opcode>
@@ -20834,6 +20925,7 @@
     <line type="code" address="fe/cde3">
       <opcode>stal</opcode>
       <operand>f:$000000,x</operand>
+      <comment>;clear X-&gt;[0]</comment>
     </line>
     <line type="code" address="fe/cde7">
       <opcode>sep</opcode>
@@ -20846,6 +20938,7 @@
     <line type="code" address="fe/cde9">
       <opcode>stal</opcode>
       <operand>f:$00000b,x</operand>
+      <comment>;clear X-&gt;[b]</comment>
     </line>
     <line type="code" address="fe/cded">
       <opcode>rep</opcode>
@@ -20857,13 +20950,15 @@
     </line>
     <line type="code" address="fe/cdef">
       <opcode>ldal</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/cdf3">
       <opcode>tax</opcode>
+      <comment>;X = ($FE02)</comment>
     </line>
     <line type="code" address="fe/cdf4">
       <opcode>tya</opcode>
+      <comment>;A=org X</comment>
     </line>
     <line type="code" address="fe/cdf5">
       <opcode>stal</opcode>
@@ -20871,7 +20966,7 @@
     </line>
     <line type="code" address="fe/cdf9">
       <opcode>stal</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/cdfd">
       <opcode>plp</opcode>
@@ -20886,8 +20981,12 @@
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+; Appears to allocate a block from the free list<br />
+; <br />
+; On entry A contains the type - QRY</long-comment>
     <line type="code" address="fe/ce01">
-      <label anno="none" id="LFECE01">LFECE01</label>
+      <label anno="none" id="obtainFreeBlock">obtainFreeBlock</label>
       <opcode>php</opcode>
     </line>
     <line type="code" address="fe/ce02">
@@ -20902,7 +21001,7 @@
     </line>
     <line type="code" address="fe/ce06">
       <opcode>ldal</opcode>
-      <operand>f:$00fe00</operand>
+      <operand>f:<op-symbol anno="none" value="FE00" symbol="B0LST_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LST_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce0a">
       <opcode>bne</opcode>
@@ -20927,32 +21026,39 @@
     </line>
     <line type="code" address="fe/ce11">
       <opcode>cmpl</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce15">
       <opcode>bne</opcode>
-      <operand><op-symbol anno="none" value="FECE1E" symbol="LFECE1E" symbol-type="local-or-global-addr" symbol-source="auto">LFECE1E</op-symbol></operand>
+      <operand>@sk</operand>
     </line>
+    <long-comment xml:space="preserve">
+; if this was the last block then clear the last block pointer - point the last<br />
+; block pointer at the front pointer this will cause the next "free" to<br />
+; magically update both list pointers</long-comment>
     <line type="code" address="fe/ce17">
       <opcode>lda</opcode>
-      <operand>#$fe00</operand>
+      <operand>#<op-symbol anno="none" value="FE00" symbol="B0LST_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LST_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce1a">
       <opcode>stal</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce1e">
-      <label anno="none" id="LFECE1E">LFECE1E</label>
+      <label anno="none" local-id="@sk">@sk</label>
       <opcode>ldal</opcode>
       <operand>f:$000000,x</operand>
+      <comment>;get the blocks next pointer</comment>
     </line>
     <line type="code" address="fe/ce22">
       <opcode>stal</opcode>
-      <operand>f:$00fe00</operand>
+      <operand>f:<op-symbol anno="none" value="FE00" symbol="B0LST_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LST_FREE_BLOCKS</op-symbol></operand>
+      <comment>;store as the front pointer (will be 0 if last block)</comment>
     </line>
     <line type="code" address="fe/ce26">
       <opcode>lda</opcode>
       <operand>#$ffff</operand>
+      <comment>;blank out the block</comment>
     </line>
     <line type="code" address="fe/ce29">
       <opcode>stal</opcode>
@@ -20991,7 +21097,8 @@
     </line>
     <line type="code" address="fe/ce44">
       <opcode>stal</opcode>
-      <operand>f:$00000b,x</operand>
+      <operand>f:<op-symbol anno="none" value="B" symbol="HND_off_B_type" symbol-type="constant" symbol-source="project">HND_off_B_type</op-symbol>,x</operand>
+      <comment>;set the type byte</comment>
     </line>
     <line type="code" address="fe/ce48">
       <opcode>rep</opcode>
@@ -21017,7 +21124,7 @@
     <line type="code" address="fe/ce4e">
       <label anno="none" id="LFECE4E">LFECE4E</label>
       <opcode>ldal</opcode>
-      <operand>f:$00fe00</operand>
+      <operand>f:<op-symbol anno="none" value="FE00" symbol="B0LST_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LST_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce52">
       <opcode>beq</opcode>
@@ -21051,7 +21158,7 @@
     </line>
     <line type="code" address="fe/ce62">
       <opcode>cmpl</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce66">
       <opcode>bne</opcode>
@@ -21064,7 +21171,7 @@
     <line type="code" address="fe/ce69">
       <label anno="none" id="LFECE69">LFECE69</label>
       <opcode>ldal</opcode>
-      <operand>f:$00fe02</operand>
+      <operand>f:<op-symbol anno="none" value="FE02" symbol="B0LSTEND_FREE_BLOCKS" symbol-type="external-addr" symbol-source="project">B0LSTEND_FREE_BLOCKS</op-symbol></operand>
     </line>
     <line type="code" address="fe/ce6d">
       <opcode>cmp</opcode>
@@ -21177,7 +21284,7 @@
     <line type="code" address="fe/cec5">
       <label anno="none" id="LFECEC5">LFECEC5</label>
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleBlockInDP" symbol-type="global-addr" symbol-source="user">getHandleBlockInDP</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleYinDP" symbol-type="global-addr" symbol-source="user">getHandleYinDP</op-symbol></operand>
     </line>
     <line type="code" address="fe/cec8">
       <opcode>pha</opcode>
@@ -21211,14 +21318,21 @@
     </line>
     <line type="blank" />
     <long-comment xml:space="preserve">
-********************************************************************************<br />
-* QRY - check                                                                  *<br />
-*                                                                              *<br />
-* Returns a handles block pointer in X                                         *<br />
-*                                                                              *<br />
-********************************************************************************</long-comment>
+; Given a handle in Y returns the [Handle Block]. For odd numbered handles (well<br />
+; known handles) the block is returned for valid handles. For even numbered<br />
+; handles, searches the [Handle Allocation Table].<br />
+; <br />
+; On Entry:<br />
+;    Y   Contains a handle<br />
+; <br />
+; On Exit:<br />
+;    C=0 Found<br />
+;    DP  the address of the handle block<br />
+; or C=1 Failed - no such handle allocated<br />
+; <br />
+; TODO: corrupts X unnecessarily, lots of tax etc that is unnecessary</long-comment>
     <line type="code" address="fe/ceda">
-      <label anno="none" id="getHandleBlockInDP">getHandleBlockInDP</label>
+      <label anno="none" id="getHandleYinDP">getHandleYinDP</label>
       <opcode>phd</opcode>
     </line>
     <line type="code" address="fe/cedb">
@@ -21241,7 +21355,7 @@
     </line>
     <line type="code" address="fe/cee4">
       <opcode>pea</opcode>
-      <operand><op-symbol anno="none" value="FF02" symbol="EXSYS_HANDLEBLOCK_LONGPTR" symbol-type="external-addr" symbol-source="project">EXSYS_HANDLEBLOCK_LONGPTR</op-symbol>-2</operand>
+      <operand><op-symbol anno="none" value="FF00" symbol="EXSYS" symbol-type="external-addr" symbol-source="project">EXSYS</op-symbol></operand>
     </line>
     <line type="code" address="fe/cee7">
       <opcode>pld</opcode>
@@ -21251,7 +21365,7 @@
       <operand>[$02],y</operand>
     </line>
     <line type="code" address="fe/ceea">
-      <label anno="none" local-id="@lp">@lp</label>
+      <label anno="none" local-id="@ok">@ok</label>
       <opcode>tax</opcode>
     </line>
     <line type="code" address="fe/ceeb">
@@ -21298,7 +21412,7 @@
     </line>
     <line type="code" address="fe/cefd">
       <opcode>lda</opcode>
-      <operand>0+(<op-symbol anno="none" value="FECF14" symbol="LFECF14" symbol-type="local-or-global-addr" symbol-source="auto">LFECF14</op-symbol> &amp; $ffff)-1,x</operand>
+      <operand>0+(<op-symbol anno="none" value="FECF14" symbol="tblWellKnownHandlePointers" symbol-type="global-addr" symbol-source="user">tblWellKnownHandlePointers</op-symbol> &amp; $ffff)-1,x</operand>
     </line>
     <line type="code" address="fe/cf00">
       <opcode>plb</opcode>
@@ -21323,7 +21437,7 @@
     </line>
     <line type="code" address="fe/cf0a">
       <opcode>bra</opcode>
-      <operand>@lp</operand>
+      <operand>@ok</operand>
     </line>
     <line type="blank" />
     <line type="code" address="fe/cf0c">
@@ -21355,7 +21469,7 @@
     </line>
     <line type="blank" />
     <line type="data" address="fe/cf14">
-      <label anno="none" id="LFECF14">LFECF14</label>
+      <label anno="none" id="tblWellKnownHandlePointers">tblWellKnownHandlePointers</label>
       <opcode type="directive">dd2</opcode>
       <operand>$fe04</operand>
       <comment>;HDMMM</comment>
@@ -21381,13 +21495,29 @@
       <comment>;HDMMV</comment>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+; The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched<br />
+; for this entry and its entry is zeroed if found<br />
+; <br />
+; On entry:<br />
+;    X    contains a handle block pointer<br />
+; <br />
+; On exit:<br />
+;    C=0  indicates block found<br />
+;    Y    contains the index of the entry (handle ? QRY?)<br />
+;    X,D  preserved<br />
+; or C=1  the pointer was not found<br />
+;    Y    contains the index of the last entry (entries are allocated descending<br />
+;         so the first in address order)<br />
+; <br />
+; TODO: why not use the find method below!</long-comment>
     <line type="code" address="fe/cf1e">
-      <label anno="none" id="LFECF1E">LFECF1E</label>
+      <label anno="none" id="freeHandlePointerX">freeHandlePointerX</label>
       <opcode>phx</opcode>
     </line>
     <line type="code" address="fe/cf1f">
       <opcode>pea</opcode>
-      <operand>$ff00</operand>
+      <operand><op-symbol anno="none" value="FF00" symbol="EXSYS" symbol-type="external-addr" symbol-source="project">EXSYS</op-symbol></operand>
     </line>
     <line type="code" address="fe/cf22">
       <opcode>pld</opcode>
@@ -21398,7 +21528,8 @@
     </line>
     <line type="code" address="fe/cf26">
       <opcode>lda</opcode>
-      <operand>[<op-symbol anno="none" value="1" symbol="DPCOP_Y" symbol-type="external-addr" symbol-source="project">DPCOP_Y</op-symbol>+1],y</operand>
+      <operand>[$02],y</operand>
+      <comment>;get pointer to end of handle block + 2</comment>
     </line>
     <line type="code" address="fe/cf28">
       <opcode>tay</opcode>
@@ -21410,27 +21541,29 @@
       <opcode>dey</opcode>
     </line>
     <line type="code" address="fe/cf2b">
-      <label anno="none" id="LFECF2B">LFECF2B</label>
+      <label anno="none" local-id="@lp">@lp</label>
       <opcode>lda</opcode>
-      <operand>[<op-symbol anno="none" value="1" symbol="DPCOP_Y" symbol-type="external-addr" symbol-source="project">DPCOP_Y</op-symbol>+1],y</operand>
+      <operand>[$02],y</operand>
     </line>
     <line type="code" address="fe/cf2d">
       <opcode>cmp</opcode>
       <operand>$01,S</operand>
+      <comment>;compare to passed in X</comment>
     </line>
     <line type="code" address="fe/cf2f">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FECF38" symbol="LFECF38" symbol-type="local-or-global-addr" symbol-source="auto">LFECF38</op-symbol></operand>
+      <operand>@fnd</operand>
     </line>
     <line type="code" address="fe/cf31">
       <opcode>dey</opcode>
     </line>
     <line type="code" address="fe/cf32">
       <opcode>dey</opcode>
+      <comment>;move backwards through handle list</comment>
     </line>
     <line type="code" address="fe/cf33">
       <opcode>bne</opcode>
-      <operand><op-symbol anno="none" value="FECF2B" symbol="LFECF2B" symbol-type="local-or-global-addr" symbol-source="auto">LFECF2B</op-symbol></operand>
+      <operand>@lp</operand>
     </line>
     <line type="code" address="fe/cf35">
       <opcode>plx</opcode>
@@ -21443,13 +21576,14 @@
     </line>
     <line type="blank" />
     <line type="code" address="fe/cf38">
-      <label anno="none" id="LFECF38">LFECF38</label>
+      <label anno="none" local-id="@fnd">@fnd</label>
       <opcode>lda</opcode>
       <operand>#$0000</operand>
     </line>
     <line type="code" address="fe/cf3b">
       <opcode>sta</opcode>
-      <operand>[<op-symbol anno="none" value="1" symbol="DPCOP_Y" symbol-type="external-addr" symbol-source="project">DPCOP_Y</op-symbol>+1],y</operand>
+      <operand>[$02],y</operand>
+      <comment>;zero out the entry and return clc</comment>
     </line>
     <line type="code" address="fe/cf3d">
       <opcode>plx</opcode>
@@ -21461,8 +21595,24 @@
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+; The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched<br />
+; for an entry that contains X<br />
+; <br />
+; On entry:<br />
+;    X    contains a handle block pointer<br />
+; <br />
+; On exit:<br />
+;    C=0  indicates block found<br />
+;    Y    contains the index of the entry (handle)<br />
+; or C=1  the pointer was not found<br />
+;    Y    contains the index of the last entry (entries are allocated descending<br />
+;         so the first in address order)<br />
+; <br />
+;    X    preserved<br />
+;    D,A  corrupted   </long-comment>
     <line type="code" address="fe/cf40">
-      <label anno="none" id="coGetHandleByBlockAddr_QRY">coGetHandleByBlockAddr_QRY</label>
+      <label anno="none" id="findHandleByAddr">findHandleByAddr</label>
       <opcode>pea</opcode>
       <operand><op-symbol anno="none" value="FF00" symbol="EXSYS" symbol-type="external-addr" symbol-source="project">EXSYS</op-symbol></operand>
     </line>
@@ -23657,11 +23807,11 @@
     <line type="code" address="fe/d2ff">
       <label anno="none" id="LFED2FF">LFED2FF</label>
       <opcode>lda</opcode>
-      <operand>#$0002</operand>
+      <operand>#<op-symbol anno="none" value="2" symbol="HND_type_2_CBMEM" symbol-type="constant" symbol-source="project">HND_type_2_CBMEM</op-symbol></operand>
     </line>
     <line type="code" address="fe/d302">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/d305">
       <opcode>bcs</opcode>
@@ -24598,7 +24748,7 @@
     </line>
     <line type="code" address="fe/d49f">
       <opcode>ldal</opcode>
-      <operand>f:<op-symbol anno="none" value="8" symbol="DPCOP_DP" symbol-type="external-addr" symbol-source="project">DPCOP_DP</op-symbol>,x</operand>
+      <operand>f:$000008,x</operand>
     </line>
     <line type="code" address="fe/d4a3">
       <opcode>tax</opcode>
@@ -24613,7 +24763,7 @@
     </line>
     <line type="code" address="fe/d4a6">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="8" symbol="DPCOP_DP" symbol-type="external-addr" symbol-source="project">DPCOP_DP</op-symbol>,x</operand>
+      <operand>f:$000008,x</operand>
     </line>
     <line type="code" address="fe/d4aa">
       <opcode>pla</opcode>
@@ -24744,7 +24894,7 @@
     </line>
     <line type="code" address="fe/d4db">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECF1E" symbol="LFECF1E" symbol-type="local-or-global-addr" symbol-source="auto">LFECF1E</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF1E" symbol="freeHandlePointerX" symbol-type="global-addr" symbol-source="user">freeHandlePointerX</op-symbol></operand>
     </line>
     <line type="code" address="fe/d4de">
       <opcode>phx</opcode>
@@ -24824,7 +24974,7 @@
     </line>
     <line type="code" address="fe/d504">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/d507">
       <opcode>jsr</opcode>
@@ -25375,11 +25525,11 @@
     </line>
     <line type="code" address="fe/d63b">
       <opcode>lda</opcode>
-      <operand>#$0002</operand>
+      <operand>#<op-symbol anno="none" value="2" symbol="HND_type_2_CBMEM" symbol-type="constant" symbol-source="project">HND_type_2_CBMEM</op-symbol></operand>
     </line>
     <line type="code" address="fe/d63e">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/d641">
       <opcode>ply</opcode>
@@ -25974,7 +26124,7 @@
     </line>
     <line type="code" address="fe/d77b">
       <opcode>jmp</opcode>
-      <operand><op-symbol anno="none" value="FECF40" symbol="coGetHandleByBlockAddr_QRY" symbol-type="global-addr" symbol-source="user">coGetHandleByBlockAddr_QRY</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF40" symbol="findHandleByAddr" symbol-type="global-addr" symbol-source="user">findHandleByAddr</op-symbol></operand>
     </line>
     <line type="blank" />
     <long-comment xml:space="preserve">
@@ -26726,7 +26876,7 @@
     </line>
     <line type="code" address="fe/d9d6">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECF1E" symbol="LFECF1E" symbol-type="local-or-global-addr" symbol-source="auto">LFECF1E</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF1E" symbol="freeHandlePointerX" symbol-type="global-addr" symbol-source="user">freeHandlePointerX</op-symbol></operand>
     </line>
     <line type="code" address="fe/d9d9">
       <opcode>bcs</opcode>
@@ -26774,7 +26924,7 @@
     </line>
     <line type="code" address="fe/d9ed">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECF1E" symbol="LFECF1E" symbol-type="local-or-global-addr" symbol-source="auto">LFECF1E</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF1E" symbol="freeHandlePointerX" symbol-type="global-addr" symbol-source="user">freeHandlePointerX</op-symbol></operand>
     </line>
     <line type="code" address="fe/d9f0">
       <opcode>bcs</opcode>
@@ -26782,7 +26932,7 @@
     </line>
     <line type="code" address="fe/d9f2">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/d9f5">
       <opcode>bcs</opcode>
@@ -27037,11 +27187,11 @@
     </line>
     <line type="code" address="fe/da5c">
       <opcode>lda</opcode>
-      <operand>#$0006</operand>
+      <operand>#<op-symbol anno="none" value="6" symbol="HND_type_6_CBCO" symbol-type="constant" symbol-source="project">HND_type_6_CBCO</op-symbol></operand>
     </line>
     <line type="code" address="fe/da5f">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
       <comment>;alloc a coroutine block??? QRY</comment>
     </line>
     <line type="code" address="fe/da62">
@@ -27257,7 +27407,7 @@
     </line>
     <line type="code" address="fe/dab4">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
       <comment>;free the block QRY?</comment>
     </line>
     <line type="code" address="fe/dab7">
@@ -27456,7 +27606,7 @@
     </line>
     <line type="code" address="fe/dafe">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/db01">
       <opcode>pla</opcode>
@@ -27531,11 +27681,11 @@
     <line type="code" address="fe/db19">
       <label anno="none" id="LFEDB19">LFEDB19</label>
       <opcode>lda</opcode>
-      <operand>#$0008</operand>
+      <operand>#<op-symbol anno="none" value="8" symbol="HND_type_8_CBCO2" symbol-type="constant" symbol-source="project">HND_type_8_CBCO2</op-symbol></operand>
     </line>
     <line type="code" address="fe/db1c">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/db1f">
       <opcode>bcs</opcode>
@@ -27771,7 +27921,7 @@
     </line>
     <line type="code" address="fe/db8b">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECF1E" symbol="LFECF1E" symbol-type="local-or-global-addr" symbol-source="auto">LFECF1E</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF1E" symbol="freeHandlePointerX" symbol-type="global-addr" symbol-source="user">freeHandlePointerX</op-symbol></operand>
     </line>
     <line type="code" address="fe/db8e">
       <opcode>txa</opcode>
@@ -27789,7 +27939,7 @@
     </line>
     <line type="code" address="fe/db94">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/db97">
       <opcode>pla</opcode>
@@ -27807,7 +27957,7 @@
     </line>
     <line type="code" address="fe/db9e">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/dba1">
       <label anno="none" local-id="@clcret">@clcret</label>
@@ -28162,7 +28312,7 @@
     </line>
     <line type="code" address="fe/dc18">
       <opcode>jmp</opcode>
-      <operand><op-symbol anno="none" value="FECF40" symbol="coGetHandleByBlockAddr_QRY" symbol-type="global-addr" symbol-source="user">coGetHandleByBlockAddr_QRY</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF40" symbol="findHandleByAddr" symbol-type="global-addr" symbol-source="user">findHandleByAddr</op-symbol></operand>
     </line>
     <line type="blank" />
     <long-comment xml:space="preserve">
@@ -29748,11 +29898,11 @@
     <line type="code" address="fe/ded9">
       <label anno="none" id="LFEDED9">LFEDED9</label>
       <opcode>lda</opcode>
-      <operand>#$000a</operand>
+      <operand>#<op-symbol anno="none" value="A" symbol="HND_type_A_CBLCB" symbol-type="constant" symbol-source="project">HND_type_A_CBLCB</op-symbol></operand>
     </line>
     <line type="code" address="fe/dedc">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/dedf">
       <opcode>bcs</opcode>
@@ -29788,7 +29938,7 @@
     </line>
     <line type="code" address="fe/deed">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/def0">
       <opcode>bcc</opcode>
@@ -29807,7 +29957,7 @@
     </line>
     <line type="code" address="fe/def6">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/def9">
       <opcode>dey</opcode>
@@ -38999,7 +39149,7 @@
     </line>
     <line type="code" address="fe/ee7e">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleBlockInDP" symbol-type="global-addr" symbol-source="user">getHandleBlockInDP</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleYinDP" symbol-type="global-addr" symbol-source="user">getHandleYinDP</op-symbol></operand>
     </line>
     <line type="code" address="fe/ee81">
       <opcode>ldal</opcode>
@@ -39708,11 +39858,11 @@
     <line type="code" address="fe/efe9">
       <label anno="none" id="LFEEFE9">LFEEFE9</label>
       <opcode>lda</opcode>
-      <operand>#$000c</operand>
+      <operand>#<op-symbol anno="none" value="C" symbol="HND_type_C_CBMOD" symbol-type="constant" symbol-source="project">HND_type_C_CBMOD</op-symbol></operand>
     </line>
     <line type="code" address="fe/efec">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/efef">
       <opcode>bcs</opcode>
@@ -40820,11 +40970,11 @@
     </line>
     <line type="code" address="fe/f1e4">
       <opcode>lda</opcode>
-      <operand>#$0006</operand>
+      <operand>#<op-symbol anno="none" value="6" symbol="HND_type_6_CBCO" symbol-type="constant" symbol-source="project">HND_type_6_CBCO</op-symbol></operand>
     </line>
     <line type="code" address="fe/f1e7">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/f1ea">
       <opcode>bcs</opcode>
@@ -44551,7 +44701,7 @@
     <line type="code" address="fe/f8e4">
       <label anno="none" id="LFEF8E4">LFEF8E4</label>
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/f8e7">
       <opcode>bcs</opcode>
@@ -44784,7 +44934,7 @@
     </line>
     <line type="code" address="fe/f931">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/f934">
       <label anno="none" id="LFEF934">LFEF934</label>
@@ -46347,7 +46497,7 @@
     </line>
     <line type="code" address="fe/fc2c">
       <opcode>ldal</opcode>
-      <operand>f:$00fe06</operand>
+      <operand>f:<op-symbol anno="none" value="FE06" symbol="B0LST_IRQ_HANDLER" symbol-type="external-addr" symbol-source="project">B0LST_IRQ_HANDLER</op-symbol></operand>
     </line>
     <line type="code" address="fe/fc30">
       <opcode>beq</opcode>
@@ -46361,11 +46511,11 @@
     <line type="code" address="fe/fc35">
       <label anno="none" local-id="@YnZ">@YnZ</label>
       <opcode>lda</opcode>
-      <operand>#$000e</operand>
+      <operand>#<op-symbol anno="none" value="E" symbol="HND_type_E_CBIQ" symbol-type="constant" symbol-source="project">HND_type_E_CBIQ</op-symbol></operand>
     </line>
     <line type="code" address="fe/fc38">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/fc3b">
       <opcode>bcc</opcode>
@@ -46382,23 +46532,23 @@
     </line>
     <line type="code" address="fe/fc41">
       <opcode>lda</opcode>
-      <operand>#$000e</operand>
+      <operand>#<op-symbol anno="none" value="E" symbol="HND_type_E_CBIQ" symbol-type="constant" symbol-source="project">HND_type_E_CBIQ</op-symbol></operand>
     </line>
     <line type="code" address="fe/fc44">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECE01" symbol="LFECE01" symbol-type="local-or-global-addr" symbol-source="auto">LFECE01</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECE01" symbol="obtainFreeBlock" symbol-type="global-addr" symbol-source="user">obtainFreeBlock</op-symbol></operand>
     </line>
     <line type="code" address="fe/fc47">
       <opcode>bcc</opcode>
-      <operand><op-symbol anno="none" value="FEFC4C" symbol="LFEFC4C" symbol-type="local-or-global-addr" symbol-source="auto">LFEFC4C</op-symbol></operand>
+      <operand>@skok2</operand>
     </line>
     <line type="code" address="fe/fc49">
       <opcode>brl</opcode>
-      <operand><op-symbol anno="none" value="FEFCF2" symbol="LFEFCF2" symbol-type="local-or-global-addr" symbol-source="auto">LFEFCF2</op-symbol></operand>
+      <operand>@retSec2</operand>
     </line>
     <line type="blank" />
     <line type="code" address="fe/fc4c">
-      <label anno="none" id="LFEFC4C">LFEFC4C</label>
+      <label anno="none" local-id="@skok2">@skok2</label>
       <opcode>sep</opcode>
       <operand>#$20</operand>
     </line>
@@ -46424,7 +46574,7 @@
     </line>
     <line type="code" address="fe/fc58">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="3" symbol="DPCOP_X" symbol-type="external-addr" symbol-source="project">DPCOP_X</op-symbol>,x</operand>
+      <operand>f:$000003,x</operand>
     </line>
     <line type="code" address="fe/fc5c">
       <opcode>rep</opcode>
@@ -46440,7 +46590,7 @@
     </line>
     <line type="code" address="fe/fc60">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="5" symbol="DPCOP_AH" symbol-type="external-addr" symbol-source="project">DPCOP_AH</op-symbol>,x</operand>
+      <operand>f:$000005,x</operand>
     </line>
     <line type="code" address="fe/fc64">
       <opcode>lda</opcode>
@@ -46448,7 +46598,7 @@
     </line>
     <line type="code" address="fe/fc66">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="3" symbol="DPCOP_X" symbol-type="external-addr" symbol-source="project">DPCOP_X</op-symbol>+1,x</operand>
+      <operand>f:$000004,x</operand>
     </line>
     <line type="code" address="fe/fc6a">
       <opcode>lda</opcode>
@@ -46456,7 +46606,7 @@
     </line>
     <line type="code" address="fe/fc6c">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="1" symbol="DPCOP_Y" symbol-type="external-addr" symbol-source="project">DPCOP_Y</op-symbol>,x</operand>
+      <operand>f:$000001,x</operand>
     </line>
     <line type="code" address="fe/fc70">
       <opcode>lda</opcode>
@@ -46464,11 +46614,11 @@
     </line>
     <line type="code" address="fe/fc73">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="7" symbol="DPCOP_B" symbol-type="external-addr" symbol-source="project">DPCOP_B</op-symbol>,x</operand>
+      <operand>f:$000007,x</operand>
     </line>
     <line type="code" address="fe/fc77">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="8" symbol="DPCOP_DP" symbol-type="external-addr" symbol-source="project">DPCOP_DP</op-symbol>+1,x</operand>
+      <operand>f:$000009,x</operand>
     </line>
     <line type="code" address="fe/fc7b">
       <opcode>txa</opcode>
@@ -46478,7 +46628,7 @@
     </line>
     <line type="code" address="fe/fc7d">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="7" symbol="DPCOP_B" symbol-type="external-addr" symbol-source="project">DPCOP_B</op-symbol>,x</operand>
+      <operand>f:$000007,x</operand>
     </line>
     <line type="code" address="fe/fc81">
       <opcode>ldy</opcode>
@@ -46490,7 +46640,7 @@
     </line>
     <line type="code" address="fe/fc86">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="1" symbol="DPCOP_Y" symbol-type="external-addr" symbol-source="project">DPCOP_Y</op-symbol>+1,x</operand>
+      <operand>f:$000002,x</operand>
     </line>
     <line type="code" address="fe/fc8a">
       <opcode>iny</opcode>
@@ -46501,7 +46651,7 @@
     </line>
     <line type="code" address="fe/fc8d">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="3" symbol="DPCOP_X" symbol-type="external-addr" symbol-source="project">DPCOP_X</op-symbol>,x</operand>
+      <operand>f:$000003,x</operand>
     </line>
     <line type="code" address="fe/fc91">
       <opcode>sep</opcode>
@@ -46523,7 +46673,7 @@
     </line>
     <line type="code" address="fe/fc97">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="5" symbol="DPCOP_AH" symbol-type="external-addr" symbol-source="project">DPCOP_AH</op-symbol>+1,x</operand>
+      <operand>f:$000006,x</operand>
     </line>
     <line type="code" address="fe/fc9b">
       <opcode>lda</opcode>
@@ -46531,7 +46681,7 @@
     </line>
     <line type="code" address="fe/fc9d">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="5" symbol="DPCOP_AH" symbol-type="external-addr" symbol-source="project">DPCOP_AH</op-symbol>,x</operand>
+      <operand>f:$000005,x</operand>
     </line>
     <line type="code" address="fe/fca1">
       <opcode>rep</opcode>
@@ -46543,11 +46693,11 @@
     </line>
     <line type="code" address="fe/fca3">
       <opcode>lda</opcode>
-      <operand>#$fd06</operand>
+      <operand>#<op-symbol anno="none" value="FEFD06" symbol="LFD06_anFF" symbol-type="global-addr" symbol-source="user">LFD06_anFF</op-symbol> &amp; $ffff</operand>
     </line>
     <line type="code" address="fe/fca6">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="8" symbol="DPCOP_DP" symbol-type="external-addr" symbol-source="project">DPCOP_DP</op-symbol>+1,x</operand>
+      <operand>f:$000009,x</operand>
     </line>
     <line type="code" address="fe/fcaa">
       <opcode>sep</opcode>
@@ -46565,7 +46715,7 @@
     </line>
     <line type="code" address="fe/fcae">
       <opcode>stal</opcode>
-      <operand>f:<op-symbol anno="none" value="B" symbol="DPCOP_PC" symbol-type="external-addr" symbol-source="project">DPCOP_PC</op-symbol>,x</operand>
+      <operand>f:$00000b,x</operand>
     </line>
     <line type="code" address="fe/fcb2">
       <opcode>rep</opcode>
@@ -46582,50 +46732,72 @@
     <line type="code" address="fe/fcb7">
       <opcode>plb</opcode>
     </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>$00</operand>
+    </line>
     <line type="code" address="fe/fcb8">
       <opcode>plb</opcode>
     </line>
     <line type="code" address="fe/fcb9">
       <opcode>pei</opcode>
       <operand>(<op-symbol anno="none" value="1" symbol="DPCOP_Y" symbol-type="external-addr" symbol-source="project">DPCOP_Y</op-symbol>)</operand>
+      <comment>;push original Y parameter</comment>
     </line>
     <line type="code" address="fe/fcbb">
       <opcode>phd</opcode>
+      <comment>;push DP of COP handler stack frame</comment>
     </line>
     <line type="code" address="fe/fcbc">
       <opcode>php</opcode>
+      <comment>;push current flags/mode</comment>
     </line>
     <line type="code" address="fe/fcbd">
       <opcode>sei</opcode>
+      <comment>;disable interrupts</comment>
     </line>
     <line type="code" address="fe/fcbe">
       <opcode>phx</opcode>
+      <comment>;push X of 1st IRQ handler block</comment>
     </line>
     <line type="code" address="fe/fcbf">
       <opcode>pea</opcode>
-      <operand>0+(<op-symbol anno="none" value="FEFE05" symbol="LFEFE05" symbol-type="local-or-global-addr" symbol-source="auto">LFEFE05</op-symbol> &amp; $ffff)+1</operand>
+      <operand><op-symbol anno="none" value="FE06" symbol="B0LST_IRQ_HANDLER" symbol-type="external-addr" symbol-source="project">B0LST_IRQ_HANDLER</op-symbol></operand>
+      <comment>;push address of IRQ list head</comment>
     </line>
     <line type="code" address="fe/fcc2">
       <opcode>pld</opcode>
+      <comment>;make that DP</comment>
     </line>
     <line type="code" address="fe/fcc3">
-      <label anno="none" id="LFEFCC3">LFEFCC3</label>
+      <label anno="none" local-id="@lp">@lp</label>
       <opcode>phd</opcode>
     </line>
+    <long-comment xml:space="preserve">
+; stack <br />
+; +8 Y param (priority)<br />
+; +6 COP frame<br />
+; +5 flags/mode<br />
+; +3 pointer to IQ block<br />
+; +1 next entry pointer</long-comment>
     <line type="code" address="fe/fcc4">
       <opcode>lda</opcode>
       <operand>$00</operand>
+      <comment>;get pointer at offset 0 (next item)</comment>
     </line>
     <line type="code" address="fe/fcc6">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FEFCD5" symbol="LFEFCD5" symbol-type="local-or-global-addr" symbol-source="auto">LFEFCD5</op-symbol></operand>
+      <operand>@skdone</operand>
+      <comment>;if 0 exit</comment>
     </line>
     <line type="code" address="fe/fcc8">
       <opcode>tcd</opcode>
+      <comment>;make DP point at it</comment>
     </line>
     <line type="code" address="fe/fcc9">
       <opcode>lda</opcode>
-      <operand>(<op-symbol anno="none" value="7" symbol="DPCOP_B" symbol-type="external-addr" symbol-source="project">DPCOP_B</op-symbol>)</operand>
+      <operand>($07)</operand>
+      <comment>;get the interrupt priority from the 1st byte of the second block</comment>
     </line>
     <line type="code" address="fe/fccb">
       <opcode>and</opcode>
@@ -46634,13 +46806,15 @@
     <line type="code" address="fe/fcce">
       <opcode>cmp</opcode>
       <operand>$08,S</operand>
+      <comment>;compare with stacked Y parameters</comment>
     </line>
     <line type="code" address="fe/fcd0">
       <opcode>pla</opcode>
     </line>
     <line type="code" address="fe/fcd1">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEFCC3" symbol="LFEFCC3" symbol-type="local-or-global-addr" symbol-source="auto">LFEFCC3</op-symbol></operand>
+      <operand>@lp</operand>
+      <comment>;if current entry higher or same priority loop</comment>
     </line>
     <line type="code" address="fe/fcd3">
       <opcode>pha</opcode>
@@ -46648,8 +46822,20 @@
     <line type="code" address="fe/fcd4">
       <opcode>tdc</opcode>
     </line>
+    <long-comment xml:space="preserve">
+; we're now at a point in the list that is lower priority - insert here, or at<br />
+; the end<br />
+; <br />
+; stack<br />
+; +8 Y param (priority)<br />
+; +6 COP frame<br />
+; +5 flags/mode<br />
+; +3 pointer to IQ block<br />
+; +1 address of pointer to current entry (or B0LST_IRQ_HANDLER)<br />
+; <br />
+; A points at current entry or zero if end of list</long-comment>
     <line type="code" address="fe/fcd5">
-      <label anno="none" id="LFEFCD5">LFEFCD5</label>
+      <label anno="none" local-id="@skdone">@skdone</label>
       <opcode>pld</opcode>
     </line>
     <line type="code" address="fe/fcd6">
@@ -46658,6 +46844,7 @@
     <line type="code" address="fe/fcd7">
       <opcode>stal</opcode>
       <operand>f:$000000,x</operand>
+      <comment>;store pointer to new entry at next pointer</comment>
     </line>
     <line type="code" address="fe/fcdb">
       <opcode>txa</opcode>
@@ -46665,6 +46852,7 @@
     <line type="code" address="fe/fcdc">
       <opcode>sta</opcode>
       <operand>$00</operand>
+      <comment>;update previous item's (or list front) to point at new entry</comment>
     </line>
     <line type="code" address="fe/fcde">
       <opcode>plp</opcode>
@@ -46695,22 +46883,22 @@
     </line>
     <line type="code" address="fe/fcea">
       <opcode>ldal</opcode>
-      <operand>f:<op-symbol anno="none" value="7" symbol="DPCOP_B" symbol-type="external-addr" symbol-source="project">DPCOP_B</op-symbol>,x</operand>
+      <operand>f:$000007,x</operand>
     </line>
     <line type="code" address="fe/fcee">
       <opcode>tax</opcode>
     </line>
     <line type="code" address="fe/fcef">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/fcf2">
-      <label anno="none" id="LFEFCF2">LFEFCF2</label>
+      <label anno="none" local-id="@retSec2">@retSec2</label>
       <opcode>plx</opcode>
     </line>
     <line type="code" address="fe/fcf3">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/fcf6">
       <label anno="none" local-id="@retSec">@retSec</label>
@@ -46750,6 +46938,7 @@
     </line>
     <line type="blank" />
     <line type="data" address="fe/fd06">
+      <label anno="none" id="LFD06_anFF">LFD06_anFF</label>
       <opcode type="directive">dd1</opcode>
       <operand>$ff</operand>
     </line>
@@ -46775,11 +46964,11 @@
     <line type="code" address="fe/fd07">
       <label anno="none" id="COP_31">COP_31</label>
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleBlockInDP" symbol-type="global-addr" symbol-source="user">getHandleBlockInDP</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleYinDP" symbol-type="global-addr" symbol-source="user">getHandleYinDP</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd0a">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEFD42" symbol="LFEFD42" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD42</op-symbol></operand>
+      <operand>@retsec</operand>
     </line>
     <line type="code" address="fe/fd0c">
       <opcode>phx</opcode>
@@ -46808,7 +46997,7 @@
     </line>
     <line type="code" address="fe/fd1d">
       <opcode>bne</opcode>
-      <operand><op-symbol anno="none" value="FEFD42" symbol="LFEFD42" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD42</op-symbol></operand>
+      <operand>@retsec</operand>
     </line>
     <line type="code" address="fe/fd1f">
       <opcode>lda</opcode>
@@ -46826,7 +47015,7 @@
     </line>
     <line type="code" address="fe/fd25">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FEFD33" symbol="LFEFD33" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD33</op-symbol></operand>
+      <operand>@sk</operand>
     </line>
     <line type="code" address="fe/fd27">
       <opcode>lda</opcode>
@@ -46845,13 +47034,13 @@
       <operand>f:<op-symbol anno="none" value="8" symbol="DPCOP_DP" symbol-type="external-addr" symbol-source="project">DPCOP_DP</op-symbol>+1,x</operand>
     </line>
     <line type="code" address="fe/fd33">
-      <label anno="none" id="LFEFD33">LFEFD33</label>
+      <label anno="none" local-id="@sk">@sk</label>
       <opcode>lda</opcode>
       <operand><op-symbol anno="none" value="3" symbol="DPCOP_X" symbol-type="external-addr" symbol-source="project">DPCOP_X</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd35">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FEFD3F" symbol="LFEFD3F" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD3F</op-symbol></operand>
+      <operand>@plpretclc</operand>
     </line>
     <line type="code" address="fe/fd37">
       <opcode>sep</opcode>
@@ -46874,7 +47063,7 @@
       <operand>longm</operand>
     </line>
     <line type="code" address="fe/fd3f">
-      <label anno="none" id="LFEFD3F">LFEFD3F</label>
+      <label anno="none" local-id="@plpretclc">@plpretclc</label>
       <opcode>plp</opcode>
     </line>
     <line type="code" address="fe/fd40">
@@ -46885,7 +47074,7 @@
     </line>
     <line type="blank" />
     <line type="code" address="fe/fd42">
-      <label anno="none" id="LFEFD42">LFEFD42</label>
+      <label anno="none" local-id="@retsec">@retsec</label>
       <opcode>sec</opcode>
     </line>
     <line type="code" address="fe/fd43">
@@ -46907,11 +47096,11 @@
     <line type="code" address="fe/fd44">
       <label anno="none" id="COP_30">COP_30</label>
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleBlockInDP" symbol-type="global-addr" symbol-source="user">getHandleBlockInDP</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECEDA" symbol="getHandleYinDP" symbol-type="global-addr" symbol-source="user">getHandleYinDP</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd47">
       <opcode>bcs</opcode>
-      <operand><op-symbol anno="none" value="FEFD7B" symbol="LFEFD7B" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD7B</op-symbol></operand>
+      <operand>@retsec</operand>
     </line>
     <line type="code" address="fe/fd49">
       <opcode>phx</opcode>
@@ -46931,10 +47120,10 @@
     </line>
     <line type="code" address="fe/fd51">
       <opcode>lda</opcode>
-      <operand>#$fe06</operand>
+      <operand>#<op-symbol anno="none" value="FE06" symbol="B0LST_IRQ_HANDLER" symbol-type="external-addr" symbol-source="project">B0LST_IRQ_HANDLER</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd54">
-      <label anno="none" id="LFEFD54">LFEFD54</label>
+      <label anno="none" local-id="@lp">@lp</label>
       <opcode>tax</opcode>
     </line>
     <line type="code" address="fe/fd55">
@@ -46943,7 +47132,7 @@
     </line>
     <line type="code" address="fe/fd59">
       <opcode>beq</opcode>
-      <operand><op-symbol anno="none" value="FEFD78" symbol="LFEFD78" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD78</op-symbol></operand>
+      <operand>@retsk</operand>
     </line>
     <line type="code" address="fe/fd5b">
       <opcode>cmp</opcode>
@@ -46951,7 +47140,7 @@
     </line>
     <line type="code" address="fe/fd5d">
       <opcode>bne</opcode>
-      <operand><op-symbol anno="none" value="FEFD54" symbol="LFEFD54" symbol-type="local-or-global-addr" symbol-source="auto">LFEFD54</op-symbol></operand>
+      <operand>@lp</operand>
     </line>
     <line type="code" address="fe/fd5f">
       <opcode>pla</opcode>
@@ -46968,28 +47157,28 @@
     </line>
     <line type="code" address="fe/fd66">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECF1E" symbol="LFECF1E" symbol-type="local-or-global-addr" symbol-source="auto">LFECF1E</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECF1E" symbol="freeHandlePointerX" symbol-type="global-addr" symbol-source="user">freeHandlePointerX</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd69">
       <opcode>phx</opcode>
     </line>
     <line type="code" address="fe/fd6a">
       <opcode>ldal</opcode>
-      <operand>f:<op-symbol anno="none" value="7" symbol="DPCOP_B" symbol-type="external-addr" symbol-source="project">DPCOP_B</op-symbol>,x</operand>
+      <operand>f:$000007,x</operand>
     </line>
     <line type="code" address="fe/fd6e">
       <opcode>tax</opcode>
     </line>
     <line type="code" address="fe/fd6f">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd72">
       <opcode>plx</opcode>
     </line>
     <line type="code" address="fe/fd73">
       <opcode>jsr</opcode>
-      <operand><op-symbol anno="none" value="FECDDA" symbol="LFECDDA" symbol-type="local-or-global-addr" symbol-source="auto">LFECDDA</op-symbol></operand>
+      <operand><op-symbol anno="none" value="FECDDA" symbol="returnXToFreeList" symbol-type="global-addr" symbol-source="user">returnXToFreeList</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd76">
       <opcode>clc</opcode>
@@ -46999,7 +47188,7 @@
     </line>
     <line type="blank" />
     <line type="code" address="fe/fd78">
-      <label anno="none" id="LFEFD78">LFEFD78</label>
+      <label anno="none" local-id="@retsk">@retsk</label>
       <opcode>plp</opcode>
     </line>
     <line type="code" address="fe/fd79">
@@ -47009,7 +47198,7 @@
       <opcode>pld</opcode>
     </line>
     <line type="code" address="fe/fd7b">
-      <label anno="none" id="LFEFD7B">LFEFD7B</label>
+      <label anno="none" local-id="@retsec">@retsec</label>
       <opcode>rtl</opcode>
     </line>
     <line type="blank" />
@@ -47059,7 +47248,7 @@
     </line>
     <line type="code" address="fe/fd8e">
       <opcode>stal</opcode>
-      <operand>f:$00fe06</operand>
+      <operand>f:<op-symbol anno="none" value="FE06" symbol="B0LST_IRQ_HANDLER" symbol-type="external-addr" symbol-source="project">B0LST_IRQ_HANDLER</op-symbol></operand>
     </line>
     <line type="code" address="fe/fd92">
       <opcode>phk</opcode>

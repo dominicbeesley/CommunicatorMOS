@@ -9,41 +9,50 @@
                                        __MMFP          .eq     $02    {const}    ;Free a pool
                                        CO_off_Parent   .eq     2      {const}    ;Pointer to parent coroutine
                                        COP_02_OPWRA    .eq     2      {const}    ;OPWRA - write string at BHA
+                                       HND_type_2_CBMEM .eq    2      {const}    ;Handle type - Memory block
                                        COP_03_OPNLI    .eq     3      {const}    ;OSNEWL
                                        HNDFILE_off_module .eq  3      {const}    ;file handle block offset to module pointer
                                        __MMBP          .eq     4      {const}    ;Undocumented mm call - TODO check for deprecated
                                        CO_off_flags    .eq     4      {const}    ;Coroutine block offset - flags
                                        COP_04_OPRDC    .eq     $04    {const}
+                                       HND_type_4_CBSIND .eq   4      {const}    ;Handle type - module call reference - QRY
                                        CO_off_B        .eq     5      {const}    ;offset in couroutine of bank register
                                        __MMASD         .eq     6      {const}    ;Allocate small descending
                                        CO_off_DP       .eq     6      {const}    ;offset in couroutine block of DP pointer
                                        COP_06_OPOSB    .eq     6      {const}    ;OSBYTE
+                                       HND_type_6_CBCO .eq     6      {const}    ;Handle type - coroutine
                                        COP_07_OPOSW    .eq     7      {const}    ;OSWORD
                                        HDMMW           .eq     7      {const}    ;A memory pool well known handle - QRY - looks to be used with some unknown hardare at 450000
                                        VDU_07_BELL     .eq     7      {const}
                                        CO_off_8_BRKBLOCK .eq   8      {const}    ;Contains a pointer to block that contains a pointer to a break handler in bank 0
+                                       HND_type_8_CBCO2 .eq    8      {const}    ;Handle type - coroutine break handler QRY
                                        VDUMOD_OPX_8_EXPLODE .eq 8      {const}
                                        __MMASA         .eq     $0a    {const}    ;Allocate small ascending
                                        __STGIT         .eq     $0a    {const}
                                        COP_0A_OPBGT    .eq     $0a    {const}    ;BGET
+                                       HND_type_A_CBLCB .eq    $0a    {const}    ;Handle type - ???
                                        VDUMOD_OPX_A    .eq     $0a    {const}
                                        COP_0B_OPBPT    .eq     $0b    {const}    ;BPUT
                                        COP_0B_OPBPUT   .eq     $0b    {const}    ;BPUT
                                        HND_off_B_type  .eq     $0b    {const}    ;Offset of the type byte in a handle block
                                        __MMALA         .eq     $0c    {const}    ;Allocate large asending area
                                        __STGLN         .eq     $0c    {const}
+                                       HND_type_C_CBMOD .eq    $0c    {const}    ;Handle type - module QRY
                                        VDUMOD_OPX_C_HIMEM .eq  $0c    {const}
                                        VDU_0D_CR       .eq     $0d    {const}
                                        __MMBAS         .eq     $0e    {const}    ;Return Pool Base in BHA
                                        __STGRD         .eq     $0e    {const}
                                        COP_0E_OPCOM    .eq     $0e    {const}    ;Interpret command in BHA
+                                       HND_type_E_CBIQ .eq     $0e    {const}    ;Handle type - Interrupt handler
                                        VDUMOD_OPX_E_HIMEMBYX .eq $0e    {const}
                                        COP_0F_OPERR    .eq     $0f    {const}
                                        COP_10_OPADP    .eq     $10    {const}    ;Allocate direct page
+                                       HND_type_10_CBHN .eq    $10    {const}    ;Handle type - device handle
                                        HND_type_10_file .eq    $10    {const}    ;handle type for files
                                        MMLEN           .eq     $10    {const}    ;COPMM reason code, Y contains handle, exit BHA contains length
                                        VDUMOD_OPX_10_GETCURSOR .eq $10    {const}
                                        __MMTOP         .eq     $12    {const}    ;Return the address of the top of the pool
+                                       HND_type_12_CBDFR .eq   $12    {const}    ;Handle type - ???
                                        COP_13_OPAST    .eq     $13    {const}    ;allocate stack
                                        __STSBK         .eq     $14    {const}    ;Read Break Signature
                                        VDUMOD_OPX_14_FLASH_QRY .eq $14    {const}
@@ -162,6 +171,9 @@
                                        DPSYS_OSB_A     .eq     $acec  {addr/1}   ;OSBYTE save in SYS DP
                                        DPSYS_GSREAD_ptr .eq    $aced  {addr/3}   ;GSREAD pointer in __ST
                                        DPSYS_OSB_IND   .eq     $acf6  {addr/2}
+                                       B0LST_FREE_BLOCKS .eq   $fe00  {addr/2}   ;A list of free [handle block]s
+                                       B0LSTEND_FREE_BLOCKS .eq $fe02  {addr/2}  ;points to the last entry in the free list
+                                       B0LST_IRQ_HANDLER .eq   $fe06  {addr/2}   ;looks to be a list of interrupt handlers
                                        DP_HANDLE_VIDEO_QRY .eq $fe0c  {addr/2}   ;QRY see fe/d355
                                        B0LST_MODULES_QRY .eq   $fe0e  {addr/2}
                                        tblB0JumpTableFE80_QRY .eq $fe80  {addr/52} ;QRY set up from ROM during reset at FEb4e8
@@ -810,8 +822,8 @@ fe/b3b2: 60           ??MXdI?? e ...#.                 rts
 fe/b3b3: da           ??mxdI?? e ....> LFEB3B3         phx
 fe/b3b4: 2b           ??mxdI?? e .....                 pld                       ;set DP to X
 fe/b3b5: 48           ??mxdI?? e .....                 pha
-fe/b3b6: a9 04 00     ??mxdI?? e .....                 lda     #$0004
-fe/b3b9: 20 01 ce     n?mxdIz? e .....                 jsr     LFECE01
+fe/b3b6: a9 04 00     ??mxdI?? e .....                 lda     #HND_type_4_CBSIND
+fe/b3b9: 20 01 ce     n?mxdIz? e .....                 jsr     obtainFreeBlock
 fe/b3bc: b0 2b        ??mxdI?? e .....                 bcs     LFEB3E9
 fe/b3be: ad e2 b3     ??mxdI?c e .....                 lda     templateModCallBack2 & $ffff
 fe/b3c1: 9f 00 00 00  ??mxdI?c e .....                 stal    f:$000000,x
@@ -2270,7 +2282,7 @@ fe/bb27: b0 16        ??mxd??? e .....                 bcs     @retsec
 fe/bb29: 70 14        ??mxd??c e .....                 bvs     @retsec
 fe/bb2b: da           ?vmxd??c e .....                 phx
 fe/bb2c: a0 fe fd     ?vmxd??c e .....                 ldy     #$fdfe
-fe/bb2f: a9 10 00     nvmxd?zc e .....                 lda     #$0010
+fe/bb2f: a9 10 00     nvmxd?zc e .....                 lda     #HND_type_10_CBHN
 fe/bb32: 20 e4 f8     nvmxd?zc e .....                 jsr     LFEF8E4
 fe/bb35: 68           ??mxd??? e .....                 pla
 fe/bb36: b0 07        ??mxd??? e .....                 bcs     @retsec
@@ -3128,8 +3140,8 @@ fe/bf49: 82 65 fb     ??mxd??C e ...#.                 brl     retCopXBHA
                                        ********************************************************************************
                                        * COP 60 - OPDFR - ????                                                        *
                                        ********************************************************************************
-fe/bf4c: a9 12 00     ??mxd??? e @T... COP_60          lda     #$0012
-fe/bf4f: 20 01 ce     n?mxd?z? e .....                 jsr     LFECE01
+fe/bf4c: a9 12 00     ??mxd??? e @T... COP_60          lda     #HND_type_12_CBDFR
+fe/bf4f: 20 01 ce     n?mxd?z? e .....                 jsr     obtainFreeBlock
 fe/bf52: b0 37        ??mxd??? e .....                 bcs     @reterrNoRoom
 fe/bf54: a9 00 00     ??mxd??c e .....                 lda     #$0000
 fe/bf57: 9f 00 00 00  n?mxd?Zc e .....                 stal    f:$000000,x
@@ -3178,7 +3190,7 @@ fe/bfb6: ab           ??mxd??? e .....                 plb
 fe/bfb7: d4 02        ??mxd??? e .....                 pei     (DPCOP_Y+1)
 fe/bfb9: d4 06        ??mxd??? e .....                 pei     (DPCOP_AH+1)
 fe/bfbb: d4 04        ??mxd??? e .....                 pei     (DPCOP_X+1)
-fe/bfbd: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/bfbd: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/bfc0: 7a           ??mxd??? e .....                 ply
 fe/bfc1: fa           ??mxd??? e .....                 plx
 fe/bfc2: 2b           ??mxd??? e .....                 pld
@@ -3480,7 +3492,7 @@ fe/c0f1: d0 09        ??mxd??? e .....                 bne     LFEC0FC          
 fe/c0f3: a2 14 00     ??mxd?Z? e .....                 ldx     #__MMFND
 fe/c0f6: 22 8c ff 00  n?mxd?z? e .....                 jsl     __MM
 fe/c0fa: b0 30        ??mxd??? e .....                 bcs     @retpld
-fe/c0fc: 20 da ce     ??mxd??? e ....> LFEC0FC         jsr     getHandleBlockInDP
+fe/c0fc: 20 da ce     ??mxd??? e ....> LFEC0FC         jsr     getHandleYinDP
 fe/c0ff: b0 2b        ??mxd??? e .....                 bcs     @retpld
 fe/c101: bf 08 00 00  ??mxd??c e .....                 ldal    f:$000008,x       ;QRY - TODO find out what __MMFND returns in X - undocumented!
 fe/c105: 48           ??mxd??c e .....                 pha
@@ -6005,13 +6017,13 @@ fe/cdb5: 08           ??MXdI?? e ....> LFECDB5         php
 fe/cdb6: c2 30        ??MXdI?? e .....                 rep     #$30
                                                        .rwid   longm,longx
 fe/cdb8: a9 00 00     ??mxdI?? e .....                 lda     #$0000
-fe/cdbb: 8f 00 fe 00  n?mxdIZ? e .....                 stal    f:$00fe00
+fe/cdbb: 8f 00 fe 00  n?mxdIZ? e .....                 stal    f:B0LST_FREE_BLOCKS
 fe/cdbf: a9 00 fe     n?mxdIZ? e .....                 lda     #$fe00
-fe/cdc2: 8f 02 fe 00  n?mxdIz? e .....                 stal    f:$00fe02
+fe/cdc2: 8f 02 fe 00  n?mxdIz? e .....                 stal    f:B0LSTEND_FREE_BLOCKS
 fe/cdc6: a9 00 e0     n?mxdIz? e .....                 lda     #$e000
 fe/cdc9: 48           ??mxdI?? e ....> LFECDC9         pha
 fe/cdca: aa           ??mxdI?? e .....                 tax
-fe/cdcb: 20 da cd     ??mxdI?? e .....                 jsr     LFECDDA
+fe/cdcb: 20 da cd     ??mxdI?? e .....                 jsr     returnXToFreeList
 fe/cdce: 68           ??mxdI?? e .....                 pla
 fe/cdcf: 18           ??mxdI?? e .....                 clc
 fe/cdd0: 69 0c 00     ??mxdI?c e .....                 adc     #$000c
@@ -6021,34 +6033,41 @@ fe/cdd8: 28           ??mxdI?C e .....                 plp
                                                        .rwid   shortm,shortx
 fe/cdd9: 60           ??MXdI?? e ...#.                 rts
 
+                                       ; QRY Appears to return the block pointed to X to the free list
+                                       ; 
+                                       ; On Entry:
+                                       ;    X   is a pointer to a handle block
                                                        .rwid   longm,longx
-fe/cdda: 5a           ??mxd??? e ....> LFECDDA         phy
+fe/cdda: 5a           ??mxd??? e ....> returnXToFreeList phy
 fe/cddb: 08           ??mxd??? e .....                 php
 fe/cddc: 78           ??mxd??? e .....                 sei
 fe/cddd: c2 30        ??mxdI?? e .....                 rep     #$30
-fe/cddf: 9b           ??mxdI?? e .....                 txy
+fe/cddf: 9b           ??mxdI?? e .....                 txy                       ;Y=X
 fe/cde0: a9 00 00     ??mxdI?? e .....                 lda     #$0000
-fe/cde3: 9f 00 00 00  n?mxdIZ? e .....                 stal    f:$000000,x
+fe/cde3: 9f 00 00 00  n?mxdIZ? e .....                 stal    f:$000000,x       ;clear X->[0]
 fe/cde7: e2 20        n?mxdIZ? e .....                 sep     #$20
                                                        .rwid   shortm
-fe/cde9: 9f 0b 00 00  n?MxdIZ? e .....                 stal    f:$00000b,x
+fe/cde9: 9f 0b 00 00  n?MxdIZ? e .....                 stal    f:$00000b,x       ;clear X->[b]
 fe/cded: c2 20        n?MxdIZ? e .....                 rep     #$20
                                                        .rwid   longm
-fe/cdef: af 02 fe 00  n?mxdIZ? e .....                 ldal    f:$00fe02
-fe/cdf3: aa           ??mxdI?? e .....                 tax
-fe/cdf4: 98           ??mxdI?? e .....                 tya
+fe/cdef: af 02 fe 00  n?mxdIZ? e .....                 ldal    f:B0LSTEND_FREE_BLOCKS
+fe/cdf3: aa           ??mxdI?? e .....                 tax                       ;X = ($FE02)
+fe/cdf4: 98           ??mxdI?? e .....                 tya                       ;A=org X
 fe/cdf5: 9f 00 00 00  ??mxdI?? e .....                 stal    f:$000000,x
-fe/cdf9: 8f 02 fe 00  ??mxdI?? e .....                 stal    f:$00fe02
+fe/cdf9: 8f 02 fe 00  ??mxdI?? e .....                 stal    f:B0LSTEND_FREE_BLOCKS
 fe/cdfd: 28           ??mxdI?? e .....                 plp
 fe/cdfe: 7a           ??mxdI?? e .....                 ply
 fe/cdff: 18           ??mxdI?? e .....                 clc
 fe/ce00: 60           ??mxdI?c e ...#.                 rts
 
-fe/ce01: 08           n?mxd?z? e ....> LFECE01         php
+                                       ; Appears to allocate a block from the free list
+                                       ; 
+                                       ; On entry A contains the type - QRY
+fe/ce01: 08           n?mxd?z? e ....> obtainFreeBlock php
 fe/ce02: 78           n?mxd?z? e .....                 sei
 fe/ce03: c2 30        n?mxdIz? e .....                 rep     #$30
 fe/ce05: aa           n?mxdIz? e .....                 tax
-fe/ce06: af 00 fe 00  ??mxdI?? e .....                 ldal    f:$00fe00
+fe/ce06: af 00 fe 00  ??mxdI?? e .....                 ldal    f:B0LST_FREE_BLOCKS
 fe/ce0a: d0 03        ??mxdI?? e .....                 bne     @ok
 fe/ce0c: 28           ??mxdIZ? e .....                 plp
 fe/ce0d: 38           n?mxdIz? e .....                 sec
@@ -6056,13 +6075,16 @@ fe/ce0e: 60           n?mxdIzC e ...#.                 rts
 
 fe/ce0f: da           ??mxdIz? e ....> @ok             phx
 fe/ce10: aa           ??mxdIz? e .....                 tax
-fe/ce11: cf 02 fe 00  ??mxdI?? e .....                 cmpl    f:$00fe02
-fe/ce15: d0 07        ??mxdI?? e .....                 bne     LFECE1E
-fe/ce17: a9 00 fe     ??mxdIZ? e .....                 lda     #$fe00
-fe/ce1a: 8f 02 fe 00  n?mxdIz? e .....                 stal    f:$00fe02
-fe/ce1e: bf 00 00 00  ??mxdIz? e ....> LFECE1E         ldal    f:$000000,x
-fe/ce22: 8f 00 fe 00  ??mxdI?? e .....                 stal    f:$00fe00
-fe/ce26: a9 ff ff     ??mxdI?? e .....                 lda     #$ffff
+fe/ce11: cf 02 fe 00  ??mxdI?? e .....                 cmpl    f:B0LSTEND_FREE_BLOCKS
+fe/ce15: d0 07        ??mxdI?? e .....                 bne     @sk
+                                       ; if this was the last block then clear the last block pointer - point the last
+                                       ; block pointer at the front pointer this will cause the next "free" to
+                                       ; magically update both list pointers
+fe/ce17: a9 00 fe     ??mxdIZ? e .....                 lda     #B0LST_FREE_BLOCKS
+fe/ce1a: 8f 02 fe 00  n?mxdIz? e .....                 stal    f:B0LSTEND_FREE_BLOCKS
+fe/ce1e: bf 00 00 00  ??mxdIz? e ....> @sk             ldal    f:$000000,x       ;get the blocks next pointer
+fe/ce22: 8f 00 fe 00  ??mxdI?? e .....                 stal    f:B0LST_FREE_BLOCKS ;store as the front pointer (will be 0 if last block)
+fe/ce26: a9 ff ff     ??mxdI?? e .....                 lda     #$ffff            ;blank out the block
 fe/ce29: 9f 0a 00 00  n?mxdIz? e .....                 stal    f:$00000a,x
 fe/ce2d: 9f 08 00 00  n?mxdIz? e .....                 stal    f:$000008,x
 fe/ce31: 9f 06 00 00  n?mxdIz? e .....                 stal    f:$000006,x
@@ -6072,7 +6094,7 @@ fe/ce3d: 9f 00 00 00  n?mxdIz? e .....                 stal    f:$000000,x
 fe/ce41: 68           n?mxdIz? e .....                 pla
 fe/ce42: e2 20        ??mxdI?? e .....                 sep     #$20
                                                        .rwid   shortm
-fe/ce44: 9f 0b 00 00  ??MxdI?? e .....                 stal    f:$00000b,x
+fe/ce44: 9f 0b 00 00  ??MxdI?? e .....                 stal    f:HND_off_B_type,x ;set the type byte
 fe/ce48: c2 20        ??MxdI?? e .....                 rep     #$20
                                                        .rwid   longm
 fe/ce4a: 8a           ??mxdI?? e .....                 txa
@@ -6080,7 +6102,7 @@ fe/ce4b: 28           ??mxdI?? e .....                 plp
 fe/ce4c: 18           n?mxdIzC e .....                 clc
 fe/ce4d: 60           n?mxdIzc e ...#.                 rts
 
-fe/ce4e: af 00 fe 00  ??mxd??? e ....> LFECE4E         ldal    f:$00fe00
+fe/ce4e: af 00 fe 00  ??mxd??? e ....> LFECE4E         ldal    f:B0LST_FREE_BLOCKS
 fe/ce52: f0 15        ??mxd??? e .....                 beq     LFECE69
 fe/ce54: a0 00 00     ??mxd?z? e .....                 ldy     #$0000
 fe/ce57: c8           ??mxd??? e ....> LFECE57         iny
@@ -6089,11 +6111,11 @@ fe/ce5a: aa           ??mxd?z? e .....                 tax
 fe/ce5b: bf 00 00 00  ??mxd??? e .....                 ldal    f:$000000,x
 fe/ce5f: d0 f6        ??mxd??? e .....                 bne     LFECE57
 fe/ce61: 8a           ??mxd?Z? e .....                 txa
-fe/ce62: cf 02 fe 00  ??mxd??? e .....                 cmpl    f:$00fe02
+fe/ce62: cf 02 fe 00  ??mxd??? e .....                 cmpl    f:B0LSTEND_FREE_BLOCKS
 fe/ce66: d0 0b        ??mxd??? e .....                 bne     memFreeListError
 fe/ce68: 60           ??mxd?Z? e ...#.                 rts
 
-fe/ce69: af 02 fe 00  ??mxd?Z? e ....> LFECE69         ldal    f:$00fe02
+fe/ce69: af 02 fe 00  ??mxd?Z? e ....> LFECE69         ldal    f:B0LSTEND_FREE_BLOCKS
 fe/ce6d: c9 00 fe     ??mxd??? e .....                 cmp     #$fe00
 fe/ce70: d0 01        ??mxd??? e .....                 bne     memFreeListError
 fe/ce72: 60           ??mxd?Z? e ...#.                 rts
@@ -6126,7 +6148,7 @@ fe/cec2: 2b           ??mxd??? e .....                 pld
 fe/cec3: 38           ??mxd??? e .....                 sec
 fe/cec4: 60           ??mxd??C e ...#.                 rts
 
-fe/cec5: 20 da ce     ??mxd??? e ....> LFECEC5         jsr     getHandleBlockInDP
+fe/cec5: 20 da ce     ??mxd??? e ....> LFECEC5         jsr     getHandleYinDP
 fe/cec8: 48           ??mxd??? e .....                 pha
 fe/cec9: b0 0d        ??mxd??? e .....                 bcs     @sk
 fe/cecb: bf 0b 00 00  ??mxd??c e .....                 ldal    f:$00000b,x
@@ -6136,22 +6158,29 @@ fe/ced5: c9 01 00     ??mxd??c e .....                 cmp     #$0001
 fe/ced8: 68           ??mxd??? e ....> @sk             pla
 fe/ced9: 60           ??mxd??? e ...#.                 rts
 
-                                       ********************************************************************************
-                                       * QRY - check                                                                  *
-                                       *                                                                              *
-                                       * Returns a handles block pointer in X                                         *
-                                       *                                                                              *
-                                       ********************************************************************************
-fe/ceda: 0b           ??mxd??? e ....> getHandleBlockInDP phd
+                                       ; Given a handle in Y returns the [Handle Block]. For odd numbered handles (well
+                                       ; known handles) the block is returned for valid handles. For even numbered
+                                       ; handles, searches the [Handle Allocation Table].
+                                       ; 
+                                       ; On Entry:
+                                       ;    Y   Contains a handle
+                                       ; 
+                                       ; On Exit:
+                                       ;    C=0 Found
+                                       ;    DP  the address of the handle block
+                                       ; or C=1 Failed - no such handle allocated
+                                       ; 
+                                       ; TODO: corrupts X unnecessarily, lots of tax etc that is unnecessary
+fe/ceda: 0b           ??mxd??? e ....> getHandleYinDP  phd
 fe/cedb: 48           ??mxd??? e .....                 pha
 fe/cedc: 98           ??mxd??? e .....                 tya
 fe/cedd: f0 31        ??mxd??? e .....                 beq     @retsec
 fe/cedf: 89 01 00     ??mxd?z? e .....                 bit     #$0001
 fe/cee2: d0 10        ??mxd??? e .....                 bne     @wellknownhandle
-fe/cee4: f4 00 ff     ??mxd?Z? e .....                 pea     EXSYS_HANDLEBLOCK_LONGPTR-2
+fe/cee4: f4 00 ff     ??mxd?Z? e .....                 pea     EXSYS
 fe/cee7: 2b           ??mxd?Z? e .....                 pld
 fe/cee8: b7 02        ??mxd??? e .....                 lda     [$02],y
-fe/ceea: aa           ??mxd??? e ....> @lp             tax
+fe/ceea: aa           ??mxd??? e ....> @ok             tax
 fe/ceeb: f0 23        ??mxd??? e .....                 beq     @retsec
 fe/ceed: e0 ff ff     ??mxd?z? e .....                 cpx     #$ffff
 fe/cef0: f0 1e        ??mxd??? e .....                 beq     @retsec
@@ -6164,14 +6193,14 @@ fe/cefa: 8b           ??mxd??c e .....                 phb
 fe/cefb: 4b           ??mxd??c e .....                 phk
                                                        .dbank  K (auto)
 fe/cefc: ab           ??mxd??c e .....                 plb
-fe/cefd: bd 13 cf     ??mxd??c e .....                 lda     0+(LFECF14 & $ffff)-1,x
+fe/cefd: bd 13 cf     ??mxd??c e .....                 lda     0+(tblWellKnownHandlePointers & $ffff)-1,x
 fe/cf00: ab           ??mxd??c e .....                 plb
 fe/cf01: 49 00 00     ??mxd??c e .....                 eor     #$0000
 fe/cf04: f0 0a        ??mxd??c e .....                 beq     @retsec
 fe/cf06: 48           ??mxd?zc e .....                 pha
 fe/cf07: 2b           ??mxd?zc e .....                 pld
 fe/cf08: a5 00        ??mxd??c e .....                 lda     $00
-fe/cf0a: 80 de        ??mxd??c e ...#.                 bra     @lp
+fe/cf0a: 80 de        ??mxd??c e ...#.                 bra     @ok
 
 fe/cf0c: 68           ??mxd?z? e ....> @retclc         pla
 fe/cf0d: 2b           ??mxd??? e .....                 pld
@@ -6183,37 +6212,67 @@ fe/cf11: 2b           ??mxd??? e .....                 pld
 fe/cf12: 38           ??mxd??? e .....                 sec
 fe/cf13: 60           ??mxd??C e ...#.                 rts
 
-fe/cf14: 04 fe                   ..... LFECF14         .dd2    $fe04             ;HDMMM
+fe/cf14: 04 fe                   ..... tblWellKnownHandlePointers .dd2 $fe04     ;HDMMM
 fe/cf16: 00 00                   .....                 .dd2    $0000             ;HDMM0 - QRY
 fe/cf18: 08 fe                   .....                 .dd2    $fe08             ;HDMMC
 fe/cf1a: 0a fe                   .....                 .dd2    $fe0a             ;HDMMW
 fe/cf1c: 0c fe                   .....                 .dd2    $fe0c             ;HDMMV
 
-fe/cf1e: da           ??mxd??? e ....> LFECF1E         phx
-fe/cf1f: f4 00 ff     ??mxd??? e .....                 pea     $ff00
+                                       ; The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched
+                                       ; for this entry and its entry is zeroed if found
+                                       ; 
+                                       ; On entry:
+                                       ;    X    contains a handle block pointer
+                                       ; 
+                                       ; On exit:
+                                       ;    C=0  indicates block found
+                                       ;    Y    contains the index of the entry (handle ? QRY?)
+                                       ;    X,D  preserved
+                                       ; or C=1  the pointer was not found
+                                       ;    Y    contains the index of the last entry (entries are allocated descending
+                                       ;         so the first in address order)
+                                       ; 
+                                       ; TODO: why not use the find method below!
+fe/cf1e: da           ??mxd??? e ....> freeHandlePointerX phx
+fe/cf1f: f4 00 ff     ??mxd??? e .....                 pea     EXSYS
 fe/cf22: 2b           ??mxd??? e .....                 pld
 fe/cf23: a0 00 00     ??mxd??? e .....                 ldy     #$0000
-fe/cf26: b7 02        n?mxd?Z? e .....                 lda     [DPCOP_Y+1],y
+fe/cf26: b7 02        n?mxd?Z? e .....                 lda     [$02],y           ;get pointer to end of handle block + 2
 fe/cf28: a8           ??mxd??? e .....                 tay
 fe/cf29: 88           ??mxd??? e .....                 dey
 fe/cf2a: 88           ??mxd??? e .....                 dey
-fe/cf2b: b7 02        ??mxd??? e ....> LFECF2B         lda     [DPCOP_Y+1],y
-fe/cf2d: c3 01        ??mxd??? e .....                 cmp     $01,S
-fe/cf2f: f0 07        ??mxd??? e .....                 beq     LFECF38
+fe/cf2b: b7 02        ??mxd??? e ....> @lp             lda     [$02],y
+fe/cf2d: c3 01        ??mxd??? e .....                 cmp     $01,S             ;compare to passed in X
+fe/cf2f: f0 07        ??mxd??? e .....                 beq     @fnd
 fe/cf31: 88           ??mxd?z? e .....                 dey
-fe/cf32: 88           ??mxd??? e .....                 dey
-fe/cf33: d0 f6        ??mxd??? e .....                 bne     LFECF2B
+fe/cf32: 88           ??mxd??? e .....                 dey                       ;move backwards through handle list
+fe/cf33: d0 f6        ??mxd??? e .....                 bne     @lp
 fe/cf35: fa           ??mxd?Z? e .....                 plx
 fe/cf36: 38           ??mxd??? e .....                 sec
 fe/cf37: 60           ??mxd??C e ...#.                 rts
 
-fe/cf38: a9 00 00     ??mxd?Z? e ....> LFECF38         lda     #$0000
-fe/cf3b: 97 02        n?mxd?Z? e .....                 sta     [DPCOP_Y+1],y
+fe/cf38: a9 00 00     ??mxd?Z? e ....> @fnd            lda     #$0000
+fe/cf3b: 97 02        n?mxd?Z? e .....                 sta     [$02],y           ;zero out the entry and return clc
 fe/cf3d: fa           n?mxd?Z? e .....                 plx
 fe/cf3e: 18           ??mxd??? e .....                 clc
 fe/cf3f: 60           ??mxd??c e ...#.                 rts
 
-fe/cf40: f4 00 ff     ??mxd??? e ....> coGetHandleByBlockAddr_QRY pea EXSYS
+                                       ; The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched
+                                       ; for an entry that contains X
+                                       ; 
+                                       ; On entry:
+                                       ;    X    contains a handle block pointer
+                                       ; 
+                                       ; On exit:
+                                       ;    C=0  indicates block found
+                                       ;    Y    contains the index of the entry (handle)
+                                       ; or C=1  the pointer was not found
+                                       ;    Y    contains the index of the last entry (entries are allocated descending
+                                       ;         so the first in address order)
+                                       ; 
+                                       ;    X    preserved
+                                       ;    D,A  corrupted   
+fe/cf40: f4 00 ff     ??mxd??? e ....> findHandleByAddr pea    EXSYS
 fe/cf43: 2b           ??mxd??? e .....                 pld
 fe/cf44: a0 00 00     ??mxd??? e .....                 ldy     #$0000
 fe/cf47: b7 02        n?mxd?Z? e .....                 lda     [$02],y
@@ -6879,8 +6938,8 @@ fe/d2fd: 38           ??MXdI?? e .....                 sec
 fe/d2fe: 60           ??MXdI?C e ...#.                 rts
 
                                                        .rwid   longm,longx
-fe/d2ff: a9 02 00     ??mxdI?? e ....> LFED2FF         lda     #$0002
-fe/d302: 20 01 ce     n?mxdIz? e .....                 jsr     LFECE01
+fe/d2ff: a9 02 00     ??mxdI?? e ....> LFED2FF         lda     #HND_type_2_CBMEM
+fe/d302: 20 01 ce     n?mxdIz? e .....                 jsr     obtainFreeBlock
 fe/d305: b0 1c        ??mxdI?? e .....                 bcs     LFED323
 fe/d307: aa           ??mxdI?c e .....                 tax
 fe/d308: 20 d7 d6     ??mxdI?c e .....                 jsr     LFED6D7
@@ -7200,11 +7259,11 @@ fe/d495: 22 8c ff 00  n?mxd?z? e .....                 jsl     __MM
 fe/d499: 7a           ??mxd??? e .....                 ply
 fe/d49a: a9 00 00     ??mxd??? e .....                 lda     #$0000
 fe/d49d: b0 06        n?mxd?Z? e .....                 bcs     LFED4A5
-fe/d49f: bf 08 00 00  n?mxd?Zc e .....                 ldal    f:DPCOP_DP,x
+fe/d49f: bf 08 00 00  n?mxd?Zc e .....                 ldal    f:$000008,x
 fe/d4a3: aa           ??mxd??c e .....                 tax
 fe/d4a4: 8a           ??mxd??c e ....> LFED4A4         txa
 fe/d4a5: fa           ??mxd??? e ....> LFED4A5         plx
-fe/d4a6: 9f 08 00 00  ??mxd??? e .....                 stal    f:DPCOP_DP,x
+fe/d4a6: 9f 08 00 00  ??mxd??? e .....                 stal    f:$000008,x
 fe/d4aa: 68           ??mxd??? e .....                 pla
 fe/d4ab: ab           ??mxd??? e .....                 plb
 fe/d4ac: 18           ??mxd??? e .....                 clc
@@ -7244,7 +7303,7 @@ fe/d4d5: 60           ??mxd??C e ...#.                 rts
 
 fe/d4d6: 20 c5 d6     ??mxd??C e ....> LFED4D6         jsr     LFED6C5
 fe/d4d9: 90 30        ??mxd??? e .....                 bcc     LFED50B
-fe/d4db: 20 1e cf     ??mxd??C e .....                 jsr     LFECF1E
+fe/d4db: 20 1e cf     ??mxd??C e .....                 jsr     freeHandlePointerX
 fe/d4de: da           ??mxd??? e .....                 phx
 fe/d4df: 20 b5 d6     ??mxd??? e .....                 jsr     LFED6B5
 fe/d4e2: 48           ??mxd??? e .....                 pha
@@ -7266,7 +7325,7 @@ fe/d4fd: d0 f8        ??mxd??? e .....                 bne     LFED4F7
 fe/d4ff: 68           ??mxd?Z? e .....                 pla
 fe/d500: 20 d2 d6     ??mxd??? e .....                 jsr     LFED6D2
 fe/d503: fa           ??mxd??? e ....> LFED503         plx
-fe/d504: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/d504: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/d507: 20 7e d7     ??mxd??? e .....                 jsr     doMMCHK
 fe/d50a: 60           ??mxd??? e ...#.                 rts
 
@@ -7422,8 +7481,8 @@ fe/d635: f0 02        ??mxd??? e .....                 beq     LFED639
 fe/d637: b0 2c        ??mxd?z? e .....                 bcs     LFED665
 fe/d639: da           ??mxd??? e ....> LFED639         phx
 fe/d63a: 5a           ??mxd??? e .....                 phy
-fe/d63b: a9 02 00     ??mxd??? e .....                 lda     #$0002
-fe/d63e: 20 01 ce     n?mxd?z? e .....                 jsr     LFECE01
+fe/d63b: a9 02 00     ??mxd??? e .....                 lda     #HND_type_2_CBMEM
+fe/d63e: 20 01 ce     n?mxd?z? e .....                 jsr     obtainFreeBlock
 fe/d641: 7a           ??mxd??? e .....                 ply
 fe/d642: 68           ??mxd??? e .....                 pla
 fe/d643: b0 20        ??mxd??? e .....                 bcs     LFED665
@@ -7635,7 +7694,7 @@ fe/d773: b0 f3        ??mxd?z? e .....                 bcs     LFED768
 fe/d775: 20 c5 d6     ??mxd??? e ....> LFED775         jsr     LFED6C5
 fe/d778: 90 de        ??mxd??? e .....                 bcc     LFED758
 fe/d77a: 68           ??mxd??C e .....                 pla
-fe/d77b: 4c 40 cf     ??mxd??C e ...#.                 jmp     coGetHandleByBlockAddr_QRY
+fe/d77b: 4c 40 cf     ??mxd??C e ...#.                 jmp     findHandleByAddr
 
                                        ********************************************************************************
                                        * __MM 16 - MMCHK - Check the integrity of the MM system                       *
@@ -7888,7 +7947,7 @@ fe/d9cd: 20 e8 d9     ??mxd??C e .....                 jsr     LFED9E8
 fe/d9d0: 7a           ??mxd??? e .....                 ply
 fe/d9d1: 20 c5 ce     ??mxd??? e ....> LFED9D1         jsr     LFECEC5
 fe/d9d4: b0 22        ??mxd??? e .....                 bcs     syserrUnexpectedMMRG
-fe/d9d6: 20 1e cf     ??mxd??c e .....                 jsr     LFECF1E
+fe/d9d6: 20 1e cf     ??mxd??c e .....                 jsr     freeHandlePointerX
 fe/d9d9: b0 1d        ??mxd??? e .....                 bcs     syserrUnexpectedMMRG
 fe/d9db: 20 a1 ce     ??mxd??c e .....                 jsr     allocHandleQRY
 fe/d9de: b0 18        ??mxd??? e .....                 bcs     syserrUnexpectedMMRG
@@ -7902,9 +7961,9 @@ fe/d9e7: 60           ??mxd??C e ...#.                 rts
 
 fe/d9e8: 20 c5 ce     ??mxd??? e ....> LFED9E8         jsr     LFECEC5
 fe/d9eb: b0 0b        ??mxd??? e .....                 bcs     syserrUnexpectedMMRG
-fe/d9ed: 20 1e cf     ??mxd??c e .....                 jsr     LFECF1E
+fe/d9ed: 20 1e cf     ??mxd??c e .....                 jsr     freeHandlePointerX
 fe/d9f0: b0 06        ??mxd??? e .....                 bcs     syserrUnexpectedMMRG
-fe/d9f2: 20 da cd     ??mxd??c e .....                 jsr     LFECDDA
+fe/d9f2: 20 da cd     ??mxd??c e .....                 jsr     returnXToFreeList
 fe/d9f5: b0 01        ??mxd??? e .....                 bcs     syserrUnexpectedMMRG
 fe/d9f7: 60           ??mxd??c e ...#.                 rts
 
@@ -7991,8 +8050,8 @@ fe/da52: 7b           ??mxd??c e .....                 tdc
 fe/da53: a2 18 00     ??mxd??c e .....                 ldx     #__MMAZB          ;allocate the stack
 fe/da56: 22 8c ff 00  n?mxd?zc e .....                 jsl     __MM
 fe/da5a: b0 63        ??mxd??? e .....                 bcs     @retsecpop        ;stack alloc failed
-fe/da5c: a9 06 00     ??mxd??c e .....                 lda     #$0006
-fe/da5f: 20 01 ce     n?mxd?zc e .....                 jsr     LFECE01           ;alloc a coroutine block??? QRY
+fe/da5c: a9 06 00     ??mxd??c e .....                 lda     #HND_type_6_CBCO
+fe/da5f: 20 01 ce     n?mxd?zc e .....                 jsr     obtainFreeBlock   ;alloc a coroutine block??? QRY
 fe/da62: b0 54        ??mxd??? e .....                 bcs     @freestackretsec
 fe/da64: da           ??mxd??c e .....                 phx
 fe/da65: 2b           ??mxd??c e .....                 pld
@@ -8060,7 +8119,7 @@ fe/daae: 60           ??mxd??c e ...#.                 rts
 
 fe/daaf: bf 06 00 00  ??mxd??C e ....> @nohandles      ldal    f:CO_off_DP,x     ;get the handle for the stack we stashed earlier
 fe/dab3: 48           ??mxd??C e .....                 pha                       ;push it
-fe/dab4: 20 da cd     ??mxd??C e .....                 jsr     LFECDDA           ;free the block QRY?
+fe/dab4: 20 da cd     ??mxd??C e .....                 jsr     returnXToFreeList ;free the block QRY?
 fe/dab7: 7a           ??mxd??? e .....                 ply                       ;get back stack handle
 fe/dab8: a2 02 00     ??mxd??? e ....> @freestackretsec ldx    #__MMFP
 fe/dabb: 22 8c ff 00  n?mxd?z? e .....                 jsl     __MM
@@ -8138,7 +8197,7 @@ fe/daf7: c2 20        ??Mxd??? e .....                 rep     #$20
                                                        .rwid   longm
 fe/daf9: bf 00 00 00  ??mxd??? e .....                 ldal    f:$000000,x       ;get HA of old break handler
 fe/dafd: 48           ??mxd??? e .....                 pha
-fe/dafe: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/dafe: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/db01: 68           ??mxd??? e .....                 pla
 fe/db02: 18           ??mxd??? e .....                 clc
 fe/db03: 60           ??mxd??c e ...#.                 rts
@@ -8169,8 +8228,8 @@ fe/db13: f0 04        n?mxd??? e .....                 beq     LFEDB19
 fe/db15: a6 08        n?mxd?z? e .....                 ldx     CO_off_8_BRKBLOCK
 fe/db17: 80 11        ??mxd??? e ...#.                 bra     LFEDB2A
 
-fe/db19: a9 08 00     n?mxd?Z? e ....> LFEDB19         lda     #$0008
-fe/db1c: 20 01 ce     n?mxd?z? e .....                 jsr     LFECE01
+fe/db19: a9 08 00     n?mxd?Z? e ....> LFEDB19         lda     #HND_type_8_CBCO2
+fe/db1c: 20 01 ce     n?mxd?z? e .....                 jsr     obtainFreeBlock
 fe/db1f: b0 14        ??mxd??? e .....                 bcs     LFEDB35
 fe/db21: a5 04        ??mxd??c e .....                 lda     CO_off_flags
 fe/db23: 09 20 00     ??mxd??c e .....                 ora     #COFLAG_hasBRKhandler
@@ -8245,17 +8304,17 @@ fe/db82: 7a           ??mxd?Z? e ....> LFEDB82         ply
 fe/db83: a2 02 00     ??mxd??? e .....                 ldx     #__MMFP
 fe/db86: 22 8c ff 00  n?mxd?z? e .....                 jsl     __MM
 fe/db8a: fa           ??mxd??? e .....                 plx
-fe/db8b: 20 1e cf     ??mxd??? e .....                 jsr     LFECF1E
+fe/db8b: 20 1e cf     ??mxd??? e .....                 jsr     freeHandlePointerX
 fe/db8e: 8a           ??mxd??? e .....                 txa
 fe/db8f: 5b           ??mxd??? e .....                 tcd
 fe/db90: d4 08        ??mxd??? e .....                 pei     (DPCOP_DP)
 fe/db92: d4 03        ??mxd??? e .....                 pei     (DPCOP_X)
-fe/db94: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/db94: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/db97: 68           ??mxd??? e .....                 pla
 fe/db98: fa           ??mxd??? e .....                 plx
 fe/db99: 89 00 20     ??mxd??? e .....                 bit     #$2000
 fe/db9c: f0 03        ??mxd??? e .....                 beq     @clcret
-fe/db9e: 20 da cd     ??mxd?z? e .....                 jsr     LFECDDA
+fe/db9e: 20 da cd     ??mxd?z? e .....                 jsr     returnXToFreeList
 fe/dba1: 18           ??mxd??? e ....> @clcret         clc
 fe/dba2: 2b           ??mxd??? e ....> @ret            pld
 fe/dba3: ab           ??mxd??? e .....                 plb
@@ -8423,7 +8482,7 @@ fe/dc11: f4 00 ff     ??mxd??? e @T... doCOIAM         pea     EXSYS
 fe/dc14: 2b           ??mxd??? e .....                 pld
 fe/dc15: d4 10        ??mxd??? e .....                 pei     (<EXSYS_CUR_COROUTINE)
 fe/dc17: fa           ??mxd??? e .....                 plx
-fe/dc18: 4c 40 cf     ??mxd??? e ...#.                 jmp     coGetHandleByBlockAddr_QRY
+fe/dc18: 4c 40 cf     ??mxd??? e ...#.                 jmp     findHandleByAddr
 
                                        ********************************************************************************
                                        * CRS - co-routine call sibling QRY                                            *
@@ -8890,8 +8949,8 @@ fe/ded2: a0 00 00     ??mxd??c e .....                 ldy     #$0000
 fe/ded5: da           n?mxd?Zc e .....                 phx
 fe/ded6: 2b           n?mxd?Zc e .....                 pld
 fe/ded7: f0 11        ??mxd??c e .....                 beq     LFEDEEA
-fe/ded9: a9 0a 00     ??mxd??c e ....> LFEDED9         lda     #$000a
-fe/dedc: 20 01 ce     n?mxd?zc e .....                 jsr     LFECE01
+fe/ded9: a9 0a 00     ??mxd??c e ....> LFEDED9         lda     #HND_type_A_CBLCB
+fe/dedc: 20 01 ce     n?mxd?zc e .....                 jsr     obtainFreeBlock
 fe/dedf: b0 09        ??mxd??? e .....                 bcs     LFEDEEA
 fe/dee1: da           ??mxd??c e .....                 phx
 fe/dee2: c8           ??mxd??c e .....                 iny
@@ -8901,12 +8960,12 @@ fe/dee5: c3 01        ??mxd??c e .....                 cmp     $01,S
 fe/dee7: 2b           ??mxd??? e .....                 pld
 fe/dee8: 90 ef        ??mxd??? e .....                 bcc     LFEDED9
 fe/deea: a9 0a 00     ??mxd??? e ....> LFEDEEA         lda     #$000a
-fe/deed: 20 01 ce     n?mxd?z? e .....                 jsr     LFECE01
+fe/deed: 20 01 ce     n?mxd?z? e .....                 jsr     obtainFreeBlock
 fe/def0: 90 f8        ??mxd??? e .....                 bcc     LFEDEEA
 fe/def2: 98           ??mxd??C e .....                 tya
 fe/def3: f0 07        ??mxd??C e .....                 beq     LFEDEFC
 fe/def5: fa           ??mxd?z? e ....> LFEDEF5         plx
-fe/def6: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/def6: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/def9: 88           ??mxd??? e .....                 dey
 fe/defa: d0 f9        ??mxd??? e .....                 bne     LFEDEF5
 fe/defc: 28           ??mxd??? e ....> LFEDEFC         plp
@@ -11550,7 +11609,7 @@ fe/ee76: aa           ??mxdI?? e .....                 tax
 fe/ee77: bf 07 00 00  ??mxdI?? e .....                 ldal    f:DPCOP_B,x
 fe/ee7b: f0 0c        ??mxdI?? e .....                 beq     LFEEE89
 fe/ee7d: a8           ??mxdIz? e .....                 tay
-fe/ee7e: 20 da ce     ??mxdI?? e .....                 jsr     getHandleBlockInDP
+fe/ee7e: 20 da ce     ??mxdI?? e .....                 jsr     getHandleYinDP
 fe/ee81: af 0e fe 00  ??mxdI?? e .....                 ldal    f:B0LST_MODULES_QRY
 fe/ee85: 9f 08 00 00  ??mxdI?? e .....                 stal    f:DPCOP_DP,x
 fe/ee89: a9 00 00     ??mxdI?? e ....> LFEEE89         lda     #$0000
@@ -11749,8 +11808,8 @@ fe/efe5: fa           ??mxd??? e .....                 plx
 fe/efe6: 38           ??mxd??? e ....> LFEEFE6         sec
 fe/efe7: 80 08        ??mxd??C e ...#.                 bra     LFEEFF1
 
-fe/efe9: a9 0c 00     ??mxd?Z? e ....> LFEEFE9         lda     #$000c
-fe/efec: 20 01 ce     n?mxd?z? e .....                 jsr     LFECE01
+fe/efe9: a9 0c 00     ??mxd?Z? e ....> LFEEFE9         lda     #HND_type_C_CBMOD
+fe/efec: 20 01 ce     n?mxd?z? e .....                 jsr     obtainFreeBlock
 fe/efef: b0 42        ??mxd??? e .....                 bcs     LFEF033
 fe/eff1: a5 04        ??mxd??? e ....> LFEEFF1         lda     DPCOP_X+1
 fe/eff3: 9f 05 00 00  ??mxd??? e .....                 stal    f:DPCOP_AH,x
@@ -12054,8 +12113,8 @@ fe/f1dd: 20 c3 f1     ??mxd??c e ....> getOrCreateModCallBlock jsr getModCallBlo
 fe/f1e0: 90 3a        ??mxd??? e .....                 bcc     @retTxa
 fe/f1e2: 0b           ??mxd??C e .....                 phd
 fe/f1e3: 5b           ??mxd??C e .....                 tcd
-fe/f1e4: a9 06 00     ??mxd??C e .....                 lda     #$0006
-fe/f1e7: 20 01 ce     n?mxd?zC e .....                 jsr     LFECE01
+fe/f1e4: a9 06 00     ??mxd??C e .....                 lda     #HND_type_6_CBCO
+fe/f1e7: 20 01 ce     n?mxd?zC e .....                 jsr     obtainFreeBlock
 fe/f1ea: b0 31        ??mxd??? e .....                 bcs     @ret
 fe/f1ec: a9 00 00     ??mxd??c e .....                 lda     #$0000
 fe/f1ef: e2 20        n?mxd?Zc e .....                 sep     #$20
@@ -13133,7 +13192,7 @@ fe/f8e2: 7a           ??MXd??? e ....> LFEF8E2         ply
 fe/f8e3: 60           ??MXd??? e ...#.                 rts
 
                                                        .rwid   longm,longx
-fe/f8e4: 20 01 ce     nvmxd?zc e ....> LFEF8E4         jsr     LFECE01
+fe/f8e4: 20 01 ce     nvmxd?zc e ....> LFEF8E4         jsr     obtainFreeBlock
 fe/f8e7: b0 03        ??mxd??? e .....                 bcs     LFEF8EC
 fe/f8e9: 20 ed f8     ??mxd??c e .....                 jsr     LFEF8ED
 fe/f8ec: 60           ??mxd??? e ...#> LFEF8EC         rts
@@ -13196,7 +13255,7 @@ fe/f92b: 60           ??mxd??c e ...#.                 rts
 
 fe/f92c: 20 35 f9     n?mxd?z? e ....> LFEF92C         jsr     LFEF935
 fe/f92f: b0 03        ??mxd??? e .....                 bcs     LFEF934
-fe/f931: 20 da cd     ??mxd??c e .....                 jsr     LFECDDA
+fe/f931: 20 da cd     ??mxd??c e .....                 jsr     returnXToFreeList
 fe/f934: 60           ??mxd??? e ...#> LFEF934         rts
 
 fe/f935: 20 42 f9     n?mxd?z? e ....> LFEF935         jsr     LFEF942
@@ -13647,93 +13706,111 @@ fe/fc26: 40                      .....                 .dd1    $40
                                                        .rwid   longm,longx
 fe/fc27: c0 00 00     ??mxd??? e @T... COP_2F          cpy     #$0000
 fe/fc2a: d0 09        ??mxd??? e .....                 bne     @YnZ
-fe/fc2c: af 06 fe 00  ??mxd?Z? e .....                 ldal    f:$00fe06
+fe/fc2c: af 06 fe 00  ??mxd?Z? e .....                 ldal    f:B0LST_IRQ_HANDLER
 fe/fc30: f0 03        ??mxd??? e .....                 beq     @YnZ
 fe/fc32: 82 c1 00     ??mxd?z? e ...#.                 brl     @retSec
 
-fe/fc35: a9 0e 00     ??mxd??? e ....> @YnZ            lda     #$000e
-fe/fc38: 20 01 ce     n?mxd?z? e .....                 jsr     LFECE01
+fe/fc35: a9 0e 00     ??mxd??? e ....> @YnZ            lda     #HND_type_E_CBIQ
+fe/fc38: 20 01 ce     n?mxd?z? e .....                 jsr     obtainFreeBlock
 fe/fc3b: 90 03        ??mxd??? e .....                 bcc     @skok1
 fe/fc3d: 82 b6 00     ??mxd??C e ...#.                 brl     @retSec
 
 fe/fc40: da           ??mxd??c e ....> @skok1          phx
-fe/fc41: a9 0e 00     ??mxd??c e .....                 lda     #$000e
-fe/fc44: 20 01 ce     n?mxd?zc e .....                 jsr     LFECE01
-fe/fc47: 90 03        ??mxd??? e .....                 bcc     LFEFC4C
-fe/fc49: 82 a6 00     ??mxd??C e ...#.                 brl     LFEFCF2
+fe/fc41: a9 0e 00     ??mxd??c e .....                 lda     #HND_type_E_CBIQ
+fe/fc44: 20 01 ce     n?mxd?zc e .....                 jsr     obtainFreeBlock
+fe/fc47: 90 03        ??mxd??? e .....                 bcc     @skok2
+fe/fc49: 82 a6 00     ??mxd??C e ...#.                 brl     @retSec2
 
-fe/fc4c: e2 20        ??mxd??c e ....> LFEFC4C         sep     #$20
+fe/fc4c: e2 20        ??mxd??c e ....> @skok2          sep     #$20
                                                        .rwid   shortm
 fe/fc4e: a5 01        ??Mxd??c e .....                 lda     DPCOP_Y
 fe/fc50: 9f 00 00 00  ??Mxd??c e .....                 stal    f:$000000,x
 fe/fc54: a5 0a        ??Mxd??c e .....                 lda     DPCOP_P
 fe/fc56: 09 04        ??Mxd??c e .....                 ora     #$04
-fe/fc58: 9f 03 00 00  ??Mxd?zc e .....                 stal    f:DPCOP_X,x
+fe/fc58: 9f 03 00 00  ??Mxd?zc e .....                 stal    f:$000003,x
 fe/fc5c: c2 20        ??Mxd?zc e .....                 rep     #$20
                                                        .rwid   longm
 fe/fc5e: a5 06        ??mxd?zc e .....                 lda     DPCOP_AH+1
-fe/fc60: 9f 05 00 00  ??mxd??c e .....                 stal    f:DPCOP_AH,x
+fe/fc60: 9f 05 00 00  ??mxd??c e .....                 stal    f:$000005,x
 fe/fc64: a5 05        ??mxd??c e .....                 lda     DPCOP_AH
-fe/fc66: 9f 04 00 00  ??mxd??c e .....                 stal    f:DPCOP_X+1,x
+fe/fc66: 9f 04 00 00  ??mxd??c e .....                 stal    f:$000004,x
 fe/fc6a: a5 08        ??mxd??c e .....                 lda     DPCOP_DP
-fe/fc6c: 9f 01 00 00  ??mxd??c e .....                 stal    f:DPCOP_Y,x
+fe/fc6c: 9f 01 00 00  ??mxd??c e .....                 stal    f:$000001,x
 fe/fc70: a9 00 00     ??mxd??c e .....                 lda     #$0000
-fe/fc73: 9f 07 00 00  n?mxd?Zc e .....                 stal    f:DPCOP_B,x
-fe/fc77: 9f 09 00 00  n?mxd?Zc e .....                 stal    f:DPCOP_DP+1,x
+fe/fc73: 9f 07 00 00  n?mxd?Zc e .....                 stal    f:$000007,x
+fe/fc77: 9f 09 00 00  n?mxd?Zc e .....                 stal    f:$000009,x
 fe/fc7b: 8a           n?mxd?Zc e .....                 txa
 fe/fc7c: fa           ??mxd??c e .....                 plx
-fe/fc7d: 9f 07 00 00  ??mxd??c e .....                 stal    f:DPCOP_B,x
+fe/fc7d: 9f 07 00 00  ??mxd??c e .....                 stal    f:$000007,x
 fe/fc81: a0 01 00     ??mxd??c e .....                 ldy     #$0001
 fe/fc84: b7 0b        n?mxd?zc e .....                 lda     [DPCOP_PC],y
-fe/fc86: 9f 02 00 00  ??mxd??c e .....                 stal    f:DPCOP_Y+1,x
+fe/fc86: 9f 02 00 00  ??mxd??c e .....                 stal    f:$000002,x
 fe/fc8a: c8           ??mxd??c e .....                 iny
 fe/fc8b: b7 0b        ??mxd??c e .....                 lda     [DPCOP_PC],y
-fe/fc8d: 9f 03 00 00  ??mxd??c e .....                 stal    f:DPCOP_X,x
+fe/fc8d: 9f 03 00 00  ??mxd??c e .....                 stal    f:$000003,x
 fe/fc91: e2 20        ??mxd??c e .....                 sep     #$20
                                                        .rwid   shortm
 fe/fc93: c8           ??Mxd??c e .....                 iny
 fe/fc94: c8           ??Mxd??c e .....                 iny
 fe/fc95: b7 0b        ??Mxd??c e .....                 lda     [DPCOP_PC],y
-fe/fc97: 9f 06 00 00  ??Mxd??c e .....                 stal    f:DPCOP_AH+1,x
+fe/fc97: 9f 06 00 00  ??Mxd??c e .....                 stal    f:$000006,x
 fe/fc9b: a5 03        ??Mxd??c e .....                 lda     DPCOP_X
-fe/fc9d: 9f 05 00 00  ??Mxd??c e .....                 stal    f:DPCOP_AH,x
+fe/fc9d: 9f 05 00 00  ??Mxd??c e .....                 stal    f:$000005,x
 fe/fca1: c2 20        ??Mxd??c e .....                 rep     #$20
                                                        .rwid   longm
-fe/fca3: a9 06 fd     ??mxd??c e .....                 lda     #$fd06
-fe/fca6: 9f 09 00 00  n?mxd?zc e .....                 stal    f:DPCOP_DP+1,x
+fe/fca3: a9 06 fd     ??mxd??c e .....                 lda     #LFD06_anFF & $ffff
+fe/fca6: 9f 09 00 00  n?mxd?zc e .....                 stal    f:$000009,x
 fe/fcaa: e2 20        n?mxd?zc e .....                 sep     #$20
                                                        .rwid   shortm
 fe/fcac: 4b           n?Mxd?zc e .....                 phk
 fe/fcad: 68           n?Mxd?zc e .....                 pla
-fe/fcae: 9f 0b 00 00  ??Mxd??c e .....                 stal    f:DPCOP_PC,x
+fe/fcae: 9f 0b 00 00  ??Mxd??c e .....                 stal    f:$00000b,x
 fe/fcb2: c2 20        ??Mxd??c e .....                 rep     #$20
                                                        .rwid   longm
 fe/fcb4: f4 00 00     ??mxd??c e .....                 pea     $0000
 fe/fcb7: ab           ??mxd??c e .....                 plb
+                                                       .dbank  $00
 fe/fcb8: ab           ??mxd??c e .....                 plb
-fe/fcb9: d4 01        ??mxd??c e .....                 pei     (DPCOP_Y)
-fe/fcbb: 0b           ??mxd??c e .....                 phd
-fe/fcbc: 08           ??mxd??c e .....                 php
-fe/fcbd: 78           ??mxd??c e .....                 sei
-fe/fcbe: da           ??mxdI?c e .....                 phx
-fe/fcbf: f4 06 fe     ??mxdI?c e .....                 pea     0+(LFEFE05 & $ffff)+1
-fe/fcc2: 2b           ??mxdI?c e .....                 pld
-fe/fcc3: 0b           ??mxdI?? e ....> LFEFCC3         phd
-fe/fcc4: a5 00        ??mxdI?? e .....                 lda     $00
-fe/fcc6: f0 0d        ??mxdI?? e .....                 beq     LFEFCD5
-fe/fcc8: 5b           ??mxdIz? e .....                 tcd
-fe/fcc9: b2 07        ??mxdI?? e .....                 lda     (DPCOP_B)
+fe/fcb9: d4 01        ??mxd??c e .....                 pei     (DPCOP_Y)         ;push original Y parameter
+fe/fcbb: 0b           ??mxd??c e .....                 phd                       ;push DP of COP handler stack frame
+fe/fcbc: 08           ??mxd??c e .....                 php                       ;push current flags/mode
+fe/fcbd: 78           ??mxd??c e .....                 sei                       ;disable interrupts
+fe/fcbe: da           ??mxdI?c e .....                 phx                       ;push X of 1st IRQ handler block
+fe/fcbf: f4 06 fe     ??mxdI?c e .....                 pea     B0LST_IRQ_HANDLER ;push address of IRQ list head
+fe/fcc2: 2b           ??mxdI?c e .....                 pld                       ;make that DP
+fe/fcc3: 0b           ??mxdI?? e ....> @lp             phd
+                                       ; stack 
+                                       ; +8 Y param (priority)
+                                       ; +6 COP frame
+                                       ; +5 flags/mode
+                                       ; +3 pointer to IQ block
+                                       ; +1 next entry pointer
+fe/fcc4: a5 00        ??mxdI?? e .....                 lda     $00               ;get pointer at offset 0 (next item)
+fe/fcc6: f0 0d        ??mxdI?? e .....                 beq     @skdone           ;if 0 exit
+fe/fcc8: 5b           ??mxdIz? e .....                 tcd                       ;make DP point at it
+fe/fcc9: b2 07        ??mxdI?? e .....                 lda     ($07)             ;get the interrupt priority from the 1st byte of the second block
 fe/fccb: 29 ff 00     ??mxdI?? e .....                 and     #$00ff
-fe/fcce: c3 08        n?mxdI?? e .....                 cmp     $08,S
+fe/fcce: c3 08        n?mxdI?? e .....                 cmp     $08,S             ;compare with stacked Y parameters
 fe/fcd0: 68           ??mxdI?? e .....                 pla
-fe/fcd1: b0 f0        ??mxdI?? e .....                 bcs     LFEFCC3
+fe/fcd1: b0 f0        ??mxdI?? e .....                 bcs     @lp               ;if current entry higher or same priority loop
 fe/fcd3: 48           ??mxdI?c e .....                 pha
 fe/fcd4: 7b           ??mxdI?c e .....                 tdc
-fe/fcd5: 2b           ??mxdI?? e ....> LFEFCD5         pld
+                                       ; we're now at a point in the list that is lower priority - insert here, or at
+                                       ; the end
+                                       ; 
+                                       ; stack
+                                       ; +8 Y param (priority)
+                                       ; +6 COP frame
+                                       ; +5 flags/mode
+                                       ; +3 pointer to IQ block
+                                       ; +1 address of pointer to current entry (or B0LST_IRQ_HANDLER)
+                                       ; 
+                                       ; A points at current entry or zero if end of list
+fe/fcd5: 2b           ??mxdI?? e ....> @skdone         pld
 fe/fcd6: fa           ??mxdI?? e .....                 plx
-fe/fcd7: 9f 00 00 00  ??mxdI?? e .....                 stal    f:$000000,x
+fe/fcd7: 9f 00 00 00  ??mxdI?? e .....                 stal    f:$000000,x       ;store pointer to new entry at next pointer
 fe/fcdb: 8a           ??mxdI?? e .....                 txa
-fe/fcdc: 85 00        ??mxdI?? e .....                 sta     $00
+fe/fcdc: 85 00        ??mxdI?? e .....                 sta     $00               ;update previous item's (or list front) to point at new entry
 fe/fcde: 28           ??mxdI?? e .....                 plp
 fe/fcdf: 2b           ??mxd??c e .....                 pld
 fe/fce0: fa           ??mxd??c e .....                 plx
@@ -13742,11 +13819,11 @@ fe/fce2: 20 a1 ce     ??mxd??c e .....                 jsr     allocHandleQRY
 fe/fce5: 84 01        ??mxd??? e .....                 sty     DPCOP_Y
 fe/fce7: 90 10        ??mxd??? e .....                 bcc     @retY
 fe/fce9: da           ??mxd??C e .....                 phx
-fe/fcea: bf 07 00 00  ??mxd??C e .....                 ldal    f:DPCOP_B,x
+fe/fcea: bf 07 00 00  ??mxd??C e .....                 ldal    f:$000007,x
 fe/fcee: aa           ??mxd??C e .....                 tax
-fe/fcef: 20 da cd     ??mxd??C e .....                 jsr     LFECDDA
-fe/fcf2: fa           ??mxd??? e ....> LFEFCF2         plx
-fe/fcf3: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/fcef: 20 da cd     ??mxd??C e .....                 jsr     returnXToFreeList
+fe/fcf2: fa           ??mxd??? e ....> @retSec2        plx
+fe/fcf3: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/fcf6: 38           ??mxd??? e ....> @retSec         sec
 fe/fcf7: 64 01        ??mxd??C e .....                 stz     DPCOP_Y
 fe/fcf9: a5 01        ??mxd??? e ....> @retY           lda     DPCOP_Y
@@ -13757,7 +13834,7 @@ fe/fd01: e6 0b        ??mxd??? e .....                 inc     DPCOP_PC
 fe/fd03: e6 0b        ??mxd??? e .....                 inc     DPCOP_PC
 fe/fd05: 6b           ??mxd??? e ...#.                 rtl
 
-fe/fd06: ff                      .....                 .dd1    $ff
+fe/fd06: ff                      ..... LFD06_anFF      .dd1    $ff
 
                                        ********************************************************************************
                                        * COP 31 - OPMIQ - Modify interrupt intercept                                  *
@@ -13776,8 +13853,8 @@ fe/fd06: ff                      .....                 .dd1    $ff
                                        *           C = 1 means that the interrupt intercept was not modified.         *
                                        *           No registers preserved                                             *
                                        ********************************************************************************
-fe/fd07: 20 da ce     ??mxd??? e @T... COP_31          jsr     getHandleBlockInDP
-fe/fd0a: b0 36        ??mxd??? e .....                 bcs     LFEFD42
+fe/fd07: 20 da ce     ??mxd??? e @T... COP_31          jsr     getHandleYinDP
+fe/fd0a: b0 36        ??mxd??? e .....                 bcs     @retsec
 fe/fd0c: da           ??mxd??c e .....                 phx
 fe/fd0d: bf 07 00 00  ??mxd??c e .....                 ldal    f:$000007,x
 fe/fd11: aa           ??mxd??c e .....                 tax
@@ -13785,28 +13862,28 @@ fe/fd12: bf 0b 00 00  ??mxd??c e .....                 ldal    f:$00000b,x
 fe/fd16: fa           ??mxd??c e .....                 plx
 fe/fd17: 29 ff 00     ??mxd??c e .....                 and     #$00ff
 fe/fd1a: c9 0e 00     n?mxd??c e .....                 cmp     #$000e
-fe/fd1d: d0 23        ??mxd??? e .....                 bne     LFEFD42
+fe/fd1d: d0 23        ??mxd??? e .....                 bne     @retsec
 fe/fd1f: a5 06        ??mxd?Z? e .....                 lda     DPCOP_AH+1
 fe/fd21: 05 05        ??mxd??? e .....                 ora     DPCOP_AH
 fe/fd23: 08           ??mxd??? e .....                 php
 fe/fd24: 78           ??mxd??? e .....                 sei
-fe/fd25: f0 0c        ??mxdI?? e .....                 beq     LFEFD33
+fe/fd25: f0 0c        ??mxdI?? e .....                 beq     @sk
 fe/fd27: a5 06        ??mxdIz? e .....                 lda     DPCOP_AH+1
 fe/fd29: 9f 0a 00 00  ??mxdI?? e .....                 stal    f:DPCOP_P,x
 fe/fd2d: a5 05        ??mxdI?? e .....                 lda     DPCOP_AH
 fe/fd2f: 9f 09 00 00  ??mxdI?? e .....                 stal    f:DPCOP_DP+1,x
-fe/fd33: a5 03        ??mxdI?? e ....> LFEFD33         lda     DPCOP_X
-fe/fd35: f0 08        ??mxdI?? e .....                 beq     LFEFD3F
+fe/fd33: a5 03        ??mxdI?? e ....> @sk             lda     DPCOP_X
+fe/fd35: f0 08        ??mxdI?? e .....                 beq     @plpretclc
 fe/fd37: e2 20        ??mxdIz? e .....                 sep     #$20
                                                        .rwid   shortm
 fe/fd39: 9f 05 00 00  ??MxdIz? e .....                 stal    f:DPCOP_AH,x
 fe/fd3d: c2 20        ??MxdIz? e .....                 rep     #$20
                                                        .rwid   longm
-fe/fd3f: 28           ??mxdI?? e ....> LFEFD3F         plp
+fe/fd3f: 28           ??mxdI?? e ....> @plpretclc      plp
 fe/fd40: 18           ??mxd??? e .....                 clc
 fe/fd41: 6b           ??mxd??c e ...#.                 rtl
 
-fe/fd42: 38           ??mxd??? e ....> LFEFD42         sec
+fe/fd42: 38           ??mxd??? e ....> @retsec         sec
 fe/fd43: 6b           ??mxd??C e ...#.                 rtl
 
                                        ********************************************************************************
@@ -13820,37 +13897,37 @@ fe/fd43: 6b           ??mxd??C e ...#.                 rtl
                                        * intercept                                                                    *
                                        *           No registers preserved                                             *
                                        ********************************************************************************
-fe/fd44: 20 da ce     ??mxd??? e @T... COP_30          jsr     getHandleBlockInDP
-fe/fd47: b0 32        ??mxd??? e .....                 bcs     LFEFD7B
+fe/fd44: 20 da ce     ??mxd??? e @T... COP_30          jsr     getHandleYinDP
+fe/fd47: b0 32        ??mxd??? e .....                 bcs     @retsec
 fe/fd49: da           ??mxd??c e .....                 phx
 fe/fd4a: 08           ??mxd??c e .....                 php
 fe/fd4b: 78           ??mxd??c e .....                 sei
 fe/fd4c: bf 00 00 00  ??mxdI?c e .....                 ldal    f:$000000,x
 fe/fd50: 48           ??mxdI?c e .....                 pha
-fe/fd51: a9 06 fe     ??mxdI?c e .....                 lda     #$fe06
-fe/fd54: aa           ??mxdIz? e ....> LFEFD54         tax
+fe/fd51: a9 06 fe     ??mxdI?c e .....                 lda     #B0LST_IRQ_HANDLER
+fe/fd54: aa           ??mxdIz? e ....> @lp             tax
 fe/fd55: bf 00 00 00  ??mxdI?? e .....                 ldal    f:$000000,x
-fe/fd59: f0 1d        ??mxdI?? e .....                 beq     LFEFD78
+fe/fd59: f0 1d        ??mxdI?? e .....                 beq     @retsk
 fe/fd5b: c3 04        ??mxdIz? e .....                 cmp     $04,S
-fe/fd5d: d0 f5        ??mxdI?? e .....                 bne     LFEFD54
+fe/fd5d: d0 f5        ??mxdI?? e .....                 bne     @lp
 fe/fd5f: 68           ??mxdIZ? e .....                 pla
 fe/fd60: 9f 00 00 00  ??mxdI?? e .....                 stal    f:$000000,x
 fe/fd64: 28           ??mxdI?? e .....                 plp
 fe/fd65: fa           ??mxd??c e .....                 plx
-fe/fd66: 20 1e cf     ??mxd??c e .....                 jsr     LFECF1E
+fe/fd66: 20 1e cf     ??mxd??c e .....                 jsr     freeHandlePointerX
 fe/fd69: da           ??mxd??? e .....                 phx
-fe/fd6a: bf 07 00 00  ??mxd??? e .....                 ldal    f:DPCOP_B,x
+fe/fd6a: bf 07 00 00  ??mxd??? e .....                 ldal    f:$000007,x
 fe/fd6e: aa           ??mxd??? e .....                 tax
-fe/fd6f: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/fd6f: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/fd72: fa           ??mxd??? e .....                 plx
-fe/fd73: 20 da cd     ??mxd??? e .....                 jsr     LFECDDA
+fe/fd73: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 fe/fd76: 18           ??mxd??? e .....                 clc
 fe/fd77: 6b           ??mxd??c e ...#.                 rtl
 
-fe/fd78: 28           ??mxdIZ? e ....> LFEFD78         plp
+fe/fd78: 28           ??mxdIZ? e ....> @retsk          plp
 fe/fd79: 2b           ??mxd??c e .....                 pld
 fe/fd7a: 2b           ??mxd??c e .....                 pld
-fe/fd7b: 6b           ??mxd??? e ...#> LFEFD7B         rtl
+fe/fd7b: 6b           ??mxd??? e ...#> @retsec         rtl
 
                                                        .rwid   shortm,shortx
 fe/fd7c: 08           ??MXdI?? e ....> LFEFD7C         php
@@ -13863,7 +13940,7 @@ fe/fd83: 00 01                   .T...                 .dd2    $0100            
 fe/fd85: b0 fe        ??mxdI?? e ....> LFEFD85         bcs     LFEFD85
 fe/fd87: 8f 10 fe 00  ??mxdI?c e .....                 stal    f:$00fe10
 fe/fd8b: a9 00 00     ??mxdI?c e .....                 lda     #$0000
-fe/fd8e: 8f 06 fe 00  n?mxdIZc e .....                 stal    f:$00fe06
+fe/fd8e: 8f 06 fe 00  n?mxdIZc e .....                 stal    f:B0LST_IRQ_HANDLER
 fe/fd92: 4b           n?mxdIZc e .....                 phk
                                                        .dbank  K (auto)
 fe/fd93: ab           n?mxdIZc e .....                 plb

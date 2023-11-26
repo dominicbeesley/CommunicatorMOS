@@ -395,6 +395,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"B0LST_FREE_BLOCKS":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"A list of free [handle block]s",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0LST_FREE_BLOCKS",
+"Value":65024,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "B0LST_IRQ_HANDLER":{
 "DataDescriptor":{
 "Length":2,
@@ -425,6 +442,23 @@
 "MultiMask":null,
 "Label":"B0LST_MODULES_QRY",
 "Value":65038,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0LSTEND_FREE_BLOCKS":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"points to the last entry in the free list",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0LSTEND_FREE_BLOCKS",
+"Value":65026,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2095,6 +2129,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"HND_type_10_CBHN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Handle type - device handle",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_10_CBHN",
+"Value":16,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "HND_type_10_file":{
 "DataDescriptor":{
 "Length":1,
@@ -2108,6 +2159,142 @@
 "MultiMask":null,
 "Label":"HND_type_10_file",
 "Value":16,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_12_CBDFR":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Handle type - ???",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_12_CBDFR",
+"Value":18,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_2_CBMEM":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Handle type - Memory block",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_2_CBMEM",
+"Value":2,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_4_CBSIND":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Handle type - module call reference - QRY",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_4_CBSIND",
+"Value":4,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_6_CBCO":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Handle type - coroutine",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_6_CBCO",
+"Value":6,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_8_CBCO2":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Handle type - coroutine break handler QRY",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_8_CBCO2",
+"Value":8,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_A_CBLCB":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Handle type - ???",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_A_CBLCB",
+"Value":10,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_C_CBMOD":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Handle type - module QRY",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_C_CBMOD",
+"Value":12,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HND_type_E_CBIQ":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Handle type - Interrupt handler",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HND_type_E_CBIQ",
+"Value":14,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -6181,6 +6368,15 @@
 "5421":"check the pool handle and get the base",
 "5431":"copy screen back",
 "5439":"free the pool",
+"8159":"Y=X",
+"8163":"clear X-\u003e[0]",
+"8169":"clear X-\u003e[b]",
+"8179":"X = ($FE02)",
+"8180":"A=org X",
+"8222":"get the blocks next pointer",
+"8226":"store as the front pointer (will be 0 if last block)",
+"8230":"blank out the block",
+"8260":"set the type byte",
 "8362":"getHandleBlockSize",
 "8468":"HDMMM",
 "8470":"HDMM0 - QRY",
@@ -6468,6 +6664,21 @@
 "18685":"size to allocate - 18 bytes",
 "19299":"TODO - bcc before all the pushing and popping!",
 "19356":"direct page size to allocate",
+"20153":"push original Y parameter",
+"20155":"push DP of COP handler stack frame",
+"20156":"push current flags/mode",
+"20157":"disable interrupts",
+"20158":"push X of 1st IRQ handler block",
+"20159":"push address of IRQ list head",
+"20162":"make that DP",
+"20164":"get pointer at offset 0 (next item)",
+"20166":"if 0 exit",
+"20168":"make DP point at it",
+"20169":"get the interrupt priority from the 1st byte of the second block",
+"20174":"compare with stacked Y parameters",
+"20177":"if current entry higher or same priority loop",
+"20183":"store pointer to new entry at next pointer",
+"20188":"update previous item\u0027s (or list front) to point at new entry",
 "20355":"stack size",
 "20389":"device address",
 "20392":"device eor mask",
@@ -7823,6 +8034,36 @@
 
 "8512":{
 "Text":"The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched for an entry that contains X\r\n\r\nOn entry:\r\n   X    contains a handle block pointer\r\n\r\nOn exit:\r\n   C=0  indicates block found\r\n   Y    contains the index of the entry (handle)\r\nor C=1  the pointer was not found\r\n   Y    contains the index of the last entry (entries are allocated descending\r\n        so the first in address order)\r\n\r\n   X    preserved\r\n   D,A  corrupted   \r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8154":{
+"Text":"QRY Appears to return the block pointed to X to the free list\r\n\r\nOn Entry:\r\n   X   is a pointer to a handle block\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8193":{
+"Text":"Appears to allocate a block from the free list\r\n\r\nOn entry A contains the type - QRY\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8215":{
+"Text":"if this was the last block then clear the last block pointer - point the last block pointer at the front pointer this will cause the next \"free\" to magically update both list pointers",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"20164":{
+"Text":"stack \r\n+8 Y param (priority)\r\n+6 COP frame\r\n+5 flags/mode\r\n+3 pointer to IQ block\r\n+1 next entry pointer",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"20181":{
+"Text":"we\u0027re now at a point in the list that is lower priority - insert here, or at the end\r\n\r\nstack\r\n+8 Y param (priority)\r\n+6 COP frame\r\n+5 flags/mode\r\n+3 pointer to IQ block\r\n+1 address of pointer to current entry (or B0LST_IRQ_HANDLER)\r\n\r\nA points at current entry or zero if end of list",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -11556,7 +11797,7 @@
 "LabelAnno":"None"},
 
 "8512":{
-"Label":"allocHandle",
+"Label":"findHandleByAddr",
 "Value":16699200,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -12027,6 +12268,62 @@
 "8504":{
 "Label":"fnd",
 "Value":16699192,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8154":{
+"Label":"returnXToFreeList",
+"Value":16698842,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8193":{
+"Label":"obtainFreeBlock",
+"Value":16698881,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8222":{
+"Label":"sk",
+"Value":16698910,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20044":{
+"Label":"skok2",
+"Value":16710732,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20230":{
+"Label":"LFD06_anFF",
+"Value":16710918,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"20163":{
+"Label":"lp",
+"Value":16710851,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20181":{
+"Label":"skdone",
+"Value":16710869,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20210":{
+"Label":"retSec2",
+"Value":16710898,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
@@ -12860,6 +13157,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"1462":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_4_CBSIND",
 "Part":"Low"}},
 
 "1477":{
@@ -14340,6 +14645,14 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"3375":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_10_CBHN",
+"Part":"Low"}},
+
 "3384":{
 "Length":4,
 "Format":"NumericLE",
@@ -14667,6 +14980,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"4428":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_12_CBDFR",
+"Part":"Low"}},
 
 "4491":{
 "Length":2,
@@ -15402,6 +15723,14 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"8215":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_FREE_BLOCKS",
+"Part":"Low"}},
+
 "8233":{
 "Length":4,
 "Format":"NumericLE",
@@ -15435,8 +15764,10 @@
 "8260":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_off_B_type",
+"Part":"Low"}},
 
 "8307":{
 "Length":2,
@@ -16354,6 +16685,14 @@
 "Label":"doMMMRG",
 "Part":"Low"}},
 
+"9471":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_2_CBMEM",
+"Part":"Low"}},
+
 "9557":{
 "Length":3,
 "Format":"NumericLE",
@@ -16443,6 +16782,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"10299":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_2_CBMEM",
+"Part":"Low"}},
 
 "10350":{
 "Length":2,
@@ -16722,6 +17069,14 @@
 "Label":"__MMAZB",
 "Part":"Low"}},
 
+"11356":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_6_CBCO",
+"Part":"Low"}},
+
 "11366":{
 "Length":2,
 "Format":"NumericLE",
@@ -16916,6 +17271,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"CO_off_8_BRKBLOCK",
+"Part":"Low"}},
+
+"11545":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_8_CBCO2",
 "Part":"Low"}},
 
 "11553":{
@@ -17429,6 +17792,14 @@
 "Format":"NumericLE",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"12505":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_A_CBLCB",
+"Part":"Low"}},
 
 "12612":{
 "Length":3,
@@ -19142,6 +19513,14 @@
 "Label":"COP_32_OPSUM",
 "Part":"Low"}},
 
+"16873":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_C_CBMOD",
+"Part":"Low"}},
+
 "17003":{
 "Length":3,
 "Format":"NumericLE",
@@ -19197,6 +19576,14 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"17380":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_6_CBCO",
+"Part":"Low"}},
 
 "17393":{
 "Length":4,
@@ -19962,6 +20349,128 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"20021":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_E_CBIQ",
+"Part":"Low"}},
+
+"20033":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_E_CBIQ",
+"Part":"Low"}},
+
+"20056":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20064":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20070":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20076":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20083":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20087":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20093":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20102":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20109":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20119":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20125":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20131":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFD06_anFF",
+"Part":"Low"}},
+
+"20134":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20142":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20159":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_IRQ_HANDLER",
+"Part":"Low"}},
+
+"20169":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20202":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "20237":{
 "Length":4,
 "Format":"NumericLE",
@@ -20447,5 +20956,9 @@
 "Bank":0},
 
 "19849":{
+"FollowPbr":false,
+"Bank":0},
+
+"20152":{
 "FollowPbr":false,
 "Bank":0}}}

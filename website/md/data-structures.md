@@ -34,7 +34,7 @@ There are actually two types of CBIQ block
    |      6 | EOR mask for status register
    |      7 | Pointer to second CBIQ block
    |      9 | "$fd06" - QRY then some gymastics?
-   |      B | "$0E"
+   |      B | K - program bank of MOS module
 
 
 #### CBIQ - second block
