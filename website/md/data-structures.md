@@ -27,7 +27,7 @@ There are actually two types of CBIQ block
 #### CBIQ - first block
 
    | Offset | Purpose 
-   +--------+--------------------------------------------------------------
+   |--------|--------------------------------------------------------------
    |      0 | 
    |      2 | BHA - Hardware address 
    |      5 | AND mask for status register
@@ -40,7 +40,7 @@ There are actually two types of CBIQ block
 #### CBIQ - second block
 
    | Offset | Purpose 
-   +--------+--------------------------------------------------------------
+   |--------|--------------------------------------------------------------
    |      0 | Interrupt priority
    |      1 | Direct Page
    |      3 | P Mode OR 4 - i.e. flags on entry with I flag forced on
