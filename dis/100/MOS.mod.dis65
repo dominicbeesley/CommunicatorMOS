@@ -395,6 +395,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"B0LST_IRQ_HANDLER":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"looks to be a list of interrupt handlers",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0LST_IRQ_HANDLER",
+"Value":65030,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "B0LST_MODULES_QRY":{
 "DataDescriptor":{
 "Length":2,
@@ -6170,6 +6187,10 @@
 "8472":"HDMMC",
 "8474":"HDMMW",
 "8476":"HDMMV",
+"8486":"get pointer to end of handle block + 2",
+"8493":"compare to passed in X",
+"8498":"move backwards through handle list",
+"8507":"zero out the entry and return clc",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -7789,8 +7810,20 @@
 "BackgroundColor":0},
 
 "8410":{
-"Text":"QRY - check \r\n\r\nReturns a handles block pointer in X\r\n\r\n",
-"BoxMode":true,
+"Text":"Given a handle in Y returns the [Handle Block]. For odd numbered handles (well known handles) the block is returned for valid handles. For even numbered handles, searches the [Handle Allocation Table].\r\n\r\nOn Entry:\r\n   Y   Contains a handle\r\n\r\nOn Exit:\r\n   C=0 Found\r\n   DP  the address of the handle block\r\nor C=1 Failed - no such handle allocated\r\n\r\nTODO: corrupts X unnecessarily, lots of tax etc that is unnecessary",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8478":{
+"Text":"The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched for this entry and its entry is zeroed if found\r\n\r\nOn entry:\r\n   X    contains a handle block pointer\r\n\r\nOn exit:\r\n   C=0  indicates block found\r\n   Y    contains the index of the entry (handle ? QRY?)\r\n   X,D  preserved\r\nor C=1  the pointer was not found\r\n   Y    contains the index of the last entry (entries are allocated descending\r\n        so the first in address order)\r\n\r\nTODO: why not use the find method below!",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8512":{
+"Text":"The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched for an entry that contains X\r\n\r\nOn entry:\r\n   X    contains a handle block pointer\r\n\r\nOn exit:\r\n   C=0  indicates block found\r\n   Y    contains the index of the entry (handle)\r\nor C=1  the pointer was not found\r\n   Y    contains the index of the last entry (entries are allocated descending\r\n        so the first in address order)\r\n\r\n   X    preserved\r\n   D,A  corrupted   \r\n",
+"BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -11299,7 +11332,7 @@
 "LabelAnno":"None"},
 
 "8426":{
-"Label":"lp",
+"Label":"ok",
 "Value":16699114,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
@@ -11523,7 +11556,7 @@
 "LabelAnno":"None"},
 
 "8512":{
-"Label":"coGetHandleByBlockAddr_QRY",
+"Label":"allocHandle",
 "Value":16699200,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -11921,11 +11954,81 @@
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
+"20287":{
+"Label":"plpretclc",
+"Value":16710975,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20290":{
+"Label":"retsec",
+"Value":16710978,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8468":{
+"Label":"tblWellKnownHandlePointers",
+"Value":16699156,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
 "8410":{
-"Label":"getHandleBlockInDP",
+"Label":"getHandleYinDP",
 "Value":16699098,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"20275":{
+"Label":"sk",
+"Value":16710963,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20347":{
+"Label":"retsec",
+"Value":16711035,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20344":{
+"Label":"retsk",
+"Value":16711032,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20308":{
+"Label":"lp",
+"Value":16710996,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8478":{
+"Label":"freeHandlePointerX",
+"Value":16699166,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8491":{
+"Label":"lp",
+"Value":16699179,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8504":{
+"Label":"fnd",
+"Value":16699192,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -15388,7 +15491,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS",
 "Part":"Low"}},
 
 "8424":{
@@ -15422,6 +15525,32 @@
 "SymbolRef":null},
 
 "8476":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8479":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"8486":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8491":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8507":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Hex",
@@ -16288,6 +16417,18 @@
 "SymbolRef":{
 "Label":"__MMFND",
 "Part":"Low"}},
+
+"9887":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9894":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "10075":{
 "Length":2,
@@ -19828,6 +19969,20 @@
 "SymbolRef":null},
 
 "20242":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20305":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_IRQ_HANDLER",
+"Part":"Low"}},
+
+"20330":{
 "Length":4,
 "Format":"NumericLE",
 "SubFormat":"Hex",
