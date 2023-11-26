@@ -905,6 +905,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"COP_1A_OPFZB":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"free zero bank pool",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_1A_OPFZB",
+"Value":26,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "COP_20_OPSEV":{
 "DataDescriptor":{
 "Length":1,
@@ -1073,6 +1090,23 @@
 "Value":47,
 "Source":"Project",
 "Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_31_OPMIQ":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"modify interrupt intercept",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_31_OPMIQ",
+"Value":49,
+"Source":"Project",
+"Type":"ExternalAddr",
 "LabelAnno":"None"},
 
 "COP_32_OPSUM":{
@@ -1258,6 +1292,40 @@
 "MultiMask":null,
 "Label":"COP_57_OPRLL",
 "Value":87,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_59_OPRCH":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"OPRCH - read catalogue header information",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_59_OPRCH",
+"Value":89,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"COP_5A_OPRFN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"OPRFN - read file object info",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"COP_5A_OPRFN",
+"Value":90,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -1551,7 +1619,7 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
-"DPSYS_DPECO":{
+"DPSYS_DP_ECO":{
 "DataDescriptor":{
 "Length":2,
 "Format":"NumericLE",
@@ -1562,8 +1630,25 @@
 "HasWidth":true,
 "Direction":"ReadWrite",
 "MultiMask":null,
-"Label":"DPSYS_DPECO",
+"Label":"DPSYS_DP_ECO",
 "Value":44189,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"DPSYS_DP_KEYBOARD":{
+"DataDescriptor":{
+"Length":8,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"module reference for keyboard module",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"DPSYS_DP_KEYBOARD",
+"Value":44231,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1602,18 +1687,18 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
-"DPSYS_MOD_ECO":{
+"DPSYS_MOD_ECONET":{
 "DataDescriptor":{
-"Length":6,
+"Length":8,
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"Econet module block",
+"Comment":"module reference for econet",
 "HasWidth":true,
 "Direction":"ReadWrite",
 "MultiMask":null,
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Value":44191,
 "Source":"Project",
 "Type":"ExternalAddr",
@@ -2567,6 +2652,23 @@
 "MultiMask":null,
 "Label":"SYSVAR_ELK_SOFTKEY_STRLEN",
 "Value":42333,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_ELK_ULA_IE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Soft copy of ULA interrupt mask",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_ELK_ULA_IE",
+"Value":42331,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -5445,9 +5547,34 @@
 "Hint":"Code"},
 
 {
+"Low":18676,
+"High":18676,
+"Hint":"Code"},
+
+{
+"Low":18685,
+"High":18686,
+"Hint":"InlineData"},
+
+{
+"Low":18845,
+"High":18845,
+"Hint":"Code"},
+
+{
 "Low":19023,
 "High":19027,
 "Hint":"InlineData"},
+
+{
+"Low":19151,
+"High":19151,
+"Hint":"Code"},
+
+{
+"Low":19158,
+"High":19158,
+"Hint":"Code"},
 
 {
 "Low":19322,
@@ -5480,7 +5607,32 @@
 "Hint":"InlineData"},
 
 {
-"Low":19906,
+"Low":19510,
+"High":19515,
+"Hint":"InlineData"},
+
+{
+"Low":19520,
+"High":19526,
+"Hint":"InlineData"},
+
+{
+"Low":19546,
+"High":19553,
+"Hint":"InlineData"},
+
+{
+"Low":19575,
+"High":19580,
+"Hint":"InlineData"},
+
+{
+"Low":19598,
+"High":19603,
+"Hint":"InlineData"},
+
+{
+"Low":19905,
 "High":19906,
 "Hint":"Code"},
 
@@ -5507,6 +5659,16 @@
 {
 "Low":20389,
 "High":20392,
+"Hint":"InlineData"},
+
+{
+"Low":20440,
+"High":20443,
+"Hint":"InlineData"},
+
+{
+"Low":20485,
+"High":20488,
 "Hint":"InlineData"},
 
 {
@@ -5705,6 +5867,8 @@
 "16282":16711935,
 "16331":16711935,
 "16396":3145728,
+"17457":48,
+"17487":48,
 "17639":48,
 "18238":48,
 "18338":304,
@@ -5762,7 +5926,7 @@
 "666":"we\u0027re not sure why it does a read here QRY QRYMAME",
 "673":"set system stack",
 "677":"set system DP",
-"678":"; QRY no idea what these are yet",
+"678":"empty modules list",
 "832":"enable display end and RTC interrupts",
 "841":"rom page enable, NMI clear 6502 trumps NMI QRY",
 "859":"Set BHA to start of following string and skip",
@@ -5965,8 +6129,6 @@
 "4072":"get return address",
 "4074":"find the module that called us",
 "4078":"find memory pool just returned",
-"4085":"TODO this looks all wrong or am I missing something",
-"4090":"TODO this looks all wrong or am I missing something",
 "4176":"Store \"DEAD\" above stack - checked in OPFST (free)",
 "4218":"check for \"DEAD\" at the top of stack and panic if not there",
 "4223":"Free it",
@@ -6003,6 +6165,11 @@
 "5431":"copy screen back",
 "5439":"free the pool",
 "8362":"getHandleBlockSize",
+"8468":"HDMMM",
+"8470":"HDMM0 - QRY",
+"8472":"HDMMC",
+"8474":"HDMMW",
+"8476":"HDMMV",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -6277,11 +6444,13 @@
 "18353":"push the module jump pointer - 1 suitable for the RTL",
 "18370":"the module will return to here - QRY check this out, seems a bit convoluted!",
 "18565":"TODO - bad code move ldx to end save 2",
+"18685":"size to allocate - 18 bytes",
 "19299":"TODO - bcc before all the pushing and popping!",
 "19356":"direct page size to allocate",
 "20355":"stack size",
 "20389":"device address",
 "20392":"device eor mask",
+"20446":"TODO: set to \u003eVIA base",
 "20580":"This is where module calls return to by default",
 "20581":"checksum TODO - generate post assemble",
 "20583":"padding TODO - remove"},
@@ -6996,7 +7165,7 @@
 "BackgroundColor":0},
 
 "20007":{
-"Text":"Action: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n          BHA points to the start address of the interrupt routine.\r\n          X contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n          Y contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n          D is set to the direct page required whilst in the interrupt \r\n          routine.\r\n          P flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
+"Text":"COP 2F - OPIIQ - \r\n\r\nAction: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n          BHA points to the start address of the interrupt routine.\r\n          X contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n          Y contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n          D is set to the direct page required whilst in the interrupt \r\n          routine.\r\n          P flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -7008,7 +7177,7 @@
 "BackgroundColor":0},
 
 "20231":{
-"Text":"COP 30 - OPMIQ - Modify interrupt intercept\r\n\r\nAction: This call allows the modification of the address of the AND mask (by default set to a location coniaining \u0026FF), and the value of the AND mask contained in X. (X should be set to zero by OPIIQ before using OPMIQ. OPMIQ is then used to specify the required mask.)\r\n\r\nOn entry: Y = handle returned by OPIIQ.\r\n          BHA = 0 means do not modify the address of the AND mask.\r\n          BHA \u003c\u003e 0 means BHA is the new address of the AND mask.\r\n          X = 0 means do not modify the AND mask.\r\n          X \u003c\u003e 0 means X is the new AND mask.\r\nOn exit:  C = 0 means that the inieirupt intercept was modified.\r\n          C = 1 means that the interrupt intercept was not modified.\r\n          No registers preserved\r\n",
+"Text":"COP 31 - OPMIQ - Modify interrupt intercept\r\n\r\nAction: This call allows the modification of the address of the AND mask (by default set to a location containing \u0026FF), and the value of the AND mask contained in X. (X should be set to zero by OPIIQ before using OPMIQ. OPMIQ is then used to specify the required mask.)\r\n\r\nOn entry: Y = handle returned by OPIIQ.\r\n          BHA = 0 means do not modify the address of the AND mask.\r\n          BHA \u003c\u003e 0 means BHA is the new address of the AND mask.\r\n          X = 0 means do not modify the AND mask.\r\n          X \u003c\u003e 0 means X is the new AND mask.\r\nOn exit:  C = 0 means that the inieirupt intercept was modified.\r\n          C = 1 means that the interrupt intercept was not modified.\r\n          No registers preserved\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -7599,6 +7768,30 @@
 "Text":"TODO - this looks dead as it will trip over the string\r\n",
 "BoxMode":false,
 "MaxWidth":80,
+"BackgroundColor":0},
+
+"18845":{
+"Text":"TODO poss dead code",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19905":{
+"Text":"TODO - dead code?\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19151":{
+"Text":"TODO: seemingly pointless dead code?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8410":{
+"Text":"QRY - check \r\n\r\nReturns a handles block pointer in X\r\n\r\n",
+"BoxMode":true,
+"MaxWidth":80,
 "BackgroundColor":0}},
 
 "Notes":{
@@ -7815,6 +8008,13 @@
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
+"19859":{
+"Label":"tblStrPtrOpts",
+"Value":16710547,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
 "1784":{
 "Label":"lp0",
 "Value":16692472,
@@ -7916,6 +8116,13 @@
 "16331":{
 "Label":"default__EV",
 "Value":16707019,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"19845":{
+"Label":"writeYcharsFromDPX",
+"Value":16710533,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
@@ -10832,6 +11039,34 @@
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
+"19895":{
+"Label":"strExec",
+"Value":16710583,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"19886":{
+"Label":"strRun",
+"Value":16710574,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"19876":{
+"Label":"strLoad",
+"Value":16710564,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"19867":{
+"Label":"strOff",
+"Value":16710555,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
 "1965":{
 "Label":"hwjmpvecCOP",
 "Value":65256,
@@ -11071,7 +11306,7 @@
 "LabelAnno":"None"},
 
 "8436":{
-"Label":"sk",
+"Label":"wellknownhandle",
 "Value":16699124,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
@@ -11677,6 +11912,20 @@
 "Value":16709119,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20032":{
+"Label":"skok1",
+"Value":16710720,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8410":{
+"Label":"getHandleBlockInDP",
+"Value":16699098,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -12220,6 +12469,14 @@
 "Label":"DPLOC_SYS",
 "Part":"Low"}},
 
+"678":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
 "792":{
 "Length":3,
 "Format":"NumericLE",
@@ -12273,6 +12530,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"870":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_DP_KEYBOARD",
+"Part":"Low"}},
 
 "874":{
 "Length":2,
@@ -14351,7 +14616,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_DPECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "4627":{
@@ -14359,7 +14624,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "4629":{
@@ -14367,7 +14632,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "4631":{
@@ -14375,7 +14640,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "4667":{
@@ -15123,8 +15388,44 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MM_HANDLE_TAB",
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
 "Part":"Low"}},
+
+"8424":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8468":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8470":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8472":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8474":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8476":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "8512":{
 "Length":3,
@@ -16043,6 +16344,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"10815":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0F_OPERR",
+"Part":"Low"}},
 
 "10817":{
 "Length":49,
@@ -18692,6 +19001,14 @@
 "Label":"COP_32_OPSUM",
 "Part":"Low"}},
 
+"17003":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
 "17157":{
 "Length":4,
 "Format":"NumericLE",
@@ -18789,6 +19106,30 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"17460":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
+"17480":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
+"17487":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
 
 "17944":{
 "Length":2,
@@ -19036,6 +19377,66 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"18672":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"18683":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_10_OPADP",
+"Part":"Low"}},
+
+"18685":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18771":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0A_OPBGT",
+"Part":"Low"}},
+
+"18783":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_0A_OPBGT",
+"Part":"Low"}},
+
+"18815":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_1A_OPFZB",
+"Part":"Low"}},
+
+"18840":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19021":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_26_OPBHA",
+"Part":"Low"}},
+
 "19023":{
 "Length":5,
 "Format":"StringNullTerm",
@@ -19126,6 +19527,312 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"19433":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_59_OPRCH",
+"Part":"Low"}},
+
+"19452":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19457":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19488":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19493":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19508":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"19510":{
+"Length":6,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19518":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"19520":{
+"Length":7,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19527":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"19544":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"19546":{
+"Length":8,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19569":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_02_OPWRA",
+"Part":"Low"}},
+
+"19571":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"19573":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"19575":{
+"Length":6,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19596":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_01_OPWRS",
+"Part":"Low"}},
+
+"19598":{
+"Length":6,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19613":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"19615":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"19669":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_06_OPOSB",
+"Part":"Low"}},
+
+"19676":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_06_OPOSB",
+"Part":"Low"}},
+
+"19698":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_5A_OPRFN",
+"Part":"Low"}},
+
+"19712":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_1A_OPFZB",
+"Part":"Low"}},
+
+"19734":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"19737":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_1A_OPFZB",
+"Part":"Low"}},
+
+"19759":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19796":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_03_OPNLI",
+"Part":"Low"}},
+
+"19830":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19839":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19852":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_00_OPWRC",
+"Part":"Low"}},
+
+"19859":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"strOff",
+"Part":"Low"}},
+
+"19861":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"strLoad",
+"Part":"Low"}},
+
+"19863":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"strRun",
+"Part":"Low"}},
+
+"19865":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"strExec",
+"Part":"Low"}},
+
+"19867":{
+"Length":9,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19876":{
+"Length":10,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19886":{
+"Length":9,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19895":{
+"Length":10,
+"Format":"StringNullTerm",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"20237":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20242":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "20353":{
 "Length":2,
 "Format":"NumericLE",
@@ -19162,6 +19869,102 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"20434":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
+
+"20438":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_2F_OPIIQ",
+"Part":"Low"}},
+
+"20440":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VIA_IFR",
+"Part":"Low"}},
+
+"20451":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VIA_IER",
+"Part":"High"}},
+
+"20454":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"VIA_IER",
+"Part":"Low"}},
+
+"20456":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_31_OPMIQ",
+"Part":"Low"}},
+
+"20467":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_ELK_ULA_IE",
+"Part":"High"}},
+
+"20470":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_ELK_ULA_IE",
+"Part":"Low"}},
+
+"20472":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_31_OPMIQ",
+"Part":"Low"}},
+
+"20479":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS",
+"Part":"Low"}},
+
+"20483":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"COP_2F_OPIIQ",
+"Part":"Low"}},
+
+"20485":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"sheila_ULA_IRQ_CTL",
+"Part":"Low"}},
+
 "20490":{
 "Length":2,
 "Format":"NumericLE",
@@ -19183,18 +19986,6 @@
 "SymbolRef":{
 "Label":"DPSYS_MOD_VDU",
 "Part":"Low"}},
-
-"20499":{
-"Length":2,
-"Format":"StringNullTerm",
-"SubFormat":"HighAscii",
-"SymbolRef":null},
-
-"20501":{
-"Length":1,
-"Format":"StringNullTerm",
-"SubFormat":"Ascii",
-"SymbolRef":null},
 
 "20502":{
 "Length":2,
@@ -19247,6 +20038,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"20527":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_MOD_ECONET",
+"Part":"Low"}},
 
 "20533":{
 "Length":2,
@@ -19317,7 +20116,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "20565":{
@@ -19325,7 +20124,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "20567":{
@@ -19333,7 +20132,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_MOD_ECO",
+"Label":"DPSYS_MOD_ECONET",
 "Part":"Low"}},
 
 "20569":{
@@ -19341,7 +20140,31 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DPSYS_DPECO",
+"Label":"DPSYS_DP_ECO",
+"Part":"Low"}},
+
+"20573":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_DP_KEYBOARD",
+"Part":"Low"}},
+
+"20575":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_DP_KEYBOARD",
+"Part":"Low"}},
+
+"20577":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_DP_KEYBOARD",
 "Part":"Low"}},
 
 "20581":{
@@ -19457,5 +20280,17 @@
 "Bank":0},
 
 "18476":{
+"FollowPbr":false,
+"Bank":0},
+
+"20465":{
+"FollowPbr":false,
+"Bank":0},
+
+"19724":{
+"FollowPbr":false,
+"Bank":0},
+
+"19849":{
 "FollowPbr":false,
 "Bank":0}}}

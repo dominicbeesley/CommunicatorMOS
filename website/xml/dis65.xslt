@@ -8,11 +8,22 @@
 			<head>
 				<title><xsl:value-of select="/*/@project-name" /></title>
 				<link rel="stylesheet" type="text/css" href="dis65.css" />
+  			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</head>
 			<body>
+
+				<script
+  				src="https://code.jquery.com/jquery-3.7.1.min.js"
+  				integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  				crossorigin="anonymous"></script>
+  			<script src="dis65.js"></script>
 			
-			<xsl:apply-templates select="dis65/lines" />
-			<!--xsl:apply-templates select="dis65/symbols" /-->
+				<span id="tooltipbind-opsymbol">
+					<xsl:apply-templates select="dis65/lines" />
+					<!--xsl:apply-templates select="dis65/symbols" /-->
+				</span>			
+
+				<div id="tool-symbol"></div>
 
 			</body>
 		</html>
@@ -25,12 +36,16 @@
 				<xsl:with-param name="str" select="@address" />
 			</xsl:call-template>
 		</xsl:variable>
-		<span class="line">
-		<xsl:if test="@address">
-			<a id="{$anch}"></a>
-			<span class="address"><a href="#{$anch}"><xsl:value-of select="@address" /></a></span>
-		</xsl:if>
-		<xsl:apply-templates />
+		<span>
+			<xsl:attribute name="class">
+				<xsl:text>line </xsl:text>
+				<xsl:value-of select="@type" />
+			</xsl:attribute>
+			<xsl:if test="@address">
+				<a id="{$anch}"></a>
+				<span class="address"><a href="#{$anch}"><xsl:value-of select="@address" /></a></span>
+			</xsl:if>
+			<xsl:apply-templates />
 		</span>
 	</xsl:template>
 
@@ -49,7 +64,7 @@
 	</xsl:template>
 
 	<xsl:template match="op-symbol">
-		<a class="op-symbol" href="#LBLLK-{@symbol}" title="{@value}">
+		<a class="op-symbol" href="#LBLLK-{@symbol}" title="{@value}" symbol-type="{@symbol-type}" symbol-source="{@symbol-source}">
 			<xsl:apply-templates />
 		</a>
 	</xsl:template>
