@@ -208,6 +208,74 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"__STBMB":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"ST 20 - STBMB - Get last BRK address to BHA",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STBMB",
+"Value":32,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STBMP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"ST 1E - STBMP - Print module name of last BRK address",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STBMP",
+"Value":30,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STCSI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"ST 18 - STCSI - Create FE80 table call back",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STCSI",
+"Value":24,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STGAD":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"ST 1C - STGAD - add Y to GSREAD pointer",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STGAD",
+"Value":28,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__STGIT":{
 "DataDescriptor":{
 "Length":1,
@@ -215,7 +283,7 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"",
+"Comment":"ST 0A - STGIT - GSINIT start reading GSTRANS string CR or space terminates",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
@@ -232,7 +300,7 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"",
+"Comment":"ST 0C - STGLN - GSINIT read line only \u003cCR\u003e terminates",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
@@ -249,12 +317,63 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"",
+"Comment":"ST 0E - STGRD - GSREAD",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
 "Label":"__STGRD",
 "Value":14,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STRBRK":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"ST 1A - STRBRK - re-execute last BRK",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STRBRK",
+"Value":26,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STRSI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"ST 06 - STRSI - Read Table I - FE80",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STRSI",
+"Value":6,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STRTI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"ST 02 - STRTI - Read Table I?",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STRTI",
+"Value":2,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -266,7 +385,7 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"Read Break Signature",
+"Comment":"ST 14 - STSBK - Read Break Signature",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
@@ -283,14 +402,48 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"Read BRK message text",
+"Comment":"ST 16 - STTBK - Read BRK message text",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
 "Label":"__STTBK",
 "Value":22,
 "Source":"Project",
-"Type":"ExternalAddr",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STWSI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"ST 08 - STWSI - Write Table I - FE80",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STWSI",
+"Value":8,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__STWTI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"ST 04 - STWTI - Write Table I???",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__STWTI",
+"Value":4,
+"Source":"Project",
+"Type":"Constant",
 "LabelAnno":"None"},
 
 "__VDU_40":{
@@ -5003,6 +5156,11 @@
 "Hint":"InlineData"},
 
 {
+"Low":9080,
+"High":9080,
+"Hint":"Code"},
+
+{
 "Low":9082,
 "High":9082,
 "Hint":"Code"},
@@ -6442,9 +6600,22 @@
 "8684":"ST 12 - bad call",
 "8686":"ST 14 - look something up in a table pointed to by 00FF0D,0",
 "8688":"ST 16 - look something up in a table pointed to by 00FF0D,Y",
+"8690":"ST 18 - STCSI - create a call back block HND type 4",
+"8692":"ST 1A - STRBRK - reexecute last brk",
+"8694":"ST 1C - STGAD - add Y to GSREAD pointer",
+"8696":"ST 1E - STBMP - Print Module name of last break address followed by a colon ",
+"8698":"ST 1E - STBMP - Print Module name of last break address followed by a colon ",
 "8713":"DD gets loaded with top bit set if entered via OP C",
 "8723":"if first char is not \" then back up one",
+"8987":"get break address to BHA",
+"8991":"print module name of last BRK",
+"8993":"ok",
+"8995":"faile to print",
+"8997":"find pool owner of BHA",
+"9001":"try print pool owner module name",
 "9114":"if Y \u003c EB then exit fail",
+"9163":"TODO pointless bank swap?",
+"9218":"TODO: check - think this does nothing",
 "9372":"0 - __MMNXT - return string \"SYSTEM\"?",
 "9374":"2 - __MMINIT - initialise memory management routines",
 "9376":"4 - __MMBP - ???",
@@ -6557,10 +6728,13 @@
 "12144":"QRY - dunno what\u0027s at offset 8 here",
 "12592":"Get current input stream",
 "12612":"sound flag??",
+"12777":"add Y to GSREAD pointer",
+"12783":"start line terminated GSREAD",
 "13084":"Does OSBYTE \u00269D",
 "13393":"Ignore ESCape",
 "13402":"Set ESCape condition",
 "13681":"jump to address - why not just jmp (X) as bank is 0?",
+"13775":"GSREAD",
 "14231":"convert to upper case",
 "14241":"set carry and return un modified A",
 "14254":"OSBYTE 0 - Get Host OS",
@@ -6639,6 +6813,7 @@
 "15861":"or with sound suppression status",
 "15864":"if ne then exit",
 "16396":"GSINIT",
+"16427":"add Y to GSREAD address",
 "16430":"Get BHA pointer to first character of filename",
 "16456":"todo: remove?",
 "16459":"todo: remove?",
@@ -7034,49 +7209,49 @@
 "BackgroundColor":0},
 
 "9110":{
-"Text":"__ST op 2\r\n\r\nLooks up from 00FF01 table a value and returns in BHA (QRY)",
+"Text":"ST 02 - STRTI - Read table I?????\r\n\r\nLooks up from 00FF80 table a value and returns in BHA (QRY)",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "9151":{
-"Text":"__ST op 4\r\n\r\nupdates from BHA 00FF01 table value and returns old in BHA (QRY)",
+"Text":"ST 04 - STWTI - Write table I?????\r\n\r\nupdates from BHA 00FF80 table value and returns old in BHA (QRY)",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "9206":{
-"Text":"__ST op 6\r\n\r\nLooks up from 00FE01 table a value and returns in BHA (QRY)",
+"Text":"ST 06 - STRSI - Read Table ???\r\n\r\nLooks up from 00FE01 table a value and returns in BHA (QRY)",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "9240":{
-"Text":"__ST op 8\r\n\r\nupdates from BHA 00FE01 table value and returns old in BHA (QRY)",
+"Text":"ST 08 - STWSI - Write table I????\r\n\r\nupdates from BHA 00FE80 table value and returns old in BHA (QRY)",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8700":{
-"Text":"ST A - GSINIT CC\r\n\r\nInitialise a GSREAD string, space or CR will terminate an unquoted string",
+"Text":"ST 0A - STGIT - GSINIT CC\r\n\r\nInitialise a GSREAD string, space or CR will terminate an unquoted string",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8703":{
-"Text":"ST C - GSINIT CC\r\n\r\nInitialise a GSREAD string, space or CR will terminate an unquoted string",
+"Text":"ST 0C - STGLN - GSINIT read line\r\n\r\nInitialise a GSREAD string, only CR will terminate an unquoted string",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8785":{
-"Text":"__ST E - do a GSREAD\r\n\r\nQRY - looks to update the flags from passed in H",
+"Text":"ST 0E - STGRD - GSREAD\r\n\r\nDo GSREAD\r\n\r\nQRY - looks to update the flags from passed in H",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8944":{
-"Text":"__ST 1C - add Y to GSREAD pointer\r\n\r\nreturns updated pointer in BHA but doesn\u0027t update stored pointer\r\n",
+"Text":"ST 1C - STGAD - add Y to GSREAD pointer\r\n\r\nreturns updated pointer in BHA but doesn\u0027t update stored pointer\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -7958,13 +8133,13 @@
 "BackgroundColor":0},
 
 "9082":{
-"Text":"STSBK Read the BRK signature\r\n\r\nAction: This call returns the error number associated with the last BRK executed.\r\n\r\nOn Entry: \r\n   X   STSBK\r\nExit: \r\n   A   Error number of the last error\r\n   HY  State to be used in subsequent calls\r\n   BD  Preserved\r\n\r\nNote that HY must be preserved between the STSBK call and subsequent calls to STTBK\r\n",
+"Text":"ST 14 - STSBK Read the BRK signature\r\n\r\nAction: This call returns the error number associated with the last BRK executed.\r\n\r\nOn Entry: \r\n   X   STSBK\r\nExit: \r\n   A   Error number of the last error\r\n   HY  State to be used in subsequent calls\r\n   BD  Preserved\r\n\r\nNote that HY must be preserved between the STSBK call and subsequent calls to STTBK\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "9092":{
-"Text":"__ST 16 - STTBK - Read BRK message\r\n\r\nAction: This call reiurns the next character in the error message associated with the last BRK executed.\r\n\r\nEntry: \r\n   HY  State returned by lastSTSBK or STTBK\r\n   X   STTBK\r\nExit: \r\n   B,D Preserved\r\n   C=0 Then next byte was read\r\n   A   Next byte in BRK message text\r\n   HY  State for next STTBK\r\nor C=1 Last character has been read",
+"Text":"ST 16 - STTBK - Read BRK message\r\n\r\nAction: This call reiurns the next character in the error message associated with the last BRK executed.\r\n\r\nEntry: \r\n   HY  State returned by lastSTSBK or STTBK\r\n   X   STTBK\r\nExit: \r\n   B,D Preserved\r\n   C=0 Then next byte was read\r\n   A   Next byte in BRK message text\r\n   HY  State for next STTBK\r\nor C=1 Last character has been read",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8224,6 +8399,54 @@
 "1447":{
 "Text":"TODO: this looks like a load of nonsense? could be replaced with a TDC?",
 "BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8968":{
+"Text":"ST 20 - STBMB - Get last break address to BHA\r\n",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8985":{
+"Text":"ST 1E - STBMP - Print Module name of last break address followed by a colon or ?: for not found",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9080":{
+"Text":"TODO dead code?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9069":{
+"Text":"ST 1A - STRBRK - re-execute last BRK",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8653":{
+"Text":"after this JSR (inside routine) stack is\r\n+6 return P (though SEC/CLC will override)\r\n+4 return D\r\n+3 return B\r\n+1 return address to this routine ($cfce)\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9142":{
+"Text":"\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9145":{
+"Text":"after this JSR (inside routine) stack is\r\n+9 return P (though SEC/CLC will override)\r\n+7 return D\r\n+6 return B (updated from A above)\r\n+4 return address to dispatch routine ($cfce)\r\n+3 mode / flags \r\n+2 A to pop here\r\n+1 H to pop here\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9315":{
+"Text":"ST 18 - STCSI - Create FE80 table call back\r\n\r\nAppears to make a call back block (handle type 4) but doesn\u0027t assign a handle",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -9968,49 +10191,49 @@
 "LabelAnno":"None"},
 
 "9110":{
-"Label":"__ST_2",
+"Label":"doSTRTI",
 "Value":16699798,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "9151":{
-"Label":"__ST_4",
+"Label":"doSTWTI",
 "Value":16699839,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "9206":{
-"Label":"__ST_6",
+"Label":"doSTRSI",
 "Value":16699894,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "9240":{
-"Label":"__ST_8",
+"Label":"doSTWSI",
 "Value":16699928,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "8700":{
-"Label":"__ST_A",
+"Label":"doSTGIT",
 "Value":16699388,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "8703":{
-"Label":"__ST_C",
+"Label":"doSTGLN",
 "Value":16699391,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "8785":{
-"Label":"__ST_E",
+"Label":"doSTGRD",
 "Value":16699473,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -10045,39 +10268,39 @@
 "LabelAnno":"None"},
 
 "9315":{
-"Label":"__ST_18",
+"Label":"doSTCSI",
 "Value":16700003,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "9069":{
-"Label":"TFED16D",
+"Label":"doSTRBRK",
 "Value":16699757,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "8944":{
-"Label":"__ST_1C",
+"Label":"doSTGAD",
 "Value":16699632,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "8985":{
-"Label":"TFED119",
+"Label":"doSTBMP",
 "Value":16699673,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "8968":{
-"Label":"TFED108",
+"Label":"doSTBMB",
 "Value":16699656,
 "Source":"User",
 "Type":"GlobalAddr",
-"LabelAnno":"Generated"},
+"LabelAnno":"None"},
 
 "2093":{
 "Label":"strSYSTEM",
@@ -12590,6 +12813,34 @@
 "Value":16692135,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9009":{
+"Label":"retcolon",
+"Value":16699697,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9005":{
+"Label":"retqrycolon",
+"Value":16699693,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1459":{
+"Label":"makeCallBackBlockHnd4",
+"Value":16692147,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"12777":{
+"Label":"gsreadNext",
+"Value":16703465,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -13487,14 +13738,38 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"1484":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "1486":{
 "Length":4,
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"1490":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "1492":{
 "Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"1496":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"1498":{
+"Length":2,
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
@@ -16234,7 +16509,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_2",
+"Label":"doSTRTI",
 "Part":"Low"}},
 
 "8670":{
@@ -16242,7 +16517,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_4",
+"Label":"doSTWTI",
 "Part":"Low"}},
 
 "8672":{
@@ -16250,7 +16525,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_6",
+"Label":"doSTRSI",
 "Part":"Low"}},
 
 "8674":{
@@ -16258,7 +16533,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_8",
+"Label":"doSTWSI",
 "Part":"Low"}},
 
 "8676":{
@@ -16266,7 +16541,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_A",
+"Label":"doSTGIT",
 "Part":"Low"}},
 
 "8678":{
@@ -16274,7 +16549,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_C",
+"Label":"doSTGLN",
 "Part":"Low"}},
 
 "8680":{
@@ -16282,7 +16557,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_E",
+"Label":"doSTGRD",
 "Part":"Low"}},
 
 "8682":{
@@ -16322,7 +16597,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_18",
+"Label":"doSTCSI",
 "Part":"Low"}},
 
 "8692":{
@@ -16330,7 +16605,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFED16D",
+"Label":"doSTRBRK",
 "Part":"Low"}},
 
 "8694":{
@@ -16338,7 +16613,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__ST_1C",
+"Label":"doSTGAD",
 "Part":"Low"}},
 
 "8696":{
@@ -16346,7 +16621,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFED119",
+"Label":"doSTBMP",
 "Part":"Low"}},
 
 "8698":{
@@ -16354,7 +16629,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"TFED108",
+"Label":"doSTBMB",
 "Part":"Low"}},
 
 "8704":{
@@ -16581,6 +16856,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_GSREAD_ptr",
+"Part":"Low"}},
+
+"8985":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STBMB",
 "Part":"Low"}},
 
 "8991":{
@@ -18099,6 +18382,14 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"12393":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGRD",
+"Part":"Low"}},
+
 "12505":{
 "Length":3,
 "Format":"NumericLE",
@@ -18137,6 +18428,22 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"SYSVAR_VDU_QLEN",
+"Part":"Low"}},
+
+"12777":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGAD",
+"Part":"Low"}},
+
+"12783":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGLN",
 "Part":"Low"}},
 
 "12827":{
@@ -18220,6 +18527,22 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"13088":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGLN",
+"Part":"Low"}},
+
+"13105":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGLN",
+"Part":"Low"}},
 
 "13154":{
 "Length":2,
@@ -18321,6 +18644,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"__STGLN",
+"Part":"Low"}},
+
+"13775":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGRD",
 "Part":"Low"}},
 
 "14044":{
@@ -19749,6 +20080,14 @@
 "Label":"__EVESC",
 "Part":"Low"}},
 
+"16396":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGLN",
+"Part":"Low"}},
+
 "16415":{
 "Length":2,
 "Format":"NumericLE",
@@ -19771,6 +20110,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_45_OPCLS",
+"Part":"Low"}},
+
+"16427":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__STGAD",
 "Part":"Low"}},
 
 "16437":{
