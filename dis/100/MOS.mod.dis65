@@ -395,6 +395,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"B0_IRQ_STACK":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"contains a stack pointer to be used for interrupts",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0_IRQ_STACK",
+"Value":65040,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "B0LST_FREE_BLOCKS":{
 "DataDescriptor":{
 "Length":2,
@@ -4901,6 +4918,21 @@
 "Hint":"Code"},
 
 {
+"Low":7865,
+"High":7866,
+"Hint":"Code"},
+
+{
+"Low":7882,
+"High":7882,
+"Hint":"Code"},
+
+{
+"Low":7936,
+"High":7936,
+"Hint":"Code"},
+
+{
 "Low":8309,
 "High":8352,
 "Hint":"InlineData"},
@@ -5841,6 +5873,16 @@
 "Hint":"Code"},
 
 {
+"Low":19987,
+"High":19987,
+"Hint":"Code"},
+
+{
+"Low":19998,
+"High":19998,
+"Hint":"Code"},
+
+{
 "Low":20007,
 "High":20007,
 "Hint":"Code"},
@@ -6664,6 +6706,36 @@
 "18685":"size to allocate - 18 bytes",
 "19299":"TODO - bcc before all the pushing and popping!",
 "19356":"direct page size to allocate",
+"19911":"get interrupt stack",
+"19915":"if 0 then we\u0027re already running from that stack TODO: hopefully! check in Mame",
+"19917":"X = current stack",
+"19918":"set up new interrupt stack",
+"19919":"push long address of stack restore code",
+"19923":"push phoney flags (0x04) and bank to be discarded in restore",
+"19926":"push A (contains stack top)",
+"19927":"push X (original stack)",
+"19942":"DP is now address of the list head",
+"19943":"get address of next item",
+"19945":"into DP",
+"19946":"read hardware test register into A",
+"19948":"into Y",
+"19949":"and with pointer AND mask",
+"19951":"eor with mask",
+"19953":"and with other AND mask",
+"19957":"push block primary pointer to stack - if handler returns with CS this is used to continue the loop",
+"19958":"push program bank",
+"19959":"and address of an rti",
+"19962":"address of secondary irq block",
+"19964":"into DP",
+"19979":"push handler K,PCH",
+"19981":"push handler P, PCL",
+"19983":"get handler DP",
+"19987":"if Cy set at handler exit continue with other handlers",
+"19989":"discard stacked block pointer",
+"19992":"restore all stacked stuff and RTI from vector",
+"19998":"restore irq stack address",
+"20002":"restore original stack",
+"20003":"exit to outer vector",
 "20153":"push original Y parameter",
 "20155":"push DP of COP handler stack frame",
 "20156":"push current flags/mode",
@@ -6679,9 +6751,71 @@
 "20177":"if current entry higher or same priority loop",
 "20183":"store pointer to new entry at next pointer",
 "20188":"update previous item\u0027s (or list front) to point at new entry",
+"20192":"discard stacked Y (priority)",
+"20194":"allocate a handle",
+"20197":"return in Y",
+"20199":"success",
+"20201":"fail, save X (pointer to 1st block)",
+"20202":"get second block",
+"20207":"free second block",
+"20210":"pop pointer to 1st block",
+"20211":"free 1st block",
+"20214":"return fail",
+"20215":"zero Y",
+"20221":"step over the immediate parameters",
+"20231":"look up handle",
+"20234":"fail",
+"20236":"save pointer to 1st block",
+"20237":"get second block pointer",
+"20241":"put it in X",
+"20242":"get type byte in to AH",
+"20246":"get back 2st block pointer",
+"20247":"mask off type",
+"20250":"check that this is correct type",
+"20253":"fail",
+"20257":"Z will be set if passed in BHA = 0",
+"20259":"save mode before disable interrupts",
+"20260":"disable interrupts",
+"20261":"skip forward for BHA=0",
+"20263":"update address of AND mask to BHA",
+"20281":"store updated AND mask",
+"20292":"get block address from handle",
+"20297":"save X",
+"20298":"save mode before disable interrupts",
+"20300":"get address of next lower priority interrupt handler",
+"20304":"save it",
+"20305":"get address of front of priority list in A",
+"20308":"X=A",
+"20309":"get address of next item in list",
+"20313":"end of queue",
+"20315":"is this the item being removed",
+"20317":"not keep looking",
+"20319":"get address of item following the one being removed",
+"20320":"store in the previous item\u0027s next pointer (or front of list)",
+"20324":"restore interrupt state",
+"20325":"get back X",
+"20326":"free the handle for this block (TODO: why not use Y to index here?)P",
+"20329":"save X",
+"20330":"get pointer to secondary block",
+"20335":"free secondary block",
+"20338":"get back address of primary block",
+"20339":"free it",
+"20342":"indicate success",
+"20344":"TODO: this is a failure route - I think it should SEC here?",
+"20353":"allocate a stack",
 "20355":"stack size",
+"20357":"if carry set here lock up the machine !",
+"20387":"set up a catch-all IRQ handler with lowest priority",
 "20389":"device address",
 "20392":"device eor mask",
+"20398":"rtc priority",
+"20403":"real time clock interrupt mask",
+"20405":"also mask with SYSVAR_ELK_ULA_IE",
+"20413":"vsync priority",
+"20418":"vsync interrupt mask",
+"20420":"also mask with SYSVAR_ELK_ULA_IE",
+"20432":"priority",
+"20444":"via_cb1",
 "20446":"TODO: set to \u003eVIA base",
 "20580":"This is where module calls return to by default",
 "20581":"checksum TODO - generate post assemble",
@@ -7397,7 +7531,7 @@
 "BackgroundColor":0},
 
 "20007":{
-"Text":"COP 2F - OPIIQ - \r\n\r\nAction: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n          BHA points to the start address of the interrupt routine.\r\n          X contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n          Y contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n          D is set to the direct page required whilst in the interrupt \r\n          routine.\r\n          P flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
+"Text":"COP 2F - OPIIQ - Add interrupt handler\r\n\r\nAction: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n          BHA points to the start address of the interrupt routine.\r\n          X contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n          Y contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n          D is set to the direct page required whilst in the interrupt \r\n          routine.\r\n          P flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8064,6 +8198,24 @@
 
 "20181":{
 "Text":"we\u0027re now at a point in the list that is lower priority - insert here, or at the end\r\n\r\nstack\r\n+8 Y param (priority)\r\n+6 COP frame\r\n+5 flags/mode\r\n+3 pointer to IQ block\r\n+1 address of pointer to current entry (or B0LST_IRQ_HANDLER)\r\n\r\nA points at current entry or zero if end of list",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"7865":{
+"Text":"This is added to the end of the interrupt handler list\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19906":{
+"Text":"Main interrupt handler\r\n\r\nThis setups (after preserving some registers) setups up an IRQ handler stack then scans through the priority list if registered IRQ handlers calling ones which have a pending irq (detected by using their registered hardware address and masks)",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"7866":{
+"Text":"TODO: find out what cb1 is connected to",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -12326,6 +12478,104 @@
 "Value":16710898,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19943":{
+"Label":"lp",
+"Value":16710631,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19979":{
+"Label":"skinccy",
+"Value":16710667,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19987":{
+"Label":"interruptExit",
+"Value":16710675,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19935":{
+"Label":"nos",
+"Value":16710623,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19940":{
+"Label":"lp2",
+"Value":16710628,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19998":{
+"Label":"restoreOrgStack",
+"Value":16710686,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20357":{
+"Label":"lockup",
+"Value":16711045,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"20348":{
+"Label":"setupIRQstackandhandlers",
+"Value":16711036,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7865":{
+"Label":"irqh_catchall",
+"Value":16698553,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"20475":{
+"Label":"OPIIQ_ULA_IRQ",
+"Value":16711163,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7936":{
+"Label":"irqh_ula_rtc",
+"Value":16698624,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"20462":{
+"Label":"OPMIQ_ULA_IRQ",
+"Value":16711150,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7882":{
+"Label":"irqh_vsync",
+"Value":16698570,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7866":{
+"Label":"irqh_via_cb1",
+"Value":16698554,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -20349,6 +20599,94 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"19937":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_IRQ_HANDLER",
+"Part":"Low"}},
+
+"19946":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19949":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19951":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19953":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19959":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"interruptExit§004e13",
+"Part":"Low"}},
+
+"19962":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19965":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19969":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19973":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19977":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19979":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19981":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19983":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "20021":{
 "Length":3,
 "Format":"NumericLE",
@@ -20483,6 +20821,32 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"20250":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_E_CBIQ",
+"Part":"Low"}},
+
+"20265":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20271":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"20281":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "20305":{
 "Length":3,
 "Format":"NumericLE",
@@ -20511,6 +20875,22 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"20374":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_catchall",
+"Part":"High"}},
+
+"20377":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_catchall",
+"Part":"Low"}},
+
 "20383":{
 "Length":3,
 "Format":"NumericLE",
@@ -20532,6 +20912,54 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"20393":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_ula_rtc",
+"Part":"High"}},
+
+"20396":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_ula_rtc",
+"Part":"Low"}},
+
+"20408":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_vsync",
+"Part":"High"}},
+
+"20411":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_vsync",
+"Part":"Low"}},
+
+"20423":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_via_cb1",
+"Part":"High"}},
+
+"20426":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"irqh_via_cb1",
+"Part":"Low"}},
 
 "20434":{
 "Length":3,

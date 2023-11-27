@@ -19,7 +19,7 @@ On the Communicator 1.00 MOS this table is at $08DF00
 ## Handle Blocks
 
 
-
+<a name="CBIQ"></a>
 ### Type E - CBIQ - Interrupt handler
 
 There are actually two types of CBIQ block
@@ -44,8 +44,7 @@ There are actually two types of CBIQ block
    |   1..2 | Direct Page
    |   3    | P Mode OR 4 - i.e. flags on entry with I flag forced on
    |   4..6 | BHA - interrupt handler address
-   |   7..8 | 0000
-   |   9..A | 0000
+   |   7..A | Hit counter
    |   B    | "$0E" (type CBIQ)
 
 
