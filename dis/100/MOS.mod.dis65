@@ -6173,6 +6173,7 @@
 "673":"set system stack",
 "677":"set system DP",
 "678":"empty modules list",
+"716":"TODO: remove altogether",
 "832":"enable display end and RTC interrupts",
 "841":"rom page enable, NMI clear 6502 trumps NMI QRY",
 "859":"Set BHA to start of following string and skip",
@@ -8216,6 +8217,12 @@
 
 "7866":{
 "Text":"TODO: find out what cb1 is connected to",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"1447":{
+"Text":"TODO: this looks like a load of nonsense? could be replaced with a TDC?",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -12576,6 +12583,13 @@
 "Value":16698554,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1447":{
+"Label":"doTDCbadly",
+"Value":16692135,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -13387,6 +13401,14 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"1284":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMAZB",
+"Part":"Low"}},
+
 "1293":{
 "Length":2,
 "Format":"NumericLE",
@@ -13399,6 +13421,40 @@
 "Length":29,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
+"SymbolRef":null},
+
+"1324":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"1337":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"MMLEN",
+"Part":"Low"}},
+
+"1346":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"1349":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"1351":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
 "SymbolRef":null},
 
 "1442":{
