@@ -21,6 +21,23 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"__DVCLS":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"14 - DVCLS - close device/file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVCLS",
+"Value":20,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__EVESC":{
 "DataDescriptor":{
 "Length":1,
@@ -50,6 +67,23 @@
 "Direction":"ReadWrite",
 "MultiMask":null,
 "Label":"__EVPRE",
+"Value":2,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__LNCLI":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"LN 02 - LNCLI - CLI vector call",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__LNCLI",
 "Value":2,
 "Source":"Project",
 "Type":"Constant",
@@ -612,6 +646,23 @@
 "MultiMask":null,
 "Label":"B0LST_MODULES_QRY",
 "Value":65038,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0LST_OPEN_FILES":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"QRY - list of all open files (handle type 10)",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0LST_OPEN_FILES",
+"Value":65022,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2374,7 +2425,7 @@
 "SubFormat":"Decimal",
 "SymbolRef":null},
 
-"Comment":"Handle type - module call reference - QRY",
+"Comment":"Handle type - module call reference - QRY used in STCSI",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
@@ -6880,6 +6931,12 @@
 "18370":"the module will return to here - QRY check this out, seems a bit convoluted!",
 "18565":"TODO - bad code move ldx to end save 2",
 "18685":"size to allocate - 18 bytes",
+"18863":"TODO - QRY I think this here calls the filing system with op 14",
+"18870":"14 - DVCLS - close device/file",
+"18882":"TODO: this could be a cmp #B0LST_OPEN_FILES instead and save the phx/plx",
+"18891":"next in list pointer, save",
+"18898":"get back next pointer",
+"18990":"get char from BHA",
 "19299":"TODO - bcc before all the pushing and popping!",
 "19356":"direct page size to allocate",
 "19911":"get interrupt stack",
@@ -8447,6 +8504,18 @@
 "9315":{
 "Text":"ST 18 - STCSI - Create FE80 table call back\r\n\r\nAppears to make a call back block (handle type 4) but doesn\u0027t assign a handle",
 "BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"12191":{
+"Text":"LN 02 - LNCLI - call the CLI vector\r\n\r\nOSCLI - TODO: check, remove old API?",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19124":{
+"Text":"TODO: this is a horrid way of doing BHA++",
+"BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -10828,7 +10897,7 @@
 "LabelAnno":"None"},
 
 "12191":{
-"Label":"defaultCLIV",
+"Label":"doLNCLI",
 "Value":16702879,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -11507,7 +11576,7 @@
 "LabelAnno":"None"},
 
 "18848":{
-"Label":"closeDevice",
+"Label":"closeFile",
 "Value":16709536,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -12841,6 +12910,132 @@
 "Value":16703465,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18874":{
+"Label":"closeAllFiles",
+"Value":16709562,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18882":{
+"Label":"lp",
+"Value":16709570,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18901":{
+"Label":"endoflist",
+"Value":16709589,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18914":{
+"Label":"skst",
+"Value":16709602,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18911":{
+"Label":"lp",
+"Value":16709599,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18938":{
+"Label":"plyret",
+"Value":16709626,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18937":{
+"Label":"retclcply",
+"Value":16709625,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19144":{
+"Label":"sk",
+"Value":16709832,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19124":{
+"Label":"incBHA",
+"Value":16709812,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18904":{
+"Label":"skipSpacesBHA",
+"Value":16709592,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18945":{
+"Label":"retsec",
+"Value":16709633,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18948":{
+"Label":"skipFileNameAndTrailingSpaces",
+"Value":16709636,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18950":{
+"Label":"lp",
+"Value":16709638,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18976":{
+"Label":"skspace",
+"Value":16709664,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18981":{
+"Label":"retplypld",
+"Value":16709669,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19021":{
+"Label":"retNET",
+"Value":16709709,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19003":{
+"Label":"lp",
+"Value":16709691,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18984":{
+"Label":"getModuleFromFSprefix",
+"Value":16709672,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -13087,7 +13282,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"defaultCLIV",
+"Label":"doLNCLI",
 "Part":"Low"}},
 
 "457":{
@@ -14191,7 +14386,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"defaultCLIV",
+"Label":"doLNCLI",
 "Part":"Low"}},
 
 "2089":{
@@ -20610,6 +20805,64 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"18870":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVCLS",
+"Part":"Low"}},
+
+"18874":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_OPEN_FILES",
+"Part":"Low"}},
+
+"18927":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18966":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18990":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18995":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19003":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19008":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"19013":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
 "19021":{
 "Length":2,
 "Format":"NumericLE",
@@ -20624,6 +20877,12 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"19032":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "19051":{
 "Length":2,
 "Format":"NumericLE",
@@ -20631,6 +20890,30 @@
 "SymbolRef":{
 "Label":"COP_34_OPRMI",
 "Part":"Low"}},
+
+"19055":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19134":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19138":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"19142":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "19297":{
 "Length":2,
