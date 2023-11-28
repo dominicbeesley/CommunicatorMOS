@@ -225,6 +225,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"__MMLEN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"COPMM reason code, Y contains handle, exit BHA contains length",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMLEN",
+"Value":16,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__MMTOP":{
 "DataDescriptor":{
 "Length":1,
@@ -680,6 +697,74 @@
 "MultiMask":null,
 "Label":"B0LSTEND_FREE_BLOCKS",
 "Value":65026,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0PTR_HDMMC":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"pointer to handle block for HDMMC",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0PTR_HDMMC",
+"Value":65032,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0PTR_HDMMM":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"pointer to handle block for HDMMM",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0PTR_HDMMM",
+"Value":65028,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0PTR_HDMMV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"pointer to handle block for HDMMV",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0PTR_HDMMV",
+"Value":65036,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0PTR_HDMMW":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"pointer to handle block for HDMMW",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0PTR_HDMMW",
+"Value":65034,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2299,6 +2384,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"HDMMC":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Well known handle HDMMC - CMOS RAM pool",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HDMMC",
+"Value":5,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "HDMMM":{
 "DataDescriptor":{
 "Length":1,
@@ -2312,6 +2414,23 @@
 "MultiMask":null,
 "Label":"HDMMM",
 "Value":1,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"HDMMT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Well known handle for task memory pool",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HDMMT",
+"Value":2,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -2537,6 +2656,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"HW_CMOSRAM_BASE":{
+"DataDescriptor":{
+"Length":65536,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"CMOS RAM battery backed",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"HW_CMOSRAM_BASE",
+"Value":4587520,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "HW_ECONET":{
 "DataDescriptor":{
 "Length":1,
@@ -2603,91 +2739,6 @@
 "Value":4521984,
 "Source":"Project",
 "Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"LOWCALL__KB":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"direct call to Keyboard routines QRY?",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"LOWCALL__KB",
-"Value":65452,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"LOWCALL__MM":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"LOWCALL__MM",
-"Value":65420,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"MM_HANDLE_1_SPECIAL_QRY":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Decimal",
-"SymbolRef":null},
-
-"Comment":"",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"MM_HANDLE_1_SPECIAL_QRY",
-"Value":1,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"MM_HANDLE_TAB":{
-"DataDescriptor":{
-"Length":80,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"Looks to contain a set of memory handles",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"MM_HANDLE_TAB",
-"Value":65280,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"MMLEN":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"COPMM reason code, Y contains handle, exit BHA contains length",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"MMLEN",
-"Value":16,
-"Source":"Project",
-"Type":"Constant",
 "LabelAnno":"None"},
 
 "QOSBY_VECTOR":{
@@ -6392,6 +6443,30 @@
 "878":"throw an error",
 "924":"22 - VDU set mode",
 "938":"write immed",
+"965":"get size of entire main memory pool",
+"971":"HA now contains size / 256",
+"975":"HA now contains main memory size in KB",
+"977":"add 40k",
+"1006":"if CMOS memory doesn\u0027t wrap at $2000 add another 24k",
+"1328":"store BHA returned by MMAZB above",
+"1331":"QRY what it the relevance of E0 here!?",
+"1334":"store in DP,0",
+"1336":"preserve DP over call",
+"1340":"get length of what we just allocated...guess what it is $100 like we requested",
+"1345":"get back pushed B",
+"1348":"get back pushed A",
+"1349":"stored BHA at offset 2",
+"1351":"store the length (in A) at bottom of handle allocate block",
+"1358":"Y is now pointing at last entry",
+"1359":"zero all entries but first (which holds length)",
+"1372":"set HDMMT block to be HDMMM block",
+"1384":"D contains length of HDMMC pool",
+"1410":"do 100\u0027s",
+"1416":"do 10\u0027s",
+"1422":"do 1\u0027s",
+"1426":"init counter",
+"1429":"increment counter",
+"1442":"write out digit",
 "1460":"set DP to X",
 "1823":"this ROM\u0027s bank ",
 "1961":"TODO - fix this up to reference self \u0026FFFF",
@@ -6630,11 +6705,11 @@
 "8230":"blank out the block",
 "8260":"set the type byte",
 "8362":"getHandleBlockSize",
-"8468":"HDMMM",
-"8470":"HDMM0 - QRY",
-"8472":"HDMMC",
-"8474":"HDMMW",
-"8476":"HDMMV",
+"8468":"HDMMM - 1 - Entire memory",
+"8470":"HDMM0 - 3 -QRY",
+"8472":"HDMMC - 5 - CMOS memory pool",
+"8474":"HDMMW - 7 - entire machine memory map pool",
+"8476":"HDMMV - 9 - screen memory pool",
 "8486":"get pointer to end of handle block + 2",
 "8493":"compare to passed in X",
 "8498":"move backwards through handle list",
@@ -6683,6 +6758,8 @@
 "9398":"1A - __MMMRG - merge two pools",
 "9557":"TODO: shift!",
 "9729":"BHA now contains a size rounded up to pages",
+"9758":"push HA as H0",
+"9759":"get bank",
 "10074":"TODO: pointless ?",
 "10349":"TODO: pointless before syserr",
 "11067":"free the handle",
@@ -8515,6 +8592,18 @@
 
 "19124":{
 "Text":"TODO: this is a horrid way of doing BHA++",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"1327":{
+"Text":"TODO: this is all overly complex I think - ask for a block of $100 then find out how long it is and do a load of hoop jumping with the stack to preserve the return of the initial pointer only to store it in FF02...just store it and load Y with 100!",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"1353":{
+"Text":"TODO: another shady bit of code - there must be a better way of clearing a block of memory no? ",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -13036,6 +13125,132 @@
 "Value":16709672,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1009":{
+"Label":"sk24k",
+"Value":16691697,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1410":{
+"Label":"printDecimalA",
+"Value":16692098,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1425":{
+"Label":"countplace",
+"Value":16692113,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1429":{
+"Label":"lp",
+"Value":16692117,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1293":{
+"Label":"mosCldntAllocMem",
+"Value":16691981,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1324":{
+"Label":"ok",
+"Value":16692012,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1359":{
+"Label":"zlp",
+"Value":16692047,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8389":{
+"Label":"getHandleYinDPCheckType2",
+"Value":16699077,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9914":{
+"Label":"retsec",
+"Value":16700602,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9792":{
+"Label":"retsec",
+"Value":16700480,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"1276":{
+"Label":"setupHndAlloc",
+"Value":16691964,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9526":{
+"Label":"setupHDMMC",
+"Value":16700214,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9508":{
+"Label":"setuoHDMMM",
+"Value":16700196,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9507":{
+"Label":"ret",
+"Value":16700195,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9471":{
+"Label":"setupHDMMW",
+"Value":16700159,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8619":{
+"Label":"lp",
+"Value":16699307,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8629":{
+"Label":"sk",
+"Value":16699317,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9466":{
+"Label":"retsec",
+"Value":16700154,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -13676,7 +13891,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"LOWCALL__KB",
+"Label":"__KB",
 "Part":"Low"}},
 
 "926":{
@@ -13722,7 +13937,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MM_HANDLE_1_SPECIAL_QRY",
+"Label":"HDMMM",
 "Part":"Low"}},
 
 "963":{
@@ -13730,7 +13945,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MMLEN",
+"Label":"__MMLEN",
 "Part":"Low"}},
 
 "965":{
@@ -13738,8 +13953,16 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"LOWCALL__MM",
+"Label":"__MM",
 "Part":"Low"}},
+
+"981":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HW_CMOSRAM_BASE",
+"Part":"High"}},
 
 "1017":{
 "Length":2,
@@ -13877,30 +14100,114 @@
 "Label":"EXSYS",
 "Part":"Low"}},
 
+"1334":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
 "1337":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MMLEN",
+"Label":"__MMLEN",
 "Part":"Low"}},
 
 "1346":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
 
 "1349":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
 
 "1351":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"1359":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"1369":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HDMMT",
+"Part":"Low"}},
+
+"1372":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"1374":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMLEN",
+"Part":"Low"}},
+
+"1377":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HDMMC",
+"Part":"Low"}},
+
+"1385":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"1388":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HDMMC",
+"Part":"Low"}},
+
+"1397":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBP",
+"Part":"Low"}},
+
+"1439":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
 "SymbolRef":null},
 
 "1442":{
@@ -16610,8 +16917,10 @@
 "8468":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0PTR_HDMMM",
+"Part":"Low"}},
 
 "8470":{
 "Length":2,
@@ -16622,20 +16931,26 @@
 "8472":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0PTR_HDMMC",
+"Part":"Low"}},
 
 "8474":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0PTR_HDMMW",
+"Part":"Low"}},
 
 "8476":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0PTR_HDMMV",
+"Part":"Low"}},
 
 "8479":{
 "Length":3,
@@ -16682,6 +16997,46 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"8577":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"8584":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CO_A_SAVE",
+"Part":"Low"}},
+
+"8591":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"8593":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CO_A_SAVE",
+"Part":"Low"}},
+
+"8596":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
 
 "8647":{
 "Length":3,
@@ -17469,12 +17824,68 @@
 "Label":"doMMMRG",
 "Part":"Low"}},
 
+"9423":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMAZB",
+"Part":"Low"}},
+
+"9432":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"9446":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HDMMM",
+"Part":"Low"}},
+
+"9449":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBP",
+"Part":"Low"}},
+
 "9471":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"HND_type_2_CBMEM",
+"Part":"Low"}},
+
+"9526":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HW_CMOSRAM_BASE",
+"Part":"High"}},
+
+"9538":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HDMMW",
+"Part":"Low"}},
+
+"9541":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBP",
 "Part":"Low"}},
 
 "9557":{
@@ -17525,6 +17936,12 @@
 "Label":"DP_HANDLE_VIDEO_QRY",
 "Part":"Low"}},
 
+"9772":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "9869":{
 "Length":2,
 "Format":"NumericLE",
@@ -17567,6 +17984,18 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"10217":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"10234":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "10299":{
 "Length":3,
 "Format":"NumericLE",
@@ -17587,6 +18016,12 @@
 "Length":55,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
+"SymbolRef":null},
+
+"10471":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
 "SymbolRef":null},
 
 "10657":{
@@ -18108,7 +18543,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"MM_HANDLE_TAB",
+"Label":"EXSYS",
 "Part":"Low"}},
 
 "11583":{
