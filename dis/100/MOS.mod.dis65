@@ -5308,6 +5308,11 @@
 "Hint":"InlineData"},
 
 {
+"Low":6663,
+"High":6663,
+"Hint":"Code"},
+
+{
 "Low":6692,
 "High":6692,
 "Hint":"Code"},
@@ -5373,6 +5378,11 @@
 "Hint":"Code"},
 
 {
+"Low":6898,
+"High":6898,
+"Hint":"Code"},
+
+{
 "Low":7119,
 "High":7141,
 "Hint":"InlineData"},
@@ -5390,6 +5400,11 @@
 {
 "Low":7284,
 "High":7284,
+"Hint":"Code"},
+
+{
+"Low":7406,
+"High":7406,
 "Hint":"Code"},
 
 {
@@ -6947,6 +6962,12 @@
 "6615":"this is the returned A",
 "6619":"reset BHA in block to how it was",
 "6621":"the A returned by the FS function",
+"6649":"push a 0",
+"6650":"get FS trampoline",
+"6654":"push trampoline long address - 1",
+"6660":"get back BHA pointer",
+"6662":"call FS trampoline",
+"6714":"set carry if \u003c\u003e",
 "8159":"Y=X",
 "8163":"clear X-\u003e[0]",
 "8169":"clear X-\u003e[b]",
@@ -13751,6 +13772,76 @@
 "Value":16697249,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6663":{
+"Label":"exit",
+"Value":16697351,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6666":{
+"Label":"ret",
+"Value":16697354,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6696":{
+"Label":"getBlockFromHandle",
+"Value":16697384,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6722":{
+"Label":"notAHandle",
+"Value":16697410,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6898":{
+"Label":"LFEC8F2",
+"Value":16697586,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7406":{
+"Label":"LFECAEE",
+"Value":16698094,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7855":{
+"Label":"tblBin2Dec",
+"Value":16698543,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"11792":{
+"Label":"LFEDC10",
+"Value":16702480,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"0":{
+"Label":"MOSSTART",
+"Value":16690688,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"17121":{
+"Label":"tblLFEF0E1",
+"Value":16707809,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -16150,6 +16241,14 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"3453":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"tblLFEF0E1",
+"Part":"Low"}},
+
 "3793":{
 "Length":4,
 "Format":"NumericLE",
@@ -17242,12 +17341,28 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"6643":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"exit§001a07",
+"Part":"Low"}},
+
 "6672":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"exit§001a24",
+"Part":"Low"}},
+
+"6711":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_10_CBHN",
 "Part":"Low"}},
 
 "6724":{
@@ -17314,6 +17429,14 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"6892":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEC8F2",
+"Part":"Low"}},
+
 "7117":{
 "Length":2,
 "Format":"NumericLE",
@@ -17343,6 +17466,44 @@
 "SymbolRef":{
 "Label":"COP_36_OPNLU",
 "Part":"Low"}},
+
+"7400":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFECAEE",
+"Part":"Low"}},
+
+"7855":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"7857":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"7859":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"7861":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"7863":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
 
 "8169":{
 "Length":4,
@@ -19002,6 +19163,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"__MMFP",
+"Part":"Low"}},
+
+"11708":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEDC10",
 "Part":"Low"}},
 
 "11793":{
@@ -21180,6 +21349,30 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"DPSYS_D1_EXEC_handle",
+"Part":"Low"}},
+
+"16492":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"tblLFEF0E1",
+"Part":"Low"}},
+
+"16547":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMBAS",
+"Part":"Low"}},
+
+"16560":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMTOP",
 "Part":"Low"}},
 
 "16585":{
