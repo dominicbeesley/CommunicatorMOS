@@ -21,6 +21,57 @@
 "PlatformSymbolFileIdentifiers":[],
 "ExtensionScriptFileIdentifiers":[],
 "ProjectSyms":{
+"__DVBGT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVBGT - 16 - BGET from device",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVBGT",
+"Value":22,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVBPT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVBPT - 18 - BPUT to device",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVBPT",
+"Value":24,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVCGT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVCGT - 1A - device control byte get",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVCGT",
+"Value":26,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__DVCLS":{
 "DataDescriptor":{
 "Length":1,
@@ -28,12 +79,352 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"Comment":"14 - DVCLS - close device/file",
+"Comment":"DVCLS - 14 - close device/file",
 "HasWidth":false,
 "Direction":"ReadWrite",
 "MultiMask":null,
 "Label":"__DVCLS",
 "Value":20,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVCPT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVCPT - 14 - send a control byte to the device",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVCPT",
+"Value":28,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVDEL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DCDEL - 3E - delete a file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVDEL",
+"Value":62,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVEOF":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVEOF - 1E - Check for device EOF",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVEOF",
+"Value":30,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVLOD":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVLOD - 24 - Load a file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVLOD",
+"Value":36,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVOPN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVOPN - 12 - Open device / file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVOPN",
+"Value":18,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRAT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRAT - 2C - read file attributes",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRAT",
+"Value":44,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRCH":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRCH - 3A - read catalog header",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRCH",
+"Value":58,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVREN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVREN - 40 - rename a file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVREN",
+"Value":64,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRFN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRFN - 3C - read file / object from directory",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRFN",
+"Value":60,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRLE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRLE - 28 - Read Load/Execute address",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRLE",
+"Value":40,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRLL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRLL - 36 - read file logical length",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRLL",
+"Value":54,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRPL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRPL - 34 - read file phyiscal length",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRPL",
+"Value":52,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVRSP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVRSP - 30 - read sequential pointer",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVRSP",
+"Value":48,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVSAV":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVSAV - 26 - save a file",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVSAV",
+"Value":38,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVUNK":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVUNK - 42 - ???",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVUNK",
+"Value":66,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVWAT":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVWAT - 2E - write file attributes",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVWAT",
+"Value":46,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVWLE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVWLE - 2A - Write Load/Execute address",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVWLE",
+"Value":42,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVWLL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVWLL - 38 - write file logical length",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVWLL",
+"Value":56,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVWPL":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVWPL - 36 - write file phyiscal length",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVWPL",
+"Value":54,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"__DVWSP":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"DVWSP - 32 - write sequential pointer",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__DVWSP",
+"Value":50,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -221,23 +612,6 @@
 "MultiMask":null,
 "Label":"__MMFP",
 "Value":2,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"__MMLEN":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"COPMM reason code, Y contains handle, exit BHA contains length",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"__MMLEN",
-"Value":16,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -697,74 +1071,6 @@
 "MultiMask":null,
 "Label":"B0LSTEND_FREE_BLOCKS",
 "Value":65026,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"B0PTR_HDMMC":{
-"DataDescriptor":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"pointer to handle block for HDMMC",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"B0PTR_HDMMC",
-"Value":65032,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"B0PTR_HDMMM":{
-"DataDescriptor":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"pointer to handle block for HDMMM",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"B0PTR_HDMMM",
-"Value":65028,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"B0PTR_HDMMV":{
-"DataDescriptor":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"pointer to handle block for HDMMV",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"B0PTR_HDMMV",
-"Value":65036,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"B0PTR_HDMMW":{
-"DataDescriptor":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"pointer to handle block for HDMMW",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"B0PTR_HDMMW",
-"Value":65034,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2299,108 +2605,6 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
-"FSOP_16_BGET":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"Call a filing system module to get a byte from a handle",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"FSOP_16_BGET",
-"Value":22,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"FSOP_18_BPUT":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"FSOP_18_BPUT",
-"Value":24,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"FSOP_1A_BGET_odd":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"FS service call 1A - used for BGET on odd numbered handles",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"FSOP_1A_BGET_odd",
-"Value":26,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"FSOP_1C_BPUT_odd":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"FSOP_1C_BPUT_odd",
-"Value":28,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"FSOP_1E_CheckEOF":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"FSOP_1E_CheckEOF",
-"Value":30,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"HDMMC":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Decimal",
-"SymbolRef":null},
-
-"Comment":"Well known handle HDMMC - CMOS RAM pool",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"HDMMC",
-"Value":5,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
 "HDMMM":{
 "DataDescriptor":{
 "Length":1,
@@ -2414,23 +2618,6 @@
 "MultiMask":null,
 "Label":"HDMMM",
 "Value":1,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"HDMMT":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Decimal",
-"SymbolRef":null},
-
-"Comment":"Well known handle for task memory pool",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"HDMMT",
-"Value":2,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -2481,23 +2668,6 @@
 "Direction":"ReadWrite",
 "MultiMask":null,
 "Label":"HND_type_10_CBHN",
-"Value":16,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"HND_type_10_file":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"handle type for files",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"HND_type_10_file",
 "Value":16,
 "Source":"Project",
 "Type":"Constant",
@@ -2656,23 +2826,6 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
-"HW_CMOSRAM_BASE":{
-"DataDescriptor":{
-"Length":65536,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"CMOS RAM battery backed",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"HW_CMOSRAM_BASE",
-"Value":4587520,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
 "HW_ECONET":{
 "DataDescriptor":{
 "Length":1,
@@ -2739,6 +2892,108 @@
 "Value":4521984,
 "Source":"Project",
 "Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"LOWCALL__KB":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"direct call to Keyboard routines QRY?",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"LOWCALL__KB",
+"Value":65452,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"LOWCALL__MM":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"LOWCALL__MM",
+"Value":65420,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"MHCFS":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Module type bits $20 - FS interface support",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"MHCFS",
+"Value":32,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"MM_HANDLE_1_SPECIAL_QRY":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"MM_HANDLE_1_SPECIAL_QRY",
+"Value":1,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"MM_HANDLE_TAB":{
+"DataDescriptor":{
+"Length":80,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Looks to contain a set of memory handles",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"MM_HANDLE_TAB",
+"Value":65280,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"MMLEN":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"COPMM reason code, Y contains handle, exit BHA contains length",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"MMLEN",
+"Value":16,
+"Source":"Project",
+"Type":"Constant",
 "LabelAnno":"None"},
 
 "QOSBY_VECTOR":{
@@ -5053,6 +5308,11 @@
 "Hint":"InlineData"},
 
 {
+"Low":6692,
+"High":6692,
+"Hint":"Code"},
+
+{
 "Low":6726,
 "High":6738,
 "Hint":"InlineData"},
@@ -6310,6 +6570,7 @@
 "6354":48,
 "6438":48,
 "6465":48,
+"6692":48,
 "6696":48,
 "6744":48,
 "6752":48,
@@ -6443,30 +6704,6 @@
 "878":"throw an error",
 "924":"22 - VDU set mode",
 "938":"write immed",
-"965":"get size of entire main memory pool",
-"971":"HA now contains size / 256",
-"975":"HA now contains main memory size in KB",
-"977":"add 40k",
-"1006":"if CMOS memory doesn\u0027t wrap at $2000 add another 24k",
-"1328":"store BHA returned by MMAZB above",
-"1331":"QRY what it the relevance of E0 here!?",
-"1334":"store in DP,0",
-"1336":"preserve DP over call",
-"1340":"get length of what we just allocated...guess what it is $100 like we requested",
-"1345":"get back pushed B",
-"1348":"get back pushed A",
-"1349":"stored BHA at offset 2",
-"1351":"store the length (in A) at bottom of handle allocate block",
-"1358":"Y is now pointing at last entry",
-"1359":"zero all entries but first (which holds length)",
-"1372":"set HDMMT block to be HDMMM block",
-"1384":"D contains length of HDMMC pool",
-"1410":"do 100\u0027s",
-"1416":"do 10\u0027s",
-"1422":"do 1\u0027s",
-"1426":"init counter",
-"1429":"increment counter",
-"1442":"write out digit",
 "1460":"set DP to X",
 "1823":"this ROM\u0027s bank ",
 "1961":"TODO - fix this up to reference self \u0026FFFF",
@@ -6695,6 +6932,21 @@
 "5421":"check the pool handle and get the base",
 "5431":"copy screen back",
 "5439":"free the pool",
+"5819":"DVLOD - load a file",
+"6299":"TODO: remove branch to next instr",
+"6568":"get B from block",
+"6572":"get A from block",
+"6581":"stack FS entry point in Y",
+"6582":"get back X - FS function code",
+"6585":"stash the FS trampoline",
+"6589":"update pointer in block to point just after \u0027:\u0027",
+"6599":"get back trampoline address",
+"6603":"set B to B from block",
+"6604":"get AH from block",
+"6607":"call the driver",
+"6615":"this is the returned A",
+"6619":"reset BHA in block to how it was",
+"6621":"the A returned by the FS function",
 "8159":"Y=X",
 "8163":"clear X-\u003e[0]",
 "8169":"clear X-\u003e[b]",
@@ -6705,11 +6957,11 @@
 "8230":"blank out the block",
 "8260":"set the type byte",
 "8362":"getHandleBlockSize",
-"8468":"HDMMM - 1 - Entire memory",
-"8470":"HDMM0 - 3 -QRY",
-"8472":"HDMMC - 5 - CMOS memory pool",
-"8474":"HDMMW - 7 - entire machine memory map pool",
-"8476":"HDMMV - 9 - screen memory pool",
+"8468":"HDMMM",
+"8470":"HDMM0 - QRY",
+"8472":"HDMMC",
+"8474":"HDMMW",
+"8476":"HDMMV",
 "8486":"get pointer to end of handle block + 2",
 "8493":"compare to passed in X",
 "8498":"move backwards through handle list",
@@ -6758,8 +7010,6 @@
 "9398":"1A - __MMMRG - merge two pools",
 "9557":"TODO: shift!",
 "9729":"BHA now contains a size rounded up to pages",
-"9758":"push HA as H0",
-"9759":"get bank",
 "10074":"TODO: pointless ?",
 "10349":"TODO: pointless before syserr",
 "11067":"free the handle",
@@ -6998,22 +7248,58 @@
 "17433":"store DPX at 0 - QRY why?",
 "18238":"save through routine (unless there\u0027s an error)",
 "18239":"get bottom bit of Y into V and clear",
+"18249":"set V here if an odd handle was used - indicates request to access device control channel ?QRY?",
 "18251":"check handle validity",
 "18256":"get handle block type",
 "18263":"check it\u0027s a file",
-"18268":"get offset 3 QRY - what is this?",
+"18268":"get B0 FS entry trampoline address",
 "18272":"return in X",
 "18273":"restore A",
 "18353":"push the module jump pointer - 1 suitable for the RTL",
+"18359":"control channel get",
 "18370":"the module will return to here - QRY check this out, seems a bit convoluted!",
-"18565":"TODO - bad code move ldx to end save 2",
+"18379":"BPUT to device",
+"18384":"BPUT to device control channel",
+"18454":"store module type at DP,$14",
+"18456":"restore Y",
+"18464":"store updated BHA (after :) at 8",
+"18467":"store module trampoline-1 (RTS entry) at C",
+"18492":"this will chain to FS operation 12 in module pushed above",
+"18583":"store handle",
+"18585":"Bypass device configuration",
+"18588":"check Y passed in to OPOPN",
+"18592":"get FS code type bytes",
+"18594":"is a filing system?",
+"18597":"yes return the handle...",
+"18599":"TODO: what goes on in here - looks to open a secondary device or something?!",
+"18608":"get back BHA",
+"18611":"skip to next item after filename",
+"18619":"store updated BHA at DP,8",
 "18685":"size to allocate - 18 bytes",
+"18690":"store X/pointer at offset 10 (device ?QRY?)",
+"18693":"TODO: encode as zstr \"RAM:!C.\"",
+"18724":"append the filepath before \":\" to string above \u003c 12 chars",
+"18756":"get back pointer to device config file name",
+"18762":"openDevice and skip configuration",
+"18767":"store config file handle",
+"18769":"get back config file handle",
+"18771":"BGET a byte of the config file",
+"18797":"send the control byte to the device",
+"18842":"retrieve file handle",
+"18845":"retrieve file handle",
 "18863":"TODO - QRY I think this here calls the filing system with op 14",
 "18870":"14 - DVCLS - close device/file",
 "18882":"TODO: this could be a cmp #B0LST_OPEN_FILES instead and save the phx/plx",
 "18891":"next in list pointer, save",
 "18898":"get back next pointer",
 "18990":"get char from BHA",
+"19032":"return in Y",
+"19041":"reset BHA pointer as passed in",
+"19051":"get module code type",
+"19055":"store in saved Y",
+"19057":"TODO MHCDEV | MHCFS",
+"19062":"reset BHA as passed in",
+"19106":"step over terminating :",
 "19299":"TODO - bcc before all the pushing and popping!",
 "19356":"direct page size to allocate",
 "19911":"get interrupt stack",
@@ -7955,7 +8241,7 @@
 "BackgroundColor":0},
 
 "3240":{
-"Text":"COP 44 - OPOPN - open device driver\r\nAction: This call opens a device driver.\r\nOn entry: BHA points to the name (with colon). terminated by CR(\u00260D).\r\n          Y = \u002640 for input\r\n          Y = \u002680 Toroutput\r\n          Y = \u0026C0 for update\r\nOn exit:  C = 0 means that the device driver is open and Y = handle.\r\n          If C= I then the device failed to open, the error code is in X \r\n          and BHA points to a zeroterminated error message.\r\n          D preserved\r\n",
+"Text":"COP 44 - OPOPN - open device driver\r\nAction: This call opens a device driver.\r\nOn entry: BHA points to the name (with colon). terminated by CR(\u00260D).\r\n          Y = \u002640 for input\r\n          Y = \u002680 for output\r\n          Y = \u0026C0 for update\r\nOn exit:  C = 0 means that the device driver is open and Y = handle.\r\n          If C= I then the device failed to open, the error code is in X \r\n          and BHA points to a zeroterminated error message.\r\n          D preserved\r\n\r\nNot documented here is the option to pass Y=$60 to open a device handle and bypass auto-config - this is used internally",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8417,7 +8703,7 @@
 "BackgroundColor":0},
 
 "18238":{
-"Text":"Given a Handle in Y returns details - QRY - what details\r\n\r\nOn Entry:\r\n   Y   A file handle\r\n\r\nOn Exit:\r\n   C=0 The file handle was found\r\n   V=1 if the file handle was an odd number QRY - what is the significance?\r\n   X   pointer to filing system module entry point in B0 - QRY check this\r\n   Y   file handle with bottom bit cleared\r\n\r\nor C=1 The file handle was not found of not of type file\r\n   X=1\r\n   BHA An error string",
+"Text":"Given a Handle in Y returns details - QRY - what details\r\n\r\nOn Entry:\r\n   Y   A file handle\r\n\r\nOn Exit:\r\n   C=0 The file handle was found\r\n   V=1 if the file handle was an odd number QRY - access device control channel\r\n   X   pointer to filing system module entry point in B0\r\n   Y   file handle with bottom bit cleared\r\n\r\nor C=1 The file handle was not found of not of type file\r\n   X=1\r\n   BHA An error string",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8446,8 +8732,8 @@
 "MaxWidth":80,
 "BackgroundColor":0},
 
-"18845":{
-"Text":"TODO poss dead code",
+"18604":{
+"Text":"stack   DP\r\n\r\n+16     +16 DP (stack point A just below here)\r\n+14     +14 FS Module code type bytes\r\n+12     +12 config handle - the configuration file handle\r\n+10     +10 \"$0000\" - if configure device called used as a pointer \r\n            to \"RAM:!C.\u003cDEV\u003e\"\r\n+E      +E  File handle\r\n+C      +C  FS trampoline address -1\r\n+B      +B  B of below\r\n+8      +8  BHA of remainder of filename\r\n+6      +6  Y (open mode)\r\n+3      +3  BHA filename pointer\r\n+1      +1  stack pointer (A) above\r\n\r\nThis code is the return point from the doOPOPN_xxx function above\r\n\r\nAssume DP preserved across the FS call",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8596,14 +8882,74 @@
 "MaxWidth":80,
 "BackgroundColor":0},
 
-"1327":{
-"Text":"TODO: this is all overly complex I think - ask for a block of $100 then find out how long it is and do a load of hoop jumping with the stack to preserve the return of the initial pointer only to store it in FF02...just store it and load Y with 100!",
+"18450":{
+"Text":"stack   DP\r\n\r\n+17     +16 DP (stack point A just below here)\r\n+16     +14 DP\r\n+14     +12 DP\r\n+12     +10 \"$0000\"\r\n+10     +E  DP\r\n+E      +C  DP\r\n+C      +A  DP\r\n+A      +8  DP\r\n+7      +6  Y (open mode)\r\n+5      +3  BHA filename pointer\r\n+3      +1  stack pointer (A) above\r\n+1       -  Y (open mode)\r\n",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0},
 
-"1353":{
-"Text":"TODO: another shady bit of code - there must be a better way of clearing a block of memory no? ",
+"18984":{
+"Text":"Finds or creates a module B0 trampoline based upon the prefix of the filename. Filenames must be prefixed with a module name or \":\" for Net? QRY (check documentation)\r\n\r\nOn Entry:\r\n    BHA  contains pointer to filename\r\n\r\nOn Exit:\r\n    C=1  success\r\n    BHA  points just after \":\"\r\n    X    contains a block 0 module entry trampoline address\r\n    Y    contains the module code type bytes\r\nor  C=0\r\n    BHA  preserved ?QRY\r\n    X    ?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18469":{
+"Text":"stack   DP\r\n\r\n+16     +16 DP (stack point A just below here)\r\n+14     +14 FS Module code type bytes\r\n+12     +12 DP\r\n+10     +10 \"$0000\"\r\n+E      +E  DP\r\n+C      +C  FS trampoline address\r\n+B      +B  B of below\r\n+8      +8  BHA of remainder of filename\r\n+6      +6  Y (open mode)\r\n+3      +3  BHA filename pointer\r\n+1      +1  stack pointer (A) above\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18489":{
+"Text":"stack   DP\r\n\r\n+1C     +16 DP (stack point A just below here)\r\n+1A     +14 FS Module code type bytes\r\n+18     +12 DP\r\n+16     +10 \"$0000\"\r\n+14     +E  DP\r\n+12     +C  FS trampoline address -1\r\n+F      +B  B of below\r\n+E      +8  BHA of remainder of filename\r\n+C      +6  Y (open mode)\r\n+9      +3  BHA filename pointer\r\n+7      +1  stack pointer (A) above\r\n+4          K,F695 address of continuation?\r\n+1          00,FS trampoline address -1 (ready to rtl to)\r\n            \r\n\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18581":{
+"Text":"stack   DP\r\n\r\n+16     +16 DP (stack point A just below here)\r\n+14     +14 FS Module code type bytes\r\n+12     +12 DP\r\n+10     +10 \"$0000\"\r\n+E      +E  DP\r\n+C      +C  FS trampoline address -1\r\n+B      +B  B of below\r\n+8      +8  BHA of remainder of filename\r\n+6      +6  Y (open mode)\r\n+3      +3  BHA filename pointer\r\n+1      +1  stack pointer (A) above\r\n\r\nThis code is the return point from the doOPOPN_xxx function above\r\n\r\nAssume DP preserved across the FS call",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18682":{
+"Text":"Allocate a string buffer and construct a string that contains\r\n\r\n\"RAM:!C.\u003cdevice name\u003e\" \r\n\r\nUse this to open a text file on the RAM disk containing configuration commands for the device being opened. Try to send those commands to the device\u0027s control channel to configure it",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18431":{
+"Text":"This is the main file open entry\r\n\r\nfor entry / exit see OPOPN",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"18623":{
+"Text":"send characters after filename as control bytes\r\nmultiple items separated by \";\"",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6681":{
+"Text":"stack\r\n\r\n+B  D\r\n+A  B\r\n+9  B\r\n+7  A\r\n+6  K\r\n+4  exit code pointer\r\n+3  $0 (bank address) of module entry\r\n+1  Y-1 as passed in (address of B0 module trampoline to call)",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6561":{
+"Text":"This is a generic entry point for calls such as DVRLE which require a pointer to a control block\r\n\r\nThe filename is parsed and the required FS module found and the call passed on to the module\r\n\r\nOn Entry:\r\n   BHA  Pointer to a control block\r\n\r\n   Control Block must have a long pointer to a filename\r\n\r\nEverything else depends on which function call is in X",
+"BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6578":{
+"Text":"stack\r\n+6  B\r\n+5  B\r\n+3  A\r\n+1  X",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"6586":{
+"Text":"stack\r\n+6  B\r\n+5  B\r\n+3  A\r\n+1  FS trampoline",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -12686,15 +13032,15 @@
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"18580":{
-"Label":"LFEF694_rts",
-"Value":16709268,
+"18604":{
+"Label":"skipConfig",
+"Value":16709292,
 "Source":"User",
-"Type":"GlobalAddr",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
 "18581":{
-"Label":"LFEF695",
+"Label":"doOPOPN_continue",
 "Value":16709269,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -12704,14 +13050,14 @@
 "Label":"opbhaFileClosedByDriver",
 "Value":16709184,
 "Source":"User",
-"Type":"GlobalAddr",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
 "18522":{
 "Label":"opbhaCouldntConfig",
 "Value":16709210,
 "Source":"User",
-"Type":"GlobalAddr",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
 "18427":{
@@ -12722,10 +13068,10 @@
 "LabelAnno":"None"},
 
 "18431":{
-"Label":"sk2",
+"Label":"doOPOPN_openFile",
 "Value":16709119,
 "Source":"User",
-"Type":"NonUniqueLocalAddr",
+"Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "20032":{
@@ -13121,136 +13467,290 @@
 "LabelAnno":"None"},
 
 "18984":{
-"Label":"getModuleFromFSprefix",
+"Label":"getFSTrampolineFromprefix",
 "Value":16709672,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
-"1009":{
-"Label":"sk24k",
-"Value":16691697,
+"19119":{
+"Label":"retSev",
+"Value":16709807,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"1410":{
-"Label":"printDecimalA",
-"Value":16692098,
-"Source":"User",
-"Type":"GlobalAddr",
-"LabelAnno":"None"},
-
-"1425":{
-"Label":"countplace",
-"Value":16692113,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"1429":{
-"Label":"lp",
-"Value":16692117,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"1293":{
-"Label":"mosCldntAllocMem",
-"Value":16691981,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"1324":{
-"Label":"ok",
-"Value":16692012,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"1359":{
-"Label":"zlp",
-"Value":16692047,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"8389":{
-"Label":"getHandleYinDPCheckType2",
-"Value":16699077,
-"Source":"User",
-"Type":"GlobalAddr",
-"LabelAnno":"None"},
-
-"9914":{
-"Label":"retsec",
-"Value":16700602,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"9792":{
-"Label":"retsec",
-"Value":16700480,
-"Source":"User",
-"Type":"NonUniqueLocalAddr",
-"LabelAnno":"None"},
-
-"1276":{
-"Label":"setupHndAlloc",
-"Value":16691964,
-"Source":"User",
-"Type":"GlobalAddr",
-"LabelAnno":"None"},
-
-"9526":{
-"Label":"setupHDMMC",
-"Value":16700214,
-"Source":"User",
-"Type":"GlobalAddr",
-"LabelAnno":"None"},
-
-"9508":{
-"Label":"setuoHDMMM",
-"Value":16700196,
-"Source":"User",
-"Type":"GlobalAddr",
-"LabelAnno":"None"},
-
-"9507":{
+"19121":{
 "Label":"ret",
-"Value":16700195,
+"Value":16709809,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"9471":{
-"Label":"setupHDMMW",
-"Value":16700159,
+"19115":{
+"Label":"retsec",
+"Value":16709803,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"19113":{
+"Label":"retsec2",
+"Value":16709801,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"17457":{
+"Label":"findModuleByName_Q",
+"Value":16708145,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
-"8619":{
+"19041":{
+"Label":"cont",
+"Value":16709729,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18493":{
+"Label":"clcRetYinA",
+"Value":16709181,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18576":{
+"Label":"retYinA",
+"Value":16709264,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18652":{
+"Label":"atendofstring",
+"Value":16709340,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18626":{
+"Label":"lp2",
+"Value":16709314,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18845":{
+"Label":"ldDP0Erts",
+"Value":16709533,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18824":{
+"Label":"call_DVCPT",
+"Value":16709512,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18829":{
+"Label":"call_DVCGT",
+"Value":16709517,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18832":{
+"Label":"call_DV_atDP_C",
+"Value":16709520,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18821":{
+"Label":"call_DVCPT_0D",
+"Value":16709509,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18672":{
+"Label":"closedbyDrv1",
+"Value":16709360,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18219":{
+"Label":"doErrorDepndOnX",
+"Value":16708907,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18235":{
+"Label":"Sk",
+"Value":16708923,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18565":{
+"Label":"retErrString",
+"Value":16709253,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18568":{
+"Label":"unstackAndError",
+"Value":16709256,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18679":{
+"Label":"closedbyDrv2",
+"Value":16709367,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18751":{
+"Label":"ok",
+"Value":16709439,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18734":{
+"Label":"sk0",
+"Value":16709422,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18724":{
 "Label":"lp",
-"Value":16699307,
+"Value":16709412,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"8629":{
-"Label":"sk",
-"Value":16699317,
+"18810":{
+"Label":"freeex",
+"Value":16709498,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"9466":{
-"Label":"retsec",
-"Value":16700154,
+"18809":{
+"Label":"clcfreeex",
+"Value":16709497,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18819":{
+"Label":"skfree",
+"Value":16709507,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18802":{
+"Label":"configEof",
+"Value":16709490,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18682":{
+"Label":"configureDevice",
+"Value":16709370,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"18783":{
+"Label":"skcomment",
+"Value":16709471,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18797":{
+"Label":"sendctl",
+"Value":16709485,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"18769":{
+"Label":"cfgloop",
+"Value":16709457,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6628":{
+"Label":"ljGetFsTrampolineFromPrefix",
+"Value":16697316,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6623":{
+"Label":"badname",
+"Value":16697311,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6692":{
+"Label":"exit",
+"Value":16697380,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6667":{
+"Label":"callFSModuleTrampolineInY",
+"Value":16697355,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6301":{
+"Label":"callFSTODOrename",
+"Value":16696989,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"6236":{
+"Label":"secexit",
+"Value":16696924,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6242":{
+"Label":"clcexit",
+"Value":16696930,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"6561":{
+"Label":"callFSX_BHAblock",
+"Value":16697249,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -13891,7 +14391,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__KB",
+"Label":"LOWCALL__KB",
 "Part":"Low"}},
 
 "926":{
@@ -13937,7 +14437,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HDMMM",
+"Label":"MM_HANDLE_1_SPECIAL_QRY",
 "Part":"Low"}},
 
 "963":{
@@ -13945,7 +14445,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__MMLEN",
+"Label":"MMLEN",
 "Part":"Low"}},
 
 "965":{
@@ -13953,16 +14453,8 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__MM",
+"Label":"LOWCALL__MM",
 "Part":"Low"}},
-
-"981":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HW_CMOSRAM_BASE",
-"Part":"High"}},
 
 "1017":{
 "Length":2,
@@ -14100,114 +14592,30 @@
 "Label":"EXSYS",
 "Part":"Low"}},
 
-"1334":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS",
-"Part":"Low"}},
-
 "1337":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__MMLEN",
+"Label":"MMLEN",
 "Part":"Low"}},
 
 "1346":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "1349":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "1351":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
-
-"1359":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
-
-"1369":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HDMMT",
-"Part":"Low"}},
-
-"1372":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
-
-"1374":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMLEN",
-"Part":"Low"}},
-
-"1377":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HDMMC",
-"Part":"Low"}},
-
-"1385":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMBAS",
-"Part":"Low"}},
-
-"1388":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HDMMC",
-"Part":"Low"}},
-
-"1397":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMBP",
-"Part":"Low"}},
-
-"1439":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Ascii",
+"SubFormat":"Hex",
 "SymbolRef":null},
 
 "1442":{
@@ -16544,6 +16952,22 @@
 "Label":"COP_0B_OPBPT",
 "Part":"Low"}},
 
+"5819":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVLOD",
+"Part":"Low"}},
+
+"5829":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVSAV",
+"Part":"Low"}},
+
 "5918":{
 "Length":2,
 "Format":"NumericLE",
@@ -16624,6 +17048,14 @@
 "Label":"COP_44_OPOPN",
 "Part":"Low"}},
 
+"6159":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRLE",
+"Part":"Low"}},
+
 "6186":{
 "Length":2,
 "Format":"NumericLE",
@@ -16656,12 +17088,100 @@
 "Label":"COP_45_OPCLS",
 "Part":"Low"}},
 
+"6251":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVWLE",
+"Part":"Low"}},
+
+"6256":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRAT",
+"Part":"Low"}},
+
+"6261":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVWAT",
+"Part":"Low"}},
+
+"6266":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRSP",
+"Part":"Low"}},
+
+"6271":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVWSP",
+"Part":"Low"}},
+
+"6276":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRPL",
+"Part":"Low"}},
+
+"6281":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRLL",
+"Part":"Low"}},
+
+"6286":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVWLL",
+"Part":"Low"}},
+
+"6291":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRCH",
+"Part":"Low"}},
+
+"6296":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVRFN",
+"Part":"Low"}},
+
 "6425":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_24_OPCVD",
+"Part":"Low"}},
+
+"6428":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVREN",
 "Part":"Low"}},
 
 "6438":{
@@ -16678,6 +17198,14 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"6484":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVDEL",
+"Part":"Low"}},
+
 "6510":{
 "Length":2,
 "Format":"NumericLE",
@@ -16692,6 +17220,14 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"6529":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVUNK",
+"Part":"Low"}},
+
 "6545":{
 "Length":2,
 "Format":"NumericLE",
@@ -16705,6 +17241,14 @@
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
 "SymbolRef":null},
+
+"6672":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"exit§001a24",
+"Part":"Low"}},
 
 "6724":{
 "Length":2,
@@ -16917,10 +17461,8 @@
 "8468":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"B0PTR_HDMMM",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "8470":{
 "Length":2,
@@ -16931,26 +17473,20 @@
 "8472":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"B0PTR_HDMMC",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "8474":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"B0PTR_HDMMW",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "8476":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"B0PTR_HDMMV",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "8479":{
 "Length":3,
@@ -16997,46 +17533,6 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
-
-"8577":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS",
-"Part":"Low"}},
-
-"8584":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_CO_A_SAVE",
-"Part":"Low"}},
-
-"8591":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
-
-"8593":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_CO_A_SAVE",
-"Part":"Low"}},
-
-"8596":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
-"Part":"Low"}},
 
 "8647":{
 "Length":3,
@@ -17824,68 +18320,12 @@
 "Label":"doMMMRG",
 "Part":"Low"}},
 
-"9423":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMAZB",
-"Part":"Low"}},
-
-"9432":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMBAS",
-"Part":"Low"}},
-
-"9446":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HDMMM",
-"Part":"Low"}},
-
-"9449":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMBP",
-"Part":"Low"}},
-
 "9471":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"HND_type_2_CBMEM",
-"Part":"Low"}},
-
-"9526":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HW_CMOSRAM_BASE",
-"Part":"High"}},
-
-"9538":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HDMMW",
-"Part":"Low"}},
-
-"9541":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"__MMBP",
 "Part":"Low"}},
 
 "9557":{
@@ -17936,12 +18376,6 @@
 "Label":"DP_HANDLE_VIDEO_QRY",
 "Part":"Low"}},
 
-"9772":{
-"Length":4,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
 "9869":{
 "Length":2,
 "Format":"NumericLE",
@@ -17984,18 +18418,6 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
-"10217":{
-"Length":4,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"10234":{
-"Length":4,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
 "10299":{
 "Length":3,
 "Format":"NumericLE",
@@ -18016,12 +18438,6 @@
 "Length":55,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
-"SymbolRef":null},
-
-"10471":{
-"Length":4,
-"Format":"NumericLE",
-"SubFormat":"Hex",
 "SymbolRef":null},
 
 "10657":{
@@ -18543,7 +18959,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS",
+"Label":"MM_HANDLE_TAB",
 "Part":"Low"}},
 
 "11583":{
@@ -21059,16 +21475,14 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_type_10_file",
+"Label":"HND_type_10_CBHN",
 "Part":"Low"}},
 
 "18268":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"HNDFILE_off_module",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "18276":{
 "Length":2,
@@ -21098,12 +21512,20 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"18345":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEFE64_anRTL",
+"Part":"Low"}},
+
 "18354":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"FSOP_16_BGET",
+"Label":"__DVBGT",
 "Part":"Low"}},
 
 "18359":{
@@ -21111,7 +21533,15 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"FSOP_1A_BGET_odd",
+"Label":"__DVCGT",
+"Part":"Low"}},
+
+"18370":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEFE64_anRTL",
 "Part":"Low"}},
 
 "18379":{
@@ -21119,7 +21549,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"FSOP_18_BPUT",
+"Label":"__DVBPT",
 "Part":"Low"}},
 
 "18384":{
@@ -21127,7 +21557,15 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"FSOP_1C_BPUT_odd",
+"Label":"__DVCPT",
+"Part":"Low"}},
+
+"18395":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEFE64_anRTL",
 "Part":"Low"}},
 
 "18404":{
@@ -21135,15 +21573,53 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"FSOP_1E_CheckEOF",
+"Label":"__DVEOF",
 "Part":"Low"}},
+
+"18454":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18459":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18464":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "18470":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"LFEF695",
+"Label":"doOPOPN_continue",
+"Part":"Low"}},
+
+"18483":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18485":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18489":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVOPN",
 "Part":"Low"}},
 
 "18496":{
@@ -21188,6 +21664,74 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"18588":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18592":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18594":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"MHCFS",
+"Part":"Low"}},
+
+"18604":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18608":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18614":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18619":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18626":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18631":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18636":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18655":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
 "18672":{
 "Length":2,
 "Format":"NumericLE",
@@ -21210,6 +21754,42 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"18703":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18710":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18717":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18724":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"18728":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
+"18734":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "18771":{
 "Length":2,
 "Format":"NumericLE",
@@ -21217,6 +21797,12 @@
 "SymbolRef":{
 "Label":"COP_0A_OPBGT",
 "Part":"Low"}},
+
+"18778":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Ascii",
+"SymbolRef":null},
 
 "18783":{
 "Length":2,
@@ -21232,6 +21818,30 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"COP_1A_OPFZB",
+"Part":"Low"}},
+
+"18824":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVCPT",
+"Part":"Low"}},
+
+"18829":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__DVCGT",
+"Part":"Low"}},
+
+"18833":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"ldDP0Erts",
 "Part":"Low"}},
 
 "18840":{
@@ -22509,5 +23119,9 @@
 "Bank":0},
 
 "20152":{
+"FollowPbr":false,
+"Bank":0},
+
+"18755":{
 "FollowPbr":false,
 "Bank":0}}}

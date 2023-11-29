@@ -55,6 +55,14 @@ in the second block.
    |   B    | "$0E" (type CBIQ)
 
 
+### Type 10 - CBHN - File/Device handle
+
+   | Offset | Purpose 
+   |--------|--------------------------------------------------------------
+   |   3    | Pointer to B0 FS entry trampoline
+   |   B    | "$10" (type CBHN)
+
+
 ## Interrupt Handlers
 
 Interrupt handlers are allocated a handle in the regular [Handle Allocation Table](#handleallocationtable)
