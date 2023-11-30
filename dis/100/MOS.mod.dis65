@@ -2894,40 +2894,6 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
-"LOWCALL__KB":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"direct call to Keyboard routines QRY?",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"LOWCALL__KB",
-"Value":65452,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"LOWCALL__MM":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"LOWCALL__MM",
-"Value":65420,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
 "MHCFS":{
 "DataDescriptor":{
 "Length":1,
@@ -3298,6 +3264,23 @@
 "MultiMask":null,
 "Label":"SYSVAR_41_input_stream",
 "Value":42305,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_42_KEYSEMAPHORE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Keyboard scan semaphore",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_42_KEYSEMAPHORE",
+"Value":42306,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -6058,6 +6041,16 @@
 "Hint":"Code"},
 
 {
+"Low":14735,
+"High":14735,
+"Hint":"Code"},
+
+{
+"Low":14768,
+"High":14768,
+"Hint":"Code"},
+
+{
 "Low":14774,
 "High":14774,
 "Hint":"Code"},
@@ -6118,6 +6111,16 @@
 "Hint":"Code"},
 
 {
+"Low":15377,
+"High":15377,
+"Hint":"Code"},
+
+{
+"Low":15417,
+"High":15417,
+"Hint":"Code"},
+
+{
 "Low":15427,
 "High":15427,
 "Hint":"Code"},
@@ -6125,6 +6128,11 @@
 {
 "Low":15432,
 "High":15432,
+"Hint":"Code"},
+
+{
+"Low":15461,
+"High":15461,
 "Hint":"Code"},
 
 {
@@ -6140,6 +6148,16 @@
 {
 "Low":15521,
 "High":15521,
+"Hint":"Code"},
+
+{
+"Low":15577,
+"High":15577,
+"Hint":"Code"},
+
+{
+"Low":15589,
+"High":15589,
 "Hint":"Code"},
 
 {
@@ -8971,6 +8989,42 @@
 
 "6586":{
 "Text":"stack\r\n+6  B\r\n+5  B\r\n+3  A\r\n+1  FS trampoline",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"14735":{
+"Text":"TODO dead code ?\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15377":{
+"Text":"TODO dead code?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15417":{
+"Text":"TODO dead code?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15461":{
+"Text":"TODO dead?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15577":{
+"Text":"TODO dead?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"15590":{
+"Text":"TODO: dead?",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -12899,9 +12953,9 @@
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"20579":{
-"Label":"LFEFE63_anRTL",
-"Value":16711267,
+"13358":{
+"Label":"writeToInputBuffer0",
+"Value":16704046,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
@@ -14482,7 +14536,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"LOWCALL__KB",
+"Label":"__KB",
 "Part":"Low"}},
 
 "926":{
@@ -14544,7 +14598,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"LOWCALL__MM",
+"Label":"__MM",
 "Part":"Low"}},
 
 "1017":{
@@ -16703,6 +16757,14 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
+"4735":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEFE64_anRTL",
+"Part":"Low"}},
+
 "4739":{
 "Length":4,
 "Format":"NumericLE",
@@ -17504,6 +17566,30 @@
 "Format":"NumericLE",
 "SubFormat":"Decimal",
 "SymbolRef":null},
+
+"8033":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_42_KEYSEMAPHORE",
+"Part":"Low"}},
+
+"8038":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_42_KEYSEMAPHORE",
+"Part":"Low"}},
+
+"8047":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_42_KEYSEMAPHORE",
+"Part":"Low"}},
 
 "8169":{
 "Length":4,
@@ -21085,6 +21171,12 @@
 "Label":"SYSVAR_CFS_TIMEOUT",
 "Part":"Low"}},
 
+"15590":{
+"Length":5,
+"Format":"StringGeneric",
+"SubFormat":"Ascii",
+"SymbolRef":null},
+
 "15601":{
 "Length":2,
 "Format":"NumericLE",
@@ -22042,6 +22134,14 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"18855":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"LFEFE64_anRTL",
+"Part":"Low"}},
 
 "18870":{
 "Length":3,
@@ -23316,5 +23416,9 @@
 "Bank":0},
 
 "18755":{
+"FollowPbr":false,
+"Bank":0},
+
+"7940":{
 "FollowPbr":false,
 "Bank":0}}}
