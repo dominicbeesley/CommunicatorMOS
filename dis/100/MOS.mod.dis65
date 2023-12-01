@@ -10,7 +10,7 @@
 "EntryFlags":16187855,
 "AutoLabelStyle":"Simple",
 "AnalysisParams":{
-"AnalyzeUncategorizedData":false,
+"AnalyzeUncategorizedData":true,
 "DefaultTextScanMode":"LowHighAscii",
 "MinCharsForString":4,
 "SeekNearbyTargets":true,
@@ -2520,6 +2520,40 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"EVENT_2_CHARINBUF":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"A character is entering an input buffer",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"EVENT_2_CHARINBUF",
+"Value":2,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"EVENT_5_TIMER_ZERO":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"Interval timer crossed zero",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"EVENT_5_TIMER_ZERO",
+"Value":5,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "EXSYS":{
 "DataDescriptor":{
 "Length":256,
@@ -2894,6 +2928,40 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"LOWCALL__KB":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"direct call to Keyboard routines QRY?",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"LOWCALL__KB",
+"Value":65452,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"LOWCALL__MM":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"LOWCALL__MM",
+"Value":65420,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "MHCFS":{
 "DataDescriptor":{
 "Length":1,
@@ -3251,6 +3319,40 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"SYSVAR_20_EVENTV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"EVENTV - vector must point at MOS ROM bank!",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_20_EVENTV",
+"Value":42272,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_22_UPTV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"User print vector",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_22_UPTV",
+"Value":42274,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "SYSVAR_41_input_stream":{
 "DataDescriptor":{
 "Length":1,
@@ -3264,23 +3366,6 @@
 "MultiMask":null,
 "Label":"SYSVAR_41_input_stream",
 "Value":42305,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"SYSVAR_42_KEYSEMAPHORE":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"Keyboard scan semaphore",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"SYSVAR_42_KEYSEMAPHORE",
-"Value":42306,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -3332,6 +3417,125 @@
 "MultiMask":null,
 "Label":"SYSVAR_58_ESCBRK_EFFECT",
 "Value":42328,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_66_KB_SEMAPHORE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"keyboard scan semaphore",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_66_KB_SEMAPHORE",
+"Value":42306,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_78_SOUND_SEMAPHORE":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Sound semaphore",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_78_SOUND_SEMAPHORE",
+"Value":42360,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_82_ELK_ULA_MISC":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_82_ELK_ULA_MISC",
+"Value":42322,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_85_PRINTER_DEST":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_85_PRINTER_DEST",
+"Value":42373,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_91_TIMERS":{
+"DataDescriptor":{
+"Length":10,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"100 Hz timers",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_91_TIMERS",
+"Value":42385,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_9A_INTERVAL":{
+"DataDescriptor":{
+"Length":5,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Interval timer",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_9A_INTERVAL",
+"Value":42394,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVAR_B5_EVENT_ENABLE_TABLE":{
+"DataDescriptor":{
+"Length":10,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Event enble table",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVAR_B5_EVENT_ENABLE_TABLE",
+"Value":42421,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -3604,6 +3808,23 @@
 "MultiMask":null,
 "Label":"SYSVARS_7C_OUTDEST",
 "Value":42364,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"SYSVARS_83_TIMER_SWITCH":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"100Hz timer switch",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"SYSVARS_83_TIMER_SWITCH",
+"Value":42371,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -5836,6 +6057,11 @@
 "Hint":"Code"},
 
 {
+"Low":12571,
+"High":12571,
+"Hint":"Code"},
+
+{
 "Low":12664,
 "High":12664,
 "Hint":"Code"},
@@ -5941,24 +6167,14 @@
 "Hint":"InlineData"},
 
 {
+"Low":14449,
+"High":14449,
+"Hint":"Code"},
+
+{
 "Low":14453,
 "High":14453,
 "Hint":"Code"},
-
-{
-"Low":14454,
-"High":14480,
-"Hint":"InlineData"},
-
-{
-"Low":14481,
-"High":14481,
-"Hint":"Code"},
-
-{
-"Low":14482,
-"High":14496,
-"Hint":"InlineData"},
 
 {
 "Low":14505,
@@ -6041,16 +6257,6 @@
 "Hint":"Code"},
 
 {
-"Low":14735,
-"High":14735,
-"Hint":"Code"},
-
-{
-"Low":14768,
-"High":14768,
-"Hint":"Code"},
-
-{
 "Low":14774,
 "High":14774,
 "Hint":"Code"},
@@ -6111,16 +6317,6 @@
 "Hint":"Code"},
 
 {
-"Low":15377,
-"High":15377,
-"Hint":"Code"},
-
-{
-"Low":15417,
-"High":15417,
-"Hint":"Code"},
-
-{
 "Low":15427,
 "High":15427,
 "Hint":"Code"},
@@ -6128,11 +6324,6 @@
 {
 "Low":15432,
 "High":15432,
-"Hint":"Code"},
-
-{
-"Low":15461,
-"High":15461,
 "Hint":"Code"},
 
 {
@@ -6148,16 +6339,6 @@
 {
 "Low":15521,
 "High":15521,
-"Hint":"Code"},
-
-{
-"Low":15577,
-"High":15577,
-"Hint":"Code"},
-
-{
-"Low":15589,
-"High":15589,
 "Hint":"Code"},
 
 {
@@ -6702,6 +6883,21 @@
 "451":"IRQ1V",
 "453":"IRQ2V",
 "455":"CLIV",
+"457":"BYTEV",
+"459":"WORDV",
+"461":"WRCHV",
+"463":"RDCHV",
+"465":"FILEV",
+"467":"ARGSV",
+"469":"BGETV",
+"471":"BPUTV",
+"473":"GBPBV",
+"475":"FINDV",
+"477":"FSCV",
+"479":"EVNTV",
+"481":"UPTV",
+"483":"NETV",
+"485":"VDUV",
 "487":"KEYV - QRY assume this gets set up by KEYBOARD module?",
 "489":"ISNV",
 "491":"REMV",
@@ -6986,6 +7182,10 @@
 "6660":"get back BHA pointer",
 "6662":"call FS trampoline",
 "6714":"set carry if \u003c\u003e",
+"7947":"timer switch flips between 10 and 5",
+"7951":"flip",
+"7956":"decrement timer into new copy from old",
+"7971":"store updated flipped switch",
 "8159":"Y=X",
 "8163":"clear X-\u003e[0]",
 "8169":"clear X-\u003e[b]",
@@ -8993,38 +9193,8 @@
 "MaxWidth":80,
 "BackgroundColor":0},
 
-"14735":{
-"Text":"TODO dead code ?\r\n",
-"BoxMode":false,
-"MaxWidth":80,
-"BackgroundColor":0},
-
-"15377":{
-"Text":"TODO dead code?",
-"BoxMode":false,
-"MaxWidth":80,
-"BackgroundColor":0},
-
-"15417":{
-"Text":"TODO dead code?",
-"BoxMode":false,
-"MaxWidth":80,
-"BackgroundColor":0},
-
-"15461":{
-"Text":"TODO dead?",
-"BoxMode":false,
-"MaxWidth":80,
-"BackgroundColor":0},
-
-"15577":{
-"Text":"TODO dead?",
-"BoxMode":false,
-"MaxWidth":80,
-"BackgroundColor":0},
-
-"15590":{
-"Text":"TODO: dead?",
+"12571":{
+"Text":"TODO: dead code?",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -12953,9 +13123,9 @@
 "Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"},
 
-"13358":{
-"Label":"writeToInputBuffer0",
-"Value":16704046,
+"20579":{
+"Label":"LFEFE63_anRTL",
+"Value":16711267,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
@@ -13884,6 +14054,13 @@
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
+"15529":{
+"Label":"callEVENTV",
+"Value":16706217,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
 "0":{
 "Label":"MOSSTART",
 "Value":16690688,
@@ -13894,6 +14071,55 @@
 "17121":{
 "Label":"tblLFEF0E1",
 "Value":16707809,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"14222":{
+"Label":"noten",
+"Value":16704910,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"14195":{
+"Label":"callEventIfEnabled",
+"Value":16704883,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"7956":{
+"Label":"tlp",
+"Value":16698644,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"7970":{
+"Label":"tsk",
+"Value":16698658,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"15689":{
+"Label":"doSoundInterrupt",
+"Value":16706377,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8058":{
+"Label":"clcrtl",
+"Value":16698746,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"7943":{
+"Label":"irqh_100Hz",
+"Value":16698631,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"}},
@@ -14536,7 +14762,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__KB",
+"Label":"LOWCALL__KB",
 "Part":"Low"}},
 
 "926":{
@@ -14598,7 +14824,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__MM",
+"Label":"LOWCALL__MM",
 "Part":"Low"}},
 
 "1017":{
@@ -16757,14 +16983,6 @@
 "SubFormat":"Hex",
 "SymbolRef":null},
 
-"4735":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"LFEFE64_anRTL",
-"Part":"Low"}},
-
 "4739":{
 "Length":4,
 "Format":"NumericLE",
@@ -17567,12 +17785,36 @@
 "SubFormat":"Decimal",
 "SymbolRef":null},
 
-"8033":{
+"7903":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"SYSVAR_42_KEYSEMAPHORE",
+"Label":"SYSVAR_82_ELK_ULA_MISC",
+"Part":"Low"}},
+
+"7956":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_91_TIMERS",
+"Part":"Low"}},
+
+"7961":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_91_TIMERS",
+"Part":"Low"}},
+
+"7984":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EVENT_5_TIMER_ZERO",
 "Part":"Low"}},
 
 "8038":{
@@ -17580,15 +17822,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"SYSVAR_42_KEYSEMAPHORE",
-"Part":"Low"}},
-
-"8047":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"SYSVAR_42_KEYSEMAPHORE",
+"Label":"SYSVAR_66_KB_SEMAPHORE",
 "Part":"Low"}},
 
 "8169":{
@@ -19699,6 +19933,14 @@
 "Label":"HND_type_A_CBLCB",
 "Part":"Low"}},
 
+"12566":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"SYSVAR_85_PRINTER_DEST",
+"Part":"Low"}},
+
 "12612":{
 "Length":3,
 "Format":"NumericLE",
@@ -19861,6 +20103,14 @@
 "Label":"SYSVARS_REMV",
 "Part":"Low"}},
 
+"13275":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EVENT_2_CHARINBUF",
+"Part":"Low"}},
+
 "13289":{
 "Length":4,
 "Format":"NumericLE",
@@ -19983,6 +20233,22 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"SYSFNK",
+"Part":"Low"}},
+
+"14204":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_IND",
+"Part":"Low"}},
+
+"14212":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPSYS_OSB_IND",
 "Part":"Low"}},
 
 "14233":{
@@ -21171,12 +21437,6 @@
 "Label":"SYSVAR_CFS_TIMEOUT",
 "Part":"Low"}},
 
-"15590":{
-"Length":5,
-"Format":"StringGeneric",
-"SubFormat":"Ascii",
-"SymbolRef":null},
-
 "15601":{
 "Length":2,
 "Format":"NumericLE",
@@ -22134,14 +22394,6 @@
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
-
-"18855":{
-"Length":3,
-"Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"LFEFE64_anRTL",
-"Part":"Low"}},
 
 "18870":{
 "Length":3,
@@ -23420,5 +23672,9 @@
 "Bank":0},
 
 "7940":{
+"FollowPbr":false,
+"Bank":0},
+
+"7886":{
 "FollowPbr":false,
 "Bank":0}}}
