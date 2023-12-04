@@ -6107,6 +6107,11 @@
 "Hint":"Code"},
 
 {
+"Low":13158,
+"High":13184,
+"Hint":"InlineData"},
+
+{
 "Low":13218,
 "High":13218,
 "Hint":"Code"},
@@ -6145,6 +6150,11 @@
 "Low":13721,
 "High":13728,
 "Hint":"InlineData"},
+
+{
+"Low":13888,
+"High":13888,
+"Hint":"Code"},
 
 {
 "Low":14046,
@@ -7350,6 +7360,7 @@
 "13084":"Does OSBYTE \u00269D",
 "13393":"Ignore ESCape",
 "13402":"Set ESCape condition",
+"13574":"beep?",
 "13681":"jump to address - why not just jmp (X) as bank is 0?",
 "13775":"GSREAD",
 "14231":"convert to upper case",
@@ -12921,7 +12932,7 @@
 "LabelAnno":"None"},
 
 "8525":{
-"Label":"retsec",
+"Label":"lp",
 "Value":16699213,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
@@ -14122,6 +14133,13 @@
 "Value":16698631,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"4509":{
+"Label":"loop",
+"Value":16695197,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -16859,6 +16877,36 @@
 "Label":"HND_type_12_CBDFR",
 "Part":"Low"}},
 
+"4445":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4451":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4457":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4463":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4469":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "4491":{
 "Length":2,
 "Format":"NumericLE",
@@ -16871,6 +16919,36 @@
 "Length":8,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
+"SymbolRef":null},
+
+"4530":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4532":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4535":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4537":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"4539":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
 "SymbolRef":null},
 
 "4563":{
@@ -18012,8 +18090,10 @@
 "8525":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
 
 "8647":{
 "Length":3,
@@ -23676,5 +23756,17 @@
 "Bank":0},
 
 "7886":{
+"FollowPbr":false,
+"Bank":0},
+
+"13432":{
+"FollowPbr":false,
+"Bank":0},
+
+"13185":{
+"FollowPbr":false,
+"Bank":254},
+
+"15076":{
 "FollowPbr":false,
 "Bank":0}}}
