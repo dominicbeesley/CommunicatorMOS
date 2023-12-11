@@ -9,6 +9,7 @@
                                                __MMFP          .eq     $02    {const}    ;Free a pool
                                                CO_off_Parent   .eq     2      {const}    ;Pointer to parent coroutine
                                                COP_02_OPWRA    .eq     2      {const}    ;OPWRA - write string at BHA
+                                               EVENT_2_CHARINBUF .eq   2      {const}    ;A character is entering an input buffer
                                                HND_type_2_CBMEM .eq    2      {const}    ;Handle type - Memory block
                                                COP_03_OPNLI    .eq     3      {const}    ;OSNEWL
                                                __MMBP          .eq     4      {const}    ;Undocumented mm call - TODO check for deprecated
@@ -16,6 +17,7 @@
                                                COP_04_OPRDC    .eq     $04    {const}
                                                HND_type_4_CBSIND .eq   4      {const}    ;Handle type - module call reference - QRY used in STCSI
                                                CO_off_B        .eq     5      {const}    ;offset in couroutine of bank register
+                                               EVENT_5_TIMER_ZERO .eq  5      {const}    ;Interval timer crossed zero
                                                __MMASD         .eq     6      {const}    ;Allocate small descending
                                                CO_off_DP       .eq     6      {const}    ;offset in couroutine block of DP pointer
                                                COP_06_OPOSB    .eq     6      {const}    ;OSBYTE
@@ -139,16 +141,19 @@
                                                DPSYS_D8_B_SAV  .eq     $d8    {addr/1}   ;OSWORD saves caller's bank register
                                                BANK0_MEM_IRQ6502 .eq   $4040             ;QRY? Vector for IRQ in 6502 mode set at reset
                                                SYSVARS         .eq     $a500  {addr/207} ;QRY SYSVARS
+                                               SYSVAR_20_EVENTV .eq    $a520  {addr/2}   ;EVENTV - vector must point at MOS ROM bank!
+                                               SYSVAR_22_UPTV  .eq     $a522  {addr/2}   ;User print vector
                                                QOSBY_VECTOR    .eq     $a524  {addr/2}
                                                SYSVARS_INSV    .eq     $a52a  {addr/2}
                                                SYSVARS_REMV    .eq     $a52c  {addr/2}
                                                SYSVARS_CNPV    .eq     $a52e  {addr/2}
                                                SYSVAR_CFS_TIMEOUT .eq  $a540  {addr/1}
                                                SYSVAR_41_input_stream .eq $a541          ;Currently selected input stream
-                                               SYSVAR_42_KEYSEMAPHORE .eq $a542  {addr/1} ;Keyboard scan semaphore
+                                               SYSVAR_66_KB_SEMAPHORE .eq $a542  {addr/1} ;keyboard scan semaphore
                                                SYSVAR_RS232_MODE .eq   $a545  {addr/1}
                                                SYSVAR_48_UNKNOWN_ULA .eq $a548
                                                SYSVAR_51_FLASHCTDN .eq $a551  {addr/1}
+                                               SYSVAR_82_ELK_ULA_MISC .eq $a552  {addr/1}
                                                SYSVAR_FLASH_MARK .eq   $a553
                                                SYSVAR_58_ESCBRK_EFFECT .eq $a558  {addr/1}
                                                SYSVAR_ELK_ULA_IE .eq   $a55b  {addr/1}   ;Soft copy of ULA interrupt mask
@@ -159,13 +164,19 @@
                                                SYSVAR_SOUND_EXT_FLAG .eq $a56b  {addr/1}
                                                SYSVARS_6C_ESCCHAR .eq  $a56c  {addr/1}
                                                SYSVARS_75_ESCACTION .eq $a575  {addr/1}
+                                               SYSVAR_78_SOUND_SEMAPHORE .eq $a578       ;Sound semaphore
                                                SYSVARS_7C_OUTDEST .eq  $a57c  {addr/1}   ;output destination - FX3
                                                SYSVARS_ULA_MISC_COPY .eq $a582  {addr/1}
+                                               SYSVARS_83_TIMER_SWITCH .eq $a583  {addr/1} ;100Hz timer switch
                                                SYSVAR_SOFTKEY_CONS .eq $a584
+                                               SYSVAR_85_PRINTER_DEST .eq $a585
                                                SYSVARS_8d_lastbreak .eq $a58d
                                                SYSVAR_OSBYTE_255_STARTUP .eq $a58f
+                                               SYSVAR_91_TIMERS .eq    $a591  {addr/10}  ;100 Hz timers
+                                               SYSVAR_9A_INTERVAL .eq  $a59a  {addr/5}   ;Interval timer
                                                SYSVARS_B0_INKEYCTDN .eq $a5b0  {addr/2}
                                                SYSVARS_OSWORD_0_PARMS .eq $a5b2  {addr/3}
+                                               SYSVAR_B5_EVENT_ENABLE_TABLE .eq $a5b5  {addr/10} ;Event enble table
                                                SYSVARS_ELK_BUFFER_BUSY .eq $a5c3  {addr/8}
                                                DPSYS_OSWORD0_BUFPTR .eq $a5e3  {addr/2}
                                                SOUND_QRY_T     .eq     $a814
@@ -208,6 +219,8 @@
                                                EXSYS_CUR_COROUTINE .eq $ff10  {addr/2}   ;Stores the current coroutine's pointer
                                                SYS_ESCAPE_FLAG_QRY .eq $ff13
                                                tblB0JumpTableFF80_QRY .eq $ff80  {addr/80} ;jump table that branches to jmls to default cop handlers QRY?
+                                               LOWCALL__MM     .eq     $ff8c
+                                               LOWCALL__KB     .eq     $ffac             ;direct call to Keyboard routines QRY?
                                                BANK0_HW_VECTORS .eq    $ffe0  {addr/32}
                                                BANK0_HW_NMI816 .eq     $ffea  {addr/2}   ;Native mode IRQ HW vector
                                                BANK0_HW_IRQ6502 .eq    $fffe  {addr/2}   ;hardware vector 6502 IRQ
@@ -327,7 +340,7 @@
 +00018e fe/af8e: ab           ??MXd??? e .....                 plb                       ;Data Bank to 0
 +00018f fe/af8f: 48           ??MXd??? e .....                 pha
 +000190 fe/af90: a8           ??MXd??? e .....                 tay
-+000191 fe/af91: 20 2e e2     ??MXd??? e .....                 jsr     writeToInputBuffer0
++000191 fe/af91: 20 2e e2     ??MXd??? e .....                 jsr     LFEE22E
 +000194 fe/af94: fa           ??MXd??? e .....                 plx
 +000195 fe/af95: a9 00        ??MXd??? e .....                 lda     #$00
 +000197 fe/af97: ec 6c a5     n?MXd?Z? e .....                 cpx     SYSVARS_6C_ESCCHAR
@@ -359,21 +372,21 @@
 +0001c3 fe/afc3: 00 00                   .....                 .dd2    $0000             ;IRQ1V
 +0001c5 fe/afc5: 00 00                   .....                 .dd2    $0000             ;IRQ2V
 +0001c7 fe/afc7: 9f dd                   .....                 .dd2    doLNCLI & $ffff   ;CLIV
-+0001c9 fe/afc9: cc e7                   .....                 .dd2    doDispatchOSBYTE & $ffff
-+0001cb fe/afcb: 3d e8                   .....                 .dd2    enterOSWORD_BHA & $ffff
-+0001cd fe/afcd: ff de                   .....                 .dd2    TFEDEFF & $ffff
-+0001cf fe/afcf: 72 e2                   .....                 .dd2    int_OPRDC & $ffff
-+0001d1 fe/afd1: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001d3 fe/afd3: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001d5 fe/afd5: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001d7 fe/afd7: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001d9 fe/afd9: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001db fe/afdb: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001dd fe/afdd: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001df fe/afdf: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001e1 fe/afe1: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001e3 fe/afe3: 47 ee                   .....                 .dd2    donothingRTS & $ffff
-+0001e5 fe/afe5: 47 ee                   .....                 .dd2    donothingRTS & $ffff
++0001c9 fe/afc9: cc e7                   .....                 .dd2    doDispatchOSBYTE & $ffff ;BYTEV
++0001cb fe/afcb: 3d e8                   .....                 .dd2    enterOSWORD_BHA & $ffff ;WORDV
++0001cd fe/afcd: ff de                   .....                 .dd2    TFEDEFF & $ffff   ;WRCHV
++0001cf fe/afcf: 72 e2                   .....                 .dd2    int_OPRDC & $ffff ;RDCHV
++0001d1 fe/afd1: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;FILEV
++0001d3 fe/afd3: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;ARGSV
++0001d5 fe/afd5: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;BGETV
++0001d7 fe/afd7: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;BPUTV
++0001d9 fe/afd9: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;GBPBV
++0001db fe/afdb: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;FINDV
++0001dd fe/afdd: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;FSCV
++0001df fe/afdf: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;EVNTV
++0001e1 fe/afe1: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;UPTV
++0001e3 fe/afe3: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;NETV
++0001e5 fe/afe5: 47 ee                   .....                 .dd2    donothingRTS & $ffff ;VDUV
 +0001e7 fe/afe7: 00 00                   .....                 .dd2    $0000             ;KEYV - QRY assume this gets set up by KEYBOARD module?
 +0001e9 fe/afe9: f1 e1                   .....                 .dd2    defaultINSV & $ffff ;ISNV
 +0001eb fe/afeb: a2 e1                   .....                 .dd2    defaultREMV & $ffff ;REMV
@@ -389,14 +402,7 @@
 +0001ff fe/afff: 00                      .....                 .dd1    $00
 +000200 fe/b000: 00                      .....                 .dd1    $00
 +000201 fe/b001: ff                      .....                 .dd1    $ff
-+000202 fe/b002: 00                      .....                 .dd1    $00
-+000203 fe/b003: 00                      .....                 .dd1    $00
-+000204 fe/b004: 00                      .....                 .dd1    $00
-+000205 fe/b005: 00                      .....                 .dd1    $00
-+000206 fe/b006: 00                      .....                 .dd1    $00
-+000207 fe/b007: 00                      .....                 .dd1    $00
-+000208 fe/b008: 00                      .....                 .dd1    $00
-+000209 fe/b009: 00                      .....                 .dd1    $00
++000202 fe/b002: 00 00 00 00+            .....                 .fill   8,$00
 +00020a fe/b00a: ff                      .....                 .dd1    $ff
 +00020b fe/b00b: 04                      .....                 .dd1    $04
 +00020c fe/b00c: 04                      .....                 .dd1    $04
@@ -408,17 +414,9 @@
 +000212 fe/b012: 19                      .....                 .dd1    $19
 +000213 fe/b013: 32                      .....                 .dd1    $32
 +000214 fe/b014: 08                      .....                 .dd1    $08
-+000215 fe/b015: 00                      .....                 .dd1    $00
-+000216 fe/b016: 00                      .....                 .dd1    $00
-+000217 fe/b017: 00                      .....                 .dd1    $00
-+000218 fe/b018: 00                      .....                 .dd1    $00
-+000219 fe/b019: 00                      .....                 .dd1    $00
++000215 fe/b015: 00 00 00 00+            .....                 .fill   5,$00
 +00021a fe/b01a: ff                      .....                 .dd1    $ff
-+00021b fe/b01b: 00                      .....                 .dd1    $00
-+00021c fe/b01c: 00                      .....                 .dd1    $00
-+00021d fe/b01d: 00                      .....                 .dd1    $00
-+00021e fe/b01e: 00                      .....                 .dd1    $00
-+00021f fe/b01f: 00                      .....                 .dd1    $00
++00021b fe/b01b: 00 00 00 00+            .....                 .fill   5,$00
 +000220 fe/b020: 50                      .....                 .dd1    $50
 +000221 fe/b021: 00                      .....                 .dd1    $00
 +000222 fe/b022: 03                      .....                 .dd1    $03
@@ -444,24 +442,12 @@
 +000236 fe/b036: ff                      .....                 .dd1    $ff
 +000237 fe/b037: ff                      .....                 .dd1    $ff
 +000238 fe/b038: ff                      .....                 .dd1    $ff
-+000239 fe/b039: 00                      .....                 .dd1    $00
-+00023a fe/b03a: 00                      .....                 .dd1    $00
-+00023b fe/b03b: 00                      .....                 .dd1    $00
-+00023c fe/b03c: 00                      .....                 .dd1    $00
-+00023d fe/b03d: 00                      .....                 .dd1    $00
-+00023e fe/b03e: 00                      .....                 .dd1    $00
-+00023f fe/b03f: 00                      .....                 .dd1    $00
-+000240 fe/b040: 00                      .....                 .dd1    $00
-+000241 fe/b041: 00                      .....                 .dd1    $00
++000239 fe/b039: 00 00 00 00+            .....                 .fill   9,$00
 +000242 fe/b042: 05                      .....                 .dd1    $05
 +000243 fe/b043: ff                      .....                 .dd1    $ff
 +000244 fe/b044: 00                      .....                 .dd1    $00
 +000245 fe/b045: 0a                      .....                 .dd1    $0a
-+000246 fe/b046: 00                      .....                 .dd1    $00
-+000247 fe/b047: 00                      .....                 .dd1    $00
-+000248 fe/b048: 00                      .....                 .dd1    $00
-+000249 fe/b049: 00                      .....                 .dd1    $00
-+00024a fe/b04a: 00                      .....                 .dd1    $00
++000246 fe/b046: 00 00 00 00+            .....                 .fill   5,$00
 +00024b fe/b04b: ff                      .....                 .dd1    $ff
 +00024c fe/b04c: ea                      .....                 .dd1    $ea
 +00024d fe/b04d: 4f                      .....                 .dd1    $4f
@@ -595,7 +581,7 @@
 +00036e fe/b16e: 02 0f        n?MXdIZC e .....                 cop     COP_0F_OPERR      ;throw an error
 +000370 fe/b170: 43 61 6e 6e+            .T...                 .zstr   “Cannot find KEYBOARD module”
 +00038c fe/b18c: a2 02        n?MXdIZ? e ....> @keyboard_found ldx     #$02
-+00038e fe/b18e: 22 ac ff 00  n?MXdIz? e .....                 jsl     __KB
++00038e fe/b18e: 22 ac ff 00  n?MXdIz? e .....                 jsl     LOWCALL__KB
 +000392 fe/b192: a9 31        ??MXdI?? e .....                 lda     #$31
 +000394 fe/b194: a2 18        n?MXdIz? e .....                 ldx     #$18
 +000396 fe/b196: 22 ac ff 00  n?MXdIz? e .....                 jsl     __KB
@@ -612,7 +598,7 @@
 +0003ac fe/b1ac: 0a 41 63 6f+            .T...                 .zstr   $0a,“Acorn Communicator ”
 +0003c1 fe/b1c1: a0 01        ??MXdI?? e .....                 ldy     #MM_HANDLE_1_SPECIAL_QRY
 +0003c3 fe/b1c3: a2 10        n?MXdIz? e .....                 ldx     #MMLEN
-+0003c5 fe/b1c5: 22 8c ff 00  n?MXdIz? e .....                 jsl     __MM
++0003c5 fe/b1c5: 22 8c ff 00  n?MXdIz? e .....                 jsl     LOWCALL__MM
 +0003c9 fe/b1c9: 8b           ??MXdI?? e .....                 phb
 +0003ca fe/b1ca: 68           ??MXdI?? e .....                 pla
 +0003cb fe/b1cb: eb           ??MXdI?? e .....                 xba
@@ -3170,15 +3156,15 @@
 +001154 fe/bf54: a9 00 00     ??mxd??c e .....                 lda     #$0000
 +001157 fe/bf57: 9f 00 00 00  n?mxd?Zc e .....                 stal    f:$000000,x
 +00115b fe/bf5b: a5 01        n?mxd?Zc e .....                 lda     DPCOP_Y
-+00115d fe/bf5d: 9f 04 00 00  ??mxd??c e .....                 stal    f:DPCOP_X+1,x
++00115d fe/bf5d: 9f 04 00 00  ??mxd??c e .....                 stal    f:$000004,x
 +001161 fe/bf61: a5 03        ??mxd??c e .....                 lda     DPCOP_X
-+001163 fe/bf63: 9f 06 00 00  ??mxd??c e .....                 stal    f:DPCOP_AH+1,x
++001163 fe/bf63: 9f 06 00 00  ??mxd??c e .....                 stal    f:$000006,x
 +001167 fe/bf67: a5 08        ??mxd??c e .....                 lda     DPCOP_DP
-+001169 fe/bf69: 9f 02 00 00  ??mxd??c e .....                 stal    f:DPCOP_Y+1,x
++001169 fe/bf69: 9f 02 00 00  ??mxd??c e .....                 stal    f:$000002,x
 +00116d fe/bf6d: a5 06        ??mxd??c e .....                 lda     DPCOP_AH+1
-+00116f fe/bf6f: 9f 09 00 00  ??mxd??c e .....                 stal    f:DPCOP_DP+1,x
++00116f fe/bf6f: 9f 09 00 00  ??mxd??c e .....                 stal    f:$000009,x
 +001173 fe/bf73: a5 05        ??mxd??c e .....                 lda     DPCOP_AH
-+001175 fe/bf75: 9f 08 00 00  ??mxd??c e .....                 stal    f:DPCOP_DP,x
++001175 fe/bf75: 9f 08 00 00  ??mxd??c e .....                 stal    f:$000008,x
 +001179 fe/bf79: da           ??mxd??c e .....                 phx
 +00117a fe/bf7a: a9 12 fe     ??mxd??c e .....                 lda     #$fe12
 +00117d fe/bf7d: aa           ??mxd?zc e ....> LFEBF7D         tax
@@ -3197,7 +3183,7 @@
                                                                .rwid   shortm,shortx
 +00119b fe/bf9b: 08           ??MXd??? e ....> LFEBF9B         php
 +00119c fe/bf9c: 8b           ??MXd??? e .....                 phb
-+00119d fe/bf9d: 0b           ??MXd??? e ..... LFEBF9D         phd
++00119d fe/bf9d: 0b           ??MXd??? e ..... @loop           phd
 +00119e fe/bf9e: c2 30        ??MXd??? e .....                 rep     #$30
                                                                .rwid   longm,longx
 +0011a0 fe/bfa0: af 12 fe 00  ??mxd??? e .....                 ldal    f:$00fe12
@@ -3207,13 +3193,13 @@
 +0011a8 fe/bfa8: a5 00        ??mxd??? e .....                 lda     $00
 +0011aa fe/bfaa: 8f 12 fe 00  ??mxd??? e .....                 stal    f:$00fe12
 +0011ae fe/bfae: 4b           ??mxd??? e .....                 phk
-+0011af fe/bfaf: 62 eb ff     ??mxd??? e .....                 per     LFEBF9D
-+0011b2 fe/bfb2: d4 09        ??mxd??? e .....                 pei     (DPCOP_DP+1)
-+0011b4 fe/bfb4: d4 07        ??mxd??? e .....                 pei     (DPCOP_B)
++0011af fe/bfaf: 62 eb ff     ??mxd??? e .....                 per     @loop
++0011b2 fe/bfb2: d4 09        ??mxd??? e .....                 pei     ($09)
++0011b4 fe/bfb4: d4 07        ??mxd??? e .....                 pei     ($07)
 +0011b6 fe/bfb6: ab           ??mxd??? e .....                 plb
-+0011b7 fe/bfb7: d4 02        ??mxd??? e .....                 pei     (DPCOP_Y+1)
-+0011b9 fe/bfb9: d4 06        ??mxd??? e .....                 pei     (DPCOP_AH+1)
-+0011bb fe/bfbb: d4 04        ??mxd??? e .....                 pei     (DPCOP_X+1)
++0011b7 fe/bfb7: d4 02        ??mxd??? e .....                 pei     ($02)
++0011b9 fe/bfb9: d4 06        ??mxd??? e .....                 pei     ($06)
++0011bb fe/bfbb: d4 04        ??mxd??? e .....                 pei     ($04)
 +0011bd fe/bfbd: 20 da cd     ??mxd??? e .....                 jsr     returnXToFreeList
 +0011c0 fe/bfc0: 7a           ??mxd??? e .....                 ply
 +0011c1 fe/bfc1: fa           ??mxd??? e .....                 plx
@@ -3392,7 +3378,7 @@
 +001279 fe/c079: 8b           ??mxd??? e .....                 phb
 +00127a fe/c07a: 68           ??mxd??? e .....                 pla
 +00127b fe/c07b: 9f 02 00 00  ??mxd??? e .....                 stal    f:$000002,x
-+00127f fe/c07f: 62 e1 3d     ??mxd??? e .....                 per     LFEFE64_anRTL-1
++00127f fe/c07f: 62 e1 3d     ??mxd??? e .....                 per     LFEFE63_anRTL
 +001282 fe/c082: 68           ??mxd??? e .....                 pla
 +001283 fe/c083: 9f 03 00 00  ??mxd??? e .....                 stal    f:$000003,x
 +001287 fe/c087: 4b           ??mxd??? e .....                 phk
@@ -5822,93 +5808,94 @@
 +001ebe fe/ccbe: ab           ??MXd??? e .....                 plb
 +001ebf fe/ccbf: 8f 0d 00 42  ??MXd??? e .....                 stal    VIA_IFR
 +001ec3 fe/ccc3: a0 f3        ??MXd??? e .....                 ldy     #$f3
-+001ec5 fe/ccc5: 20 2e e2     N?MXd?z? e .....                 jsr     writeToInputBuffer0
++001ec5 fe/ccc5: 20 2e e2     N?MXd?z? e .....                 jsr     LFEE22E
 +001ec8 fe/ccc8: 18           ??MXd??? e .....                 clc
 +001ec9 fe/ccc9: 6b           ??MXd??c e ...#.                 rtl
 
 +001eca fe/ccca: f4 00 00     ??MXd??? e @T... irqh_vsync      pea     $0000
 +001ecd fe/cccd: ab           ??MXd??? e .....                 plb
+                                                               .dbank  $00
 +001ece fe/ccce: ab           ??MXd??? e .....                 plb
 +001ecf fe/cccf: a2 12        ??MXd??? e .....                 ldx     #$12
 +001ed1 fe/ccd1: 4b           n?MXd?z? e .....                 phk
 +001ed2 fe/ccd2: 20 38 fe     n?MXd?z? e .....                 jsr     callModVDU
-+001ed5 fe/ccd5: ad 51 a5     ??MXd??? e .....                 lda     $a551
++001ed5 fe/ccd5: ad 51 a5     ??MXd??? e .....                 lda     SYSVAR_51_FLASHCTDN
 +001ed8 fe/ccd8: f0 1f        ??MXd??? e .....                 beq     LFECCF9
-+001eda fe/ccda: ce 51 a5     ??MXd?z? e .....                 dec     $a551
++001eda fe/ccda: ce 51 a5     ??MXd?z? e .....                 dec     SYSVAR_51_FLASHCTDN
 +001edd fe/ccdd: d0 1a        ??MXd??? e .....                 bne     LFECCF9
-+001edf fe/ccdf: ae 52 a5     ??MXd?Z? e .....                 ldx     $a552
-+001ee2 fe/cce2: ad 48 a5     ??MXd??? e .....                 lda     $a548
++001edf fe/ccdf: ae 52 a5     ??MXd?Z? e .....                 ldx     SYSVAR_82_ELK_ULA_MISC
++001ee2 fe/cce2: ad 48 a5     ??MXd??? e .....                 lda     SYSVAR_48_UNKNOWN_ULA
 +001ee5 fe/cce5: f0 03        ??MXd??? e .....                 beq     LFECCEA
-+001ee7 fe/cce7: ae 53 a5     ??MXd?z? e .....                 ldx     $a553
++001ee7 fe/cce7: ae 53 a5     ??MXd?z? e .....                 ldx     SYSVAR_FLASH_MARK
 +001eea fe/ccea: 49 07        ??MXd??? e ....> LFECCEA         eor     #$07
-+001eec fe/ccec: 8d 48 a5     ??MXd??? e .....                 sta     $a548
-+001eef fe/ccef: 8e 51 a5     ??MXd??? e .....                 stx     $a551
++001eec fe/ccec: 8d 48 a5     ??MXd??? e .....                 sta     SYSVAR_48_UNKNOWN_ULA
++001eef fe/ccef: 8e 51 a5     ??MXd??? e .....                 stx     SYSVAR_51_FLASHCTDN
 +001ef2 fe/ccf2: a8           ??MXd??? e .....                 tay
 +001ef3 fe/ccf3: a2 14        ??MXd??? e .....                 ldx     #$14
 +001ef5 fe/ccf5: 4b           n?MXd?z? e .....                 phk
 +001ef6 fe/ccf6: 20 38 fe     n?MXd?z? e .....                 jsr     callModVDU
-+001ef9 fe/ccf9: ce 40 a5     ??MXd??? e ....> LFECCF9         dec     $a540
++001ef9 fe/ccf9: ce 40 a5     ??MXd??? e ....> LFECCF9         dec     SYSVAR_CFS_TIMEOUT
 +001efc fe/ccfc: a9 10        ??MXd??? e .....                 lda     #$10
-+001efe fe/ccfe: 80 07        n?MXd?z? e ...#.                 bra     LFECD07
++001efe fe/ccfe: 80 07        n?MXd?z? e ...#.                 bra     irqh_100Hz
 
 +001f00 fe/cd00: f4 00 00     ??MXd??? e @T... irqh_ula_rtc    pea     $0000
 +001f03 fe/cd03: ab           ??MXd??? e .....                 plb
                                                                .dbank  $00
 +001f04 fe/cd04: ab           ??MXd??? e .....                 plb
 +001f05 fe/cd05: a9 20        ??MXd??? e .....                 lda     #$20
-+001f07 fe/cd07: 8f 05 fe 45  n?MXd?z? e ....> LFECD07         stal    sheila_ULA_PAG_IRQCLR
-+001f0b fe/cd0b: ad 83 a5     n?MXd?z? e .....                 lda     SYSVARS+131
++001f07 fe/cd07: 8f 05 fe 45  n?MXd?z? e ....> irqh_100Hz      stal    sheila_ULA_PAG_IRQCLR
++001f0b fe/cd0b: ad 83 a5     n?MXd?z? e .....                 lda     SYSVARS_83_TIMER_SWITCH ;timer switch flips between 10 and 5
 +001f0e fe/cd0e: aa           ??MXd??? e .....                 tax
-+001f0f fe/cd0f: 49 0f        ??MXd??? e .....                 eor     #$0f
++001f0f fe/cd0f: 49 0f        ??MXd??? e .....                 eor     #$0f              ;flip
 +001f11 fe/cd11: 48           ??MXd??? e .....                 pha
 +001f12 fe/cd12: a8           ??MXd??? e .....                 tay
 +001f13 fe/cd13: 38           ??MXd??? e .....                 sec
-+001f14 fe/cd14: bd 90 a5     ??MXd??? e ....> LFECD14         lda     SYSVARS+144,x
++001f14 fe/cd14: bd 90 a5     ??MXd??? e ....> @tlp            lda     SYSVAR_91_TIMERS-1,x ;decrement timer into new copy from old
 +001f17 fe/cd17: 69 00        ??MXd??? e .....                 adc     #$00
-+001f19 fe/cd19: 99 90 a5     ??MXd??? e .....                 sta     SYSVARS+144,y
++001f19 fe/cd19: 99 90 a5     ??MXd??? e .....                 sta     SYSVAR_91_TIMERS-1,y
 +001f1c fe/cd1c: ca           ??MXd??? e .....                 dex
-+001f1d fe/cd1d: f0 03        ??MXd??? e .....                 beq     LFECD22
++001f1d fe/cd1d: f0 03        ??MXd??? e .....                 beq     @tsk
 +001f1f fe/cd1f: 88           ??MXd?z? e .....                 dey
-+001f20 fe/cd20: d0 f2        ??MXd??? e .....                 bne     LFECD14
-+001f22 fe/cd22: 68           ??MXd?Z? e ....> LFECD22         pla
-+001f23 fe/cd23: 8d 83 a5     ??MXd??? e .....                 sta     SYSVARS+131
++001f20 fe/cd20: d0 f2        ??MXd??? e .....                 bne     @tlp
++001f22 fe/cd22: 68           ??MXd?Z? e ....> @tsk            pla
++001f23 fe/cd23: 8d 83 a5     ??MXd??? e .....                 sta     SYSVARS_83_TIMER_SWITCH ;store updated flipped switch
 +001f26 fe/cd26: a2 05        ??MXd??? e .....                 ldx     #$05
-+001f28 fe/cd28: fe 9a a5     ??MXd?z? e ....> LFECD28         inc     SYSVARS+154,x
++001f28 fe/cd28: fe 9a a5     ??MXd?z? e ....> LFECD28         inc     SYSVAR_9A_INTERVAL,x
 +001f2b fe/cd2b: d0 08        ??MXd??? e .....                 bne     LFECD35
 +001f2d fe/cd2d: ca           ??MXd?Z? e .....                 dex
 +001f2e fe/cd2e: d0 f8        ??MXd??? e .....                 bne     LFECD28
-+001f30 fe/cd30: a0 05        ??MXd?Z? e .....                 ldy     #$05
-+001f32 fe/cd32: 20 73 e5     n?MXd?z? e .....                 jsr     LFEE573
++001f30 fe/cd30: a0 05        ??MXd?Z? e .....                 ldy     #EVENT_5_TIMER_ZERO
++001f32 fe/cd32: 20 73 e5     n?MXd?z? e .....                 jsr     callEventIfEnabled
 +001f35 fe/cd35: ad b0 a5     ??MXd??? e ....> LFECD35         lda     SYSVARS_B0_INKEYCTDN
 +001f38 fe/cd38: d0 08        ??MXd??? e .....                 bne     LFECD42
 +001f3a fe/cd3a: ad b1 a5     ??MXd?Z? e .....                 lda     SYSVARS_B0_INKEYCTDN+1
 +001f3d fe/cd3d: f0 06        ??MXd??? e .....                 beq     LFECD45
 +001f3f fe/cd3f: ce b1 a5     ??MXd?z? e .....                 dec     SYSVARS_B0_INKEYCTDN+1
 +001f42 fe/cd42: ce b0 a5     ??MXd??? e ....> LFECD42         dec     SYSVARS_B0_INKEYCTDN
-+001f45 fe/cd45: 2c 78 a5     ??MXd??? e ....> LFECD45         bit     SYSVARS+120
++001f45 fe/cd45: 2c 78 a5     ??MXd??? e ....> LFECD45         bit     SYSVAR_78_SOUND_SEMAPHORE
 +001f48 fe/cd48: 10 0b        ??MXd??? e .....                 bpl     LFECD55
-+001f4a fe/cd4a: ee 78 a5     N?MXd??? e .....                 inc     SYSVARS+120
++001f4a fe/cd4a: ee 78 a5     N?MXd??? e .....                 inc     SYSVAR_78_SOUND_SEMAPHORE
 +001f4d fe/cd4d: 58           ??MXd??? e .....                 cli
-+001f4e fe/cd4e: 20 49 eb     ??MXdi?? e .....                 jsr     LFEEB49
++001f4e fe/cd4e: 20 49 eb     ??MXdi?? e .....                 jsr     doSoundInterrupt
 +001f51 fe/cd51: 78           ??MXdi?? e .....                 sei
-+001f52 fe/cd52: ce 78 a5     ??MXdI?? e .....                 dec     SYSVARS+120
++001f52 fe/cd52: ce 78 a5     ??MXdI?? e .....                 dec     SYSVAR_78_SOUND_SEMAPHORE
 +001f55 fe/cd55: 24 d3        ??MXd??? e ....> LFECD55         bit     $d3
 +001f57 fe/cd57: 30 08        ??MXd??? e .....                 bmi     LFECD61
 +001f59 fe/cd59: a5 d5        n?MXd??? e .....                 lda     $d5
 +001f5b fe/cd5b: e6 d5        ??MXd??? e .....                 inc     $d5
 +001f5d fe/cd5d: c9 80        ??MXd??? e .....                 cmp     #$80
 +001f5f fe/cd5f: b0 1b        ??MXd??? e .....                 bcs     LFECD7C
-+001f61 fe/cd61: ad 42 a5     ??MXd??? e ....> LFECD61         lda     SYSVAR_42_KEYSEMAPHORE
++001f61 fe/cd61: ad 42 a5     ??MXd??? e ....> LFECD61         lda     SYSVAR_66_KB_SEMAPHORE
 +001f64 fe/cd64: f0 0c        ??MXd??? e .....                 beq     LFECD72
-+001f66 fe/cd66: ee 42 a5     ??MXd?z? e .....                 inc     SYSVAR_42_KEYSEMAPHORE
++001f66 fe/cd66: ee 42 a5     ??MXd?z? e .....                 inc     SYSVAR_66_KB_SEMAPHORE
 +001f69 fe/cd69: a2 0c        ??MXd??? e .....                 ldx     #$0c
 +001f6b fe/cd6b: 22 ac ff 00  n?MXd?z? e .....                 jsl     __KB
-+001f6f fe/cd6f: ce 42 a5     ??MXd??? e .....                 dec     SYSVAR_42_KEYSEMAPHORE
++001f6f fe/cd6f: ce 42 a5     ??MXd??? e .....                 dec     SYSVAR_66_KB_SEMAPHORE
 +001f72 fe/cd72: 2c c6 a5     ??MXd??? e ....> LFECD72         bit     SYSVARS_ELK_BUFFER_BUSY+3
-+001f75 fe/cd75: 30 03        ??MXd??? e .....                 bmi     LFECD7A
++001f75 fe/cd75: 30 03        ??MXd??? e .....                 bmi     @clcrtl
 +001f77 fe/cd77: 4c 12 df     n?MXd??? e ...#.                 jmp     LFEDF12
 
-+001f7a fe/cd7a: 18           N?MXd??? e ....> LFECD7A         clc
++001f7a fe/cd7a: 18           N?MXd??? e ....> @clcrtl         clc
 +001f7b fe/cd7b: 6b           N?MXd??c e ...#.                 rtl
 
 +001f7c fe/cd7c: a5 d5        ??MXd??C e ....> LFECD7C         lda     $d5
@@ -6203,11 +6190,11 @@
 +00214a fe/cf4a: 88           ??mxd??? e .....                 dey
 +00214b fe/cf4b: 88           ??mxd??? e .....                 dey
 +00214c fe/cf4c: 8a           ??mxd??? e .....                 txa
-+00214d fe/cf4d: d7 02        ??mxd??? e ....> @retsec         cmp     [$02],y
++00214d fe/cf4d: d7 02        ??mxd??? e ....> @lp             cmp     [<EXSYS_HANDLEBLOCK_LONGPTR],y
 +00214f fe/cf4f: f0 06        ??mxd??? e .....                 beq     @retclc
 +002151 fe/cf51: 88           ??mxd?z? e .....                 dey
 +002152 fe/cf52: 88           ??mxd??? e .....                 dey
-+002153 fe/cf53: d0 f8        ??mxd??? e .....                 bne     @retsec
++002153 fe/cf53: d0 f8        ??mxd??? e .....                 bne     @lp
 +002155 fe/cf55: 38           ??mxd?Z? e .....                 sec
 +002156 fe/cf56: 60           ??mxd?ZC e ...#.                 rts
 
@@ -8882,10 +8869,7 @@
 +0030b1 fe/deb1: de                      .....                 .dd1    $de
 +0030b2 fe/deb2: c9                      .....                 .dd1    $c9
 +0030b3 fe/deb3: 2c                      .....                 .dd1    $2c
-+0030b4 fe/deb4: d0                      .....                 .dd1    $d0
-+0030b5 fe/deb5: f4                      .....                 .dd1    $f4
-+0030b6 fe/deb6: a4                      .....                 .dd1    $a4
-+0030b7 fe/deb7: d9                      .....                 .dd1    $d9
++0030b4 fe/deb4: d0 f4 a4 d9             .....                 .str    ↑“Pt$Y”
 +0030b8 fe/deb8: 60                      .....                 .dd1    $60
 
 +0030b9 fe/deb9: e2 20        ??MXd??? e @T... starRESET       sep     #$20
@@ -8939,7 +8923,7 @@
 +003100 fe/df00: 60           ??MXd??? e @T.#. OSBYTE_7B_null  rts
 
 +003101 fe/df01: d0 28        ??MXd??? e @T... OSBYTE_F        bne     OSB_FlushInputBuffer
-+003103 fe/df03: a2 08        ??MXd?Z? e ..... FlushAllBuffers ldx     #$08
++003103 fe/df03: a2 08        ??MXd??? e ....> FlushAllBuffers ldx     #$08
 +003105 fe/df05: 58           n?MXd??? e ....> @lp             cli
 +003106 fe/df06: 78           n?MXdi?? e .....                 sei
 +003107 fe/df07: 20 0d df     n?MXdI?? e .....                 jsr     OSBYTE_15
@@ -8951,26 +8935,21 @@
 
 +003112 fe/df12: a9 00        n?MXd??? e ....> LFEDF12         lda     #$00
 +003114 fe/df14: a2 03        n?MXd?Z? e .....                 ldx     #$03
-+003116 fe/df16: ac 85 a5     ??MXd??? e ....> LFEDF16         ldy     SYSVARS+133
++003116 fe/df16: ac 85 a5     n?MXd?z? e .....                 ldy     SYSVAR_85_PRINTER_DEST
 +003119 fe/df19: 18           ??MXd??? e .....                 clc
 +00311a fe/df1a: 6b           ??MXd??c e ...#.                 rtl
 
-+00311b fe/df1b: 20                      .....                 .dd1    $20
-+00311c fe/df1c: 66                      .....                 .dd1    $66
-+00311d fe/df1d: e3                      .....                 .dd1    $e3
-+00311e fe/df1e: eb                      .....                 .dd1    $eb
-+00311f fe/df1f: 4b                      .....                 .dd1    $4b
-+003120 fe/df20: ad                      .....                 .dd1    $ad
-+003121 fe/df21: 23                      .....                 .dd1    $23
-+003122 fe/df22: a5                      .....                 .dd1    $a5
-+003123 fe/df23: 48                      .....                 .dd1    $48
-+003124 fe/df24: ad                      .....                 .dd1    $ad
-+003125 fe/df25: 22                      .....                 .dd1    $22
-+003126 fe/df26: a5                      .....                 .dd1    $a5
-+003127 fe/df27: 48                      .....                 .dd1    $48
-+003128 fe/df28: eb                      .....                 .dd1    $eb
-+003129 fe/df29: 08                      .....                 .dd1    $08
-+00312a fe/df2a: 40                      .....                 .dd1    $40
+                                               ; TODO: dead code?
++00311b fe/df1b: 20 66 e3     ??MXd??? e @T...                 jsr     QOSBY_VECTORthruA524
++00311e fe/df1e: eb           ??MXd??? e .....                 xba
++00311f fe/df1f: 4b           ??MXd??? e .....                 phk
++003120 fe/df20: ad 23 a5     ??MXd??? e .....                 lda     SYSVAR_22_UPTV+1
++003123 fe/df23: 48           ??MXd??? e .....                 pha
++003124 fe/df24: ad 22 a5     ??MXd??? e .....                 lda     SYSVAR_22_UPTV
++003127 fe/df27: 48           ??MXd??? e .....                 pha
++003128 fe/df28: eb           ??MXd??? e .....                 xba
++003129 fe/df29: 08           ??MXd??? e .....                 php
++00312a fe/df2a: 40           ??MXd??? e ...#.                 rti
 
 +00312b fe/df2b: f4 00 00     ??MXd?z? e ....> OSB_FlushInputBuffer pea $0000
 +00312e fe/df2e: ab           ??MXd?z? e .....                 plb
@@ -9281,37 +9260,37 @@
 +003364 fe/e164: 18           ??MXd??? e .....                 clc
 +003365 fe/e165: 60           ??MXd??c e ...#.                 rts
 
-+003366 fe/e166: a7                      .....                 .dd1    $a7
-+003367 fe/e167: aa                      .....                 .dd1    $aa
-+003368 fe/e168: a8                      .....                 .dd1    $a8
-+003369 fe/e169: a7                      .....                 .dd1    $a7
-+00336a fe/e16a: a7                      .....                 .dd1    $a7
-+00336b fe/e16b: a7                      .....                 .dd1    $a7
-+00336c fe/e16c: a7                      .....                 .dd1    $a7
-+00336d fe/e16d: a7                      .....                 .dd1    $a7
-+00336e fe/e16e: a9                      .....                 .dd1    $a9
-+00336f fe/e16f: 00                      .....                 .dd1    $00
-+003370 fe/e170: 00                      .....                 .dd1    $00
-+003371 fe/e171: c0                      .....                 .dd1    $c0
-+003372 fe/e172: c0                      .....                 .dd1    $c0
-+003373 fe/e173: 50                      .....                 .dd1    $50
-+003374 fe/e174: 60                      .....                 .dd1    $60
-+003375 fe/e175: 70                      .....                 .dd1    $70
-+003376 fe/e176: 80                      .....                 .dd1    $80
-+003377 fe/e177: 00                      .....                 .dd1    $00
-+003378 fe/e178: e0                      ..... LFEE178         .dd1    $e0
-+003379 fe/e179: 00                      .....                 .dd1    $00
-+00337a fe/e17a: 40                      .....                 .dd1    $40
-+00337b fe/e17b: c0                      .....                 .dd1    $c0
-+00337c fe/e17c: f0                      .....                 .dd1    $f0
-+00337d fe/e17d: f0                      .....                 .dd1    $f0
-+00337e fe/e17e: f0                      .....                 .dd1    $f0
-+00337f fe/e17f: f0                      .....                 .dd1    $f0
-+003380 fe/e180: c0                      .....                 .dd1    $c0
-
-+003381 fe/e181: bd 6f e1     ??MXdI?? e ....> LFEE181         lda     $e16f,x
++003366 fe/e166: a7                      .T... LFEE166         .dd1    $a7
++003367 fe/e167: aa                      .T...                 .dd1    $aa
++003368 fe/e168: a8                      .T...                 .dd1    $a8
++003369 fe/e169: a7                      .T...                 .dd1    $a7
++00336a fe/e16a: a7                      .T...                 .dd1    $a7
++00336b fe/e16b: a7                      .T...                 .dd1    $a7
++00336c fe/e16c: a7                      .T...                 .dd1    $a7
++00336d fe/e16d: a7                      .T...                 .dd1    $a7
++00336e fe/e16e: a9                      .T...                 .dd1    $a9
++00336f fe/e16f: 00                      .T... LFEE16F         .dd1    $00
++003370 fe/e170: 00                      .T...                 .dd1    $00
++003371 fe/e171: c0                      .T...                 .dd1    $c0
++003372 fe/e172: c0                      .T...                 .dd1    $c0
++003373 fe/e173: 50                      .T...                 .dd1    $50
++003374 fe/e174: 60                      .T...                 .dd1    $60
++003375 fe/e175: 70                      .T...                 .dd1    $70
++003376 fe/e176: 80                      .T...                 .dd1    $80
++003377 fe/e177: 00                      .T...                 .dd1    $00
++003378 fe/e178: e0                      .T... LFEE178         .dd1    $e0
++003379 fe/e179: 00                      .T...                 .dd1    $00
++00337a fe/e17a: 40                      .T...                 .dd1    $40
++00337b fe/e17b: c0                      .T...                 .dd1    $c0
++00337c fe/e17c: f0                      .T...                 .dd1    $f0
++00337d fe/e17d: f0                      .T...                 .dd1    $f0
++00337e fe/e17e: f0                      .T...                 .dd1    $f0
++00337f fe/e17f: f0                      .T...                 .dd1    $f0
++003380 fe/e180: c0                      .T...                 .dd1    $c0
+                                                               .dbank  $fe
++003381 fe/e181: bd 6f e1     ??MXdI?? e ....> LFEE181         lda     LFEE16F & $ffff,x
 +003384 fe/e184: 85 f6        ??MXdI?? e .....                 sta     $f6
-+003386 fe/e186: bd 66 e1     ??MXdI?? e .....                 lda     $e166,x
++003386 fe/e186: bd 66 e1     ??MXdI?? e .....                 lda     LFEE166 & $ffff,x
 +003389 fe/e189: 85 f7        ??MXdI?? e .....                 sta     $f7
 +00338b fe/e18b: 64 f8        ??MXdI?? e .....                 stz     $f8
 +00338d fe/e18d: 60           ??MXdI?? e ...#.                 rts
@@ -9360,7 +9339,7 @@
 +0033c9 fe/e1c9: df d5 a5 00  ?vMXdI?C e .....                 cmpl    f:$00a5d5,x
 +0033cd fe/e1cd: d0 05        ?vMXdI?? e .....                 bne     LFEE1D4
 +0033cf fe/e1cf: a0 00        ?vMXdIZ? e .....                 ldy     #$00
-+0033d1 fe/e1d1: 20 73 e5     nvMXdIZ? e .....                 jsr     LFEE573
++0033d1 fe/e1d1: 20 73 e5     nvMXdIZ? e .....                 jsr     callEventIfEnabled
 +0033d4 fe/e1d4: 68           ??MXdI?? e ....> LFEE1D4         pla
 +0033d5 fe/e1d5: a8           ??MXdI?? e ....> LFEE1D5         tay
 +0033d6 fe/e1d6: 28           ??MXdI?? e .....                 plp
@@ -9369,8 +9348,8 @@
 +0033d9 fe/e1d9: 60           ??MXd??c e ...#.                 rts
 
 +0033da fe/e1da: 98           ??MXd?z? e ....> LFEE1DA         tya
-+0033db fe/e1db: a0 02        ??MXd??? e .....                 ldy     #$02
-+0033dd fe/e1dd: 20 73 e5     n?MXd?z? e .....                 jsr     LFEE573
++0033db fe/e1db: a0 02        ??MXd??? e .....                 ldy     #EVENT_2_CHARINBUF
++0033dd fe/e1dd: 20 73 e5     n?MXd?z? e .....                 jsr     callEventIfEnabled
 +0033e0 fe/e1e0: a8           ??MXd??? e .....                 tay
                                                ********************************************************************************
                                                * OSBYTE 8A - place char in buffer                                             *
@@ -9421,7 +9400,7 @@
 +00341f fe/e21f: e0 02        ??MXdI?? e .....                 cpx     #$02
 +003421 fe/e221: b0 07        ??MXdI?? e .....                 bcs     LFEE22A
 +003423 fe/e223: a0 01        ??MXdI?c e .....                 ldy     #$01
-+003425 fe/e225: 20 73 e5     n?MXdIzc e .....                 jsr     LFEE573
++003425 fe/e225: 20 73 e5     n?MXdIzc e .....                 jsr     callEventIfEnabled
 +003428 fe/e228: 48           ??MXdI?? e .....                 pha
 +003429 fe/e229: 68           ??MXdI?? e .....                 pla
 +00342a fe/e22a: 28           ??MXdI?? e ....> LFEE22A         plp
@@ -9429,7 +9408,7 @@
 +00342c fe/e22c: ab           ??MXd??C e .....                 plb
 +00342d fe/e22d: 60           ??MXd??C e ...#.                 rts
 
-+00342e fe/e22e: 8b           ??MXd??? e ....> writeToInputBuffer0 phb
++00342e fe/e22e: 8b           ??MXd??? e ....> LFEE22E         phb
 +00342f fe/e22f: f4 00 00     ??MXd??? e .....                 pea     $0000
 +003432 fe/e232: ab           ??MXd??? e .....                 plb
 +003433 fe/e233: ab           ??MXd??? e .....                 plb
@@ -9453,7 +9432,7 @@
 +003450 fe/e250: 98           ??MXd??? e .....                 tya
 +003451 fe/e251: b0 0a        ??MXd??? e .....                 bcs     @noESC            ;Ignore ESCape
 +003453 fe/e253: a0 06        ??MXd??c e .....                 ldy     #$06
-+003455 fe/e255: 20 73 e5     n?MXd?zc e .....                 jsr     LFEE573
++003455 fe/e255: 20 73 e5     n?MXd?zc e .....                 jsr     callEventIfEnabled
 +003458 fe/e258: 90 03        ??MXd??? e .....                 bcc     @noESC
 +00345a fe/e25a: 20 a1 e6     ??MXd??C e .....                 jsr     OSBYTE_7D         ;Set ESCape condition
 +00345d fe/e25d: 18           ??MXd??? e ....> @noESC          clc
@@ -9475,6 +9454,7 @@
 +003472 fe/e272: a9 00        ??MXd??? e ....> int_OPRDC       lda     #$00
 +003474 fe/e274: f4 00 00     ??MXd??? e ....> LFEE274         pea     $0000
 +003477 fe/e277: ab           ??MXd??? e .....                 plb
+                                                               .dbank  $00
 +003478 fe/e278: ab           ??MXd??? e .....                 plb
 +003479 fe/e279: 48           ??MXd??? e .....                 pha
 +00347a fe/e27a: da           ??MXd??? e .....                 phx
@@ -9568,7 +9548,7 @@
 +003504 fe/e304: 18           ??MXdI?? e ....> LFEE304         clc
 +003505 fe/e305: 60           ??MXdI?c e ...#.                 rts
 
-+003506 fe/e306: 20 e0 e8     ??MXdIZ? e ....> LFEE306         jsr     Serv8_QRY
++003506 fe/e306: 20 e0 e8     ??MXdIZ? e ....> LFEE306         jsr     Serv8_QRY         ;beep?
 +003509 fe/e309: 68           ??MXdI?? e .....                 pla
 +00350a fe/e30a: aa           ??MXdI?? e .....                 tax
 +00350b fe/e30b: 20 92 e1     ??MXdI?? e ....> LFEE30B         jsr     OSBYTE_91
@@ -9662,8 +9642,8 @@
 +00358e fe/e38e: 7a           ??MXd??C e ....> LFEE38E         ply
 +00358f fe/e38f: 90 03        ??MXd??C e ..!.> LFEE38F         bcc     LFEE394
 +003591 fe/e391: 28           ??MXd??C e .....                 plp
-+003592 fe/e392: 38           ?vMXdI?? e .....                 sec
-+003593 fe/e393: 60           ?vMXdI?C e ...#.                 rts
++003592 fe/e392: 38           ??MXd??? e .....                 sec
++003593 fe/e393: 60           ??MXd??C e ...#.                 rts
 
 +003594 fe/e394: 28           ??MXd??? e @T... LFEE394         plp
 +003595 fe/e395: 18           ??MXd??? e .....                 clc
@@ -9769,14 +9749,11 @@
 +00363e fe/e43e: fa           ??MXd??? e .....                 plx
 +00363f fe/e43f: 60           ??MXd??? e ...#.                 rts
 
-+003640 fe/e440: 48                      .....                 .dd1    $48
-+003641 fe/e441: a9                      .....                 .dd1    $a9
-+003642 fe/e442: 01                      .....                 .dd1    $01
-+003643 fe/e443: 8d                      .....                 .dd1    $8d
-+003644 fe/e444: 68                      .....                 .dd1    $68
-+003645 fe/e445: a5                      .....                 .dd1    $a5
-+003646 fe/e446: 68                      .....                 .dd1    $68
-+003647 fe/e447: 60                      .....                 .dd1    $60
++003640 fe/e440: 48           ??MXd??? e @T...                 pha
++003641 fe/e441: a9 01        ??MXd??? e .....                 lda     #$01
++003643 fe/e443: 8d 68 a5     n?MXd?z? e .....                 sta     SYSVAR_SOFTKEY_STRLEN
++003646 fe/e446: 68           n?MXd?z? e .....                 pla
++003647 fe/e447: 60           ??MXd??? e ...#.                 rts
 
 +003648 fe/e448: 38           ??MXdI?C e ....> LFEE448         sec
 +003649 fe/e449: 29 0f        ??MXdI?C e .....                 and     #$0f
@@ -9972,7 +9949,7 @@
 +00376f fe/e56f: 9d 00 ab     ??MXdI?? e ....> FnKey_StoreX    sta     SYSFNK,x
 +003772 fe/e572: 60           ??MXdI?? e ...#.                 rts
 
-+003773 fe/e573: 08           n?MXd??? e ....> LFEE573         php
++003773 fe/e573: 08           n?MXd??? e ....> callEventIfEnabled php
 +003774 fe/e574: 8b           n?MXd??? e .....                 phb
 +003775 fe/e575: f4 00 00     n?MXd??? e .....                 pea     $0000
 +003778 fe/e578: ab           n?MXd??? e .....                 plb
@@ -9980,19 +9957,19 @@
 +003779 fe/e579: ab           ??MXd??? e .....                 plb
 +00377a fe/e57a: 78           ??MXd??? e .....                 sei
 +00377b fe/e57b: 48           ??MXdI?? e .....                 pha
-+00377c fe/e57c: 85 f6        ??MXdI?? e .....                 sta     $f6
-+00377e fe/e57e: b9 b5 a5     ??MXdI?? e .....                 lda     SYSVARS+181,y
-+003781 fe/e581: f0 0b        ??MXdI?? e .....                 beq     LFEE58E
++00377c fe/e57c: 85 f6        ??MXdI?? e .....                 sta     <DPSYS_OSB_IND
++00377e fe/e57e: b9 b5 a5     ??MXdI?? e .....                 lda     SYSVAR_B5_EVENT_ENABLE_TABLE,y
++003781 fe/e581: f0 0b        ??MXdI?? e .....                 beq     @noten
 +003783 fe/e583: 98           ??MXdIz? e .....                 tya
-+003784 fe/e584: a4 f6        ??MXdI?? e .....                 ldy     $f6
-+003786 fe/e586: 20 a9 ea     ??MXdI?? e .....                 jsr     LFEEAA9
++003784 fe/e584: a4 f6        ??MXdI?? e .....                 ldy     <DPSYS_OSB_IND
++003786 fe/e586: 20 a9 ea     ??MXdI?? e .....                 jsr     callEVENTV
 +003789 fe/e589: 68           ??MXdI?? e .....                 pla
 +00378a fe/e58a: ab           ??MXdI?? e .....                 plb
 +00378b fe/e58b: 28           ??MXdI?? e .....                 plp
 +00378c fe/e58c: 18           n?MXd?z? e .....                 clc
 +00378d fe/e58d: 60           n?MXd?zc e ...#.                 rts
 
-+00378e fe/e58e: 68           ??MXdIZ? e ....> LFEE58E         pla
++00378e fe/e58e: 68           ??MXdIZ? e ....> @noten          pla
 +00378f fe/e58f: ab           ??MXdI?? e .....                 plb
 +003790 fe/e590: 28           ??MXdI?? e .....                 plp
 +003791 fe/e591: 38           n?MXd?z? e .....                 sec
@@ -10139,64 +10116,45 @@
 +00386f fe/e66f: 08           ??MXd??? e .....                 php
 +003870 fe/e670: 40           ??MXd??? e ...#.                 rti
 
-+003871 fe/e671: ee                      .....                 .dd1    $ee
-+003872 fe/e672: 49                      .....                 .dd1    $49
-+003873 fe/e673: a5                      .....                 .dd1    $a5
-+003874 fe/e674: 60                      .....                 .dd1    $60
++003871 fe/e671: ee 49 a5     ??MXd??? e @T...                 inc     SYSVARS+73
++003874 fe/e674: 60           ??MXd??? e ...#.                 rts
 
                                                ********************************************************************************
                                                * OSBYTE 7E - Acknowledge ESCape condition                                     *
                                                ********************************************************************************
 +003875 fe/e675: a2 00        ??MXd??? e @T... OSBYTE_7E       ldx     #$00
-+003877 fe/e677: af                      .T...                 .dd1    $af
-+003878 fe/e678: 13                      .T...                 .dd1    $13
-+003879 fe/e679: ff                      .T...                 .dd1    $ff
-+00387a fe/e67a: 00                      .T...                 .dd1    $00
-+00387b fe/e67b: 29                      .T...                 .dd1    $29
-+00387c fe/e67c: 03                      .T...                 .dd1    $03
-+00387d fe/e67d: f0                      .T...                 .dd1    $f0
-+00387e fe/e67e: 12                      .T...                 .dd1    $12
-+00387f fe/e67f: ad                      .T...                 .dd1    $ad
-+003880 fe/e680: 76                      .T...                 .dd1    $76
-+003881 fe/e681: a5                      .T...                 .dd1    $a5
-+003882 fe/e682: d0                      .T...                 .dd1    $d0
-+003883 fe/e683: 0b                      .T...                 .dd1    $0b
-+003884 fe/e684: 58                      .T...                 .dd1    $58
-+003885 fe/e685: a9                      .T...                 .dd1    $a9
-+003886 fe/e686: 00                      .T...                 .dd1    $00
-+003887 fe/e687: 8b                      .T...                 .dd1    $8b
-+003888 fe/e688: 20                      .T...                 .dd1    $20
-+003889 fe/e689: 14                      .T...                 .dd1    $14
-+00388a fe/e68a: ee                      .T...                 .dd1    $ee
-+00388b fe/e68b: ab                      .T...                 .dd1    $ab
-+00388c fe/e68c: 20                      .T...                 .dd1    $20
-+00388d fe/e68d: 03                      .T...                 .dd1    $03
-+00388e fe/e68e: df                      .T...                 .dd1    $df
-+00388f fe/e68f: a2                      .T...                 .dd1    $a2
-+003890 fe/e690: ff                      .T...                 .dd1    $ff
++003877 fe/e677: af 13 ff 00  n?MXd?Z? e .....                 ldal    f:SYS_ESCAPE_FLAG_QRY
++00387b fe/e67b: 29 03        ??MXd??? e .....                 and     #$03
++00387d fe/e67d: f0 12        n?MXd??? e .....                 beq     OSBYTE_7C
++00387f fe/e67f: ad 76 a5     n?MXd?z? e .....                 lda     SYSVARS+118
++003882 fe/e682: d0 0b        ??MXd??? e .....                 bne     LFEE68F
++003884 fe/e684: 58           ??MXd?Z? e .....                 cli
++003885 fe/e685: a9 00        ??MXdiZ? e .....                 lda     #$00
++003887 fe/e687: 8b           n?MXdiZ? e .....                 phb
++003888 fe/e688: 20 14 ee     n?MXdiZ? e .....                 jsr     OSBYTE_77
++00388b fe/e68b: ab           ??MXdi?? e .....                 plb
++00388c fe/e68c: 20 03 df     ??MXdi?? e .....                 jsr     FlushAllBuffers
++00388f fe/e68f: a2 ff        ??MXd??? e ....> LFEE68F         ldx     #$ff
                                                ********************************************************************************
                                                * OSBYTE 7C - Clear ESCape, inform tube                                        *
                                                ********************************************************************************
-+003891 fe/e691: c2 30        n?MXd?Z? e .T... OSBYTE_7C       rep     #$30
-+003893 fe/e693: af 13 ff 00             .T...                 .dd4    SYS_ESCAPE_FLAG_QRY+$fe149c
-+003897 fe/e697: 29                      .T...                 .dd1    $29
-+003898 fe/e698: fc                      .T...                 .dd1    $fc
-+003899 fe/e699: ff                      .T...                 .dd1    $ff
-+00389a fe/e69a: 8f                      .T...                 .dd1    $8f
-+00389b fe/e69b: 13                      .T...                 .dd1    $13
-+00389c fe/e69c: ff                      .T...                 .dd1    $ff
-+00389d fe/e69d: 00                      .T...                 .dd1    $00
-+00389e fe/e69e: e2                      .T...                 .dd1    $e2
-+00389f fe/e69f: 30                      .T...                 .dd1    $30
-+0038a0 fe/e6a0: 60                      .T...                 .dd1    $60
++003891 fe/e691: c2 30        ??MXd??? e ....> OSBYTE_7C       rep     #$30
+                                                               .rwid   longm,longx
++003893 fe/e693: af 13 ff 00  ??mxd??? e .....                 ldal    f:SYS_ESCAPE_FLAG_QRY
++003897 fe/e697: 29 fc ff     ??mxd??? e .....                 and     #$fffc
++00389a fe/e69a: 8f 13 ff 00  n?mxd??? e .....                 stal    f:SYS_ESCAPE_FLAG_QRY
++00389e fe/e69e: e2 30        n?mxd??? e .....                 sep     #$30
+                                                               .rwid   shortm,shortx
++0038a0 fe/e6a0: 60           n?MXd??? e ...#.                 rts
+
                                                ********************************************************************************
                                                * OSBYTE 7D - Set ESCape                                                       *
                                                ********************************************************************************
-+0038a1 fe/e6a1: a9 00        ????d??? e ....> OSBYTE_7D       lda     #$00
-+0038a3 fe/e6a3: eb           n???d?Z? e .....                 xba
-+0038a4 fe/e6a4: a9 03        ????d??? e .....                 lda     #$03
-+0038a6 fe/e6a6: 02 20        n???d?z? e .....                 cop     COP_20_OPSEV
-+0038a8 fe/e6a8: 60           n???d?z? e ...#.                 rts
++0038a1 fe/e6a1: a9 00        ??MXd??C e ....> OSBYTE_7D       lda     #$00
++0038a3 fe/e6a3: eb           n?MXd?ZC e .....                 xba
++0038a4 fe/e6a4: a9 03        ??MXd??C e .....                 lda     #$03
++0038a6 fe/e6a6: 02 20        n?MXd?zC e .....                 cop     COP_20_OPSEV
++0038a8 fe/e6a8: 60           n?MXd?zC e ...#.                 rts
 
                                                ********************************************************************************
                                                * OSBYTE 14 - Explode                                                          *
@@ -10413,12 +10371,15 @@
 +003973 fe/e773: a2 f9        ??MXd?Z? e ....> LFEE773         ldx     #$f9
 +003975 fe/e775: 80 d4        N?MXd?z? e ...#.                 bra     LFEE74B
 
-+003977 fe/e777: 8a           N?MXd??? e ....> LFEE777         txa
-+003978 fe/e778: 49 ff        ??MXd??? e .....                 eor     #$ff
-+00397a fe/e77a: aa           ??MXd??? e .....                 tax
-+00397b fe/e77b: e0 02        ??MXd??? e .....                 cpx     #$02
-+00397d fe/e77d: b8           ??MXd??? e .....                 clv
-+00397e fe/e77e: 50 02        ?vMXd??? e ...#.                 bvc     LFEE782
++003977 fe/e777: 8a                      .....                 .dd1    $8a
++003978 fe/e778: 49                      .....                 .dd1    $49
++003979 fe/e779: ff                      .....                 .dd1    $ff
++00397a fe/e77a: aa                      .....                 .dd1    $aa
++00397b fe/e77b: e0                      .....                 .dd1    $e0
++00397c fe/e77c: 02                      .....                 .dd1    $02
++00397d fe/e77d: b8                      .....                 .dd1    $b8
++00397e fe/e77e: 50                      .....                 .dd1    $50
++00397f fe/e77f: 02                      .....                 .dd1    $02
 
                                                ; calls the CNPV vector
                                                ; 
@@ -10430,40 +10391,50 @@
                                                ;   JMP (CNPV)
                                                ; +
 +003980 fe/e780: e2 40        ??MXdI?? e ....> callCNPV        sep     #$40
-+003982 fe/e782: eb           ??MXd??? e ....> LFEE782         xba
-+003983 fe/e783: 4b           ??MXd??? e .....                 phk
-+003984 fe/e784: ad 2f a5     ??MXd??? e .....                 lda     SYSVARS_CNPV+1
-+003987 fe/e787: 48           ??MXd??? e .....                 pha
-+003988 fe/e788: ad 2e a5     ??MXd??? e .....                 lda     SYSVARS_CNPV
-+00398b fe/e78b: 48           ??MXd??? e .....                 pha
-+00398c fe/e78c: eb           ??MXd??? e .....                 xba
-+00398d fe/e78d: 08           ??MXd??? e .....                 php
-+00398e fe/e78e: 40           ??MXd??? e ...#.                 rti
++003982 fe/e782: eb           ?VMXdI?? e .....                 xba
++003983 fe/e783: 4b           ?VMXdI?? e .....                 phk
++003984 fe/e784: ad 2f a5     ?VMXdI?? e .....                 lda     SYSVARS_CNPV+1
++003987 fe/e787: 48           ?VMXdI?? e .....                 pha
++003988 fe/e788: ad 2e a5     ?VMXdI?? e .....                 lda     SYSVARS_CNPV
++00398b fe/e78b: 48           ?VMXdI?? e .....                 pha
++00398c fe/e78c: eb           ?VMXdI?? e .....                 xba
++00398d fe/e78d: 08           ?VMXdI?? e .....                 php
++00398e fe/e78e: 40           ?VMXdI?? e ...#.                 rti
 
-                                               ; TODO dead code ?
-+00398f fe/e78f: 30 e6        ??MXd??? e @T...                 bmi     LFEE777
-+003991 fe/e791: f0 0d        n?MXd??? e .....                 beq     LFEE7A0
-+003993 fe/e793: 20 b6 e7     n?MXd?z? e .....                 jsr     OSBYTE_DOESNOTHINGBADLY
-+003996 fe/e796: f0 07        ??MXd??? e .....                 beq     LFEE79F
-+003998 fe/e798: bc fb a5     ??MXd?z? e .....                 ldy     $a5fb,x
-+00399b fe/e79b: bd f7 a5     ??MXd??? e .....                 lda     $a5f7,x
-+00399e fe/e79e: aa           ??MXd??? e .....                 tax
-+00399f fe/e79f: 60           ??MXd??? e ...#> LFEE79F         rts
++00398f fe/e78f: 30                      .....                 .dd1    $30
++003990 fe/e790: e6                      .....                 .dd1    $e6
++003991 fe/e791: f0                      .....                 .dd1    $f0
++003992 fe/e792: 0d                      .....                 .dd1    $0d
++003993 fe/e793: 20                      .....                 .dd1    $20
++003994 fe/e794: b6                      .....                 .dd1    $b6
++003995 fe/e795: e7                      .....                 .dd1    $e7
++003996 fe/e796: f0                      .....                 .dd1    $f0
++003997 fe/e797: 07                      .....                 .dd1    $07
++003998 fe/e798: bc fb a5 bd+            .....                 .str    ↑“<{%=w%*”
++00399f fe/e79f: 60                      .....                 .dd1    $60
++0039a0 fe/e7a0: 20                      .....                 .dd1    $20
++0039a1 fe/e7a1: b6                      .....                 .dd1    $b6
++0039a2 fe/e7a2: e7                      .....                 .dd1    $e7
++0039a3 fe/e7a3: f0                      .....                 .dd1    $f0
++0039a4 fe/e7a4: 02                      .....                 .dd1    $02
++0039a5 fe/e7a5: a2                      .....                 .dd1    $a2
++0039a6 fe/e7a6: 00                      .....                 .dd1    $00
++0039a7 fe/e7a7: ac f7 a5 a9             .....                 .str    ↑“,w%)”
++0039ab fe/e7ab: 00                      .....                 .dd1    $00
++0039ac fe/e7ac: 8d                      .....                 .dd1    $8d
++0039ad fe/e7ad: f7                      .....                 .dd1    $f7
++0039ae fe/e7ae: a5                      .....                 .dd1    $a5
++0039af fe/e7af: 60                      .....                 .dd1    $60
++0039b0 fe/e7b0: 8a                      .....                 .dd1    $8a
++0039b1 fe/e7b1: 0d                      .....                 .dd1    $0d
++0039b2 fe/e7b2: 41                      .....                 .dd1    $41
++0039b3 fe/e7b3: a5                      .....                 .dd1    $a5
++0039b4 fe/e7b4: f0                      .....                 .dd1    $f0
++0039b5 fe/e7b5: b2                      .....                 .dd1    $b2
 
-+0039a0 fe/e7a0: 20 b6 e7     n?MXd?Z? e ....> LFEE7A0         jsr     OSBYTE_DOESNOTHINGBADLY
-+0039a3 fe/e7a3: f0 02        ??MXd??? e .....                 beq     LFEE7A7
-+0039a5 fe/e7a5: a2 00        ??MXd?z? e .....                 ldx     #$00
-+0039a7 fe/e7a7: ac f7 a5     ??MXd?Z? e ....> LFEE7A7         ldy     $a5f7
-+0039aa fe/e7aa: a9 00        ??MXd??? e .....                 lda     #$00
-+0039ac fe/e7ac: 8d f7 a5     n?MXd?Z? e .....                 sta     $a5f7
-+0039af fe/e7af: 60           n?MXd?Z? e ...#.                 rts
-
-+0039b0 fe/e7b0: 8a           ??MXd??? e @T...                 txa
-+0039b1 fe/e7b1: 0d 41 a5     ??MXd??? e .....                 ora     SYSVAR_41_input_stream
-+0039b4 fe/e7b4: f0 b2        ??MXd??? e .....                 beq     LFEE768
                                                ; This looks to be some sort of vestigial attempt at implementing r/w variables
                                                ; in OSBYTE but just does an RTS
-+0039b6 fe/e7b6: a2 07        ????d??? e .T..> OSBYTE_DOESNOTHINGBADLY ldx #$07
++0039b6 fe/e7b6: a2 07        ????d?z? e .T..> OSBYTE_DOESNOTHINGBADLY ldx #$07
 +0039b8 fe/e7b8: 20 47 ee     n???d?z? e .....                 jsr     donothingRTS
 +0039bb fe/e7bb: a6 ea        ????d??? e .....                 ldx     <DPSYS_OSB_X
 +0039bd fe/e7bd: a4 eb        ????d??? e .....                 ldy     <DPSYS_OSB_Y
@@ -10641,6 +10612,7 @@
 
 +003ae0 fe/e8e0: f4 00 00     ??MXdIZ? e .T..> Serv8_QRY       pea     $0000
 +003ae3 fe/e8e3: ab           ??MXdIZ? e .....                 plb
+                                                               .dbank  $00
 +003ae4 fe/e8e4: ab           ??MXdI?? e .....                 plb
 +003ae5 fe/e8e5: ad 62 a5     ??MXdI?? e .....                 lda     SYSVARS+98
 +003ae8 fe/e8e8: d0 f5        ??MXdI?? e .....                 bne     LFEE8DF
@@ -10714,7 +10686,7 @@
 +003b5f fe/e95f: a2 0f        ??MXd??? e @T... TFEE95F         ldx     #$0f
 +003b61 fe/e961: d0 03        n?MXd?z? e ...#.                 bne     LFEE966
 
-+003b63 fe/e963: ae 83 a5     ??MXd??? e @T... TFEE963         ldx     SYSVARS+131
++003b63 fe/e963: ae 83 a5     ??MXd??? e @T... TFEE963         ldx     SYSVARS_83_TIMER_SWITCH
 +003b66 fe/e966: a0 04        ??MXd??? e ....> LFEE966         ldy     #$04
 +003b68 fe/e968: bd 8c a5     n?MXd??? e ....> LFEE968         lda     SYSVARS+140,x
 +003b6b fe/e96b: 97 ea        ??MXd??? e .....                 sta     [$ea],y
@@ -10726,7 +10698,7 @@
 +003b72 fe/e972: a9 0f        ??MXd??? e @T... TFEE972         lda     #$0f
 +003b74 fe/e974: d0 06        n?MXd?z? e ...#.                 bne     LFEE97C
 
-+003b76 fe/e976: ad 83 a5     ??MXd??? e @T... TFEE976         lda     SYSVARS+131
++003b76 fe/e976: ad 83 a5     ??MXd??? e @T... TFEE976         lda     SYSVARS_83_TIMER_SWITCH
 +003b79 fe/e979: 49 0f        ??MXd??? e .....                 eor     #$0f
 +003b7b fe/e97b: 18           ??MXd??? e .....                 clc
 +003b7c fe/e97c: 48           ??MXd??? e ....> LFEE97C         pha
@@ -10739,7 +10711,7 @@
 +003b87 fe/e987: 10 f7        ??MXd??? e .....                 bpl     LFEE980
 +003b89 fe/e989: 68           N?MXd??? e .....                 pla
 +003b8a fe/e98a: b0 e5        ??MXd??? e .....                 bcs     LFEE971
-+003b8c fe/e98c: 8d 83 a5     ??MXd??c e .....                 sta     SYSVARS+131
++003b8c fe/e98c: 8d 83 a5     ??MXd??c e .....                 sta     SYSVARS_83_TIMER_SWITCH
 +003b8f fe/e98f: 60           ??MXd??c e ...#.                 rts
 
                                                ********************************************************************************
@@ -10827,40 +10799,60 @@
 +003c0f fe/ea0f: aa           ??MXdi?? e ....> @ESC_ret        tax
 +003c10 fe/ea10: 60           ??MXdi?? e ...#.                 rts
 
-                                               ; TODO dead code?
-+003c11 fe/ea11: 58           ??MXd??? e @T..> LFEEA11         cli
-+003c12 fe/ea12: 78           ??MXdi?? e .....                 sei
-+003c13 fe/ea13: da           ??MXdI?? e .....                 phx
-+003c14 fe/ea14: a9 00        ??MXdI?? e .....                 lda     #$00
-+003c16 fe/ea16: eb           n?MXdIZ? e .....                 xba
-+003c17 fe/ea17: a9 03        ??MXdI?? e .....                 lda     #$03
-+003c19 fe/ea19: a2 02        n?MXdIz? e .....                 ldx     #$02
-+003c1b fe/ea1b: 22 b0 ff 00  n?MXdIz? e .....                 jsl     __EV
-+003c1f fe/ea1f: fa           ??MXdI?? e .....                 plx
-+003c20 fe/ea20: 90 3e        ??MXdI?? e .....                 bcc     LFEEA60
-+003c22 fe/ea22: 2c c6 a5     ??MXdI?C e .....                 bit     SYSVARS_ELK_BUFFER_BUSY+3
-+003c25 fe/ea25: 10 ea        ??MXdI?C e .....                 bpl     LFEEA11
-+003c27 fe/ea27: 20 16 df     N?MXdI?C e .....                 jsr     LFEDF16
-+003c2a fe/ea2a: a0 00        ??MXdI?? e .....                 ldy     #$00
-+003c2c fe/ea2c: 84 eb        n?MXdIZ? e .....                 sty     $eb
-+003c2e fe/ea2e: 86 ea        n?MXdIZ? e .....                 stx     $ea
-+003c30 fe/ea30: 20 b6 e7     n?MXdIZ? e .....                 jsr     OSBYTE_DOESNOTHINGBADLY
-+003c33 fe/ea33: a9 05        ??MXdI?? e .....                 lda     #$05
-+003c35 fe/ea35: 09 f0        n?MXdIz? e .....                 ora     #$f0
-+003c37 fe/ea37: 80 0d        N?MXdIz? e ...#.                 bra     LFEEA46
-
-                                               ; TODO dead code?
-+003c39 fe/ea39: d0 07        ??MXd??? e @T...                 bne     LFEEA42
-+003c3b fe/ea3b: a2 32        ??MXd?Z? e .....                 ldx     #$32
-+003c3d fe/ea3d: 48           n?MXd?z? e .....                 pha
-+003c3e fe/ea3e: a9 03        n?MXd?z? e .....                 lda     #$03
-+003c40 fe/ea40: aa           n?MXd?z? e .....                 tax
-+003c41 fe/ea41: 68           ??MXd??? e .....                 pla
-+003c42 fe/ea42: 60           ??MXd??? e ...#> LFEEA42         rts
++003c11 fe/ea11: 58                      .....                 .dd1    $58
++003c12 fe/ea12: 78                      .....                 .dd1    $78
++003c13 fe/ea13: da                      .....                 .dd1    $da
++003c14 fe/ea14: a9                      .....                 .dd1    $a9
++003c15 fe/ea15: 00                      .....                 .dd1    $00
++003c16 fe/ea16: eb                      .....                 .dd1    $eb
++003c17 fe/ea17: a9                      .....                 .dd1    $a9
++003c18 fe/ea18: 03                      .....                 .dd1    $03
++003c19 fe/ea19: a2                      .....                 .dd1    $a2
++003c1a fe/ea1a: 02                      .....                 .dd1    $02
++003c1b fe/ea1b: 22                      .....                 .dd1    $22
++003c1c fe/ea1c: b0                      .....                 .dd1    $b0
++003c1d fe/ea1d: ff                      .....                 .dd1    $ff
++003c1e fe/ea1e: 00                      .....                 .dd1    $00
++003c1f fe/ea1f: fa                      .....                 .dd1    $fa
++003c20 fe/ea20: 90                      .....                 .dd1    $90
++003c21 fe/ea21: 3e                      .....                 .dd1    $3e
++003c22 fe/ea22: 2c                      .....                 .dd1    $2c
++003c23 fe/ea23: c6                      .....                 .dd1    $c6
++003c24 fe/ea24: a5                      .....                 .dd1    $a5
++003c25 fe/ea25: 10                      .....                 .dd1    $10
++003c26 fe/ea26: ea                      .....                 .dd1    $ea
++003c27 fe/ea27: 20                      .....                 .dd1    $20
++003c28 fe/ea28: 16                      .....                 .dd1    $16
++003c29 fe/ea29: df                      .....                 .dd1    $df
++003c2a fe/ea2a: a0                      .....                 .dd1    $a0
++003c2b fe/ea2b: 00                      .....                 .dd1    $00
++003c2c fe/ea2c: 84                      .....                 .dd1    $84
++003c2d fe/ea2d: eb                      .....                 .dd1    $eb
++003c2e fe/ea2e: 86                      .....                 .dd1    $86
++003c2f fe/ea2f: ea                      .....                 .dd1    $ea
++003c30 fe/ea30: 20                      .....                 .dd1    $20
++003c31 fe/ea31: b6                      .....                 .dd1    $b6
++003c32 fe/ea32: e7                      .....                 .dd1    $e7
++003c33 fe/ea33: a9                      .....                 .dd1    $a9
++003c34 fe/ea34: 05                      .....                 .dd1    $05
++003c35 fe/ea35: 09                      .....                 .dd1    $09
++003c36 fe/ea36: f0                      .....                 .dd1    $f0
++003c37 fe/ea37: 80                      .....                 .dd1    $80
++003c38 fe/ea38: 0d                      .....                 .dd1    $0d
++003c39 fe/ea39: d0                      .....                 .dd1    $d0
++003c3a fe/ea3a: 07                      .....                 .dd1    $07
++003c3b fe/ea3b: a2                      .....                 .dd1    $a2
++003c3c fe/ea3c: 32                      .....                 .dd1    $32
++003c3d fe/ea3d: 48                      .....                 .dd1    $48
++003c3e fe/ea3e: a9                      .....                 .dd1    $a9
++003c3f fe/ea3f: 03                      .....                 .dd1    $03
++003c40 fe/ea40: aa                      .....                 .dd1    $aa
++003c41 fe/ea41: 68                      .....                 .dd1    $68
++003c42 fe/ea42: 60                      .....                 .dd1    $60
 
 +003c43 fe/ea43: 18           ??MXd??? e @T... OSBYTE_4        clc
 +003c44 fe/ea44: 69 e9        ??MXd??c e .....                 adc     #$e9              ;TODO: make this relative to SYSVARS/VDUVARS
-+003c46 fe/ea46: 86 ea        ??MXd??? e ....> LFEEA46         stx     <DPSYS_OSB_X      ;TODO: suspect this is superfluous?
++003c46 fe/ea46: 86 ea        ??MXd??? e .....                 stx     <DPSYS_OSB_X      ;TODO: suspect this is superfluous?
 +003c48 fe/ea48: c9 dd        ??MXd??? e .T... OSBYTE_A6_FF    cmp     #$dd
 +003c4a fe/ea4a: 90 04        ??MXd??? e .....                 bcc     @sk1
 +003c4c fe/ea4c: c9 e5        ??MXd??C e .....                 cmp     #$e5
@@ -10873,16 +10865,18 @@
 +003c59 fe/ea59: 99 90 a4     ??MXd??? e .....                 sta     SYSVARS-112,y
 +003c5c fe/ea5c: b9 91 a4     ??MXd??? e .....                 lda     SYSVARS-111,y
 +003c5f fe/ea5f: a8           ??MXd??? e .....                 tay
-+003c60 fe/ea60: 60           ??MXd??? e ...#> LFEEA60         rts
++003c60 fe/ea60: 60           ??MXd??? e ...#.                 rts
 
 +003c61 fe/ea61: 20 65 e4     ??MXd??c e ....> @skDDtoE4       jsr     OSBYTE_DDtoE4     ;;TODO: replace with jump
 +003c64 fe/ea64: 60           ??MXd??? e ...#.                 rts
 
-                                               ; TODO dead?
-+003c65 fe/ea65: 49 8c        ??MXd??? e @T...                 eor     #$8c
-+003c67 fe/ea67: 0a           ??MXd??? e .....                 asl     A
-+003c68 fe/ea68: 8d 47 a5     ??MXd??? e .....                 sta     SYSVARS+71
-+003c6b fe/ea6b: 60           ??MXd??? e ...#.                 rts
++003c65 fe/ea65: 49                      .....                 .dd1    $49
++003c66 fe/ea66: 8c                      .....                 .dd1    $8c
++003c67 fe/ea67: 0a                      .....                 .dd1    $0a
++003c68 fe/ea68: 8d                      .....                 .dd1    $8d
++003c69 fe/ea69: 47                      .....                 .dd1    $47
++003c6a fe/ea6a: a5                      .....                 .dd1    $a5
++003c6b fe/ea6b: 60                      .....                 .dd1    $60
 
                                                ********************************************************************************
                                                * OSBYTE 13 (19) - Wait for Vsync                                              *
@@ -10939,11 +10933,11 @@
 +003ca4 fe/eaa4: 22 ac ff 00  n?MXd?z? e .....                 jsl     __KB
 +003ca8 fe/eaa8: 60           ??MXd??? e ...#.                 rts
 
-+003ca9 fe/eaa9: eb           ??MXdI?? e ....> LFEEAA9         xba
++003ca9 fe/eaa9: eb           ??MXdI?? e ....> callEVENTV      xba
 +003caa fe/eaaa: 4b           ??MXdI?? e .....                 phk
-+003cab fe/eaab: ad 21 a5     ??MXdI?? e .....                 lda     SYSVARS+33
++003cab fe/eaab: ad 21 a5     ??MXdI?? e .....                 lda     SYSVAR_20_EVENTV+1
 +003cae fe/eaae: 48           ??MXdI?? e .....                 pha
-+003caf fe/eaaf: ad 20 a5     ??MXdI?? e .....                 lda     SYSVARS+32
++003caf fe/eaaf: ad 20 a5     ??MXdI?? e .....                 lda     SYSVAR_20_EVENTV
 +003cb2 fe/eab2: 48           ??MXdI?? e .....                 pha
 +003cb3 fe/eab3: eb           ??MXdI?? e .....                 xba
 +003cb4 fe/eab4: 08           ??MXdI?? e .....                 php
@@ -10968,19 +10962,18 @@
 +003cd7 fe/ead7: 68           ??MXdI?? e .....                 pla
 +003cd8 fe/ead8: 60           ??MXdI?? e ...#.                 rts
 
-                                               ; TODO dead?
-+003cd9 fe/ead9: ad 87 a5     ??MXd??? e @T...                 lda     SYSVARS+135
-+003cdc fe/eadc: 49 4c        ??MXd??? e .....                 eor     #$4c
-+003cde fe/eade: d0 04        ??MXd??? e .....                 bne     LFEEAE4
-+003ce0 fe/eae0: 5c 87 a5 00  ??MXd?Z? e ...#.                 jml     SYSVARS+135
-
-+003ce4 fe/eae4: 60           ??MXd?z? e ...#> LFEEAE4         rts
-
-+003ce5 fe/eae5: 60           ??MXd??? e @T.#.                 rts
-
-                                               ; TODO: dead?
-+003ce6 fe/eae6: 2f 21 42 4f+            .....                 .str    “/!BO.”
-+003ceb fe/eaeb: 0d                      .....                 .dd1    $0d
++003cd9 fe/ead9: ad                      .....                 .dd1    $ad
++003cda fe/eada: 87                      .....                 .dd1    $87
++003cdb fe/eadb: a5                      .....                 .dd1    $a5
++003cdc fe/eadc: 49                      .....                 .dd1    $49
++003cdd fe/eadd: 4c                      .....                 .dd1    $4c
++003cde fe/eade: d0                      .....                 .dd1    $d0
++003cdf fe/eadf: 04                      .....                 .dd1    $04
++003ce0 fe/eae0: 5c                      .....                 .dd1    $5c
++003ce1 fe/eae1: 87                      .....                 .dd1    $87
++003ce2 fe/eae2: a5                      .....                 .dd1    $a5
++003ce3 fe/eae3: 00                      .....                 .dd1    $00
++003ce4 fe/eae4: 60 60 2f 21+            .....                 .str    “``/!BO.”,$0d
 
                                                ; QRY this appears to do a jump indirect to (f6) in DP setting flags Z if X==0
                                                ; and Cy=1
@@ -11054,7 +11047,7 @@
 +003d47 fe/eb47: 28           ??MXdI?? e .....                 plp
 +003d48 fe/eb48: 60           ??MXd??? e ...#.                 rts
 
-+003d49 fe/eb49: 8b           ??MXdi?? e .T..> LFEEB49         phb
++003d49 fe/eb49: 8b           ??MXdi?? e .T..> doSoundInterrupt phb
 +003d4a fe/eb4a: f4 00 00     ??MXdi?? e .....                 pea     $0000
                                                                .dbank  $00
 +003d4d fe/eb4d: ab           ??MXdi?? e .....                 plb
@@ -11326,13 +11319,7 @@
 +003f55 fe/ed55: d0 8e        ??MXdi?? e .....                 bne     LFEECE5
 +003f57 fe/ed57: 00 f0        ??MXdiZ? e ...#.                 brk     $f0
 
-+003f59 fe/ed59: e3                      ..... LFEED59         .dd1    $e3
-+003f5a fe/ed5a: d6                      .....                 .dd1    $d6
-+003f5b fe/ed5b: cb                      .....                 .dd1    $cb
-+003f5c fe/ed5c: bf                      .....                 .dd1    $bf
-+003f5d fe/ed5d: b5                      .....                 .dd1    $b5
-+003f5e fe/ed5e: aa                      .....                 .dd1    $aa
-+003f5f fe/ed5f: a0                      .....                 .dd1    $a0
++003f59 fe/ed59: e3 d6 cb bf+            ..... LFEED59         .str    ↑“cVK?5* ”
 +003f60 fe/ed60: 97                      .....                 .dd1    $97
 +003f61 fe/ed61: 8f                      .....                 .dd1    $8f
 +003f62 fe/ed62: 87                      .....                 .dd1    $87
@@ -11351,42 +11338,7 @@
 +003f6f fe/ed6f: 60                      .....                 .dd1    $60
 +003f70 fe/ed70: 02                      .....                 .dd1    $02
 +003f71 fe/ed71: 0f                      .....                 .dd1    $0f
-+003f72 fe/ed72: 75                      .....                 .dd1    $75
-+003f73 fe/ed73: 73                      .....                 .dd1    $73
-+003f74 fe/ed74: 65                      .....                 .dd1    $65
-+003f75 fe/ed75: 20                      .....                 .dd1    $20
-+003f76 fe/ed76: 43                      .....                 .dd1    $43
-+003f77 fe/ed77: 4f                      .....                 .dd1    $4f
-+003f78 fe/ed78: 50                      .....                 .dd1    $50
-+003f79 fe/ed79: 20                      .....                 .dd1    $20
-+003f7a fe/ed7a: 6e                      .....                 .dd1    $6e
-+003f7b fe/ed7b: 6f                      .....                 .dd1    $6f
-+003f7c fe/ed7c: 74                      .....                 .dd1    $74
-+003f7d fe/ed7d: 20                      .....                 .dd1    $20
-+003f7e fe/ed7e: 63                      .....                 .dd1    $63
-+003f7f fe/ed7f: 61                      .....                 .dd1    $61
-+003f80 fe/ed80: 6c                      .....                 .dd1    $6c
-+003f81 fe/ed81: 6c                      .....                 .dd1    $6c
-+003f82 fe/ed82: 20                      .....                 .dd1    $20
-+003f83 fe/ed83: 74                      .....                 .dd1    $74
-+003f84 fe/ed84: 6f                      .....                 .dd1    $6f
-+003f85 fe/ed85: 20                      .....                 .dd1    $20
-+003f86 fe/ed86: 61                      .....                 .dd1    $61
-+003f87 fe/ed87: 62                      .....                 .dd1    $62
-+003f88 fe/ed88: 73                      .....                 .dd1    $73
-+003f89 fe/ed89: 6f                      .....                 .dd1    $6f
-+003f8a fe/ed8a: 6c                      .....                 .dd1    $6c
-+003f8b fe/ed8b: 75                      .....                 .dd1    $75
-+003f8c fe/ed8c: 74                      .....                 .dd1    $74
-+003f8d fe/ed8d: 65                      .....                 .dd1    $65
-+003f8e fe/ed8e: 20                      .....                 .dd1    $20
-+003f8f fe/ed8f: 61                      .....                 .dd1    $61
-+003f90 fe/ed90: 64                      .....                 .dd1    $64
-+003f91 fe/ed91: 64                      .....                 .dd1    $64
-+003f92 fe/ed92: 72                      .....                 .dd1    $72
-+003f93 fe/ed93: 65                      .....                 .dd1    $65
-+003f94 fe/ed94: 73                      .....                 .dd1    $73
-+003f95 fe/ed95: 73                      .....                 .dd1    $73
++003f72 fe/ed72: 75 73 65 20+            .....                 .str    “use COP not call to absolute address”
 +003f96 fe/ed96: 00                      .....                 .dd1    $00
 
 +003f97 fe/ed97: 02 06        ???????? e @T... default__OSB    cop     COP_06_OPOSB
@@ -12983,7 +12935,7 @@
 +0049a1 fe/f7a1: 20 3e f5     ??mxd??? e .....                 jsr     getFileHandleInfo
 +0049a4 fe/f7a4: b0 13        ??mxd??? e .....                 bcs     LFEF7B9
 +0049a6 fe/f7a6: 4b           ??mxd??c e .....                 phk
-+0049a7 fe/f7a7: 62 b9 06     ??mxd??c e .....                 per     LFEFE64_anRTL-1
++0049a7 fe/f7a7: 62 b9 06     ??mxd??c e .....                 per     LFEFE63_anRTL
 +0049aa fe/f7aa: f4 00 00     ??mxd??c e .....                 pea     $0000
 +0049ad fe/f7ad: ab           ??mxd??c e .....                 plb
 +0049ae fe/f7ae: ca           ??mxd??c e .....                 dex
@@ -13222,43 +13174,7 @@
 +004af3 fe/f8f3: 90 28        ??mxd??? e .....                 bcc     LFEF91D
 +004af5 fe/f8f5: 00 00        ??mxd??C e ...#.                 brk     $00
 
-+004af7 fe/f8f7: 4c                      .....                 .dd1    $4c
-+004af8 fe/f8f8: 69                      .....                 .dd1    $69
-+004af9 fe/f8f9: 73                      .....                 .dd1    $73
-+004afa fe/f8fa: 74                      .....                 .dd1    $74
-+004afb fe/f8fb: 20                      .....                 .dd1    $20
-+004afc fe/f8fc: 68                      .....                 .dd1    $68
-+004afd fe/f8fd: 65                      .....                 .dd1    $65
-+004afe fe/f8fe: 61                      .....                 .dd1    $61
-+004aff fe/f8ff: 64                      .....                 .dd1    $64
-+004b00 fe/f900: 65                      .....                 .dd1    $65
-+004b01 fe/f901: 72                      .....                 .dd1    $72
-+004b02 fe/f902: 20                      .....                 .dd1    $20
-+004b03 fe/f903: 6e                      .....                 .dd1    $6e
-+004b04 fe/f904: 6f                      .....                 .dd1    $6f
-+004b05 fe/f905: 74                      .....                 .dd1    $74
-+004b06 fe/f906: 20                      .....                 .dd1    $20
-+004b07 fe/f907: 66                      .....                 .dd1    $66
-+004b08 fe/f908: 6f                      .....                 .dd1    $6f
-+004b09 fe/f909: 75                      .....                 .dd1    $75
-+004b0a fe/f90a: 6e                      .....                 .dd1    $6e
-+004b0b fe/f90b: 64                      .....                 .dd1    $64
-+004b0c fe/f90c: 20                      .....                 .dd1    $20
-+004b0d fe/f90d: 2d                      .....                 .dd1    $2d
-+004b0e fe/f90e: 20                      .....                 .dd1    $20
-+004b0f fe/f90f: 73                      .....                 .dd1    $73
-+004b10 fe/f910: 65                      .....                 .dd1    $65
-+004b11 fe/f911: 72                      .....                 .dd1    $72
-+004b12 fe/f912: 69                      .....                 .dd1    $69
-+004b13 fe/f913: 6f                      .....                 .dd1    $6f
-+004b14 fe/f914: 75                      .....                 .dd1    $75
-+004b15 fe/f915: 73                      .....                 .dd1    $73
-+004b16 fe/f916: 20                      .....                 .dd1    $20
-+004b17 fe/f917: 65                      .....                 .dd1    $65
-+004b18 fe/f918: 72                      .....                 .dd1    $72
-+004b19 fe/f919: 72                      .....                 .dd1    $72
-+004b1a fe/f91a: 6f                      .....                 .dd1    $6f
-+004b1b fe/f91b: 72                      .....                 .dd1    $72
++004af7 fe/f8f7: 4c 69 73 74+            .....                 .str    “List header not found - serious error”
 +004b1c fe/f91c: 00                      .....                 .dd1    $00
 
 +004b1d fe/f91d: 68           ??mxd??c e ....> LFEF91D         pla
@@ -14092,7 +14008,7 @@
 +00505d fe/fe5d: d4 cb        ???????? e @T... default__KB     pei     (<DPSYS_DP_KEYBOARD+4)
 +00505f fe/fe5f: d4 c9        ???????? e .....                 pei     (<DPSYS_DP_KEYBOARD+2)
 +005061 fe/fe61: d4 c7        ???????? e .....                 pei     (<DPSYS_DP_KEYBOARD)
-+005063 fe/fe63: 6b           ???????? e ...#.                 rtl
++005063 fe/fe63: 6b           ???????? e ...#. LFEFE63_anRTL   rtl
 
 +005064 fe/fe64: 6b           ??MXd??? e @T.#. LFEFE64_anRTL   rtl                       ;This is where module calls return to by default
 

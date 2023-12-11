@@ -1,0 +1,1174 @@
+                                               ; 6502bench SourceGen v1.8.5
+                                               COP_10_OPADP    .eq     $10    {const}    ;Allocate direct page
+                                               COP_26_OPBHA    .eq     $26    {const}    ;Set BHA to start of string immediate
+                                               COP_29_OPRFR    .eq     $29    {const}    ;Find reference to module, entry BHA points name, X contains pointer in DP to 8 byte block
+                                               DP_MOSREF       .eq     $00    {addr/8}   ;MOS module reference
+                                               DP_8_PTR_VID    .eq     $08    {addr/2}   ;pointer into video memory area 
+
+                                                               .addrs  $ff7e00
+                                                               .rwid   longm,longx
++000000 ff/7e00: 82 15 00     ??mxdi?? e @T.#.                 brl     LFF7E18
+
++000003 ff/7e03: 68                      .....                 .dd1    $68
++000004 ff/7e04: 07                      .....                 .dd1    $07
++000005 ff/7e05: 00                      .....                 .dd1    $00
++000006 ff/7e06: 00                      .....                 .dd1    $00
++000007 ff/7e07: 01                      .....                 .dd1    $01
++000008 ff/7e08: 03                      .....                 .dd1    $03
++000009 ff/7e09: 00 00 00 00+            .....                 .fill   5,$00
++00000e ff/7e0e: 4b 65 79 62+            .....                 .str    “Keyboard”
++000016 ff/7e16: 00                      .....                 .dd1    $00
++000017 ff/7e17: 00                      .....                 .dd1    $00
+
++000018 ff/7e18: 2b           ??mxdi?? e ....> LFF7E18         pld
++000019 ff/7e19: 0b           ??mxdi?? e .....                 phd
++00001a ff/7e1a: d4 04        ??mxdi?? e .....                 pei     (DP_MOSREF+4)     ;Get private workspace pointer into DP
++00001c ff/7e1c: 2b           ??mxdi?? e .....                 pld
++00001d ff/7e1d: 08           ??mxdi?? e .....                 php
++00001e ff/7e1e: c2 30        ??mxdi?? e .....                 rep     #$30
++000020 ff/7e20: e0 23 00     ??mxdi?? e .....                 cpx     #$0023
++000023 ff/7e23: b0 17        ??mxdi?? e .....                 bcs     @retsec
++000025 ff/7e25: 8b           ??mxdi?c e .....                 phb
++000026 ff/7e26: 62 0c 00     ??mxdi?c e .....                 per     @exit-1
++000029 ff/7e29: 62 12 00     ??mxdi?c e .....                 per     bratblServ-1
++00002c ff/7e2c: 48           ??mxdi?c e .....                 pha
++00002d ff/7e2d: 8a           ??mxdi?c e .....                 txa
++00002e ff/7e2e: 63 03        ??mxdi?c e .....                 adc     $03,S
++000030 ff/7e30: 83 03        ??mxdi?? e .....                 sta     $03,S
++000032 ff/7e32: 68           ??mxdi?? e .....                 pla
++000033 ff/7e33: e2 30        ??mxdi?? e .....                 sep     #$30
+                                                               .rwid   shortm,shortx
++000035 ff/7e35: 60           ??MXdi?? e ...#.                 rts
+
++000036 ff/7e36: ab           ??MXdi?? e @T... @exit           plb
++000037 ff/7e37: b0 03        ??MXdi?? e .....                 bcs     @retsec
++000039 ff/7e39: 28           ??MXdi?c e .....                 plp
++00003a ff/7e3a: 18           ??MX???? e .....                 clc
++00003b ff/7e3b: 6b           ??MX???c e ...#.                 rtl
+
++00003c ff/7e3c: 28           ????di?C e ....> @retsec         plp
++00003d ff/7e3d: 38           ???????? e .....                 sec
++00003e ff/7e3e: 6b           ???????C e ...#.                 rtl
+
++00003f ff/7e3f: 80 06        ??MXdi?? e @T.#. bratblServ      bra     @retsec
+
++000041 ff/7e41: 80 1f        ??MXdi?? e @T.#.                 bra     Serv2
+
++000043 ff/7e43: 82 ba 00     ??MXdi?? e @T.#.                 brl     serv4
+
++000046 ff/7e46: ea           ??MXdi?? e @T...                 nop
++000047 ff/7e47: 38           ??MXdi?? e ....> @retsec         sec                       ;8
++000048 ff/7e48: 60           ??MXdi?C e ...#.                 rts
+
++000049 ff/7e49: ea           ??MXdi?? e @T...                 nop                       ;A
++00004a ff/7e4a: ea           ??MXdi?? e .....                 nop
++00004b ff/7e4b: 82 bc 00     ??MXdi?? e ...#.                 brl     ServC
+
++00004e ff/7e4e: ea           ??MXdi?? e @T...                 nop
++00004f ff/7e4f: 82 9d 00     ??MXdi?? e ...#.                 brl     Serv10
+
++000052 ff/7e52: ea           ??MXdi?? e @T...                 nop
++000053 ff/7e53: 82 dc 05     ??MXdi?? e ...#.                 brl     Serv14
+
++000056 ff/7e56: ea           ??MXdi?? e @T...                 nop
++000057 ff/7e57: 82 77 02     ??MXdi?? e ...#.                 brl     Serv18
+
++00005a ff/7e5a: ea           ??MXdi?? e @T...                 nop
++00005b ff/7e5b: 82 9e 00     ??MXdi?? e ...#.                 brl     Serv1C
+
++00005e ff/7e5e: ea           ??MXdi?? e @T...                 nop
++00005f ff/7e5f: 82 40 00     ??MXdi?? e ...#.                 brl     Serv20
+
++000062 ff/7e62: 0b           ??MXdi?? e ....> Serv2           phd
++000063 ff/7e63: 2b           ??MXdi?? e .....                 pld
++000064 ff/7e64: d0 21        ??MXdi?? e .....                 bne     LFF7E87
++000066 ff/7e66: 02 10        ??MXdiZ? e .....                 cop     COP_10_OPADP      ;allocate 17 bytes of DP
++000068 ff/7e68: 17 00                   .T...                 .dd2    $0017
++00006a ff/7e6a: b0 35        ??MXdiZ? e .....                 bcs     LFF7EA1
++00006c ff/7e6c: c2 30        ??MXdiZc e .....                 rep     #$30
+                                                               .rwid   longm,longx
++00006e ff/7e6e: f4 00 00     ??mxdiZc e .....                 pea     $0000
+                                                               .dbank  $00
++000071 ff/7e71: ab           ??mxdiZc e .....                 plb
++000072 ff/7e72: ab           ??mxdi?c e .....                 plb
++000073 ff/7e73: a0 04 00     ??mxdi?c e .....                 ldy     #$0004
++000076 ff/7e76: 93 05        n?mxdizc e .....                 sta     ($05,S),y         ;store allocated DP in private workspace pointer
++000078 ff/7e78: 5b           n?mxdizc e .....                 tcd                       ;switch to new DP
++000079 ff/7e79: e2 30        ??mxdi?c e .....                 sep     #$30
+                                                               .rwid   shortm,shortx
++00007b ff/7e7b: 02 26        ??MXdi?c e .....                 cop     COP_26_OPBHA
++00007d ff/7e7d: 4d 4f 53 00             .T...                 .zstr   “MOS”
++000081 ff/7e81: a2 00        ??MXdi?c e .....                 ldx     #$00
++000083 ff/7e83: a0 00        n?MXdiZc e .....                 ldy     #$00
++000085 ff/7e85: 02 29        n?MXdiZc e .....                 cop     COP_29_OPRFR      ;get MOS module reference
++000087 ff/7e87: 64 0a        ??MXdi?? e ....> LFF7E87         stz     $0a
++000089 ff/7e89: 64 0b        ??MXdi?? e .....                 stz     $0b
++00008b ff/7e8b: 64 12        ??MXdi?? e .....                 stz     $12
++00008d ff/7e8d: 64 13        ??MXdi?? e .....                 stz     $13
++00008f ff/7e8f: 64 0c        ??MXdi?? e .....                 stz     $0c
++000091 ff/7e91: 64 0d        ??MXdi?? e .....                 stz     $0d
++000093 ff/7e93: 64 0e        ??MXdi?? e .....                 stz     $0e
++000095 ff/7e95: a9 10        ??MXdi?? e .....                 lda     #$10
++000097 ff/7e97: 85 0f        n?MXdiz? e .....                 sta     $0f
++000099 ff/7e99: a9 32        n?MXdiz? e .....                 lda     #$32
++00009b ff/7e9b: 85 10        n?MXdiz? e .....                 sta     $10
++00009d ff/7e9d: a9 03        n?MXdiz? e .....                 lda     #$03
++00009f ff/7e9f: 85 11        n?MXdiz? e .....                 sta     $11
++0000a1 ff/7ea1: 60           ??MXdi?? e ...#> LFF7EA1         rts
+
+                                                               .rwid   longm,longx
++0000a2 ff/7ea2: a5 11        ??mxdi?? e ....> Serv20          lda     $11
++0000a4 ff/7ea4: 48           ??mxdi?? e .....                 pha
++0000a5 ff/7ea5: a5 10        ??mxdi?? e .....                 lda     $10
++0000a7 ff/7ea7: 48           ??mxdi?? e .....                 pha
++0000a8 ff/7ea8: 49 ff f0     ??mxdi?? e .....                 eor     #$f0ff
++0000ab ff/7eab: 04 49        ??mxdi?? e .....                 tsb     $49
++0000ad ff/7ead: ff 85 11 eb  ??mxdi?? e .....                 sbcl    $eb1185,x
++0000b1 ff/7eb1: 49 ff f0     ??mxdi?? e .....                 eor     #$f0ff
++0000b4 ff/7eb4: 04 49        ??mxdi?? e .....                 tsb     $49
++0000b6 ff/7eb6: ff 85 10 68  ??mxdi?? e .....                 sbcl    $681085,x
++0000ba ff/7eba: eb           ??mxdi?? e .....                 xba
++0000bb ff/7ebb: 68           ??mxdi?? e .....                 pla
++0000bc ff/7ebc: 60           ??mxdi?? e ...#.                 rts
+
+                                                               .rwid   shortm,shortx
++0000bd ff/7ebd: 08           ??MXdi?? e ....> LFF7EBD         php
++0000be ff/7ebe: a5 0c        ??MXdi?? e .....                 lda     $0c
++0000c0 ff/7ec0: 29 3f        ??MXdi?? e .....                 and     #$3f
++0000c2 ff/7ec2: 09 40        n?MXdi?? e .....                 ora     #$40
++0000c4 ff/7ec4: 48           ??MXdiz? e .....                 pha
++0000c5 ff/7ec5: a9 10        ??MXdiz? e .....                 lda     #$10
++0000c7 ff/7ec7: 24 0f        n?MXdiz? e .....                 bit     $0f
++0000c9 ff/7ec9: f0 04        ??MXdi?? e .....                 beq     LFF7ECF
++0000cb ff/7ecb: 68           ??MXdiz? e .....                 pla
++0000cc ff/7ecc: 09 80        ??MXdi?? e .....                 ora     #$80
++0000ce ff/7ece: 48           N?MXdiz? e .....                 pha
++0000cf ff/7ecf: a9 08        ??MXdi?? e ....> LFF7ECF         lda     #$08
++0000d1 ff/7ed1: 24 0f        n?MXdiz? e .....                 bit     $0f
++0000d3 ff/7ed3: f0 04        ??MXdi?? e .....                 beq     LFF7ED9
++0000d5 ff/7ed5: 68           ??MXdiz? e .....                 pla
++0000d6 ff/7ed6: 29 bf        ??MXdi?? e .....                 and     #$bf
++0000d8 ff/7ed8: 48           ??MXdi?? e .....                 pha
++0000d9 ff/7ed9: 68           ??MXdi?? e ....> LFF7ED9         pla
++0000da ff/7eda: c5 0c        ??MXdi?? e .....                 cmp     $0c
++0000dc ff/7edc: f0 0f        ??MXdi?? e .....                 beq     LFF7EED
++0000de ff/7ede: 85 0c        ??MXdiz? e .....                 sta     $0c
++0000e0 ff/7ee0: da           ??MXdiz? e .....                 phx
++0000e1 ff/7ee1: 5a           ??MXdiz? e .....                 phy
++0000e2 ff/7ee2: 29 c0        ??MXdiz? e .....                 and     #$c0
++0000e4 ff/7ee4: aa           ??MXdi?? e .....                 tax
++0000e5 ff/7ee5: a0 3f        ??MXdi?? e .....                 ldy     #$3f
++0000e7 ff/7ee7: a9 9a        n?MXdiz? e .....                 lda     #$9a
++0000e9 ff/7ee9: 02 06        N?MXdiz? e .....                 cop     $06
++0000eb ff/7eeb: 7a           N?MXdiz? e .....                 ply
++0000ec ff/7eec: fa           ??MXdi?? e .....                 plx
++0000ed ff/7eed: 68           ??MXdi?? e ....> LFF7EED         pla
++0000ee ff/7eee: 60           ??MXdi?? e ...#.                 rts
+
++0000ef ff/7eef: aa           ??MXdi?? e ....> Serv10          tax
++0000f0 ff/7ef0: 62 02 00     ??MXdi?? e .....                 per     LFF7EF6-1
++0000f3 ff/7ef3: 82 b4 01     ??MXdi?? e ...#.                 brl     LFF80AA
+
++0000f6 ff/7ef6: 30 02        ??MXdi?? e @T... LFF7EF6         bmi     LFF7EFA
++0000f8 ff/7ef8: 18           n?MXdi?? e .....                 clc
++0000f9 ff/7ef9: 60           n?MXdi?c e ...#.                 rts
+
++0000fa ff/7efa: 38           N?MXdi?? e ....> LFF7EFA         sec
++0000fb ff/7efb: 60           N?MXdi?C e ...#.                 rts
+
++0000fc ff/7efc: b8           ??MXdi?? e ....> Serv1C          clv
++0000fd ff/7efd: 18           ?vMXdi?? e .....                 clc
++0000fe ff/7efe: 80 0d        ?vMXdi?c e ...#.                 bra     LFF7F0D
+
++000100 ff/7f00: bb           ??MXdi?? e ....> serv4           tyx
++000101 ff/7f01: b8           ??MXdi?? e .....                 clv
++000102 ff/7f02: 38           ?vMXdi?? e .....                 sec
++000103 ff/7f03: 80 08        ?vMXdi?C e ...#.                 bra     LFF7F0D
+
++000105 ff/7f05: e2 40        ??MXdi?? e @T...                 sep     #$40              ;todo -dead?
++000107 ff/7f07: 18           ?VMXdi?? e .....                 clc
++000108 ff/7f08: 80 03        ?VMXdi?c e ...#.                 bra     LFF7F0D
+
++00010a ff/7f0a: e2 40        ??MXdi?? e ....> ServC           sep     #$40
++00010c ff/7f0c: 38           ?VMXdi?? e .....                 sec
++00010d ff/7f0d: 50 09        ??MXdi?? e ....> LFF7F0D         bvc     LFF7F18
++00010f ff/7f0f: a5 0a        ?VMXdi?? e .....                 lda     $0a
++000111 ff/7f11: 05 0b        ?VMXdi?? e .....                 ora     $0b
++000113 ff/7f13: d0 22        ?VMXdi?? e .....                 bne     LFF7F37
++000115 ff/7f15: 4c 91 80     ?VMXdiZ? e ...#.                 jmp     LFF8091
+
++000118 ff/7f18: 08           ?vMXdi?? e ....> LFF7F18         php
++000119 ff/7f19: 62 02 00     ?vMXdi?? e .....                 per     LFF7F1F-1
++00011c ff/7f1c: 82 18 06     ?vMXdi?? e ...#.                 brl     LFF8537
+
++00011f ff/7f1f: 28           ??MXdi?? e @T... LFF7F1F         plp
++000120 ff/7f20: b0 08        ??MX???? e .....                 bcs     LFF7F2A
++000122 ff/7f22: 62 02 00     ??MX???c e .....                 per     LFF7F28-1
++000125 ff/7f25: 82 0f 00     ??MX???c e ...#.                 brl     LFF7F37
+
++000128 ff/7f28: 80 06        ??MXdi?? e @T.#. LFF7F28         bra     LFF7F30
+
++00012a ff/7f2a: 62 02 00     ??MX???C e ....> LFF7F2A         per     LFF7F30-1
++00012d ff/7f2d: 82 a6 01     ??MX???C e ...#.                 brl     LFF80D6
+
++000130 ff/7f30: 62 02 00     ??MXdi?? e ....> LFF7F30         per     LFF7F36-1
++000133 ff/7f33: 82 10 06     ??MXdi?? e ...#.                 brl     LFF8546
+
++000136 ff/7f36: 60           ??MXdi?? e @T.#. LFF7F36         rts
+
++000137 ff/7f37: a5 0f        ??MX???? e ....> LFF7F37         lda     $0f
++000139 ff/7f39: 29 1f        ??MX???? e .....                 and     #$1f
++00013b ff/7f3b: a2 57        n?MX???? e .....                 ldx     #$57
++00013d ff/7f3d: 62 02 00     n?MX??z? e .....                 per     LFF7F43-1
++000140 ff/7f40: 82 67 01     n?MX??z? e ...#.                 brl     LFF80AA
+
++000143 ff/7f43: 86 0d        ??MXdi?? e @T... LFF7F43         stx     $0d
++000145 ff/7f45: b8           ??MXdi?? e .....                 clv
++000146 ff/7f46: 10 06        ?vMXdi?? e .....                 bpl     LFF7F4E
++000148 ff/7f48: 09 40        NvMXdi?? e .....                 ora     #$40
++00014a ff/7f4a: e2 40        ?vMXdiz? e .....                 sep     #$40
++00014c ff/7f4c: 80 11        ?VMXdiz? e ...#.                 bra     LFF7F5F
+
++00014e ff/7f4e: a2 55        nvMXdi?? e ....> LFF7F4E         ldx     #$55
++000150 ff/7f50: 62 02 00     nvMXdiz? e .....                 per     LFF7F56-1
++000153 ff/7f53: 82 54 01     nvMXdiz? e ...#.                 brl     LFF80AA
+
++000156 ff/7f56: 86 0d        ??MXdi?? e @T... LFF7F56         stx     $0d
++000158 ff/7f58: b8           ??MXdi?? e .....                 clv
++000159 ff/7f59: 10 04        ?vMXdi?? e .....                 bpl     LFF7F5F
++00015b ff/7f5b: 09 40        NvMXdi?? e .....                 ora     #$40
++00015d ff/7f5d: e2 40        ?vMXdiz? e .....                 sep     #$40
++00015f ff/7f5f: a2 17        ??MXdi?? e ....> LFF7F5F         ldx     #$17
++000161 ff/7f61: 62 02 00     n?MXdiz? e .....                 per     LFF7F67-1
++000164 ff/7f64: 82 43 01     n?MXdiz? e ...#.                 brl     LFF80AA
+
++000167 ff/7f67: 10 02        ??MXdi?? e @T... LFF7F67         bpl     LFF7F6B
++000169 ff/7f69: 09 80        N?MXdi?? e .....                 ora     #$80
++00016b ff/7f6b: b0 03        ??MXdi?? e ....> LFF7F6B         bcs     LFF7F70
++00016d ff/7f6d: 82 4d ff     ??MXdi?c e ...#.                 brl     LFF7EBD
+
++000170 ff/7f70: a2 53        ??MXdi?C e ....> LFF7F70         ldx     #$53
++000172 ff/7f72: 62 02 00     n?MXdizC e .....                 per     LFF7F78-1
++000175 ff/7f75: 82 32 01     n?MXdizC e ...#.                 brl     LFF80AA
+
++000178 ff/7f78: 10 02        ??MXdi?? e @T... LFF7F78         bpl     LFF7F7C
++00017a ff/7f7a: 09 20        N?MXdi?? e .....                 ora     #$20
++00017c ff/7f7c: 85 0f        ??MXdi?? e ....> LFF7F7C         sta     $0f
++00017e ff/7f7e: a6 0a        ??MXdi?? e .....                 ldx     $0a
++000180 ff/7f80: f0 18        ??MXdi?? e .....                 beq     LFF7F9A
++000182 ff/7f82: 62 02 00     ??MXdiz? e .....                 per     LFF7F88-1
++000185 ff/7f85: 82 22 01     ??MXdiz? e ...#.                 brl     LFF80AA
+
++000188 ff/7f88: 30 13        ??MXdi?? e @T... LFF7F88         bmi     LFF7F9D
++00018a ff/7f8a: e4 0a        n?MXdi?? e .....                 cpx     $0a
++00018c ff/7f8c: 86 0a        ??MXdi?? e ....> LFF7F8C         stx     $0a
++00018e ff/7f8e: d0 0a        ??MXdi?? e .....                 bne     LFF7F9A
++000190 ff/7f90: a2 00        ??MXdiZ? e .....                 ldx     #$00
++000192 ff/7f92: 86 0a        n?MXdiZ? e .....                 stx     $0a
++000194 ff/7f94: 62 02 00     ??MXdi?? e ....> LFF7F94         per     LFF7F9A-1
++000197 ff/7f97: 82 07 01     ??MXdi?? e ...#.                 brl     LFF80A1
+
++00019a ff/7f9a: 4c 62 80     ??MXdi?? e ...#> LFF7F9A         jmp     LFF8062
+
++00019d ff/7f9d: e4 0a        N?MXdi?? e ....> LFF7F9D         cpx     $0a
++00019f ff/7f9f: d0 eb        ??MXdi?? e .....                 bne     LFF7F8C
++0001a1 ff/7fa1: a5 13        ??MXdiZ? e .....                 lda     $13
++0001a3 ff/7fa3: f0 2e        ??MXdi?? e .....                 beq     LFF7FD3
++0001a5 ff/7fa5: c6 13        ??MXdiz? e .....                 dec     $13
++0001a7 ff/7fa7: d0 2a        ??MXdi?? e .....                 bne     LFF7FD3
++0001a9 ff/7fa9: a5 12        ??MXdiZ? e .....                 lda     $12
++0001ab ff/7fab: 85 13        ??MXdi?? e .....                 sta     $13
++0001ad ff/7fad: a5 11        ??MXdi?? e .....                 lda     $11
++0001af ff/7faf: 85 12        ??MXdi?? e .....                 sta     $12
++0001b1 ff/7fb1: a5 0f        ??MXdi?? e .....                 lda     $0f
++0001b3 ff/7fb3: a6 0a        ??MXdi?? e .....                 ldx     $0a
++0001b5 ff/7fb5: e0 9f        ??MXdi?? e .....                 cpx     #$9f
++0001b7 ff/7fb7: d0 0c        ??MXdi?? e .....                 bne     LFF7FC5
++0001b9 ff/7fb9: 49 10        ??MXdiZ? e .....                 eor     #$10
++0001bb ff/7fbb: 29 f3        ??MXdi?? e .....                 and     #$f3
++0001bd ff/7fbd: 24 0d        ??MXdi?? e .....                 bit     $0d
++0001bf ff/7fbf: 10 0c        ??MXdi?? e .....                 bpl     LFF7FCD
++0001c1 ff/7fc1: 09 14        N?MXdi?? e .....                 ora     #$14
++0001c3 ff/7fc3: 80 08        ??MXdiz? e ...#.                 bra     LFF7FCD
+
++0001c5 ff/7fc5: e0 dc        ??MXdiz? e ....> LFF7FC5         cpx     #$dc
++0001c7 ff/7fc7: d0 0d        ??MXdi?? e .....                 bne     LFF7FD6
++0001c9 ff/7fc9: 49 08        ??MXdiZ? e .....                 eor     #$08
++0001cb ff/7fcb: 29 eb        ??MXdi?? e .....                 and     #$eb
++0001cd ff/7fcd: 85 0f        ??MXdi?? e ....> LFF7FCD         sta     $0f
++0001cf ff/7fcf: a9 00        ??MXdi?? e .....                 lda     #$00
++0001d1 ff/7fd1: 85 13        n?MXdiZ? e .....                 sta     $13
++0001d3 ff/7fd3: 4c 62 80     ??MXdi?? e ...#> LFF7FD3         jmp     LFF8062
+
++0001d6 ff/7fd6: a5 0f        ??MXdiz? e ....> LFF7FD6         lda     $0f
++0001d8 ff/7fd8: 89 48        ??MXdi?? e .....                 bit     #$48
++0001da ff/7fda: f0 08        ??MXdi?? e .....                 beq     LFF7FE4
++0001dc ff/7fdc: 09 40        ??MXdiz? e .....                 ora     #$40
++0001de ff/7fde: 89 04        ??MXdiz? e .....                 bit     #$04
++0001e0 ff/7fe0: d0 02        ??MXdi?? e .....                 bne     LFF7FE4
++0001e2 ff/7fe2: 29 ef        ??MXdiZ? e .....                 and     #$ef
++0001e4 ff/7fe4: 85 0d        ??MXdi?? e ....> LFF7FE4         sta     $0d
++0001e6 ff/7fe6: 8b           ??MXdi?? e .....                 phb
++0001e7 ff/7fe7: 4b           ??MXdi?? e .....                 phk
+                                                               .dbank  K (auto)
++0001e8 ff/7fe8: ab           ??MXdi?? e .....                 plb
++0001e9 ff/7fe9: c2 30        ??MXdi?? e .....                 rep     #$30
+                                                               .rwid   longm,longx
++0001eb ff/7feb: 62 84 02     ??mxdi?? e .....                 per     LFF8273-1
++0001ee ff/7fee: 8a           ??mxdi?? e .....                 txa
++0001ef ff/7fef: 18           ??mxdi?? e .....                 clc
++0001f0 ff/7ff0: 63 01        ??mxdi?c e .....                 adc     $01,S
++0001f2 ff/7ff2: fa           ??mxdi?? e .....                 plx
++0001f3 ff/7ff3: aa           ??mxdi?? e .....                 tax
++0001f4 ff/7ff4: bd 00 00     ??mxdi?? e .....                 lda     a:$0000,x
++0001f7 ff/7ff7: ab           ??mxdi?? e .....                 plb
++0001f8 ff/7ff8: e2 30        ??mxdi?? e .....                 sep     #$30
+                                                               .rwid   shortm,shortx
++0001fa ff/7ffa: aa           ??MXdi?? e .....                 tax
++0001fb ff/7ffb: c9 21        ??MXdi?? e .....                 cmp     #$21
++0001fd ff/7ffd: 90 47        ??MXdi?? e .....                 bcc     LFF8046
++0001ff ff/7fff: a5 0d        ??MXdi?C e .....                 lda     $0d
++000201 ff/8001: f0 43        ??MXdi?C e .....                 beq     LFF8046
++000203 ff/8003: a9 80        ??MXdizC e .....                 lda     #$80
++000205 ff/8005: 24 0d        N?MXdizC e .....                 bit     $0d
++000207 ff/8007: f0 08        ??MXdi?C e .....                 beq     LFF8011
++000209 ff/8009: 8a           ??MXdizC e .....                 txa
++00020a ff/800a: 62 02 00     ??MXdi?C e .....                 per     LFF8010-1
++00020d ff/800d: 82 22 04     ??MXdi?C e ...#.                 brl     Serv14
+
++000210 ff/8010: aa           ??MXdi?? e @T... LFF8010         tax
++000211 ff/8011: a9 40        ??MXdi?? e ....> LFF8011         lda     #$40
++000213 ff/8013: 24 0d        n?MXdiz? e .....                 bit     $0d
++000215 ff/8015: f0 0f        ??MXdi?? e .....                 beq     LFF8026
++000217 ff/8017: a4 0b        ??MXdiz? e .....                 ldy     $0b
++000219 ff/8019: f0 03        ??MXdi?? e .....                 beq     LFF801E
++00021b ff/801b: 82 76 ff     ??MXdiz? e ...#.                 brl     LFF7F94
+
++00021e ff/801e: 8a           ??MXdiZ? e ....> LFF801E         txa
++00021f ff/801f: 62 02 00     ??MXdi?? e .....                 per     LFF8025-1
++000222 ff/8022: 82 4f 04     ??MXdi?? e ...#.                 brl     LFF8474
+
++000225 ff/8025: aa           ??MXdi?? e @T... LFF8025         tax
++000226 ff/8026: a9 20        ??MXdi?? e ....> LFF8026         lda     #$20
++000228 ff/8028: 24 0d        n?MXdiz? e .....                 bit     $0d
++00022a ff/802a: f0 08        ??MXdi?? e .....                 beq     LFF8034
++00022c ff/802c: 8a           ??MXdiz? e .....                 txa
++00022d ff/802d: 62 02 00     ??MXdi?? e .....                 per     LFF8033-1
++000230 ff/8030: 82 78 04     ??MXdi?? e ...#.                 brl     LFF84AB
+
++000233 ff/8033: aa           ??MXdi?? e @T... LFF8033         tax
++000234 ff/8034: a9 10        ??MXdi?? e ....> LFF8034         lda     #$10
++000236 ff/8036: 24 0d        n?MXdiz? e .....                 bit     $0d
++000238 ff/8038: f0 0c        ??MXdi?? e .....                 beq     LFF8046
++00023a ff/803a: 8a           ??MXdiz? e .....                 txa
++00023b ff/803b: 62 02 00     ??MXdi?? e .....                 per     LFF8041-1
++00023e ff/803e: 82 0a 05     ??MXdi?? e ...#.                 brl     LFF854B
+
++000241 ff/8041: b0 02        ??MXdi?? e @T... LFF8041         bcs     LFF8045
++000243 ff/8043: 49 20        ??MXdi?c e .....                 eor     #$20
++000245 ff/8045: aa           ??MXdi?? e ....> LFF8045         tax
++000246 ff/8046: 8a           ??MXdi?? e ....> LFF8046         txa
++000247 ff/8047: 62 02 00     ??MXdi?? e .....                 per     LFF804D-1
++00024a ff/804a: 82 8e 04     ??MXdi?? e ...#.                 brl     LFF84DB
+
++00024d ff/804d: a8           ??MXdi?? e @T... LFF804D         tay
++00024e ff/804e: 62 02 00     ??MXdi?? e .....                 per     LFF8054-1
++000251 ff/8051: 82 00 02     ??MXdi?? e ...#.                 brl     LFF8254
+
++000254 ff/8054: 98           ??MXdi?? e @T... LFF8054         tya
++000255 ff/8055: a2 04        ??MXdi?? e .....                 ldx     #$04
++000257 ff/8057: 62 02 00     n?MXdiz? e .....                 per     LFF805D-1
++00025a ff/805a: 82 fc 04     n?MXdiz? e ...#.                 brl     LFF8559
+
++00025d ff/805d: 4a           ??MXdi?? e @T... LFF805D         lsr     A
++00025e ff/805e: 90 02        n?MXdi?? e .....                 bcc     LFF8062
++000260 ff/8060: 64 13        n?MXdi?C e .....                 stz     $13
++000262 ff/8062: a6 0b        ??MXdi?? e ....> LFF8062         ldx     $0b
++000264 ff/8064: f0 0e        ??MXdi?? e .....                 beq     LFF8074
++000266 ff/8066: 62 02 00     ??MXdiz? e .....                 per     LFF806C-1
++000269 ff/8069: 82 3e 00     ??MXdiz? e ...#.                 brl     LFF80AA
+
++00026c ff/806c: 86 0b        ??MXdi?? e @T... LFF806C         stx     $0b
++00026e ff/806e: 30 04        ??MXdi?? e .....                 bmi     LFF8074
++000270 ff/8070: a2 00        n?MXdi?? e .....                 ldx     #$00
++000272 ff/8072: 86 0b        n?MXdiZ? e .....                 stx     $0b
++000274 ff/8074: a6 0b        ??MXdi?? e ....> LFF8074         ldx     $0b
++000276 ff/8076: d0 19        ??MXdi?? e .....                 bne     LFF8091
++000278 ff/8078: a0 0a        ??MXdiZ? e .....                 ldy     #$0a
++00027a ff/807a: 62 02 00     n?MXdiz? e .....                 per     LFF8080-1
++00027d ff/807d: 82 e5 01     n?MXdiz? e ...#.                 brl     LFF8265
+
++000280 ff/8080: 30 0c        ??MXdi?? e @T... LFF8080         bmi     LFF808E
++000282 ff/8082: a5 0a        n?MXdi?? e .....                 lda     $0a
++000284 ff/8084: 85 0b        ??MXdi?? e .....                 sta     $0b
++000286 ff/8086: 86 0a        ??MXdi?? e ....> LFF8086         stx     $0a
++000288 ff/8088: 62 02 00     ??MXdi?? e .....                 per     LFF808E-1
++00028b ff/808b: 82 13 00     ??MXdi?? e ...#.                 brl     LFF80A1
+
++00028e ff/808e: 4c bd 7e     ??MXdi?? e ...#> LFF808E         jmp     LFF7EBD
+
++000291 ff/8091: a5 0a        ??MXdi?? e ....> LFF8091         lda     $0a
++000293 ff/8093: d0 f9        ??MXdi?? e .....                 bne     LFF808E
++000295 ff/8095: a0 0b        ??MXdiZ? e .....                 ldy     #$0b
++000297 ff/8097: 62 02 00     n?MXdiz? e .....                 per     LFF809D-1
++00029a ff/809a: 82 c8 01     n?MXdiz? e ...#.                 brl     LFF8265
+
++00029d ff/809d: 30 ef        ??MXdi?? e @T... LFF809D         bmi     LFF808E
++00029f ff/809f: 10 e5        n?MXdi?? e ...#.                 bpl     LFF8086
+
++0002a1 ff/80a1: a2 01        ??MXdi?? e ....> LFF80A1         ldx     #$01
++0002a3 ff/80a3: 86 13        n?MXdiz? e .....                 stx     $13
++0002a5 ff/80a5: a6 10        n?MXdiz? e .....                 ldx     $10
++0002a7 ff/80a7: 86 12        ??MXdi?? e .....                 stx     $12
++0002a9 ff/80a9: 60           ??MXdi?? e ...#.                 rts
+
++0002aa ff/80aa: f0 24        ??MX???? e ....> LFF80AA         beq     LFF80D0
++0002ac ff/80ac: 48           ??MX??z? e .....                 pha
++0002ad ff/80ad: 8a           ??MX??z? e .....                 txa
++0002ae ff/80ae: 29 7f        ??MX???? e .....                 and     #$7f
++0002b0 ff/80b0: 48           n?MX???? e .....                 pha
++0002b1 ff/80b1: 62 02 00     n?MX???? e .....                 per     LFF80B7-1
++0002b4 ff/80b4: 82 39 01     n?MX???? e ...#.                 brl     LFF81F0
+
++0002b7 ff/80b7: 85 0e        ??MXdi?? e @T... LFF80B7         sta     $0e
++0002b9 ff/80b9: 08           ??MXdi?? e .....                 php
++0002ba ff/80ba: 62 02 00     ??MXdi?? e .....                 per     LFF80C0-1
++0002bd ff/80bd: 82 98 01     ??MXdi?? e ...#.                 brl     getVidInd8
+
++0002c0 ff/80c0: 28           ??MXdi?? e @T... LFF80C0         plp
++0002c1 ff/80c1: 25 0e        ??MX???? e .....                 and     $0e
++0002c3 ff/80c3: f0 02        ??MX???? e .....                 beq     LFF80C7
++0002c5 ff/80c5: a9 80        ??MX??z? e .....                 lda     #$80
++0002c7 ff/80c7: 85 0e        ??MX???? e ....> LFF80C7         sta     $0e
++0002c9 ff/80c9: 68           ??MX???? e .....                 pla
++0002ca ff/80ca: 05 0e        ??MX???? e .....                 ora     $0e
++0002cc ff/80cc: aa           ??MX???? e .....                 tax
++0002cd ff/80cd: 68           ??MX???? e .....                 pla
++0002ce ff/80ce: a4 0e        ??MX???? e .....                 ldy     $0e
++0002d0 ff/80d0: 60           ??MX???? e ...#> LFF80D0         rts
+
++0002d1 ff/80d1: 85 0b        ??MXdi?? e ....> Serv18          sta     $0b
++0002d3 ff/80d3: 64 0a        ??MXdi?? e .....                 stz     $0a
++0002d5 ff/80d5: 60           ??MXdi?? e ...#.                 rts
+
++0002d6 ff/80d6: 8a           ??MX???C e ....> LFF80D6         txa
++0002d7 ff/80d7: 30 03        ??MX???C e .....                 bmi     LFF80DC
++0002d9 ff/80d9: 82 7a 00     n?MX???C e ...#.                 brl     LFF8156
+
++0002dc ff/80dc: 08           N?MX???C e ....> LFF80DC         php
++0002dd ff/80dd: 29 7f        N?MX???C e .....                 and     #$7f
++0002df ff/80df: a8           n?MX???C e .....                 tay
++0002e0 ff/80e0: 8b           ??MX???C e .....                 phb
++0002e1 ff/80e1: 4b           ??MX???C e .....                 phk
+                                                               .dbank  K (auto)
++0002e2 ff/80e2: ab           ??MX???C e .....                 plb
++0002e3 ff/80e3: c2 20        ??MX???C e .....                 rep     #$20
+                                                               .rwid   longm
++0002e5 ff/80e5: 62 c6 02     ??mX???C e .....                 per     LFF83AE
++0002e8 ff/80e8: b3 01        ??mX???C e .....                 lda     ($01,S),y
++0002ea ff/80ea: aa           ??mX???C e .....                 tax
++0002eb ff/80eb: 68           ??mX???C e .....                 pla
++0002ec ff/80ec: ab           ??mX???C e .....                 plb
++0002ed ff/80ed: e2 20        ??mX???C e .....                 sep     #$20
+                                                               .rwid   shortm
++0002ef ff/80ef: e0 50        ??MX???C e .....                 cpx     #$50
++0002f1 ff/80f1: d0 0c        ??MX???? e .....                 bne     LFF80FF
++0002f3 ff/80f3: a2 57        ??MX??Z? e .....                 ldx     #$57
++0002f5 ff/80f5: 62 02 00     n?MX??z? e .....                 per     LFF80FB-1
++0002f8 ff/80f8: 82 af ff     n?MX??z? e ...#.                 brl     LFF80AA
+
++0002fb ff/80fb: 30 02        ??MXdi?? e @T... LFF80FB         bmi     LFF80FF
++0002fd ff/80fd: a2 55        n?MXdi?? e .....                 ldx     #$55
++0002ff ff/80ff: 62 02 00     ??MX???? e ....> LFF80FF         per     LFF8105-1
++000302 ff/8102: 82 a5 ff     ??MX???? e ...#.                 brl     LFF80AA
+
++000305 ff/8105: 28           ??MXdi?? e @T... LFF8105         plp
++000306 ff/8106: 8a           ??MX???? e .....                 txa
++000307 ff/8107: 60           ??MX???? e ...#.                 rts
+
++000308 ff/8108: 50 10        ??MXdi?? e @T..> LFF8108         bvc     LFF811A
++00030a ff/810a: 62 02 00     ?VMXdi?? e .....                 per     LFF8110-1
++00030d ff/810d: 82 35 00     ?VMXdi?? e ...#.                 brl     LFF8145
+
++000310 ff/8110: 90 08        ??MXdi?? e @T... LFF8110         bcc     LFF811A
++000312 ff/8112: 24 14        ??MXdi?C e .....                 bit     $14
++000314 ff/8114: f0 04        ??MXdi?C e .....                 beq     LFF811A
++000316 ff/8116: 45 14        ??MXdizC e .....                 eor     $14
++000318 ff/8118: f0 24        ??MXdi?C e .....                 beq     LFF813E
++00031a ff/811a: 48           ??MXdi?? e ....> LFF811A         pha
++00031b ff/811b: 62 02 00     ??MXdi?? e .....                 per     LFF8121-1
++00031e ff/811e: 82 98 00     ??MXdi?? e ...#.                 brl     LFF81B9
+
++000321 ff/8121: c9 57        ??MXdi?? e @T... LFF8121         cmp     #$57
++000323 ff/8123: f0 1a        ??MXdi?? e .....                 beq     LFF813F
++000325 ff/8125: c9 55        ??MXdiz? e .....                 cmp     #$55
++000327 ff/8127: f0 16        ??MXdi?? e .....                 beq     LFF813F
++000329 ff/8129: c9 17        ??MXdiz? e .....                 cmp     #$17
++00032b ff/812b: f0 12        ??MXdi?? e .....                 beq     LFF813F
++00032d ff/812d: c9 53        ??MXdiz? e .....                 cmp     #$53
++00032f ff/812f: f0 0e        ??MXdi?? e .....                 beq     LFF813F
++000331 ff/8131: 68           ??MXdiz? e .....                 pla
++000332 ff/8132: a2 ff        ??MXdi?? e .....                 ldx     #$ff
++000334 ff/8134: 4a           ??MXdi?? e ....> LFF8134         lsr     A
++000335 ff/8135: e8           n?MXdi?? e .....                 inx
++000336 ff/8136: 90 fc        ??MXdi?? e .....                 bcc     LFF8134
++000338 ff/8138: a9 00        ??MXdi?C e .....                 lda     #$00
++00033a ff/813a: 2a           n?MXdi?? e ....> LFF813A         rol     A
++00033b ff/813b: ca           ??MXdi?? e .....                 dex
++00033c ff/813c: 10 fc        ??MXdi?? e .....                 bpl     LFF813A
++00033e ff/813e: 60           ??MXdi?? e ...#> LFF813E         rts
+
++00033f ff/813f: a9 00        ??MXdiZ? e ....> LFF813F         lda     #$00
++000341 ff/8141: 68           n?MXdiZ? e .....                 pla
++000342 ff/8142: a2 00        ??MXdi?? e .....                 ldx     #$00
++000344 ff/8144: 60           n?MXdiZ? e ...#.                 rts
+
++000345 ff/8145: 18           ?VMXdi?? e ....> LFF8145         clc
++000346 ff/8146: 48           ?VMXdi?c e .....                 pha
++000347 ff/8147: a5 08        ?VMXdi?c e .....                 lda     DP_8_PTR_VID
++000349 ff/8149: 45 15        ?VMXdi?c e .....                 eor     $15
++00034b ff/814b: d0 07        ?VMXdi?c e .....                 bne     LFF8154
++00034d ff/814d: a5 09        ?VMXdiZc e .....                 lda     DP_8_PTR_VID+1
++00034f ff/814f: 45 16        ?VMXdi?c e .....                 eor     $16
++000351 ff/8151: d0 01        ?VMXdi?c e .....                 bne     LFF8154
++000353 ff/8153: 38           ?VMXdiZc e .....                 sec
++000354 ff/8154: 68           ?VMXdi?? e ....> LFF8154         pla
++000355 ff/8155: 60           ?VMXdi?? e ...#.                 rts
+
++000356 ff/8156: e8           n?MX???C e ....> LFF8156         inx
++000357 ff/8157: 8a           ??MX???C e .....                 txa
++000358 ff/8158: 29 7f        ??MX???C e .....                 and     #$7f
++00035a ff/815a: aa           n?MX???C e .....                 tax
++00035b ff/815b: 78           ??MX???C e .....                 sei
++00035c ff/815c: a9 ff        ??MX?I?C e .....                 lda     #$ff
++00035e ff/815e: a8           N?MX?IzC e .....                 tay
++00035f ff/815f: 85 14        ??MX?I?C e .....                 sta     $14
++000361 ff/8161: 86 15        ??MX?I?C e .....                 stx     $15
++000363 ff/8163: 29 0f        ??MX?I?C e .....                 and     #$0f
++000365 ff/8165: f0 48        n?MX?I?C e .....                 beq     LFF81AF
++000367 ff/8167: 84 08        n?MX?IzC e .....                 sty     DP_8_PTR_VID
++000369 ff/8169: a2 9f        n?MX?IzC e .....                 ldx     #$9f
++00036b ff/816b: 86 09        N?MX?IzC e .....                 stx     DP_8_PTR_VID+1
++00036d ff/816d: a2 00        N?MX?IzC e .....                 ldx     #$00
++00036f ff/816f: 62 02 00     ??MX???C e ....> LFF816F         per     LFF8175-1
++000372 ff/8172: 82 e3 00     ??MX???C e ...#.                 brl     getVidInd8
+
++000375 ff/8175: 29 0f        ??MXdi?? e @T... LFF8175         and     #$0f
++000377 ff/8177: f0 3a        n?MXdi?? e .....                 beq     LFF81B3
++000379 ff/8179: a0 04        n?MXdiz? e .....                 ldy     #$04
++00037b ff/817b: 4a           ??MXdiz? e ....> LFF817B         lsr     A
++00037c ff/817c: 90 21        n?MXdi?? e .....                 bcc     LFF819F
++00037e ff/817e: 48           n?MXdi?C e .....                 pha
++00037f ff/817f: 8b           n?MXdi?C e .....                 phb
++000380 ff/8180: 4b           n?MXdi?C e .....                 phk
+                                                               .dbank  K (auto)
++000381 ff/8181: ab           n?MXdi?C e .....                 plb
++000382 ff/8182: da           ??MXdi?C e .....                 phx
++000383 ff/8183: c2 30        ??MXdi?C e .....                 rep     #$30
+                                                               .rwid   longm,longx
++000385 ff/8185: 62 ee 01     ??mxdi?C e .....                 per     LFF8376           ;TODO: this sequence could be replaced with lda LFF8376,X?
++000388 ff/8188: 8a           ??mxdi?C e .....                 txa
++000389 ff/8189: 18           ??mxdi?C e .....                 clc
++00038a ff/818a: 63 01        ??mxdi?c e .....                 adc     $01,S
++00038c ff/818c: fa           ??mxdi?? e .....                 plx
++00038d ff/818d: bd 00 00     ??mxdi?? e .....                 lda     a:$0000,x
++000390 ff/8190: e2 30        ??mxdi?? e .....                 sep     #$30
+                                                               .rwid   shortm,shortx
++000392 ff/8192: fa           ??MXdi?? e .....                 plx
++000393 ff/8193: ab           ??MXdi?? e .....                 plb
++000394 ff/8194: c5 15        ??MXdi?? e .....                 cmp     $15
++000396 ff/8196: 90 06        ??MXdi?? e .....                 bcc     LFF819E
++000398 ff/8198: c5 14        ??MXdi?C e .....                 cmp     $14
++00039a ff/819a: b0 02        ??MXdi?? e .....                 bcs     LFF819E
++00039c ff/819c: 85 14        ??MXdi?c e .....                 sta     $14
++00039e ff/819e: 68           ??MXdi?? e ....> LFF819E         pla
++00039f ff/819f: e8           ??MXdi?? e ....> LFF819F         inx
++0003a0 ff/81a0: 88           ??MXdi?? e .....                 dey
++0003a1 ff/81a1: d0 d8        ??MXdi?? e .....                 bne     LFF817B
++0003a3 ff/81a3: a5 09        ??MXdi?? e ....> LFF81A3         lda     DP_8_PTR_VID+1
++0003a5 ff/81a5: 49 c0        ??MXdi?? e .....                 eor     #$c0
++0003a7 ff/81a7: 38           ??MXdi?? e .....                 sec
++0003a8 ff/81a8: 6a           ??MXdi?C e .....                 ror     A
++0003a9 ff/81a9: 66 08        N?MXdiz? e .....                 ror     DP_8_PTR_VID
++0003ab ff/81ab: 85 09        ??MXdi?? e .....                 sta     DP_8_PTR_VID+1
++0003ad ff/81ad: b0 c0        ??MXdi?? e .....                 bcs     LFF816F
++0003af ff/81af: a6 14        ??MX???? e ....> LFF81AF         ldx     $14
++0003b1 ff/81b1: 8a           ??MX???? e .....                 txa
++0003b2 ff/81b2: 60           ??MX???? e ...#.                 rts
+
++0003b3 ff/81b3: e8           n?MXdiZ? e ....> LFF81B3         inx
++0003b4 ff/81b4: e8           ??MXdi?? e .....                 inx
++0003b5 ff/81b5: e8           ??MXdi?? e .....                 inx
++0003b6 ff/81b6: e8           ??MXdi?? e .....                 inx
++0003b7 ff/81b7: 10 ea        ??MXdi?? e .....                 bpl     LFF81A3
++0003b9 ff/81b9: a2 ff        ??MXdi?? e ....> LFF81B9         ldx     #$ff
++0003bb ff/81bb: e8           ??MXdi?? e ....> LFF81BB         inx
++0003bc ff/81bc: 4a           ??MXdi?? e .....                 lsr     A
++0003bd ff/81bd: 90 fc        n?MXdi?? e .....                 bcc     LFF81BB
++0003bf ff/81bf: 86 0e        n?MXdi?C e .....                 stx     $0e
++0003c1 ff/81c1: a5 08        n?MXdi?C e .....                 lda     DP_8_PTR_VID
++0003c3 ff/81c3: 49 ff        ??MXdi?C e .....                 eor     #$ff
++0003c5 ff/81c5: f0 10        ??MXdi?C e .....                 beq     LFF81D7
++0003c7 ff/81c7: a2 00        ??MXdizC e .....                 ldx     #$00
++0003c9 ff/81c9: e8           n?MXdi?? e ....> LFF81C9         inx
++0003ca ff/81ca: 4a           ??MXdi?? e .....                 lsr     A
++0003cb ff/81cb: 90 fc        n?MXdi?? e .....                 bcc     LFF81C9
++0003cd ff/81cd: 8a           n?MXdi?C e .....                 txa
++0003ce ff/81ce: 0a           ??MXdi?C e .....                 asl     A
++0003cf ff/81cf: 0a           ??MXdi?? e .....                 asl     A
++0003d0 ff/81d0: 62 02 00     ??MXdi?? e .....                 per     LFF81D6-1
++0003d3 ff/81d3: 82 0b 00     ??MXdi?? e ...#.                 brl     LFF81E1
+
++0003d6 ff/81d6: 60           ??MXdi?? e @T.#. LFF81D6         rts
+
++0003d7 ff/81d7: a5 09        ??MXdiZC e ....> LFF81D7         lda     DP_8_PTR_VID+1
++0003d9 ff/81d9: 29 3f        ??MXdi?C e .....                 and     #$3f
++0003db ff/81db: 49 3f        n?MXdi?C e .....                 eor     #$3f
++0003dd ff/81dd: a2 08        ??MXdi?C e .....                 ldx     #$08
++0003df ff/81df: d0 e8        n?MXdizC e ...#.                 bne     LFF81C9
+
++0003e1 ff/81e1: 05 0e        ??MXdi?? e ....> LFF81E1         ora     $0e
++0003e3 ff/81e3: aa           ??MXdi?? e .....                 tax
++0003e4 ff/81e4: a5 09        ??MXdi?? e .....                 lda     DP_8_PTR_VID+1
++0003e6 ff/81e6: 29 20        ??MXdi?? e .....                 and     #$20
++0003e8 ff/81e8: d0 04        n?MXdi?? e .....                 bne     LFF81EE
++0003ea ff/81ea: 8a           n?MXdiZ? e .....                 txa
++0003eb ff/81eb: 09 40        ??MXdi?? e .....                 ora     #$40
++0003ed ff/81ed: aa           ??MXdiz? e .....                 tax
++0003ee ff/81ee: 8a           ??MXdi?? e ....> LFF81EE         txa
++0003ef ff/81ef: 60           ??MXdi?? e ...#.                 rts
+
++0003f0 ff/81f0: 08           ??MX???? e ....> LFF81F0         php
++0003f1 ff/81f1: 5a           ??MX???? e .....                 phy
++0003f2 ff/81f2: 8b           ??MX???? e .....                 phb
++0003f3 ff/81f3: 4b           ??MX???? e .....                 phk
+                                                               .dbank  K (auto)
++0003f4 ff/81f4: ab           ??MX???? e .....                 plb
++0003f5 ff/81f5: 48           ??MX???? e .....                 pha
++0003f6 ff/81f6: 29 3f        ??MX???? e .....                 and     #$3f
++0003f8 ff/81f8: 4a           n?MX???? e .....                 lsr     A
++0003f9 ff/81f9: 4a           n?MX???? e .....                 lsr     A
++0003fa ff/81fa: a8           n?MX???? e .....                 tay
++0003fb ff/81fb: 68           ??MX???? e .....                 pla
++0003fc ff/81fc: 48           ??MX???? e .....                 pha
++0003fd ff/81fd: 29 7f        ??MX???? e .....                 and     #$7f
++0003ff ff/81ff: c9 40        n?MX???? e .....                 cmp     #$40
++000401 ff/8201: 62 33 00     ??MX???? e .....                 per     tblQQQ-1
++000404 ff/8204: b3 01        ??MX???? e .....                 lda     ($01,S),y
++000406 ff/8206: fa           ??MX???? e .....                 plx
++000407 ff/8207: fa           ??MX???? e .....                 plx
++000408 ff/8208: 90 02        ??MX???? e .....                 bcc     LFF820C
++00040a ff/820a: 29 df        ??MX???C e .....                 and     #$df
++00040c ff/820c: 85 09        ??MX???? e ....> LFF820C         sta     DP_8_PTR_VID+1
++00040e ff/820e: 8b           ??MX???? e .....                 phb
++00040f ff/820f: f4 00 00     ??MX???? e .....                 pea     $0000
++000412 ff/8212: ab           ??MX???? e .....                 plb
++000413 ff/8213: ab           ??MX???? e .....                 plb
++000414 ff/8214: 85 16        ??MX???? e .....                 sta     $16
++000416 ff/8216: ab           ??MX???? e .....                 plb
++000417 ff/8217: 62 2b 00     ??MX???? e .....                 per     tblQQQ2-1
++00041a ff/821a: b3 01        ??MX???? e .....                 lda     ($01,S),y
++00041c ff/821c: fa           ??MX???? e .....                 plx
++00041d ff/821d: fa           ??MX???? e .....                 plx
++00041e ff/821e: 85 08        ??MX???? e .....                 sta     DP_8_PTR_VID
++000420 ff/8220: 8b           ??MX???? e .....                 phb
++000421 ff/8221: f4 00 00     ??MX???? e .....                 pea     $0000
++000424 ff/8224: ab           ??MX???? e .....                 plb
+                                                               .dbank  $00
++000425 ff/8225: ab           ??MX???? e .....                 plb
++000426 ff/8226: 85 15        ??MX???? e .....                 sta     $15
++000428 ff/8228: ab           ??MX???? e .....                 plb
++000429 ff/8229: 68           ??MX???? e .....                 pla
++00042a ff/822a: 29 03        ??MX???? e .....                 and     #$03
++00042c ff/822c: a8           n?MX???? e .....                 tay
++00042d ff/822d: 62 fe 01     ??MX???? e .....                 per     LFF842E
++000430 ff/8230: b3 01        ??MX???? e .....                 lda     ($01,S),y
++000432 ff/8232: fa           ??MX???? e .....                 plx
++000433 ff/8233: fa           ??MX???? e .....                 plx
++000434 ff/8234: ab           ??MX???? e .....                 plb
++000435 ff/8235: 7a           ??MX???? e .....                 ply
++000436 ff/8236: 28           ??MX???? e .....                 plp
++000437 ff/8237: 60           ??MX???? e ...#.                 rts
+
++000438 ff/8238: bf                      .T... tblQQQ          .dd1    $bf
++000439 ff/8239: bf                      .T...                 .dd1    $bf
++00043a ff/823a: bf                      .T...                 .dd1    $bf
++00043b ff/823b: bf                      .T...                 .dd1    $bf
++00043c ff/823c: bf                      .T...                 .dd1    $bf
++00043d ff/823d: bf                      .T...                 .dd1    $bf
++00043e ff/823e: bf                      .T...                 .dd1    $bf
++00043f ff/823f: bf                      .T...                 .dd1    $bf
++000440 ff/8240: be                      .T...                 .dd1    $be
++000441 ff/8241: bd                      .T...                 .dd1    $bd
++000442 ff/8242: bb                      .T...                 .dd1    $bb
++000443 ff/8243: b7                      .T...                 .dd1    $b7
++000444 ff/8244: af                      .T...                 .dd1    $af
++000445 ff/8245: 9f                      .T...                 .dd1    $9f
++000446 ff/8246: fe                      .T... tblQQQ2         .dd1    $fe
++000447 ff/8247: fd                      .T...                 .dd1    $fd
++000448 ff/8248: fb                      .T...                 .dd1    $fb
++000449 ff/8249: f7                      .T...                 .dd1    $f7
++00044a ff/824a: ef                      .T...                 .dd1    $ef
++00044b ff/824b: df                      .T...                 .dd1    $df
++00044c ff/824c: bf                      .T...                 .dd1    $bf
++00044d ff/824d: 7f                      .T...                 .dd1    $7f
++00044e ff/824e: ff                      .T...                 .dd1    $ff
++00044f ff/824f: ff                      .T...                 .dd1    $ff
++000450 ff/8250: ff                      .T...                 .dd1    $ff
++000451 ff/8251: ff                      .T...                 .dd1    $ff
++000452 ff/8252: ff                      .T...                 .dd1    $ff
++000453 ff/8253: ff                      .T...                 .dd1    $ff
++000454 ff/8254: 58           ??MXdi?? e ....> LFF8254         cli
++000455 ff/8255: 78           ??MXdi?? e .....                 sei
++000456 ff/8256: 8a           ??MXdI?? e .....                 txa
++000457 ff/8257: 60           ??MXdI?? e ...#.                 rts
+
++000458 ff/8258: da           ??MX???? e ....> getVidInd8      phx
++000459 ff/8259: 08           ??MX???? e .....                 php
++00045a ff/825a: c2 10        ??MX???? e .....                 rep     #$10
+                                                               .rwid   longx
++00045c ff/825c: a6 08        ??Mx???? e .....                 ldx     DP_8_PTR_VID
++00045e ff/825e: bf 00 00 45  ??Mx???? e .....                 ldal    $450000,x
++000462 ff/8262: 28           ??Mx???? e .....                 plp
++000463 ff/8263: fa           ??Mx???? e .....                 plx
++000464 ff/8264: 60           ??Mx???? e ...#.                 rts
+
+                                                               .rwid   shortx
++000465 ff/8265: b8           n?MXdiz? e ....> LFF8265         clv
++000466 ff/8266: bb           nvMXdiz? e .....                 tyx
++000467 ff/8267: b5 00        ?vMXdi?? e .....                 lda     $00,x
++000469 ff/8269: f0 0a        ?vMXdi?? e .....                 beq     LFF8275
++00046b ff/826b: e2 40        ?vMXdiz? e .....                 sep     #$40
++00046d ff/826d: 62 02 00     ?VMXdiz? e .....                 per     LFF8273-1
++000470 ff/8270: 82 7d ff     ?VMXdiz? e ...#.                 brl     LFF81F0
+
++000473 ff/8273: 85 14        ??MXdi?? e @T... LFF8273         sta     $14
++000475 ff/8275: a9 00        ??MXdi?? e ....> LFF8275         lda     #$00
++000477 ff/8277: 85 08        n?MXdiZ? e .....                 sta     DP_8_PTR_VID
++000479 ff/8279: a9 a0        n?MXdiZ? e .....                 lda     #$a0
++00047b ff/827b: 85 09        N?MXdiz? e .....                 sta     DP_8_PTR_VID+1
++00047d ff/827d: 62 02 00     N?MXdiz? e .....                 per     LFF8283-1
++000480 ff/8280: 82 d5 ff     N?MXdiz? e ...#.                 brl     getVidInd8
+
++000483 ff/8283: 29 0f        ??MXdi?? e @T... LFF8283         and     #$0f
++000485 ff/8285: d0 15        n?MXdi?? e .....                 bne     LFF829C
++000487 ff/8287: a9 00        n?MXdiZ? e .....                 lda     #$00
++000489 ff/8289: 85 08        n?MXdiZ? e .....                 sta     DP_8_PTR_VID
++00048b ff/828b: a9 80        n?MXdiZ? e .....                 lda     #$80
++00048d ff/828d: 85 09        N?MXdiz? e .....                 sta     DP_8_PTR_VID+1
++00048f ff/828f: 62 02 00     N?MXdiz? e .....                 per     LFF8295-1
++000492 ff/8292: 82 c3 ff     N?MXdiz? e ...#.                 brl     getVidInd8
+
++000495 ff/8295: 29 0f        ??MXdi?? e @T... LFF8295         and     #$0f
++000497 ff/8297: d0 03        n?MXdi?? e .....                 bne     LFF829C
++000499 ff/8299: 82 4e 00     n?MXdiZ? e ...#.                 brl     LFF82EA
+
++00049c ff/829c: a0 ff        n?MXdiz? e ....> LFF829C         ldy     #$ff
++00049e ff/829e: 84 08        N?MXdiz? e .....                 sty     DP_8_PTR_VID
++0004a0 ff/82a0: a2 af        N?MXdiz? e .....                 ldx     #$af
++0004a2 ff/82a2: 86 09        N?MXdiz? e .....                 stx     DP_8_PTR_VID+1
++0004a4 ff/82a4: 62 02 00     ??MXdi?? e ....> LFF82A4         per     LFF82AA-1
++0004a7 ff/82a7: 82 ae ff     ??MXdi?? e ...#.                 brl     getVidInd8
+
++0004aa ff/82aa: 29 0f        ??MXdi?? e @T... LFF82AA         and     #$0f
++0004ac ff/82ac: f0 08        n?MXdi?? e .....                 beq     LFF82B6
++0004ae ff/82ae: 62 02 00     n?MXdiz? e .....                 per     LFF82B4-1
++0004b1 ff/82b1: 82 54 fe     n?MXdiz? e ...#.                 brl     LFF8108
+
++0004b4 ff/82b4: d0 38        ??MXdi?? e @T... LFF82B4         bne     LFF82EE
++0004b6 ff/82b6: a5 09        ??MXdiZ? e ....> LFF82B6         lda     DP_8_PTR_VID+1
++0004b8 ff/82b8: 49 c0        ??MXdi?? e .....                 eor     #$c0
++0004ba ff/82ba: 38           ??MXdi?? e .....                 sec
++0004bb ff/82bb: 6a           ??MXdi?C e .....                 ror     A
++0004bc ff/82bc: 66 08        N?MXdiz? e .....                 ror     DP_8_PTR_VID
++0004be ff/82be: 85 09        ??MXdi?? e .....                 sta     DP_8_PTR_VID+1
++0004c0 ff/82c0: b0 e2        ??MXdi?? e .....                 bcs     LFF82A4
++0004c2 ff/82c2: a0 ff        ??MXdi?c e .....                 ldy     #$ff
++0004c4 ff/82c4: 84 08        N?MXdizc e .....                 sty     DP_8_PTR_VID
++0004c6 ff/82c6: a2 8f        N?MXdizc e .....                 ldx     #$8f
++0004c8 ff/82c8: 86 09        N?MXdizc e .....                 stx     DP_8_PTR_VID+1
++0004ca ff/82ca: 62 02 00     ??MXdi?? e ....> LFF82CA         per     LFF82D0-1
++0004cd ff/82cd: 82 88 ff     ??MXdi?? e ...#.                 brl     getVidInd8
+
++0004d0 ff/82d0: 29 0f        ??MXdi?? e @T... LFF82D0         and     #$0f
++0004d2 ff/82d2: f0 08        n?MXdi?? e .....                 beq     LFF82DC
++0004d4 ff/82d4: 62 02 00     n?MXdiz? e .....                 per     LFF82DA-1
++0004d7 ff/82d7: 82 2e fe     n?MXdiz? e ...#.                 brl     LFF8108
+
++0004da ff/82da: d0 12        ??MXdi?? e @T... LFF82DA         bne     LFF82EE
++0004dc ff/82dc: a5 09        ??MXdiZ? e ....> LFF82DC         lda     DP_8_PTR_VID+1
++0004de ff/82de: 49 e0        ??MXdi?? e .....                 eor     #$e0
++0004e0 ff/82e0: 38           ??MXdi?? e .....                 sec
++0004e1 ff/82e1: 6a           ??MXdi?C e .....                 ror     A
++0004e2 ff/82e2: 66 08        N?MXdiz? e .....                 ror     DP_8_PTR_VID
++0004e4 ff/82e4: 29 df        ??MXdi?? e .....                 and     #$df
++0004e6 ff/82e6: 85 09        ??MXdi?? e .....                 sta     DP_8_PTR_VID+1
++0004e8 ff/82e8: b0 e0        ??MXdi?? e .....                 bcs     LFF82CA
++0004ea ff/82ea: a2 80        ??MXdi?? e ....> LFF82EA         ldx     #$80
++0004ec ff/82ec: 30 06        N?MXdiz? e ...#.                 bmi     LFF82F4
+
++0004ee ff/82ee: 62 02 00     ??MXdiz? e ....> LFF82EE         per     LFF82F4-1
++0004f1 ff/82f1: 82 c5 fe     ??MXdiz? e ...#.                 brl     LFF81B9
+
++0004f4 ff/82f4: 8a           N?MXdiz? e ....> LFF82F4         txa
++0004f5 ff/82f5: 60           ??MXdi?? e ...#.                 rts
+
++0004f6 ff/82f6: 3a 5e 5b 3b+            .....                 .str    “:^[;l0okg6tf???”
++000505 ff/8305: cf                      .....                 .dd1    $cf
++000506 ff/8306: 3f 3f 3f 3f+            .....                 .str    “????d4esa2q?j8uh????”
++00051a ff/831a: 8d                      .....                 .dd1    $8d
++00051b ff/831b: 89                      .....                 .dd1    $89
++00051c ff/831c: 8f                      .....                 .dd1    $8f
++00051d ff/831d: 8c                      .....                 .dd1    $8c
++00051e ff/831e: c8 c2 c5 c7+            .....                 .str    ↑“HBEGM”
++000523 ff/8323: 20                      .....                 .dd1    $20
++000524 ff/8324: ce                      .....                 .dd1    $ce
++000525 ff/8325: 0d                      .....                 .dd1    $0d
++000526 ff/8326: 86                      .....                 .dd1    $86
++000527 ff/8327: 88                      .....                 .dd1    $88
++000528 ff/8328: 87                      .....                 .dd1    $87
++000529 ff/8329: 83                      .....                 .dd1    $83
++00052a ff/832a: 3f 3f 3f 3f+            .....                 .str    “????????????/p_-,i.9vrb5????????xwc3?”
++00054f ff/834f: 09                      .....                 .dd1    $09
++000550 ff/8350: 7a 31 6e 79+            .....                 .str    “z1nym7”
++000556 ff/8356: c9 c6 cb c3             .....                 .str    ↑“IFKC”
++00055a ff/835a: 7f                      .....                 .dd1    $7f
++00055b ff/835b: 8b                      .....                 .dd1    $8b
++00055c ff/835c: 8e                      .....                 .dd1    $8e
++00055d ff/835d: 80                      .....                 .dd1    $80
++00055e ff/835e: ca c4 c0 c1             .....                 .str    ↑“JD@A”
++000562 ff/8362: 5c                      .....                 .dd1    $5c
++000563 ff/8363: 5d                      .....                 .dd1    $5d
++000564 ff/8364: cc                      .....                 .dd1    $cc
++000565 ff/8365: 1b                      .....                 .dd1    $1b
++000566 ff/8366: 84                      .....                 .dd1    $84
++000567 ff/8367: 82                      .....                 .dd1    $82
++000568 ff/8368: 85                      .....                 .dd1    $85
++000569 ff/8369: 81                      .....                 .dd1    $81
++00056a ff/836a: 3f 3f 3f 3f+            .....                 .str    “????????????”
++000576 ff/8376: 70                      ..... LFF8376         .dd1    $70
++000577 ff/8377: 40                      .....                 .dd1    $40
++000578 ff/8378: 01                      .....                 .dd1    $01
++000579 ff/8379: 00                      .....                 .dd1    $00
++00057a ff/837a: 30                      .....                 .dd1    $30
++00057b ff/837b: 10                      .....                 .dd1    $10
++00057c ff/837c: 41 61 31 21+            .....                 .str    “Aa1!QB”
++000582 ff/8382: 11                      .....                 .dd1    $11
++000583 ff/8383: 22                      .....                 .dd1    $22
++000584 ff/8384: 32                      .....                 .dd1    $32
++000585 ff/8385: 52                      .....                 .dd1    $52
++000586 ff/8386: 12                      .....                 .dd1    $12
++000587 ff/8387: 33                      .....                 .dd1    $33
++000588 ff/8388: 43                      .....                 .dd1    $43
++000589 ff/8389: 63                      .....                 .dd1    $63
++00058a ff/838a: 13                      .....                 .dd1    $13
++00058b ff/838b: 23 53 64 34+            .....                 .str    “#Sd4DTU$5Ee”
++000596 ff/8396: 15                      .....                 .dd1    $15
++000597 ff/8397: 25 46 66 26+            .....                 .str    “%Ff&6Vg'7Wh”
++0005a2 ff/83a2: 17                      .....                 .dd1    $17
++0005a3 ff/83a3: 39                      .....                 .dd1    $39
++0005a4 ff/83a4: 48                      .....                 .dd1    $48
++0005a5 ff/83a5: ff                      .....                 .dd1    $ff
++0005a6 ff/83a6: 19                      .....                 .dd1    $19
++0005a7 ff/83a7: 29 49 59 79+            .....                 .str    “)IYyi”
++0005ac ff/83ac: ff                      .....                 .dd1    $ff
++0005ad ff/83ad: 62                      .....                 .dd1    $62
++0005ae ff/83ae: 50                      ..... LFF83AE         .dd1    $50
++0005af ff/83af: 17                      .....                 .dd1    $17
++0005b0 ff/83b0: 57                      .....                 .dd1    $57
++0005b1 ff/83b1: 55                      .....                 .dd1    $55
++0005b2 ff/83b2: 53                      .....                 .dd1    $53
++0005b3 ff/83b3: 13                      .....                 .dd1    $13
++0005b4 ff/83b4: 72                      .....                 .dd1    $72
++0005b5 ff/83b5: 30                      .....                 .dd1    $30
++0005b6 ff/83b6: 32                      .....                 .dd1    $32
++0005b7 ff/83b7: 00                      .....                 .dd1    $00
++0005b8 ff/83b8: 27 25 24 26             .....                 .str    “'%$&”
++0005bc ff/83bc: 00                      .....                 .dd1    $00
++0005bd ff/83bd: 00                      .....                 .dd1    $00
++0005be ff/83be: 1e                      .....                 .dd1    $1e
++0005bf ff/83bf: 5b                      .....                 .dd1    $5b
++0005c0 ff/83c0: 19                      .....                 .dd1    $19
++0005c1 ff/83c1: 4f 74 21 36+            .....                 .str    “Ot!6G”
++0005c6 ff/83c6: 05                      .....                 .dd1    $05
++0005c7 ff/83c7: 2b                      .....                 .dd1    $2b
++0005c8 ff/83c8: 00 00 00 00+            .....                 .fill   7,$00
++0005cf ff/83cf: 59                      .....                 .dd1    $59
++0005d0 ff/83d0: 1a                      .....                 .dd1    $1a
++0005d1 ff/83d1: 0e                      .....                 .dd1    $0e
++0005d2 ff/83d2: 63                      .....                 .dd1    $63
++0005d3 ff/83d3: 49                      .....                 .dd1    $49
++0005d4 ff/83d4: 4b                      .....                 .dd1    $4b
++0005d5 ff/83d5: 09                      .....                 .dd1    $09
++0005d6 ff/83d6: 46                      .....                 .dd1    $46
++0005d7 ff/83d7: 6a                      .....                 .dd1    $6a
++0005d8 ff/83d8: 00 00 00 00+            .....                 .fill   6,$00
++0005de ff/83de: 5f                      .....                 .dd1    $5f
++0005df ff/83df: 1d                      .....                 .dd1    $1d
++0005e0 ff/83e0: 18                      .....                 .dd1    $18
++0005e1 ff/83e1: 4d 0d 22 0a+            .....                 .str    “M”,$0d,“"”,$0a,“E”
++0005e6 ff/83e6: 06                      .....                 .dd1    $06
++0005e7 ff/83e7: 2a                      .....                 .dd1    $2a
++0005e8 ff/83e8: 00 00 00 00+            .....                 .fill   6,$00
++0005ee ff/83ee: 1f                      .....                 .dd1    $1f
++0005ef ff/83ef: 1c                      .....                 .dd1    $1c
++0005f0 ff/83f0: 58                      .....                 .dd1    $58
++0005f1 ff/83f1: 0f                      .....                 .dd1    $0f
++0005f2 ff/83f2: 61                      .....                 .dd1    $61
++0005f3 ff/83f3: 20                      .....                 .dd1    $20
++0005f4 ff/83f4: 0b                      .....                 .dd1    $0b
++0005f5 ff/83f5: 46                      .....                 .dd1    $46
++0005f6 ff/83f6: 04                      .....                 .dd1    $04
++0005f7 ff/83f7: 33                      .....                 .dd1    $33
++0005f8 ff/83f8: 00 00 00 00+            .....                 .fill   6,$00
++0005fe ff/83fe: 5c                      .....                 .dd1    $5c
++0005ff ff/83ff: 1b                      .....                 .dd1    $1b
++000600 ff/8400: 5a                      .....                 .dd1    $5a
++000601 ff/8401: 0c                      .....                 .dd1    $0c
++000602 ff/8402: 23                      .....                 .dd1    $23
++000603 ff/8403: 60                      .....                 .dd1    $60
++000604 ff/8404: 08                      .....                 .dd1    $08
++000605 ff/8405: 07 71 68 6f+            .....                 .str    $07,“qho-gm.e]^1LNbHJDi/,dnflswu7v45”
++000625 ff/8425: 00                      .....                 .dd1    $00
++000626 ff/8426: 71 28 6b 29             .....                 .str    “q(k)”
++00062a ff/842a: 00                      .....                 .dd1    $00
++00062b ff/842b: 00                      .....                 .dd1    $00
++00062c ff/842c: 00                      .....                 .dd1    $00
++00062d ff/842d: 00                      .....                 .dd1    $00
++00062e ff/842e: 01                      ..... LFF842E         .dd1    $01
++00062f ff/842f: 02                      .....                 .dd1    $02
++000630 ff/8430: 04                      .....                 .dd1    $04
++000631 ff/8431: 08                      .....                 .dd1    $08
+
++000632 ff/8432: 8b           ??MXdi?? e ....> Serv14          phb
++000633 ff/8433: 5a           ??MXdi?? e .....                 phy
++000634 ff/8434: 4b           ??MXdi?? e .....                 phk
+                                                               .dbank  K (auto)
++000635 ff/8435: ab           ??MXdi?? e .....                 plb
++000636 ff/8436: a0 02        ??MXdi?? e .....                 ldy     #$02
++000638 ff/8438: 62 34 00     n?MXdiz? e .....                 per     tblQ1-1
++00063b ff/843b: d3 01        ??MXdiz? e ....> LFF843B         cmp     ($01,S),y
++00063d ff/843d: f0 26        ??MXdi?? e .....                 beq     LFF8465
++00063f ff/843f: 88           ??MXdiz? e .....                 dey
++000640 ff/8440: d0 f9        ??MXdi?? e .....                 bne     LFF843B
++000642 ff/8442: 7a           ??MXdiZ? e .....                 ply
++000643 ff/8443: 7a           ??MXdi?? e .....                 ply
++000644 ff/8444: c9 7f        ??MXdi?? e .....                 cmp     #$7f
++000646 ff/8446: f0 1a        ??MXdi?? e .....                 beq     LFF8462
++000648 ff/8448: 90 05        ??MXdiz? e .....                 bcc     LFF844F
++00064a ff/844a: 7a           ??MXdizC e .....                 ply
++00064b ff/844b: ab           ??MXdi?C e .....                 plb
++00064c ff/844c: 49 20        ??MXdi?C e .....                 eor     #$20
++00064e ff/844e: 60           ??MXdi?C e ...#.                 rts
+
++00064f ff/844f: c9 40        ??MXdizc e ....> LFF844F         cmp     #$40
++000651 ff/8451: 90 0f        ??MXdi?? e .....                 bcc     LFF8462
++000653 ff/8453: 29 1f        ??MXdi?C e .....                 and     #$1f
++000655 ff/8455: 48           ??MXdi?? e ....> LFF8455         pha
++000656 ff/8456: a9 00        ??MXdi?? e .....                 lda     #$00
++000658 ff/8458: 8b           n?MXdiZ? e .....                 phb
++000659 ff/8459: f4 00 00     n?MXdiZ? e .....                 pea     $0000
++00065c ff/845c: ab           n?MXdiZ? e .....                 plb
+                                                               .dbank  $00
++00065d ff/845d: ab           ??MXdi?? e .....                 plb
++00065e ff/845e: 85 0d        ??MXdi?? e .....                 sta     $0d
++000660 ff/8460: ab           ??MXdi?? e .....                 plb
++000661 ff/8461: 68           ??MXdi?? e .....                 pla
++000662 ff/8462: 7a           ??MXdi?? e ....> LFF8462         ply
++000663 ff/8463: ab           ??MXdi?? e .....                 plb
++000664 ff/8464: 60           ??MXdi?? e ...#.                 rts
+
++000665 ff/8465: 68           ??MXdiZ? e ....> LFF8465         pla
++000666 ff/8466: 68           ??MXdi?? e .....                 pla
++000667 ff/8467: 62 07 00     ??MXdi?? e .....                 per     tblQ1+1
++00066a ff/846a: b3 01        ??MXdi?? e .....                 lda     ($01,S),y
++00066c ff/846c: 7a           ??MXdi?? e .....                 ply
++00066d ff/846d: 7a           ??MXdi?? e .....                 ply
++00066e ff/846e: 80 e5        ??MXdi?? e ...#.                 bra     LFF8455
+
++000670 ff/8470: 5f                      ..... tblQ1           .dd1    $5f
++000671 ff/8471: 2f                      .....                 .dd1    $2f
++000672 ff/8472: 00                      .....                 .dd1    $00
++000673 ff/8473: 1f                      .....                 .dd1    $1f
+
++000674 ff/8474: 8b           ??MXdi?? e ....> LFF8474         phb
++000675 ff/8475: 5a           ??MXdi?? e .....                 phy
++000676 ff/8476: 4b           ??MXdi?? e .....                 phk
+                                                               .dbank  K (auto)
++000677 ff/8477: ab           ??MXdi?? e .....                 plb
++000678 ff/8478: a0 02        ??MXdi?? e .....                 ldy     #$02
++00067a ff/847a: 62 29 00     n?MXdiz? e .....                 per     tblXX-1
++00067d ff/847d: d3 01        ??MXdiz? e ....> LFF847D         cmp     ($01,S),y
++00067f ff/847f: f0 1a        ??MXdi?? e .....                 beq     LFF849B
++000681 ff/8481: 88           ??MXdiz? e .....                 dey
++000682 ff/8482: d0 f9        ??MXdi?? e .....                 bne     LFF847D
++000684 ff/8484: 7a           ??MXdiZ? e .....                 ply
++000685 ff/8485: 7a           ??MXdi?? e .....                 ply
++000686 ff/8486: c9 7f        ??MXdi?? e .....                 cmp     #$7f
++000688 ff/8488: f0 0e        ??MXdi?? e .....                 beq     LFF8498
++00068a ff/848a: b0 0a        ??MXdiz? e .....                 bcs     LFF8496
++00068c ff/848c: c9 21        ??MXdizc e .....                 cmp     #$21
++00068e ff/848e: 90 08        ??MXdi?? e .....                 bcc     LFF8498
++000690 ff/8490: c9 40        ??MXdi?C e .....                 cmp     #$40
++000692 ff/8492: 90 02        ??MXdi?? e .....                 bcc     LFF8496
++000694 ff/8494: 49 30        ??MXdi?C e .....                 eor     #$30
++000696 ff/8496: 49 10        ??MXdi?? e ....> LFF8496         eor     #$10
++000698 ff/8498: 7a           ??MXdi?? e ....> LFF8498         ply
++000699 ff/8499: ab           ??MXdi?? e .....                 plb
++00069a ff/849a: 60           ??MXdi?? e ...#.                 rts
+
++00069b ff/849b: 68           ??MXdiZ? e ....> LFF849B         pla
++00069c ff/849c: 68           ??MXdi?? e .....                 pla
++00069d ff/849d: 62 08 00     ??MXdi?? e .....                 per     tblXX+1
++0006a0 ff/84a0: b3 01        ??MXdi?? e .....                 lda     ($01,S),y
++0006a2 ff/84a2: 7a           ??MXdi?? e .....                 ply
++0006a3 ff/84a3: 7a           ??MXdi?? e .....                 ply
++0006a4 ff/84a4: 7a           ??MXdi?? e .....                 ply
++0006a5 ff/84a5: ab           ??MXdi?? e .....                 plb
++0006a6 ff/84a6: 60           ??MXdi?? e ...#.                 rts
+
++0006a7 ff/84a7: 5f 30 40 60             ..... tblXX           .str    “_0@`”
+
++0006ab ff/84ab: 8b           ??MXdi?? e ....> LFF84AB         phb
++0006ac ff/84ac: 5a           ??MXdi?? e .....                 phy
++0006ad ff/84ad: 4b           ??MXdi?? e .....                 phk
+                                                               .dbank  K (auto)
++0006ae ff/84ae: ab           ??MXdi?? e .....                 plb
++0006af ff/84af: a0 08        ??MXdi?? e .....                 ldy     #$08
++0006b1 ff/84b1: 62 16 00     n?MXdiz? e .....                 per     tblYY-1
++0006b4 ff/84b4: d3 01        ??MXdiz? e ....> LFF84B4         cmp     ($01,S),y
++0006b6 ff/84b6: f0 08        ??MXdi?? e .....                 beq     LFF84C0
++0006b8 ff/84b8: 88           ??MXdiz? e .....                 dey
++0006b9 ff/84b9: d0 f9        ??MXdi?? e .....                 bne     LFF84B4
++0006bb ff/84bb: 7a           ??MXdiZ? e .....                 ply
++0006bc ff/84bc: 7a           ??MXdi?? e .....                 ply
++0006bd ff/84bd: 7a           ??MXdi?? e ....> LFF84BD         ply
++0006be ff/84be: ab           ??MXdi?? e .....                 plb
++0006bf ff/84bf: 60           ??MXdi?? e ...#.                 rts
+
++0006c0 ff/84c0: 68           ??MXdiZ? e ....> LFF84C0         pla
++0006c1 ff/84c1: 68           ??MXdi?? e .....                 pla
++0006c2 ff/84c2: 62 0d 00     ??MXdi?? e .....                 per     tblYY+7
++0006c5 ff/84c5: b3 01        ??MXdi?? e .....                 lda     ($01,S),y
++0006c7 ff/84c7: 7a           ??MXdi?? e .....                 ply
++0006c8 ff/84c8: 7a           ??MXdi?? e .....                 ply
++0006c9 ff/84c9: 80 f2        ??MXdi?? e ...#.                 bra     LFF84BD
+
++0006cb ff/84cb: 31 32 33 34+            ..... tblYY           .str    “12345678”
++0006d3 ff/84d3: 81                      .....                 .dd1    $81
++0006d4 ff/84d4: 82                      .....                 .dd1    $82
++0006d5 ff/84d5: 83                      .....                 .dd1    $83
++0006d6 ff/84d6: 84                      .....                 .dd1    $84
++0006d7 ff/84d7: 85                      .....                 .dd1    $85
++0006d8 ff/84d8: 86                      .....                 .dd1    $86
++0006d9 ff/84d9: 87                      .....                 .dd1    $87
++0006da ff/84da: 88                      .....                 .dd1    $88
+
++0006db ff/84db: c9 c0        ??MXdi?? e ....> LFF84DB         cmp     #$c0
++0006dd ff/84dd: 90 1b        ??MXdi?? e .....                 bcc     LFF84FA
++0006df ff/84df: 8b           ??MXdi?C e .....                 phb
++0006e0 ff/84e0: 5a           ??MXdi?C e .....                 phy
++0006e1 ff/84e1: 4b           ??MXdi?C e .....                 phk
+                                                               .dbank  K (auto)
++0006e2 ff/84e2: ab           ??MXdi?C e .....                 plb
++0006e3 ff/84e3: 29 cf        ??MXdi?C e .....                 and     #$cf
++0006e5 ff/84e5: a0 08        ??MXdi?C e .....                 ldy     #$08
++0006e7 ff/84e7: 62 3c 00     n?MXdizC e .....                 per     tblZZ-1
++0006ea ff/84ea: d3 01        ??MXdiz? e ....> LFF84EA         cmp     ($01,S),y
++0006ec ff/84ec: f0 0d        ??MXdi?? e .....                 beq     LFF84FB
++0006ee ff/84ee: 88           ??MXdiz? e .....                 dey
++0006ef ff/84ef: d0 f9        ??MXdi?? e .....                 bne     LFF84EA
++0006f1 ff/84f1: 7a           ??MXdiZ? e .....                 ply
++0006f2 ff/84f2: 7a           ??MXdi?? e .....                 ply
++0006f3 ff/84f3: 29 0f        ??MXdi?? e .....                 and     #$0f
++0006f5 ff/84f5: 18           n?MXdi?? e .....                 clc
++0006f6 ff/84f6: 69 30        n?MXdi?c e .....                 adc     #$30
++0006f8 ff/84f8: 7a           ??MX???? e ....> LFF84F8         ply
++0006f9 ff/84f9: ab           ??MX???? e .....                 plb
++0006fa ff/84fa: 60           ??MX???? e ...#> LFF84FA         rts
+
++0006fb ff/84fb: 68           ??MXdiZ? e ....> LFF84FB         pla
++0006fc ff/84fc: 68           ??MXdi?? e .....                 pla
++0006fd ff/84fd: 62 2e 00     ??MXdi?? e .....                 per     tblZZ2-1
++000700 ff/8500: b3 01        ??MXdi?? e .....                 lda     ($01,S),y
++000702 ff/8502: 7a           ??MXdi?? e .....                 ply
++000703 ff/8503: 7a           ??MXdi?? e .....                 ply
++000704 ff/8504: 08           ??MXdi?? e .....                 php
++000705 ff/8505: 48           ??MXdi?? e .....                 pha
++000706 ff/8506: a9 ac        ??MXdi?? e .....                 lda     #$ac
++000708 ff/8508: a2 00        N?MXdiz? e .....                 ldx     #$00
++00070a ff/850a: a0 ff        n?MXdiZ? e .....                 ldy     #$ff
++00070c ff/850c: 02 06        N?MXdiz? e .....                 cop     $06
++00070e ff/850e: 8a           N?MXdiz? e .....                 txa
++00070f ff/850f: 4a           ??MXdi?? e .....                 lsr     A
++000710 ff/8510: 90 11        n?MXdi?? e .....                 bcc     LFF8523
++000712 ff/8512: 68           n?MXdi?C e .....                 pla
++000713 ff/8513: c9 2e        ??MXdi?C e .....                 cmp     #$2e
++000715 ff/8515: d0 04        ??MXdi?? e .....                 bne     LFF851B
++000717 ff/8517: a9 2a        ??MXdiZ? e .....                 lda     #$2a
++000719 ff/8519: 80 09        n?MXdiz? e ...#.                 bra     LFF8524
+
++00071b ff/851b: c9 3d        ??MXdiz? e ....> LFF851B         cmp     #$3d
++00071d ff/851d: d0 05        ??MXdi?? e .....                 bne     LFF8524
++00071f ff/851f: a9 23        ??MXdiZ? e .....                 lda     #$23
++000721 ff/8521: 80 01        n?MXdiz? e ...#.                 bra     LFF8524
+
++000723 ff/8523: 68           n?MXdi?c e ....> LFF8523         pla
++000724 ff/8524: 28           ??MXdi?? e ....> LFF8524         plp
++000725 ff/8525: 80 d1        ??MX???? e ...#.                 bra     LFF84F8
+
++000727 ff/8527: 80                      .T... tblZZ           .dd1    $80
++000728 ff/8528: 89                      .T...                 .dd1    $89
++000729 ff/8529: ca                      .T...                 .dd1    $ca
++00072a ff/852a: cb                      .T...                 .dd1    $cb
++00072b ff/852b: cf                      .T...                 .dd1    $cf
++00072c ff/852c: cc                      .T...                 .dd1    $cc
++00072d ff/852d: cd                      .T...                 .dd1    $cd
++00072e ff/852e: ce                      .T...                 .dd1    $ce
++00072f ff/852f: 1e                      .T... tblZZ2          .dd1    $1e
++000730 ff/8530: 2d                      .T...                 .dd1    $2d
++000731 ff/8531: 2e                      .T...                 .dd1    $2e
++000732 ff/8532: 3d                      .T...                 .dd1    $3d
++000733 ff/8533: f4                      .T...                 .dd1    $f4
++000734 ff/8534: f0                      .T...                 .dd1    $f0
++000735 ff/8535: f1                      .T...                 .dd1    $f1
++000736 ff/8536: f2                      .T...                 .dd1    $f2
++000737 ff/8537: 48           ?vMXdi?? e ....> LFF8537         pha
++000738 ff/8538: a9 02        ?vMXdi?? e .....                 lda     #$02
++00073a ff/853a: da           n?MXdi?? e ....> LFF853A         phx
++00073b ff/853b: a2 06        n?MXdi?? e .....                 ldx     #$06
++00073d ff/853d: 62 02 00     n?MXdiz? e .....                 per     LFF8543-1
++000740 ff/8540: 82 16 00     n?MXdiz? e ...#.                 brl     LFF8559
+
++000743 ff/8543: fa           ??MXdi?? e @T... LFF8543         plx
++000744 ff/8544: 68           ??MXdi?? e .....                 pla
++000745 ff/8545: 60           ??MXdi?? e ...#.                 rts
+
++000746 ff/8546: 48           ??MXdi?? e ....> LFF8546         pha
++000747 ff/8547: a9 00        ??MXdi?? e .....                 lda     #$00
++000749 ff/8549: 80 ef        n?MXdiZ? e ...#.                 bra     LFF853A
+
++00074b ff/854b: 48           ??MXdi?? e ....> LFF854B         pha
++00074c ff/854c: 29 df        ??MXdi?? e .....                 and     #$df
++00074e ff/854e: c9 41        ??MXdi?? e .....                 cmp     #$41
++000750 ff/8550: 90 04        ??MXdi?? e .....                 bcc     LFF8556
++000752 ff/8552: c9 5b        ??MXdi?C e .....                 cmp     #$5b
++000754 ff/8554: 90 01        ??MXdi?? e .....                 bcc     LFF8557
++000756 ff/8556: 38           ??MXdi?? e ....> LFF8556         sec
++000757 ff/8557: 68           ??MXdi?? e ....> LFF8557         pla
++000758 ff/8558: 60           ??MXdi?? e ...#.                 rts
+
++000759 ff/8559: 4b           n?MXdiz? e ....> LFF8559         phk
++00075a ff/855a: 62 02 00     n?MXdiz? e .....                 per     anRTS-1
++00075d ff/855d: 82 01 00     n?MXdiz? e ...#.                 brl     callMOS
+
++000760 ff/8560: 60           ??MXdi?? e @T.#. anRTS           rts
+
++000761 ff/8561: d4 04        n?MXdiz? e ....> callMOS         pei     (DP_MOSREF+4)
++000763 ff/8563: d4 02        n?MXdiz? e .....                 pei     (DP_MOSREF+2)
++000765 ff/8565: d4 00        n?MXdiz? e .....                 pei     (DP_MOSREF)
++000767 ff/8567: 6b           n?MXdiz? e ...#.                 rtl
+
++000768 ff/8568: ed 58                   .....                 .dd2    $58ed             ;crc
++00076a ff/856a: ff ff ff ff+            .....                 .fill   150,$ff
+                                                               .adrend ↑ $ff7e00

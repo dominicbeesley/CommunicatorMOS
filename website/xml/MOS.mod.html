@@ -69,6 +69,12 @@
       <span class="comment">;OPWRA - write string at BHA</span>
     </span>
     <span class="line equ-directive">
+      <a id="LBLLK-EVENT_2_CHARINBUF"></a><span class="label" anno="none" id="LBL-EVENT_2_CHARINBUF">EVENT_2_CHARINBUF</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">2      {const}</span>
+      <span class="comment">;A character is entering an input buffer</span>
+    </span>
+    <span class="line equ-directive">
       <a id="LBLLK-HND_type_2_CBMEM"></a><span class="label" anno="none" id="LBL-HND_type_2_CBMEM">HND_type_2_CBMEM</span>
       <span class="opcode directive">eq</span>
       <span class="operand">2      {const}</span>
@@ -108,6 +114,12 @@
       <span class="opcode directive">eq</span>
       <span class="operand">5      {const}</span>
       <span class="comment">;offset in couroutine of bank register</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-EVENT_5_TIMER_ZERO"></a><span class="label" anno="none" id="LBL-EVENT_5_TIMER_ZERO">EVENT_5_TIMER_ZERO</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">5      {const}</span>
+      <span class="comment">;Interval timer crossed zero</span>
     </span>
     <span class="line equ-directive">
       <a id="LBLLK-__MMASD"></a><span class="label" anno="none" id="LBL-__MMASD">__MMASD</span>
@@ -831,6 +843,18 @@
       <span class="comment">;QRY SYSVARS</span>
     </span>
     <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_20_EVENTV"></a><span class="label" anno="none" id="LBL-SYSVAR_20_EVENTV">SYSVAR_20_EVENTV</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a520  {addr/2}</span>
+      <span class="comment">;EVENTV - vector must point at MOS ROM bank!</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_22_UPTV"></a><span class="label" anno="none" id="LBL-SYSVAR_22_UPTV">SYSVAR_22_UPTV</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a522  {addr/2}</span>
+      <span class="comment">;User print vector</span>
+    </span>
+    <span class="line equ-directive">
       <a id="LBLLK-QOSBY_VECTOR"></a><span class="label" anno="none" id="LBL-QOSBY_VECTOR">QOSBY_VECTOR</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a524  {addr/2}</span>
@@ -862,10 +886,10 @@
       <span class="comment">;Currently selected input stream</span>
     </span>
     <span class="line equ-directive">
-      <a id="LBLLK-SYSVAR_42_KEYSEMAPHORE"></a><span class="label" anno="none" id="LBL-SYSVAR_42_KEYSEMAPHORE">SYSVAR_42_KEYSEMAPHORE</span>
+      <a id="LBLLK-SYSVAR_66_KB_SEMAPHORE"></a><span class="label" anno="none" id="LBL-SYSVAR_66_KB_SEMAPHORE">SYSVAR_66_KB_SEMAPHORE</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a542  {addr/1}</span>
-      <span class="comment">;Keyboard scan semaphore</span>
+      <span class="comment">;keyboard scan semaphore</span>
     </span>
     <span class="line equ-directive">
       <a id="LBLLK-SYSVAR_RS232_MODE"></a><span class="label" anno="none" id="LBL-SYSVAR_RS232_MODE">SYSVAR_RS232_MODE</span>
@@ -881,6 +905,11 @@
       <a id="LBLLK-SYSVAR_51_FLASHCTDN"></a><span class="label" anno="none" id="LBL-SYSVAR_51_FLASHCTDN">SYSVAR_51_FLASHCTDN</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a551  {addr/1}</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_82_ELK_ULA_MISC"></a><span class="label" anno="none" id="LBL-SYSVAR_82_ELK_ULA_MISC">SYSVAR_82_ELK_ULA_MISC</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a552  {addr/1}</span>
     </span>
     <span class="line equ-directive">
       <a id="LBLLK-SYSVAR_FLASH_MARK"></a><span class="label" anno="none" id="LBL-SYSVAR_FLASH_MARK">SYSVAR_FLASH_MARK</span>
@@ -934,6 +963,12 @@
       <span class="operand">$a575  {addr/1}</span>
     </span>
     <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_78_SOUND_SEMAPHORE"></a><span class="label" anno="none" id="LBL-SYSVAR_78_SOUND_SEMAPHORE">SYSVAR_78_SOUND_SEMAPHORE</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a578</span>
+      <span class="comment">;Sound semaphore</span>
+    </span>
+    <span class="line equ-directive">
       <a id="LBLLK-SYSVARS_7C_OUTDEST"></a><span class="label" anno="none" id="LBL-SYSVARS_7C_OUTDEST">SYSVARS_7C_OUTDEST</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a57c  {addr/1}</span>
@@ -945,9 +980,20 @@
       <span class="operand">$a582  {addr/1}</span>
     </span>
     <span class="line equ-directive">
+      <a id="LBLLK-SYSVARS_83_TIMER_SWITCH"></a><span class="label" anno="none" id="LBL-SYSVARS_83_TIMER_SWITCH">SYSVARS_83_TIMER_SWITCH</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a583  {addr/1}</span>
+      <span class="comment">;100Hz timer switch</span>
+    </span>
+    <span class="line equ-directive">
       <a id="LBLLK-SYSVAR_SOFTKEY_CONS"></a><span class="label" anno="none" id="LBL-SYSVAR_SOFTKEY_CONS">SYSVAR_SOFTKEY_CONS</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a584</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_85_PRINTER_DEST"></a><span class="label" anno="none" id="LBL-SYSVAR_85_PRINTER_DEST">SYSVAR_85_PRINTER_DEST</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a585</span>
     </span>
     <span class="line equ-directive">
       <a id="LBLLK-SYSVARS_8d_lastbreak"></a><span class="label" anno="none" id="LBL-SYSVARS_8d_lastbreak">SYSVARS_8d_lastbreak</span>
@@ -960,6 +1006,18 @@
       <span class="operand">$a58f</span>
     </span>
     <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_91_TIMERS"></a><span class="label" anno="none" id="LBL-SYSVAR_91_TIMERS">SYSVAR_91_TIMERS</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a591  {addr/10}</span>
+      <span class="comment">;100 Hz timers</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_9A_INTERVAL"></a><span class="label" anno="none" id="LBL-SYSVAR_9A_INTERVAL">SYSVAR_9A_INTERVAL</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a59a  {addr/5}</span>
+      <span class="comment">;Interval timer</span>
+    </span>
+    <span class="line equ-directive">
       <a id="LBLLK-SYSVARS_B0_INKEYCTDN"></a><span class="label" anno="none" id="LBL-SYSVARS_B0_INKEYCTDN">SYSVARS_B0_INKEYCTDN</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a5b0  {addr/2}</span>
@@ -968,6 +1026,12 @@
       <a id="LBLLK-SYSVARS_OSWORD_0_PARMS"></a><span class="label" anno="none" id="LBL-SYSVARS_OSWORD_0_PARMS">SYSVARS_OSWORD_0_PARMS</span>
       <span class="opcode directive">eq</span>
       <span class="operand">$a5b2  {addr/3}</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-SYSVAR_B5_EVENT_ENABLE_TABLE"></a><span class="label" anno="none" id="LBL-SYSVAR_B5_EVENT_ENABLE_TABLE">SYSVAR_B5_EVENT_ENABLE_TABLE</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$a5b5  {addr/10}</span>
+      <span class="comment">;Event enble table</span>
     </span>
     <span class="line equ-directive">
       <a id="LBLLK-SYSVARS_ELK_BUFFER_BUSY"></a><span class="label" anno="none" id="LBL-SYSVARS_ELK_BUFFER_BUSY">SYSVARS_ELK_BUFFER_BUSY</span>
@@ -1203,6 +1267,17 @@
       <span class="opcode directive">eq</span>
       <span class="operand">$ff80  {addr/80}</span>
       <span class="comment">;jump table that branches to jmls to default cop handlers QRY?</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-LOWCALL__MM"></a><span class="label" anno="none" id="LBL-LOWCALL__MM">LOWCALL__MM</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$ff8c</span>
+    </span>
+    <span class="line equ-directive">
+      <a id="LBLLK-LOWCALL__KB"></a><span class="label" anno="none" id="LBL-LOWCALL__KB">LOWCALL__KB</span>
+      <span class="opcode directive">eq</span>
+      <span class="operand">$ffac</span>
+      <span class="comment">;direct call to Keyboard routines QRY?</span>
     </span>
     <span class="line equ-directive">
       <a id="LBLLK-BANK0_HW_VECTORS"></a><span class="label" anno="none" id="LBL-BANK0_HW_VECTORS">BANK0_HW_VECTORS</span>
@@ -1672,7 +1747,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_af91"></a><span class="address"><a href="#ADDR_fe_af91">fe/af91</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-writeToInputBuffer0" title="FEE22E" symbol-type="" symbol-source="">writeToInputBuffer0</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE22E" title="FEE22E" symbol-type="" symbol-source="">LFEE22E</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_af94"></a><span class="address"><a href="#ADDR_fe_af94">fe/af94</a></span>
       <span class="opcode ">plx</span>
@@ -1799,62 +1874,77 @@
     <span class="line data"><a id="ADDR_fe_afc9"></a><span class="address"><a href="#ADDR_fe_afc9">fe/afc9</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-doDispatchOSBYTE" title="FEE7CC" symbol-type="" symbol-source="">doDispatchOSBYTE</a> &amp; $ffff</span>
+      <span class="comment">;BYTEV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afcb"></a><span class="address"><a href="#ADDR_fe_afcb">fe/afcb</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-enterOSWORD_BHA" title="FEE83D" symbol-type="" symbol-source="">enterOSWORD_BHA</a> &amp; $ffff</span>
+      <span class="comment">;WORDV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afcd"></a><span class="address"><a href="#ADDR_fe_afcd">fe/afcd</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-TFEDEFF" title="FEDEFF" symbol-type="" symbol-source="">TFEDEFF</a> &amp; $ffff</span>
+      <span class="comment">;WRCHV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afcf"></a><span class="address"><a href="#ADDR_fe_afcf">fe/afcf</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-int_OPRDC" title="FEE272" symbol-type="" symbol-source="">int_OPRDC</a> &amp; $ffff</span>
+      <span class="comment">;RDCHV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afd1"></a><span class="address"><a href="#ADDR_fe_afd1">fe/afd1</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;FILEV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afd3"></a><span class="address"><a href="#ADDR_fe_afd3">fe/afd3</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;ARGSV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afd5"></a><span class="address"><a href="#ADDR_fe_afd5">fe/afd5</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;BGETV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afd7"></a><span class="address"><a href="#ADDR_fe_afd7">fe/afd7</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;BPUTV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afd9"></a><span class="address"><a href="#ADDR_fe_afd9">fe/afd9</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;GBPBV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afdb"></a><span class="address"><a href="#ADDR_fe_afdb">fe/afdb</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;FINDV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afdd"></a><span class="address"><a href="#ADDR_fe_afdd">fe/afdd</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;FSCV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afdf"></a><span class="address"><a href="#ADDR_fe_afdf">fe/afdf</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;EVNTV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afe1"></a><span class="address"><a href="#ADDR_fe_afe1">fe/afe1</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;UPTV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afe3"></a><span class="address"><a href="#ADDR_fe_afe3">fe/afe3</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;NETV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afe5"></a><span class="address"><a href="#ADDR_fe_afe5">fe/afe5</a></span>
       <span class="opcode directive">dd2</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-donothingRTS" title="FEEE47" symbol-type="" symbol-source="">donothingRTS</a> &amp; $ffff</span>
+      <span class="comment">;VDUV</span>
     </span>
     <span class="line data"><a id="ADDR_fe_afe7"></a><span class="address"><a href="#ADDR_fe_afe7">fe/afe7</a></span>
       <span class="opcode directive">dd2</span>
@@ -1929,36 +2019,8 @@
       <span class="operand">$ff</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b002"></a><span class="address"><a href="#ADDR_fe_b002">fe/b002</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b003"></a><span class="address"><a href="#ADDR_fe_b003">fe/b003</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b004"></a><span class="address"><a href="#ADDR_fe_b004">fe/b004</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b005"></a><span class="address"><a href="#ADDR_fe_b005">fe/b005</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b006"></a><span class="address"><a href="#ADDR_fe_b006">fe/b006</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b007"></a><span class="address"><a href="#ADDR_fe_b007">fe/b007</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b008"></a><span class="address"><a href="#ADDR_fe_b008">fe/b008</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b009"></a><span class="address"><a href="#ADDR_fe_b009">fe/b009</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode directive">fill</span>
+      <span class="operand">8,$00</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b00a"></a><span class="address"><a href="#ADDR_fe_b00a">fe/b00a</a></span>
       <span class="opcode directive">dd1</span>
@@ -2005,48 +2067,16 @@
       <span class="operand">$08</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b015"></a><span class="address"><a href="#ADDR_fe_b015">fe/b015</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b016"></a><span class="address"><a href="#ADDR_fe_b016">fe/b016</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b017"></a><span class="address"><a href="#ADDR_fe_b017">fe/b017</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b018"></a><span class="address"><a href="#ADDR_fe_b018">fe/b018</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b019"></a><span class="address"><a href="#ADDR_fe_b019">fe/b019</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode directive">fill</span>
+      <span class="operand">5,$00</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b01a"></a><span class="address"><a href="#ADDR_fe_b01a">fe/b01a</a></span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$ff</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b01b"></a><span class="address"><a href="#ADDR_fe_b01b">fe/b01b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b01c"></a><span class="address"><a href="#ADDR_fe_b01c">fe/b01c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b01d"></a><span class="address"><a href="#ADDR_fe_b01d">fe/b01d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b01e"></a><span class="address"><a href="#ADDR_fe_b01e">fe/b01e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b01f"></a><span class="address"><a href="#ADDR_fe_b01f">fe/b01f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode directive">fill</span>
+      <span class="operand">5,$00</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b020"></a><span class="address"><a href="#ADDR_fe_b020">fe/b020</a></span>
       <span class="opcode directive">dd1</span>
@@ -2149,40 +2179,8 @@
       <span class="operand">$ff</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b039"></a><span class="address"><a href="#ADDR_fe_b039">fe/b039</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b03a"></a><span class="address"><a href="#ADDR_fe_b03a">fe/b03a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b03b"></a><span class="address"><a href="#ADDR_fe_b03b">fe/b03b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b03c"></a><span class="address"><a href="#ADDR_fe_b03c">fe/b03c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b03d"></a><span class="address"><a href="#ADDR_fe_b03d">fe/b03d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b03e"></a><span class="address"><a href="#ADDR_fe_b03e">fe/b03e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b03f"></a><span class="address"><a href="#ADDR_fe_b03f">fe/b03f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b040"></a><span class="address"><a href="#ADDR_fe_b040">fe/b040</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b041"></a><span class="address"><a href="#ADDR_fe_b041">fe/b041</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode directive">fill</span>
+      <span class="operand">9,$00</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b042"></a><span class="address"><a href="#ADDR_fe_b042">fe/b042</a></span>
       <span class="opcode directive">dd1</span>
@@ -2201,24 +2199,8 @@
       <span class="operand">$0a</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b046"></a><span class="address"><a href="#ADDR_fe_b046">fe/b046</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b047"></a><span class="address"><a href="#ADDR_fe_b047">fe/b047</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b048"></a><span class="address"><a href="#ADDR_fe_b048">fe/b048</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b049"></a><span class="address"><a href="#ADDR_fe_b049">fe/b049</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_b04a"></a><span class="address"><a href="#ADDR_fe_b04a">fe/b04a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+      <span class="opcode directive">fill</span>
+      <span class="operand">5,$00</span>
     </span>
     <span class="line data"><a id="ADDR_fe_b04b"></a><span class="address"><a href="#ADDR_fe_b04b">fe/b04b</a></span>
       <span class="opcode directive">dd1</span>
@@ -2741,7 +2723,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_b18e"></a><span class="address"><a href="#ADDR_fe_b18e">fe/b18e</a></span>
       <span class="opcode ">jsl</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-__KB" title="FFAC" symbol-type="" symbol-source="">__KB</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LOWCALL__KB" title="FFAC" symbol-type="" symbol-source="">LOWCALL__KB</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_b192"></a><span class="address"><a href="#ADDR_fe_b192">fe/b192</a></span>
       <span class="opcode ">lda</span>
@@ -2808,7 +2790,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_b1c5"></a><span class="address"><a href="#ADDR_fe_b1c5">fe/b1c5</a></span>
       <span class="opcode ">jsl</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-__MM" title="FF8C" symbol-type="" symbol-source="">__MM</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LOWCALL__MM" title="FF8C" symbol-type="" symbol-source="">LOWCALL__MM</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_b1c9"></a><span class="address"><a href="#ADDR_fe_b1c9">fe/b1c9</a></span>
       <span class="opcode ">phb</span>
@@ -10306,7 +10288,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_bf5d"></a><span class="address"><a href="#ADDR_fe_bf5d">fe/bf5d</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_X" title="3" symbol-type="" symbol-source="">DPCOP_X</a>+1,x</span>
+      <span class="operand">f:$000004,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf61"></a><span class="address"><a href="#ADDR_fe_bf61">fe/bf61</a></span>
       <span class="opcode ">lda</span>
@@ -10314,7 +10296,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_bf63"></a><span class="address"><a href="#ADDR_fe_bf63">fe/bf63</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5" symbol-type="" symbol-source="">DPCOP_AH</a>+1,x</span>
+      <span class="operand">f:$000006,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf67"></a><span class="address"><a href="#ADDR_fe_bf67">fe/bf67</a></span>
       <span class="opcode ">lda</span>
@@ -10322,7 +10304,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_bf69"></a><span class="address"><a href="#ADDR_fe_bf69">fe/bf69</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1" symbol-type="" symbol-source="">DPCOP_Y</a>+1,x</span>
+      <span class="operand">f:$000002,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf6d"></a><span class="address"><a href="#ADDR_fe_bf6d">fe/bf6d</a></span>
       <span class="opcode ">lda</span>
@@ -10330,7 +10312,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_bf6f"></a><span class="address"><a href="#ADDR_fe_bf6f">fe/bf6f</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_DP" title="8" symbol-type="" symbol-source="">DPCOP_DP</a>+1,x</span>
+      <span class="operand">f:$000009,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf73"></a><span class="address"><a href="#ADDR_fe_bf73">fe/bf73</a></span>
       <span class="opcode ">lda</span>
@@ -10338,7 +10320,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_bf75"></a><span class="address"><a href="#ADDR_fe_bf75">fe/bf75</a></span>
       <span class="opcode ">stal</span>
-      <span class="operand">f:<a class="op-symbol" href="#LBLLK-DPCOP_DP" title="8" symbol-type="" symbol-source="">DPCOP_DP</a>,x</span>
+      <span class="operand">f:$000008,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf79"></a><span class="address"><a href="#ADDR_fe_bf79">fe/bf79</a></span>
       <span class="opcode ">phx</span>
@@ -10403,7 +10385,7 @@
       <span class="opcode ">phb</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf9d"></a><span class="address"><a href="#ADDR_fe_bf9d">fe/bf9d</a></span>
-      <a id="LBLLK-LFEBF9D"></a><span class="label" anno="none" id="LBL-LFEBF9D">LFEBF9D</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@loop</span>
       <span class="opcode ">phd</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bf9e"></a><span class="address"><a href="#ADDR_fe_bf9e">fe/bf9e</a></span>
@@ -10441,30 +10423,30 @@
     </span>
     <span class="line code"><a id="ADDR_fe_bfaf"></a><span class="address"><a href="#ADDR_fe_bfaf">fe/bfaf</a></span>
       <span class="opcode ">per</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEBF9D" title="FEBF9D" symbol-type="" symbol-source="">LFEBF9D</a></span>
+      <span class="operand">@loop</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfb2"></a><span class="address"><a href="#ADDR_fe_bfb2">fe/bfb2</a></span>
       <span class="opcode ">pei</span>
-      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_DP" title="8" symbol-type="" symbol-source="">DPCOP_DP</a>+1)</span>
+      <span class="operand">($09)</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfb4"></a><span class="address"><a href="#ADDR_fe_bfb4">fe/bfb4</a></span>
       <span class="opcode ">pei</span>
-      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_B" title="7" symbol-type="" symbol-source="">DPCOP_B</a>)</span>
+      <span class="operand">($07)</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfb6"></a><span class="address"><a href="#ADDR_fe_bfb6">fe/bfb6</a></span>
       <span class="opcode ">plb</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfb7"></a><span class="address"><a href="#ADDR_fe_bfb7">fe/bfb7</a></span>
       <span class="opcode ">pei</span>
-      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_Y" title="1" symbol-type="" symbol-source="">DPCOP_Y</a>+1)</span>
+      <span class="operand">($02)</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfb9"></a><span class="address"><a href="#ADDR_fe_bfb9">fe/bfb9</a></span>
       <span class="opcode ">pei</span>
-      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_AH" title="5" symbol-type="" symbol-source="">DPCOP_AH</a>+1)</span>
+      <span class="operand">($06)</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfbb"></a><span class="address"><a href="#ADDR_fe_bfbb">fe/bfbb</a></span>
       <span class="opcode ">pei</span>
-      <span class="operand">(<a class="op-symbol" href="#LBLLK-DPCOP_X" title="3" symbol-type="" symbol-source="">DPCOP_X</a>+1)</span>
+      <span class="operand">($04)</span>
     </span>
     <span class="line code"><a id="ADDR_fe_bfbd"></a><span class="address"><a href="#ADDR_fe_bfbd">fe/bfbd</a></span>
       <span class="opcode ">jsr</span>
@@ -10980,7 +10962,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_c07f"></a><span class="address"><a href="#ADDR_fe_c07f">fe/c07f</a></span>
       <span class="opcode ">per</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEFE64_anRTL" title="FEFE64" symbol-type="" symbol-source="">LFEFE64_anRTL</a>-1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEFE63_anRTL" title="FEFE63" symbol-type="" symbol-source="">LFEFE63_anRTL</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_c082"></a><span class="address"><a href="#ADDR_fe_c082">fe/c082</a></span>
       <span class="opcode ">pla</span>
@@ -18388,7 +18370,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_ccc5"></a><span class="address"><a href="#ADDR_fe_ccc5">fe/ccc5</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-writeToInputBuffer0" title="FEE22E" symbol-type="" symbol-source="">writeToInputBuffer0</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE22E" title="FEE22E" symbol-type="" symbol-source="">LFEE22E</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccc8"></a><span class="address"><a href="#ADDR_fe_ccc8">fe/ccc8</a></span>
       <span class="opcode ">clc</span>
@@ -18404,6 +18386,10 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cccd"></a><span class="address"><a href="#ADDR_fe_cccd">fe/cccd</a></span>
       <span class="opcode ">plb</span>
+    </span>
+    <span class="line data-bank-directive">
+      <span class="opcode directive">dbank</span>
+      <span class="operand">$00</span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccce"></a><span class="address"><a href="#ADDR_fe_ccce">fe/ccce</a></span>
       <span class="opcode ">plb</span>
@@ -18421,7 +18407,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_ccd5"></a><span class="address"><a href="#ADDR_fe_ccd5">fe/ccd5</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">$a551</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_51_FLASHCTDN" title="A551" symbol-type="" symbol-source="">SYSVAR_51_FLASHCTDN</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccd8"></a><span class="address"><a href="#ADDR_fe_ccd8">fe/ccd8</a></span>
       <span class="opcode ">beq</span>
@@ -18429,7 +18415,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_ccda"></a><span class="address"><a href="#ADDR_fe_ccda">fe/ccda</a></span>
       <span class="opcode ">dec</span>
-      <span class="operand">$a551</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_51_FLASHCTDN" title="A551" symbol-type="" symbol-source="">SYSVAR_51_FLASHCTDN</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccdd"></a><span class="address"><a href="#ADDR_fe_ccdd">fe/ccdd</a></span>
       <span class="opcode ">bne</span>
@@ -18437,11 +18423,11 @@
     </span>
     <span class="line code"><a id="ADDR_fe_ccdf"></a><span class="address"><a href="#ADDR_fe_ccdf">fe/ccdf</a></span>
       <span class="opcode ">ldx</span>
-      <span class="operand">$a552</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_82_ELK_ULA_MISC" title="A552" symbol-type="" symbol-source="">SYSVAR_82_ELK_ULA_MISC</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cce2"></a><span class="address"><a href="#ADDR_fe_cce2">fe/cce2</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">$a548</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_48_UNKNOWN_ULA" title="A548" symbol-type="" symbol-source="">SYSVAR_48_UNKNOWN_ULA</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cce5"></a><span class="address"><a href="#ADDR_fe_cce5">fe/cce5</a></span>
       <span class="opcode ">beq</span>
@@ -18449,7 +18435,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cce7"></a><span class="address"><a href="#ADDR_fe_cce7">fe/cce7</a></span>
       <span class="opcode ">ldx</span>
-      <span class="operand">$a553</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_FLASH_MARK" title="A553" symbol-type="" symbol-source="">SYSVAR_FLASH_MARK</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccea"></a><span class="address"><a href="#ADDR_fe_ccea">fe/ccea</a></span>
       <a id="LBLLK-LFECCEA"></a><span class="label" anno="none" id="LBL-LFECCEA">LFECCEA</span>
@@ -18458,11 +18444,11 @@
     </span>
     <span class="line code"><a id="ADDR_fe_ccec"></a><span class="address"><a href="#ADDR_fe_ccec">fe/ccec</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand">$a548</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_48_UNKNOWN_ULA" title="A548" symbol-type="" symbol-source="">SYSVAR_48_UNKNOWN_ULA</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccef"></a><span class="address"><a href="#ADDR_fe_ccef">fe/ccef</a></span>
       <span class="opcode ">stx</span>
-      <span class="operand">$a551</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_51_FLASHCTDN" title="A551" symbol-type="" symbol-source="">SYSVAR_51_FLASHCTDN</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccf2"></a><span class="address"><a href="#ADDR_fe_ccf2">fe/ccf2</a></span>
       <span class="opcode ">tay</span>
@@ -18481,7 +18467,7 @@
     <span class="line code"><a id="ADDR_fe_ccf9"></a><span class="address"><a href="#ADDR_fe_ccf9">fe/ccf9</a></span>
       <a id="LBLLK-LFECCF9"></a><span class="label" anno="none" id="LBL-LFECCF9">LFECCF9</span>
       <span class="opcode ">dec</span>
-      <span class="operand">$a540</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_CFS_TIMEOUT" title="A540" symbol-type="" symbol-source="">SYSVAR_CFS_TIMEOUT</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_ccfc"></a><span class="address"><a href="#ADDR_fe_ccfc">fe/ccfc</a></span>
       <span class="opcode ">lda</span>
@@ -18489,7 +18475,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_ccfe"></a><span class="address"><a href="#ADDR_fe_ccfe">fe/ccfe</a></span>
       <span class="opcode ">bra</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECD07" title="FECD07" symbol-type="" symbol-source="">LFECD07</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-irqh_100Hz" title="FECD07" symbol-type="" symbol-source="">irqh_100Hz</a></span>
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_cd00"></a><span class="address"><a href="#ADDR_fe_cd00">fe/cd00</a></span>
@@ -18512,13 +18498,14 @@
       <span class="operand">#$20</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd07"></a><span class="address"><a href="#ADDR_fe_cd07">fe/cd07</a></span>
-      <a id="LBLLK-LFECD07"></a><span class="label" anno="none" id="LBL-LFECD07">LFECD07</span>
+      <a id="LBLLK-irqh_100Hz"></a><span class="label" anno="none" id="LBL-irqh_100Hz">irqh_100Hz</span>
       <span class="opcode ">stal</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-sheila_ULA_PAG_IRQCLR" title="45FE05" symbol-type="" symbol-source="">sheila_ULA_PAG_IRQCLR</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd0b"></a><span class="address"><a href="#ADDR_fe_cd0b">fe/cd0b</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+131</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS_83_TIMER_SWITCH" title="A583" symbol-type="" symbol-source="">SYSVARS_83_TIMER_SWITCH</a></span>
+      <span class="comment">;timer switch flips between 10 and 5</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd0e"></a><span class="address"><a href="#ADDR_fe_cd0e">fe/cd0e</a></span>
       <span class="opcode ">tax</span>
@@ -18526,6 +18513,7 @@
     <span class="line code"><a id="ADDR_fe_cd0f"></a><span class="address"><a href="#ADDR_fe_cd0f">fe/cd0f</a></span>
       <span class="opcode ">eor</span>
       <span class="operand">#$0f</span>
+      <span class="comment">;flip</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd11"></a><span class="address"><a href="#ADDR_fe_cd11">fe/cd11</a></span>
       <span class="opcode ">pha</span>
@@ -18537,9 +18525,10 @@
       <span class="opcode ">sec</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd14"></a><span class="address"><a href="#ADDR_fe_cd14">fe/cd14</a></span>
-      <a id="LBLLK-LFECD14"></a><span class="label" anno="none" id="LBL-LFECD14">LFECD14</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@tlp</span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+144,x</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_91_TIMERS" title="A591" symbol-type="" symbol-source="">SYSVAR_91_TIMERS</a>-1,x</span>
+      <span class="comment">;decrement timer into new copy from old</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd17"></a><span class="address"><a href="#ADDR_fe_cd17">fe/cd17</a></span>
       <span class="opcode ">adc</span>
@@ -18547,29 +18536,30 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cd19"></a><span class="address"><a href="#ADDR_fe_cd19">fe/cd19</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+144,y</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_91_TIMERS" title="A591" symbol-type="" symbol-source="">SYSVAR_91_TIMERS</a>-1,y</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd1c"></a><span class="address"><a href="#ADDR_fe_cd1c">fe/cd1c</a></span>
       <span class="opcode ">dex</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd1d"></a><span class="address"><a href="#ADDR_fe_cd1d">fe/cd1d</a></span>
       <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECD22" title="FECD22" symbol-type="" symbol-source="">LFECD22</a></span>
+      <span class="operand">@tsk</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd1f"></a><span class="address"><a href="#ADDR_fe_cd1f">fe/cd1f</a></span>
       <span class="opcode ">dey</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd20"></a><span class="address"><a href="#ADDR_fe_cd20">fe/cd20</a></span>
       <span class="opcode ">bne</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECD14" title="FECD14" symbol-type="" symbol-source="">LFECD14</a></span>
+      <span class="operand">@tlp</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd22"></a><span class="address"><a href="#ADDR_fe_cd22">fe/cd22</a></span>
-      <a id="LBLLK-LFECD22"></a><span class="label" anno="none" id="LBL-LFECD22">LFECD22</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@tsk</span>
       <span class="opcode ">pla</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd23"></a><span class="address"><a href="#ADDR_fe_cd23">fe/cd23</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+131</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS_83_TIMER_SWITCH" title="A583" symbol-type="" symbol-source="">SYSVARS_83_TIMER_SWITCH</a></span>
+      <span class="comment">;store updated flipped switch</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd26"></a><span class="address"><a href="#ADDR_fe_cd26">fe/cd26</a></span>
       <span class="opcode ">ldx</span>
@@ -18578,7 +18568,7 @@
     <span class="line code"><a id="ADDR_fe_cd28"></a><span class="address"><a href="#ADDR_fe_cd28">fe/cd28</a></span>
       <a id="LBLLK-LFECD28"></a><span class="label" anno="none" id="LBL-LFECD28">LFECD28</span>
       <span class="opcode ">inc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+154,x</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_9A_INTERVAL" title="A59A" symbol-type="" symbol-source="">SYSVAR_9A_INTERVAL</a>,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd2b"></a><span class="address"><a href="#ADDR_fe_cd2b">fe/cd2b</a></span>
       <span class="opcode ">bne</span>
@@ -18593,11 +18583,11 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cd30"></a><span class="address"><a href="#ADDR_fe_cd30">fe/cd30</a></span>
       <span class="opcode ">ldy</span>
-      <span class="operand">#$05</span>
+      <span class="operand">#<a class="op-symbol" href="#LBLLK-EVENT_5_TIMER_ZERO" title="5" symbol-type="" symbol-source="">EVENT_5_TIMER_ZERO</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd32"></a><span class="address"><a href="#ADDR_fe_cd32">fe/cd32</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE573" title="FEE573" symbol-type="" symbol-source="">LFEE573</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-callEventIfEnabled" title="FEE573" symbol-type="" symbol-source="">callEventIfEnabled</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd35"></a><span class="address"><a href="#ADDR_fe_cd35">fe/cd35</a></span>
       <a id="LBLLK-LFECD35"></a><span class="label" anno="none" id="LBL-LFECD35">LFECD35</span>
@@ -18628,7 +18618,7 @@
     <span class="line code"><a id="ADDR_fe_cd45"></a><span class="address"><a href="#ADDR_fe_cd45">fe/cd45</a></span>
       <a id="LBLLK-LFECD45"></a><span class="label" anno="none" id="LBL-LFECD45">LFECD45</span>
       <span class="opcode ">bit</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+120</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_78_SOUND_SEMAPHORE" title="A578" symbol-type="" symbol-source="">SYSVAR_78_SOUND_SEMAPHORE</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd48"></a><span class="address"><a href="#ADDR_fe_cd48">fe/cd48</a></span>
       <span class="opcode ">bpl</span>
@@ -18636,21 +18626,21 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cd4a"></a><span class="address"><a href="#ADDR_fe_cd4a">fe/cd4a</a></span>
       <span class="opcode ">inc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+120</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_78_SOUND_SEMAPHORE" title="A578" symbol-type="" symbol-source="">SYSVAR_78_SOUND_SEMAPHORE</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd4d"></a><span class="address"><a href="#ADDR_fe_cd4d">fe/cd4d</a></span>
       <span class="opcode ">cli</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd4e"></a><span class="address"><a href="#ADDR_fe_cd4e">fe/cd4e</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEB49" title="FEEB49" symbol-type="" symbol-source="">LFEEB49</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-doSoundInterrupt" title="FEEB49" symbol-type="" symbol-source="">doSoundInterrupt</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd51"></a><span class="address"><a href="#ADDR_fe_cd51">fe/cd51</a></span>
       <span class="opcode ">sei</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd52"></a><span class="address"><a href="#ADDR_fe_cd52">fe/cd52</a></span>
       <span class="opcode ">dec</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+120</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_78_SOUND_SEMAPHORE" title="A578" symbol-type="" symbol-source="">SYSVAR_78_SOUND_SEMAPHORE</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd55"></a><span class="address"><a href="#ADDR_fe_cd55">fe/cd55</a></span>
       <a id="LBLLK-LFECD55"></a><span class="label" anno="none" id="LBL-LFECD55">LFECD55</span>
@@ -18680,7 +18670,7 @@
     <span class="line code"><a id="ADDR_fe_cd61"></a><span class="address"><a href="#ADDR_fe_cd61">fe/cd61</a></span>
       <a id="LBLLK-LFECD61"></a><span class="label" anno="none" id="LBL-LFECD61">LFECD61</span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_42_KEYSEMAPHORE" title="A542" symbol-type="" symbol-source="">SYSVAR_42_KEYSEMAPHORE</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_66_KB_SEMAPHORE" title="A542" symbol-type="" symbol-source="">SYSVAR_66_KB_SEMAPHORE</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd64"></a><span class="address"><a href="#ADDR_fe_cd64">fe/cd64</a></span>
       <span class="opcode ">beq</span>
@@ -18688,7 +18678,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cd66"></a><span class="address"><a href="#ADDR_fe_cd66">fe/cd66</a></span>
       <span class="opcode ">inc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_42_KEYSEMAPHORE" title="A542" symbol-type="" symbol-source="">SYSVAR_42_KEYSEMAPHORE</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_66_KB_SEMAPHORE" title="A542" symbol-type="" symbol-source="">SYSVAR_66_KB_SEMAPHORE</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd69"></a><span class="address"><a href="#ADDR_fe_cd69">fe/cd69</a></span>
       <span class="opcode ">ldx</span>
@@ -18700,7 +18690,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cd6f"></a><span class="address"><a href="#ADDR_fe_cd6f">fe/cd6f</a></span>
       <span class="opcode ">dec</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_42_KEYSEMAPHORE" title="A542" symbol-type="" symbol-source="">SYSVAR_42_KEYSEMAPHORE</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_66_KB_SEMAPHORE" title="A542" symbol-type="" symbol-source="">SYSVAR_66_KB_SEMAPHORE</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd72"></a><span class="address"><a href="#ADDR_fe_cd72">fe/cd72</a></span>
       <a id="LBLLK-LFECD72"></a><span class="label" anno="none" id="LBL-LFECD72">LFECD72</span>
@@ -18709,7 +18699,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cd75"></a><span class="address"><a href="#ADDR_fe_cd75">fe/cd75</a></span>
       <span class="opcode ">bmi</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFECD7A" title="FECD7A" symbol-type="" symbol-source="">LFECD7A</a></span>
+      <span class="operand">@clcrtl</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd77"></a><span class="address"><a href="#ADDR_fe_cd77">fe/cd77</a></span>
       <span class="opcode ">jmp</span>
@@ -18717,7 +18707,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_cd7a"></a><span class="address"><a href="#ADDR_fe_cd7a">fe/cd7a</a></span>
-      <a id="LBLLK-LFECD7A"></a><span class="label" anno="none" id="LBL-LFECD7A">LFECD7A</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@clcrtl</span>
       <span class="opcode ">clc</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cd7b"></a><span class="address"><a href="#ADDR_fe_cd7b">fe/cd7b</a></span>
@@ -19641,9 +19631,9 @@
       <span class="opcode ">txa</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cf4d"></a><span class="address"><a href="#ADDR_fe_cf4d">fe/cf4d</a></span>
-      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@retsec</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@lp</span>
       <span class="opcode ">cmp</span>
-      <span class="operand">[$02],y</span>
+      <span class="operand">[&lt;<a class="op-symbol" href="#LBLLK-EXSYS_HANDLEBLOCK_LONGPTR" title="FF02" symbol-type="" symbol-source="">EXSYS_HANDLEBLOCK_LONGPTR</a>],y</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cf4f"></a><span class="address"><a href="#ADDR_fe_cf4f">fe/cf4f</a></span>
       <span class="opcode ">beq</span>
@@ -19657,7 +19647,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_cf53"></a><span class="address"><a href="#ADDR_fe_cf53">fe/cf53</a></span>
       <span class="opcode ">bne</span>
-      <span class="operand">@retsec</span>
+      <span class="operand">@lp</span>
     </span>
     <span class="line code"><a id="ADDR_fe_cf55"></a><span class="address"><a href="#ADDR_fe_cf55">fe/cf55</a></span>
       <span class="opcode ">sec</span>
@@ -27864,20 +27854,8 @@
       <span class="operand">$2c</span>
     </span>
     <span class="line data"><a id="ADDR_fe_deb4"></a><span class="address"><a href="#ADDR_fe_deb4">fe/deb4</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_deb5"></a><span class="address"><a href="#ADDR_fe_deb5">fe/deb5</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f4</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_deb6"></a><span class="address"><a href="#ADDR_fe_deb6">fe/deb6</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a4</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_deb7"></a><span class="address"><a href="#ADDR_fe_deb7">fe/deb7</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d9</span>
+      <span class="opcode directive">str</span>
+      <span class="operand">↑“Pt$Y”</span>
     </span>
     <span class="line data"><a id="ADDR_fe_deb8"></a><span class="address"><a href="#ADDR_fe_deb8">fe/deb8</a></span>
       <span class="opcode directive">dd1</span>
@@ -28101,9 +28079,8 @@
       <span class="operand">#$03</span>
     </span>
     <span class="line code"><a id="ADDR_fe_df16"></a><span class="address"><a href="#ADDR_fe_df16">fe/df16</a></span>
-      <a id="LBLLK-LFEDF16"></a><span class="label" anno="none" id="LBL-LFEDF16">LFEDF16</span>
       <span class="opcode ">ldy</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+133</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_85_PRINTER_DEST" title="A585" symbol-type="" symbol-source="">SYSVAR_85_PRINTER_DEST</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_df19"></a><span class="address"><a href="#ADDR_fe_df19">fe/df19</a></span>
       <span class="opcode ">clc</span>
@@ -28112,69 +28089,40 @@
       <span class="opcode ">rtl</span>
     </span>
     <span class="line blank"></span>
-    <span class="line data"><a id="ADDR_fe_df1b"></a><span class="address"><a href="#ADDR_fe_df1b">fe/df1b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
+    <span class="long-comment">
+; TODO: dead code?</span>
+    <span class="line code"><a id="ADDR_fe_df1b"></a><span class="address"><a href="#ADDR_fe_df1b">fe/df1b</a></span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-QOSBY_VECTORthruA524" title="FEE366" symbol-type="" symbol-source="">QOSBY_VECTORthruA524</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df1c"></a><span class="address"><a href="#ADDR_fe_df1c">fe/df1c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$66</span>
+    <span class="line code"><a id="ADDR_fe_df1e"></a><span class="address"><a href="#ADDR_fe_df1e">fe/df1e</a></span>
+      <span class="opcode ">xba</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df1d"></a><span class="address"><a href="#ADDR_fe_df1d">fe/df1d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e3</span>
+    <span class="line code"><a id="ADDR_fe_df1f"></a><span class="address"><a href="#ADDR_fe_df1f">fe/df1f</a></span>
+      <span class="opcode ">phk</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df1e"></a><span class="address"><a href="#ADDR_fe_df1e">fe/df1e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$eb</span>
+    <span class="line code"><a id="ADDR_fe_df20"></a><span class="address"><a href="#ADDR_fe_df20">fe/df20</a></span>
+      <span class="opcode ">lda</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_22_UPTV" title="A522" symbol-type="" symbol-source="">SYSVAR_22_UPTV</a>+1</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df1f"></a><span class="address"><a href="#ADDR_fe_df1f">fe/df1f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$4b</span>
+    <span class="line code"><a id="ADDR_fe_df23"></a><span class="address"><a href="#ADDR_fe_df23">fe/df23</a></span>
+      <span class="opcode ">pha</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df20"></a><span class="address"><a href="#ADDR_fe_df20">fe/df20</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ad</span>
+    <span class="line code"><a id="ADDR_fe_df24"></a><span class="address"><a href="#ADDR_fe_df24">fe/df24</a></span>
+      <span class="opcode ">lda</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_22_UPTV" title="A522" symbol-type="" symbol-source="">SYSVAR_22_UPTV</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df21"></a><span class="address"><a href="#ADDR_fe_df21">fe/df21</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$23</span>
+    <span class="line code"><a id="ADDR_fe_df27"></a><span class="address"><a href="#ADDR_fe_df27">fe/df27</a></span>
+      <span class="opcode ">pha</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df22"></a><span class="address"><a href="#ADDR_fe_df22">fe/df22</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a5</span>
+    <span class="line code"><a id="ADDR_fe_df28"></a><span class="address"><a href="#ADDR_fe_df28">fe/df28</a></span>
+      <span class="opcode ">xba</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df23"></a><span class="address"><a href="#ADDR_fe_df23">fe/df23</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
+    <span class="line code"><a id="ADDR_fe_df29"></a><span class="address"><a href="#ADDR_fe_df29">fe/df29</a></span>
+      <span class="opcode ">php</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_df24"></a><span class="address"><a href="#ADDR_fe_df24">fe/df24</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ad</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_df25"></a><span class="address"><a href="#ADDR_fe_df25">fe/df25</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$22</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_df26"></a><span class="address"><a href="#ADDR_fe_df26">fe/df26</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a5</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_df27"></a><span class="address"><a href="#ADDR_fe_df27">fe/df27</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_df28"></a><span class="address"><a href="#ADDR_fe_df28">fe/df28</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$eb</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_df29"></a><span class="address"><a href="#ADDR_fe_df29">fe/df29</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$08</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_df2a"></a><span class="address"><a href="#ADDR_fe_df2a">fe/df2a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$40</span>
+    <span class="line code"><a id="ADDR_fe_df2a"></a><span class="address"><a href="#ADDR_fe_df2a">fe/df2a</a></span>
+      <span class="opcode ">rti</span>
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_df2b"></a><span class="address"><a href="#ADDR_fe_df2b">fe/df2b</a></span>
@@ -29293,6 +29241,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line data"><a id="ADDR_fe_e166"></a><span class="address"><a href="#ADDR_fe_e166">fe/e166</a></span>
+      <a id="LBLLK-LFEE166"></a><span class="label" anno="none" id="LBL-LFEE166">LFEE166</span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$a7</span>
     </span>
@@ -29329,6 +29278,7 @@
       <span class="operand">$a9</span>
     </span>
     <span class="line data"><a id="ADDR_fe_e16f"></a><span class="address"><a href="#ADDR_fe_e16f">fe/e16f</a></span>
+      <a id="LBLLK-LFEE16F"></a><span class="label" anno="none" id="LBL-LFEE16F">LFEE16F</span>
       <span class="opcode directive">dd1</span>
       <span class="operand">$00</span>
     </span>
@@ -29401,11 +29351,14 @@
       <span class="opcode directive">dd1</span>
       <span class="operand">$c0</span>
     </span>
-    <span class="line blank"></span>
+    <span class="line data-bank-directive">
+      <span class="opcode directive">dbank</span>
+      <span class="operand">$fe</span>
+    </span>
     <span class="line code"><a id="ADDR_fe_e181"></a><span class="address"><a href="#ADDR_fe_e181">fe/e181</a></span>
       <a id="LBLLK-LFEE181"></a><span class="label" anno="none" id="LBL-LFEE181">LFEE181</span>
       <span class="opcode ">lda</span>
-      <span class="operand">$e16f,x</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE16F" title="FEE16F" symbol-type="" symbol-source="">LFEE16F</a> &amp; $ffff,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e184"></a><span class="address"><a href="#ADDR_fe_e184">fe/e184</a></span>
       <span class="opcode ">sta</span>
@@ -29413,7 +29366,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e186"></a><span class="address"><a href="#ADDR_fe_e186">fe/e186</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand">$e166,x</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE166" title="FEE166" symbol-type="" symbol-source="">LFEE166</a> &amp; $ffff,x</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e189"></a><span class="address"><a href="#ADDR_fe_e189">fe/e189</a></span>
       <span class="opcode ">sta</span>
@@ -29571,7 +29524,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e1d1"></a><span class="address"><a href="#ADDR_fe_e1d1">fe/e1d1</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE573" title="FEE573" symbol-type="" symbol-source="">LFEE573</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-callEventIfEnabled" title="FEE573" symbol-type="" symbol-source="">callEventIfEnabled</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e1d4"></a><span class="address"><a href="#ADDR_fe_e1d4">fe/e1d4</a></span>
       <a id="LBLLK-LFEE1D4"></a><span class="label" anno="none" id="LBL-LFEE1D4">LFEE1D4</span>
@@ -29600,11 +29553,11 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e1db"></a><span class="address"><a href="#ADDR_fe_e1db">fe/e1db</a></span>
       <span class="opcode ">ldy</span>
-      <span class="operand">#$02</span>
+      <span class="operand">#<a class="op-symbol" href="#LBLLK-EVENT_2_CHARINBUF" title="2" symbol-type="" symbol-source="">EVENT_2_CHARINBUF</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e1dd"></a><span class="address"><a href="#ADDR_fe_e1dd">fe/e1dd</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE573" title="FEE573" symbol-type="" symbol-source="">LFEE573</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-callEventIfEnabled" title="FEE573" symbol-type="" symbol-source="">callEventIfEnabled</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e1e0"></a><span class="address"><a href="#ADDR_fe_e1e0">fe/e1e0</a></span>
       <span class="opcode ">tay</span>
@@ -29763,7 +29716,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e225"></a><span class="address"><a href="#ADDR_fe_e225">fe/e225</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE573" title="FEE573" symbol-type="" symbol-source="">LFEE573</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-callEventIfEnabled" title="FEE573" symbol-type="" symbol-source="">callEventIfEnabled</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e228"></a><span class="address"><a href="#ADDR_fe_e228">fe/e228</a></span>
       <span class="opcode ">pha</span>
@@ -29786,7 +29739,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_e22e"></a><span class="address"><a href="#ADDR_fe_e22e">fe/e22e</a></span>
-      <a id="LBLLK-writeToInputBuffer0"></a><span class="label" anno="none" id="LBL-writeToInputBuffer0">writeToInputBuffer0</span>
+      <a id="LBLLK-LFEE22E"></a><span class="label" anno="none" id="LBL-LFEE22E">LFEE22E</span>
       <span class="opcode ">phb</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e22f"></a><span class="address"><a href="#ADDR_fe_e22f">fe/e22f</a></span>
@@ -29868,7 +29821,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e255"></a><span class="address"><a href="#ADDR_fe_e255">fe/e255</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE573" title="FEE573" symbol-type="" symbol-source="">LFEE573</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-callEventIfEnabled" title="FEE573" symbol-type="" symbol-source="">callEventIfEnabled</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e258"></a><span class="address"><a href="#ADDR_fe_e258">fe/e258</a></span>
       <span class="opcode ">bcc</span>
@@ -29943,6 +29896,10 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e277"></a><span class="address"><a href="#ADDR_fe_e277">fe/e277</a></span>
       <span class="opcode ">plb</span>
+    </span>
+    <span class="line data-bank-directive">
+      <span class="opcode directive">dbank</span>
+      <span class="operand">$00</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e278"></a><span class="address"><a href="#ADDR_fe_e278">fe/e278</a></span>
       <span class="opcode ">plb</span>
@@ -30272,6 +30229,7 @@
       <a id="LBLLK-LFEE306"></a><span class="label" anno="none" id="LBL-LFEE306">LFEE306</span>
       <span class="opcode ">jsr</span>
       <span class="operand"><a class="op-symbol" href="#LBLLK-Serv8_QRY" title="FEE8E0" symbol-type="" symbol-source="">Serv8_QRY</a></span>
+      <span class="comment">;beep?</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e309"></a><span class="address"><a href="#ADDR_fe_e309">fe/e309</a></span>
       <span class="opcode ">pla</span>
@@ -30946,37 +30904,22 @@
       <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
-    <span class="line data"><a id="ADDR_fe_e440"></a><span class="address"><a href="#ADDR_fe_e440">fe/e440</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$48</span>
+    <span class="line code"><a id="ADDR_fe_e440"></a><span class="address"><a href="#ADDR_fe_e440">fe/e440</a></span>
+      <span class="opcode ">pha</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e441"></a><span class="address"><a href="#ADDR_fe_e441">fe/e441</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a9</span>
+    <span class="line code"><a id="ADDR_fe_e441"></a><span class="address"><a href="#ADDR_fe_e441">fe/e441</a></span>
+      <span class="opcode ">lda</span>
+      <span class="operand">#$01</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e442"></a><span class="address"><a href="#ADDR_fe_e442">fe/e442</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$01</span>
+    <span class="line code"><a id="ADDR_fe_e443"></a><span class="address"><a href="#ADDR_fe_e443">fe/e443</a></span>
+      <span class="opcode ">sta</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_SOFTKEY_STRLEN" title="A568" symbol-type="" symbol-source="">SYSVAR_SOFTKEY_STRLEN</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e443"></a><span class="address"><a href="#ADDR_fe_e443">fe/e443</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$8d</span>
+    <span class="line code"><a id="ADDR_fe_e446"></a><span class="address"><a href="#ADDR_fe_e446">fe/e446</a></span>
+      <span class="opcode ">pla</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e444"></a><span class="address"><a href="#ADDR_fe_e444">fe/e444</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$68</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e445"></a><span class="address"><a href="#ADDR_fe_e445">fe/e445</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a5</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e446"></a><span class="address"><a href="#ADDR_fe_e446">fe/e446</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$68</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e447"></a><span class="address"><a href="#ADDR_fe_e447">fe/e447</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$60</span>
+    <span class="line code"><a id="ADDR_fe_e447"></a><span class="address"><a href="#ADDR_fe_e447">fe/e447</a></span>
+      <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_e448"></a><span class="address"><a href="#ADDR_fe_e448">fe/e448</a></span>
@@ -31638,7 +31581,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_e573"></a><span class="address"><a href="#ADDR_fe_e573">fe/e573</a></span>
-      <a id="LBLLK-LFEE573"></a><span class="label" anno="none" id="LBL-LFEE573">LFEE573</span>
+      <a id="LBLLK-callEventIfEnabled"></a><span class="label" anno="none" id="LBL-callEventIfEnabled">callEventIfEnabled</span>
       <span class="opcode ">php</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e574"></a><span class="address"><a href="#ADDR_fe_e574">fe/e574</a></span>
@@ -31666,26 +31609,26 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e57c"></a><span class="address"><a href="#ADDR_fe_e57c">fe/e57c</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand">$f6</span>
+      <span class="operand">&lt;<a class="op-symbol" href="#LBLLK-DPSYS_OSB_IND" title="ACF6" symbol-type="" symbol-source="">DPSYS_OSB_IND</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e57e"></a><span class="address"><a href="#ADDR_fe_e57e">fe/e57e</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+181,y</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_B5_EVENT_ENABLE_TABLE" title="A5B5" symbol-type="" symbol-source="">SYSVAR_B5_EVENT_ENABLE_TABLE</a>,y</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e581"></a><span class="address"><a href="#ADDR_fe_e581">fe/e581</a></span>
       <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE58E" title="FEE58E" symbol-type="" symbol-source="">LFEE58E</a></span>
+      <span class="operand">@noten</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e583"></a><span class="address"><a href="#ADDR_fe_e583">fe/e583</a></span>
       <span class="opcode ">tya</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e584"></a><span class="address"><a href="#ADDR_fe_e584">fe/e584</a></span>
       <span class="opcode ">ldy</span>
-      <span class="operand">$f6</span>
+      <span class="operand">&lt;<a class="op-symbol" href="#LBLLK-DPSYS_OSB_IND" title="ACF6" symbol-type="" symbol-source="">DPSYS_OSB_IND</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e586"></a><span class="address"><a href="#ADDR_fe_e586">fe/e586</a></span>
       <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEAA9" title="FEEAA9" symbol-type="" symbol-source="">LFEEAA9</a></span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-callEVENTV" title="FEEAA9" symbol-type="" symbol-source="">callEVENTV</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e589"></a><span class="address"><a href="#ADDR_fe_e589">fe/e589</a></span>
       <span class="opcode ">pla</span>
@@ -31704,7 +31647,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_e58e"></a><span class="address"><a href="#ADDR_fe_e58e">fe/e58e</a></span>
-      <a id="LBLLK-LFEE58E"></a><span class="label" anno="none" id="LBL-LFEE58E">LFEE58E</span>
+      <a id="LBLLK-"></a><span class="label" anno="none" id="LBL-">@noten</span>
       <span class="opcode ">pla</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e58f"></a><span class="address"><a href="#ADDR_fe_e58f">fe/e58f</a></span>
@@ -32266,21 +32209,12 @@
       <span class="opcode ">rti</span>
     </span>
     <span class="line blank"></span>
-    <span class="line data"><a id="ADDR_fe_e671"></a><span class="address"><a href="#ADDR_fe_e671">fe/e671</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ee</span>
+    <span class="line code"><a id="ADDR_fe_e671"></a><span class="address"><a href="#ADDR_fe_e671">fe/e671</a></span>
+      <span class="opcode ">inc</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+73</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e672"></a><span class="address"><a href="#ADDR_fe_e672">fe/e672</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$49</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e673"></a><span class="address"><a href="#ADDR_fe_e673">fe/e673</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a5</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e674"></a><span class="address"><a href="#ADDR_fe_e674">fe/e674</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$60</span>
+    <span class="line code"><a id="ADDR_fe_e674"></a><span class="address"><a href="#ADDR_fe_e674">fe/e674</a></span>
+      <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
     <span class="long-comment">
@@ -32292,109 +32226,51 @@
       <span class="opcode ">ldx</span>
       <span class="operand">#$00</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e677"></a><span class="address"><a href="#ADDR_fe_e677">fe/e677</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$af</span>
+    <span class="line code"><a id="ADDR_fe_e677"></a><span class="address"><a href="#ADDR_fe_e677">fe/e677</a></span>
+      <span class="opcode ">ldal</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-SYS_ESCAPE_FLAG_QRY" title="FF13" symbol-type="" symbol-source="">SYS_ESCAPE_FLAG_QRY</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e678"></a><span class="address"><a href="#ADDR_fe_e678">fe/e678</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$13</span>
+    <span class="line code"><a id="ADDR_fe_e67b"></a><span class="address"><a href="#ADDR_fe_e67b">fe/e67b</a></span>
+      <span class="opcode ">and</span>
+      <span class="operand">#$03</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e679"></a><span class="address"><a href="#ADDR_fe_e679">fe/e679</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
+    <span class="line code"><a id="ADDR_fe_e67d"></a><span class="address"><a href="#ADDR_fe_e67d">fe/e67d</a></span>
+      <span class="opcode ">beq</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-OSBYTE_7C" title="FEE691" symbol-type="" symbol-source="">OSBYTE_7C</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e67a"></a><span class="address"><a href="#ADDR_fe_e67a">fe/e67a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
+    <span class="line code"><a id="ADDR_fe_e67f"></a><span class="address"><a href="#ADDR_fe_e67f">fe/e67f</a></span>
+      <span class="opcode ">lda</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+118</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e67b"></a><span class="address"><a href="#ADDR_fe_e67b">fe/e67b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$29</span>
+    <span class="line code"><a id="ADDR_fe_e682"></a><span class="address"><a href="#ADDR_fe_e682">fe/e682</a></span>
+      <span class="opcode ">bne</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE68F" title="FEE68F" symbol-type="" symbol-source="">LFEE68F</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e67c"></a><span class="address"><a href="#ADDR_fe_e67c">fe/e67c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
+    <span class="line code"><a id="ADDR_fe_e684"></a><span class="address"><a href="#ADDR_fe_e684">fe/e684</a></span>
+      <span class="opcode ">cli</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e67d"></a><span class="address"><a href="#ADDR_fe_e67d">fe/e67d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$f0</span>
+    <span class="line code"><a id="ADDR_fe_e685"></a><span class="address"><a href="#ADDR_fe_e685">fe/e685</a></span>
+      <span class="opcode ">lda</span>
+      <span class="operand">#$00</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e67e"></a><span class="address"><a href="#ADDR_fe_e67e">fe/e67e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$12</span>
+    <span class="line code"><a id="ADDR_fe_e687"></a><span class="address"><a href="#ADDR_fe_e687">fe/e687</a></span>
+      <span class="opcode ">phb</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e67f"></a><span class="address"><a href="#ADDR_fe_e67f">fe/e67f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ad</span>
+    <span class="line code"><a id="ADDR_fe_e688"></a><span class="address"><a href="#ADDR_fe_e688">fe/e688</a></span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-OSBYTE_77" title="FEEE14" symbol-type="" symbol-source="">OSBYTE_77</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e680"></a><span class="address"><a href="#ADDR_fe_e680">fe/e680</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$76</span>
+    <span class="line code"><a id="ADDR_fe_e68b"></a><span class="address"><a href="#ADDR_fe_e68b">fe/e68b</a></span>
+      <span class="opcode ">plb</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e681"></a><span class="address"><a href="#ADDR_fe_e681">fe/e681</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a5</span>
+    <span class="line code"><a id="ADDR_fe_e68c"></a><span class="address"><a href="#ADDR_fe_e68c">fe/e68c</a></span>
+      <span class="opcode ">jsr</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-FlushAllBuffers" title="FEDF03" symbol-type="" symbol-source="">FlushAllBuffers</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e682"></a><span class="address"><a href="#ADDR_fe_e682">fe/e682</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d0</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e683"></a><span class="address"><a href="#ADDR_fe_e683">fe/e683</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$0b</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e684"></a><span class="address"><a href="#ADDR_fe_e684">fe/e684</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$58</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e685"></a><span class="address"><a href="#ADDR_fe_e685">fe/e685</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a9</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e686"></a><span class="address"><a href="#ADDR_fe_e686">fe/e686</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e687"></a><span class="address"><a href="#ADDR_fe_e687">fe/e687</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$8b</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e688"></a><span class="address"><a href="#ADDR_fe_e688">fe/e688</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e689"></a><span class="address"><a href="#ADDR_fe_e689">fe/e689</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$14</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e68a"></a><span class="address"><a href="#ADDR_fe_e68a">fe/e68a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ee</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e68b"></a><span class="address"><a href="#ADDR_fe_e68b">fe/e68b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ab</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e68c"></a><span class="address"><a href="#ADDR_fe_e68c">fe/e68c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e68d"></a><span class="address"><a href="#ADDR_fe_e68d">fe/e68d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$03</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e68e"></a><span class="address"><a href="#ADDR_fe_e68e">fe/e68e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$df</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e68f"></a><span class="address"><a href="#ADDR_fe_e68f">fe/e68f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a2</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e690"></a><span class="address"><a href="#ADDR_fe_e690">fe/e690</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
+    <span class="line code"><a id="ADDR_fe_e68f"></a><span class="address"><a href="#ADDR_fe_e68f">fe/e68f</a></span>
+      <a id="LBLLK-LFEE68F"></a><span class="label" anno="none" id="LBL-LFEE68F">LFEE68F</span>
+      <span class="opcode ">ldx</span>
+      <span class="operand">#$ff</span>
     </span>
     <span class="long-comment">
 ********************************************************************************<span class="br"></span>
@@ -32405,50 +32281,34 @@
       <span class="opcode ">rep</span>
       <span class="operand">#$30</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e693"></a><span class="address"><a href="#ADDR_fe_e693">fe/e693</a></span>
-      <span class="opcode directive">dd4</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYS_ESCAPE_FLAG_QRY" title="FF13" symbol-type="" symbol-source="">SYS_ESCAPE_FLAG_QRY</a>+$fe149c</span>
+    <span class="line reg-width-directive">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">longm,longx</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e697"></a><span class="address"><a href="#ADDR_fe_e697">fe/e697</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$29</span>
+    <span class="line code"><a id="ADDR_fe_e693"></a><span class="address"><a href="#ADDR_fe_e693">fe/e693</a></span>
+      <span class="opcode ">ldal</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-SYS_ESCAPE_FLAG_QRY" title="FF13" symbol-type="" symbol-source="">SYS_ESCAPE_FLAG_QRY</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e698"></a><span class="address"><a href="#ADDR_fe_e698">fe/e698</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$fc</span>
+    <span class="line code"><a id="ADDR_fe_e697"></a><span class="address"><a href="#ADDR_fe_e697">fe/e697</a></span>
+      <span class="opcode ">and</span>
+      <span class="operand">#$fffc</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e699"></a><span class="address"><a href="#ADDR_fe_e699">fe/e699</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
+    <span class="line code"><a id="ADDR_fe_e69a"></a><span class="address"><a href="#ADDR_fe_e69a">fe/e69a</a></span>
+      <span class="opcode ">stal</span>
+      <span class="operand">f:<a class="op-symbol" href="#LBLLK-SYS_ESCAPE_FLAG_QRY" title="FF13" symbol-type="" symbol-source="">SYS_ESCAPE_FLAG_QRY</a></span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e69a"></a><span class="address"><a href="#ADDR_fe_e69a">fe/e69a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$8f</span>
+    <span class="line code"><a id="ADDR_fe_e69e"></a><span class="address"><a href="#ADDR_fe_e69e">fe/e69e</a></span>
+      <span class="opcode ">sep</span>
+      <span class="operand">#$30</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e69b"></a><span class="address"><a href="#ADDR_fe_e69b">fe/e69b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$13</span>
+    <span class="line reg-width-directive">
+      <span class="opcode directive">rwid</span>
+      <span class="operand">shortm,shortx</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e69c"></a><span class="address"><a href="#ADDR_fe_e69c">fe/e69c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$ff</span>
+    <span class="line code"><a id="ADDR_fe_e6a0"></a><span class="address"><a href="#ADDR_fe_e6a0">fe/e6a0</a></span>
+      <span class="opcode ">rts</span>
     </span>
-    <span class="line data"><a id="ADDR_fe_e69d"></a><span class="address"><a href="#ADDR_fe_e69d">fe/e69d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$00</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e69e"></a><span class="address"><a href="#ADDR_fe_e69e">fe/e69e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e2</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e69f"></a><span class="address"><a href="#ADDR_fe_e69f">fe/e69f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$30</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_e6a0"></a><span class="address"><a href="#ADDR_fe_e6a0">fe/e6a0</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$60</span>
-    </span>
+    <span class="line blank"></span>
     <span class="long-comment">
 ********************************************************************************<span class="br"></span>
 * OSBYTE 7D - Set ESCape                                                       *<span class="br"></span>
@@ -33124,27 +32984,41 @@
       <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE74B" title="FEE74B" symbol-type="" symbol-source="">LFEE74B</a></span>
     </span>
     <span class="line blank"></span>
-    <span class="line code"><a id="ADDR_fe_e777"></a><span class="address"><a href="#ADDR_fe_e777">fe/e777</a></span>
-      <a id="LBLLK-LFEE777"></a><span class="label" anno="none" id="LBL-LFEE777">LFEE777</span>
-      <span class="opcode ">txa</span>
+    <span class="line data"><a id="ADDR_fe_e777"></a><span class="address"><a href="#ADDR_fe_e777">fe/e777</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$8a</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e778"></a><span class="address"><a href="#ADDR_fe_e778">fe/e778</a></span>
-      <span class="opcode ">eor</span>
-      <span class="operand">#$ff</span>
+    <span class="line data"><a id="ADDR_fe_e778"></a><span class="address"><a href="#ADDR_fe_e778">fe/e778</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$49</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e77a"></a><span class="address"><a href="#ADDR_fe_e77a">fe/e77a</a></span>
-      <span class="opcode ">tax</span>
+    <span class="line data"><a id="ADDR_fe_e779"></a><span class="address"><a href="#ADDR_fe_e779">fe/e779</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$ff</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e77b"></a><span class="address"><a href="#ADDR_fe_e77b">fe/e77b</a></span>
-      <span class="opcode ">cpx</span>
-      <span class="operand">#$02</span>
+    <span class="line data"><a id="ADDR_fe_e77a"></a><span class="address"><a href="#ADDR_fe_e77a">fe/e77a</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$aa</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e77d"></a><span class="address"><a href="#ADDR_fe_e77d">fe/e77d</a></span>
-      <span class="opcode ">clv</span>
+    <span class="line data"><a id="ADDR_fe_e77b"></a><span class="address"><a href="#ADDR_fe_e77b">fe/e77b</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$e0</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e77e"></a><span class="address"><a href="#ADDR_fe_e77e">fe/e77e</a></span>
-      <span class="opcode ">bvc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE782" title="FEE782" symbol-type="" symbol-source="">LFEE782</a></span>
+    <span class="line data"><a id="ADDR_fe_e77c"></a><span class="address"><a href="#ADDR_fe_e77c">fe/e77c</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$02</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e77d"></a><span class="address"><a href="#ADDR_fe_e77d">fe/e77d</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$b8</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e77e"></a><span class="address"><a href="#ADDR_fe_e77e">fe/e77e</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$50</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e77f"></a><span class="address"><a href="#ADDR_fe_e77f">fe/e77f</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$02</span>
     </span>
     <span class="line blank"></span>
     <span class="long-comment">
@@ -33163,7 +33037,6 @@
       <span class="operand">#$40</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e782"></a><span class="address"><a href="#ADDR_fe_e782">fe/e782</a></span>
-      <a id="LBLLK-LFEE782"></a><span class="label" anno="none" id="LBL-LFEE782">LFEE782</span>
       <span class="opcode ">xba</span>
     </span>
     <span class="line code"><a id="ADDR_fe_e783"></a><span class="address"><a href="#ADDR_fe_e783">fe/e783</a></span>
@@ -33193,81 +33066,127 @@
       <span class="opcode ">rti</span>
     </span>
     <span class="line blank"></span>
-    <span class="long-comment">
-; TODO dead code ?</span>
-    <span class="line code"><a id="ADDR_fe_e78f"></a><span class="address"><a href="#ADDR_fe_e78f">fe/e78f</a></span>
-      <span class="opcode ">bmi</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE777" title="FEE777" symbol-type="" symbol-source="">LFEE777</a></span>
+    <span class="line data"><a id="ADDR_fe_e78f"></a><span class="address"><a href="#ADDR_fe_e78f">fe/e78f</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$30</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e791"></a><span class="address"><a href="#ADDR_fe_e791">fe/e791</a></span>
-      <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE7A0" title="FEE7A0" symbol-type="" symbol-source="">LFEE7A0</a></span>
+    <span class="line data"><a id="ADDR_fe_e790"></a><span class="address"><a href="#ADDR_fe_e790">fe/e790</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$e6</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e793"></a><span class="address"><a href="#ADDR_fe_e793">fe/e793</a></span>
-      <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-OSBYTE_DOESNOTHINGBADLY" title="FEE7B6" symbol-type="" symbol-source="">OSBYTE_DOESNOTHINGBADLY</a></span>
+    <span class="line data"><a id="ADDR_fe_e791"></a><span class="address"><a href="#ADDR_fe_e791">fe/e791</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$f0</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e796"></a><span class="address"><a href="#ADDR_fe_e796">fe/e796</a></span>
-      <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE79F" title="FEE79F" symbol-type="" symbol-source="">LFEE79F</a></span>
+    <span class="line data"><a id="ADDR_fe_e792"></a><span class="address"><a href="#ADDR_fe_e792">fe/e792</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$0d</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e798"></a><span class="address"><a href="#ADDR_fe_e798">fe/e798</a></span>
-      <span class="opcode ">ldy</span>
-      <span class="operand">$a5fb,x</span>
+    <span class="line data"><a id="ADDR_fe_e793"></a><span class="address"><a href="#ADDR_fe_e793">fe/e793</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$20</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e79b"></a><span class="address"><a href="#ADDR_fe_e79b">fe/e79b</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand">$a5f7,x</span>
+    <span class="line data"><a id="ADDR_fe_e794"></a><span class="address"><a href="#ADDR_fe_e794">fe/e794</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$b6</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e79e"></a><span class="address"><a href="#ADDR_fe_e79e">fe/e79e</a></span>
-      <span class="opcode ">tax</span>
+    <span class="line data"><a id="ADDR_fe_e795"></a><span class="address"><a href="#ADDR_fe_e795">fe/e795</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$e7</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_e79f"></a><span class="address"><a href="#ADDR_fe_e79f">fe/e79f</a></span>
-      <a id="LBLLK-LFEE79F"></a><span class="label" anno="none" id="LBL-LFEE79F">LFEE79F</span>
-      <span class="opcode ">rts</span>
+    <span class="line data"><a id="ADDR_fe_e796"></a><span class="address"><a href="#ADDR_fe_e796">fe/e796</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$f0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e797"></a><span class="address"><a href="#ADDR_fe_e797">fe/e797</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$07</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e798"></a><span class="address"><a href="#ADDR_fe_e798">fe/e798</a></span>
+      <span class="opcode directive">str</span>
+      <span class="operand">↑“&lt;{%=w%*”</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e79f"></a><span class="address"><a href="#ADDR_fe_e79f">fe/e79f</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$60</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a0"></a><span class="address"><a href="#ADDR_fe_e7a0">fe/e7a0</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$20</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a1"></a><span class="address"><a href="#ADDR_fe_e7a1">fe/e7a1</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$b6</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a2"></a><span class="address"><a href="#ADDR_fe_e7a2">fe/e7a2</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$e7</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a3"></a><span class="address"><a href="#ADDR_fe_e7a3">fe/e7a3</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$f0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a4"></a><span class="address"><a href="#ADDR_fe_e7a4">fe/e7a4</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$02</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a5"></a><span class="address"><a href="#ADDR_fe_e7a5">fe/e7a5</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a2</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a6"></a><span class="address"><a href="#ADDR_fe_e7a6">fe/e7a6</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$00</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7a7"></a><span class="address"><a href="#ADDR_fe_e7a7">fe/e7a7</a></span>
+      <span class="opcode directive">str</span>
+      <span class="operand">↑“,w%)”</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7ab"></a><span class="address"><a href="#ADDR_fe_e7ab">fe/e7ab</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$00</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7ac"></a><span class="address"><a href="#ADDR_fe_e7ac">fe/e7ac</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$8d</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7ad"></a><span class="address"><a href="#ADDR_fe_e7ad">fe/e7ad</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$f7</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7ae"></a><span class="address"><a href="#ADDR_fe_e7ae">fe/e7ae</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a5</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7af"></a><span class="address"><a href="#ADDR_fe_e7af">fe/e7af</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$60</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7b0"></a><span class="address"><a href="#ADDR_fe_e7b0">fe/e7b0</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$8a</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7b1"></a><span class="address"><a href="#ADDR_fe_e7b1">fe/e7b1</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$0d</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7b2"></a><span class="address"><a href="#ADDR_fe_e7b2">fe/e7b2</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$41</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7b3"></a><span class="address"><a href="#ADDR_fe_e7b3">fe/e7b3</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a5</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7b4"></a><span class="address"><a href="#ADDR_fe_e7b4">fe/e7b4</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$f0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_e7b5"></a><span class="address"><a href="#ADDR_fe_e7b5">fe/e7b5</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$b2</span>
     </span>
     <span class="line blank"></span>
-    <span class="line code"><a id="ADDR_fe_e7a0"></a><span class="address"><a href="#ADDR_fe_e7a0">fe/e7a0</a></span>
-      <a id="LBLLK-LFEE7A0"></a><span class="label" anno="none" id="LBL-LFEE7A0">LFEE7A0</span>
-      <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-OSBYTE_DOESNOTHINGBADLY" title="FEE7B6" symbol-type="" symbol-source="">OSBYTE_DOESNOTHINGBADLY</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7a3"></a><span class="address"><a href="#ADDR_fe_e7a3">fe/e7a3</a></span>
-      <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE7A7" title="FEE7A7" symbol-type="" symbol-source="">LFEE7A7</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7a5"></a><span class="address"><a href="#ADDR_fe_e7a5">fe/e7a5</a></span>
-      <span class="opcode ">ldx</span>
-      <span class="operand">#$00</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7a7"></a><span class="address"><a href="#ADDR_fe_e7a7">fe/e7a7</a></span>
-      <a id="LBLLK-LFEE7A7"></a><span class="label" anno="none" id="LBL-LFEE7A7">LFEE7A7</span>
-      <span class="opcode ">ldy</span>
-      <span class="operand">$a5f7</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7aa"></a><span class="address"><a href="#ADDR_fe_e7aa">fe/e7aa</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand">#$00</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7ac"></a><span class="address"><a href="#ADDR_fe_e7ac">fe/e7ac</a></span>
-      <span class="opcode ">sta</span>
-      <span class="operand">$a5f7</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7af"></a><span class="address"><a href="#ADDR_fe_e7af">fe/e7af</a></span>
-      <span class="opcode ">rts</span>
-    </span>
-    <span class="line blank"></span>
-    <span class="line code"><a id="ADDR_fe_e7b0"></a><span class="address"><a href="#ADDR_fe_e7b0">fe/e7b0</a></span>
-      <span class="opcode ">txa</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7b1"></a><span class="address"><a href="#ADDR_fe_e7b1">fe/e7b1</a></span>
-      <span class="opcode ">ora</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_41_input_stream" title="A541" symbol-type="" symbol-source="">SYSVAR_41_input_stream</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_e7b4"></a><span class="address"><a href="#ADDR_fe_e7b4">fe/e7b4</a></span>
-      <span class="opcode ">beq</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEE768" title="FEE768" symbol-type="" symbol-source="">LFEE768</a></span>
-    </span>
     <span class="long-comment">
 ; This looks to be some sort of vestigial attempt at implementing r/w variables<span class="br"></span>
 ; in OSBYTE but just does an RTS</span>
@@ -33912,6 +33831,10 @@
     <span class="line code"><a id="ADDR_fe_e8e3"></a><span class="address"><a href="#ADDR_fe_e8e3">fe/e8e3</a></span>
       <span class="opcode ">plb</span>
     </span>
+    <span class="line data-bank-directive">
+      <span class="opcode directive">dbank</span>
+      <span class="operand">$00</span>
+    </span>
     <span class="line code"><a id="ADDR_fe_e8e4"></a><span class="address"><a href="#ADDR_fe_e8e4">fe/e8e4</a></span>
       <span class="opcode ">plb</span>
     </span>
@@ -34175,7 +34098,7 @@
     <span class="line code"><a id="ADDR_fe_e963"></a><span class="address"><a href="#ADDR_fe_e963">fe/e963</a></span>
       <a id="LBLLK-TFEE963"></a><span class="label" anno="none" id="LBL-TFEE963">TFEE963</span>
       <span class="opcode ">ldx</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+131</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS_83_TIMER_SWITCH" title="A583" symbol-type="" symbol-source="">SYSVARS_83_TIMER_SWITCH</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e966"></a><span class="address"><a href="#ADDR_fe_e966">fe/e966</a></span>
       <a id="LBLLK-LFEE966"></a><span class="label" anno="none" id="LBL-LFEE966">LFEE966</span>
@@ -34219,7 +34142,7 @@
     <span class="line code"><a id="ADDR_fe_e976"></a><span class="address"><a href="#ADDR_fe_e976">fe/e976</a></span>
       <a id="LBLLK-TFEE976"></a><span class="label" anno="none" id="LBL-TFEE976">TFEE976</span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+131</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS_83_TIMER_SWITCH" title="A583" symbol-type="" symbol-source="">SYSVARS_83_TIMER_SWITCH</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e979"></a><span class="address"><a href="#ADDR_fe_e979">fe/e979</a></span>
       <span class="opcode ">eor</span>
@@ -34267,7 +34190,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_e98c"></a><span class="address"><a href="#ADDR_fe_e98c">fe/e98c</a></span>
       <span class="opcode ">sta</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+131</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS_83_TIMER_SWITCH" title="A583" symbol-type="" symbol-source="">SYSVARS_83_TIMER_SWITCH</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_e98f"></a><span class="address"><a href="#ADDR_fe_e98f">fe/e98f</a></span>
       <span class="opcode ">rts</span>
@@ -34598,111 +34521,205 @@
       <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
-    <span class="long-comment">
-; TODO dead code?</span>
-    <span class="line code"><a id="ADDR_fe_ea11"></a><span class="address"><a href="#ADDR_fe_ea11">fe/ea11</a></span>
-      <a id="LBLLK-LFEEA11"></a><span class="label" anno="none" id="LBL-LFEEA11">LFEEA11</span>
-      <span class="opcode ">cli</span>
+    <span class="line data"><a id="ADDR_fe_ea11"></a><span class="address"><a href="#ADDR_fe_ea11">fe/ea11</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$58</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea12"></a><span class="address"><a href="#ADDR_fe_ea12">fe/ea12</a></span>
-      <span class="opcode ">sei</span>
+    <span class="line data"><a id="ADDR_fe_ea12"></a><span class="address"><a href="#ADDR_fe_ea12">fe/ea12</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$78</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea13"></a><span class="address"><a href="#ADDR_fe_ea13">fe/ea13</a></span>
-      <span class="opcode ">phx</span>
+    <span class="line data"><a id="ADDR_fe_ea13"></a><span class="address"><a href="#ADDR_fe_ea13">fe/ea13</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$da</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea14"></a><span class="address"><a href="#ADDR_fe_ea14">fe/ea14</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand">#$00</span>
+    <span class="line data"><a id="ADDR_fe_ea14"></a><span class="address"><a href="#ADDR_fe_ea14">fe/ea14</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a9</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea16"></a><span class="address"><a href="#ADDR_fe_ea16">fe/ea16</a></span>
-      <span class="opcode ">xba</span>
+    <span class="line data"><a id="ADDR_fe_ea15"></a><span class="address"><a href="#ADDR_fe_ea15">fe/ea15</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$00</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea17"></a><span class="address"><a href="#ADDR_fe_ea17">fe/ea17</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand">#$03</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea19"></a><span class="address"><a href="#ADDR_fe_ea19">fe/ea19</a></span>
-      <span class="opcode ">ldx</span>
-      <span class="operand">#$02</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea1b"></a><span class="address"><a href="#ADDR_fe_ea1b">fe/ea1b</a></span>
-      <span class="opcode ">jsl</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-__EV" title="FFB0" symbol-type="" symbol-source="">__EV</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea1f"></a><span class="address"><a href="#ADDR_fe_ea1f">fe/ea1f</a></span>
-      <span class="opcode ">plx</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea20"></a><span class="address"><a href="#ADDR_fe_ea20">fe/ea20</a></span>
-      <span class="opcode ">bcc</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEA60" title="FEEA60" symbol-type="" symbol-source="">LFEEA60</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea22"></a><span class="address"><a href="#ADDR_fe_ea22">fe/ea22</a></span>
-      <span class="opcode ">bit</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS_ELK_BUFFER_BUSY" title="A5C3" symbol-type="" symbol-source="">SYSVARS_ELK_BUFFER_BUSY</a>+3</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea25"></a><span class="address"><a href="#ADDR_fe_ea25">fe/ea25</a></span>
-      <span class="opcode ">bpl</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEA11" title="FEEA11" symbol-type="" symbol-source="">LFEEA11</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea27"></a><span class="address"><a href="#ADDR_fe_ea27">fe/ea27</a></span>
-      <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEDF16" title="FEDF16" symbol-type="" symbol-source="">LFEDF16</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea2a"></a><span class="address"><a href="#ADDR_fe_ea2a">fe/ea2a</a></span>
-      <span class="opcode ">ldy</span>
-      <span class="operand">#$00</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_ea2c"></a><span class="address"><a href="#ADDR_fe_ea2c">fe/ea2c</a></span>
-      <span class="opcode ">sty</span>
+    <span class="line data"><a id="ADDR_fe_ea16"></a><span class="address"><a href="#ADDR_fe_ea16">fe/ea16</a></span>
+      <span class="opcode directive">dd1</span>
       <span class="operand">$eb</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea2e"></a><span class="address"><a href="#ADDR_fe_ea2e">fe/ea2e</a></span>
-      <span class="opcode ">stx</span>
+    <span class="line data"><a id="ADDR_fe_ea17"></a><span class="address"><a href="#ADDR_fe_ea17">fe/ea17</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a9</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea18"></a><span class="address"><a href="#ADDR_fe_ea18">fe/ea18</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$03</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea19"></a><span class="address"><a href="#ADDR_fe_ea19">fe/ea19</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a2</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea1a"></a><span class="address"><a href="#ADDR_fe_ea1a">fe/ea1a</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$02</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea1b"></a><span class="address"><a href="#ADDR_fe_ea1b">fe/ea1b</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$22</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea1c"></a><span class="address"><a href="#ADDR_fe_ea1c">fe/ea1c</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$b0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea1d"></a><span class="address"><a href="#ADDR_fe_ea1d">fe/ea1d</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$ff</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea1e"></a><span class="address"><a href="#ADDR_fe_ea1e">fe/ea1e</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$00</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea1f"></a><span class="address"><a href="#ADDR_fe_ea1f">fe/ea1f</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$fa</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea20"></a><span class="address"><a href="#ADDR_fe_ea20">fe/ea20</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$90</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea21"></a><span class="address"><a href="#ADDR_fe_ea21">fe/ea21</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$3e</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea22"></a><span class="address"><a href="#ADDR_fe_ea22">fe/ea22</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$2c</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea23"></a><span class="address"><a href="#ADDR_fe_ea23">fe/ea23</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$c6</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea24"></a><span class="address"><a href="#ADDR_fe_ea24">fe/ea24</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a5</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea25"></a><span class="address"><a href="#ADDR_fe_ea25">fe/ea25</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$10</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea26"></a><span class="address"><a href="#ADDR_fe_ea26">fe/ea26</a></span>
+      <span class="opcode directive">dd1</span>
       <span class="operand">$ea</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea30"></a><span class="address"><a href="#ADDR_fe_ea30">fe/ea30</a></span>
-      <span class="opcode ">jsr</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-OSBYTE_DOESNOTHINGBADLY" title="FEE7B6" symbol-type="" symbol-source="">OSBYTE_DOESNOTHINGBADLY</a></span>
+    <span class="line data"><a id="ADDR_fe_ea27"></a><span class="address"><a href="#ADDR_fe_ea27">fe/ea27</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$20</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea33"></a><span class="address"><a href="#ADDR_fe_ea33">fe/ea33</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand">#$05</span>
+    <span class="line data"><a id="ADDR_fe_ea28"></a><span class="address"><a href="#ADDR_fe_ea28">fe/ea28</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$16</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea35"></a><span class="address"><a href="#ADDR_fe_ea35">fe/ea35</a></span>
-      <span class="opcode ">ora</span>
-      <span class="operand">#$f0</span>
+    <span class="line data"><a id="ADDR_fe_ea29"></a><span class="address"><a href="#ADDR_fe_ea29">fe/ea29</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$df</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea37"></a><span class="address"><a href="#ADDR_fe_ea37">fe/ea37</a></span>
-      <span class="opcode ">bra</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEA46" title="FEEA46" symbol-type="" symbol-source="">LFEEA46</a></span>
+    <span class="line data"><a id="ADDR_fe_ea2a"></a><span class="address"><a href="#ADDR_fe_ea2a">fe/ea2a</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a0</span>
     </span>
-    <span class="line blank"></span>
-    <span class="long-comment">
-; TODO dead code?</span>
-    <span class="line code"><a id="ADDR_fe_ea39"></a><span class="address"><a href="#ADDR_fe_ea39">fe/ea39</a></span>
-      <span class="opcode ">bne</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEA42" title="FEEA42" symbol-type="" symbol-source="">LFEEA42</a></span>
+    <span class="line data"><a id="ADDR_fe_ea2b"></a><span class="address"><a href="#ADDR_fe_ea2b">fe/ea2b</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$00</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea3b"></a><span class="address"><a href="#ADDR_fe_ea3b">fe/ea3b</a></span>
-      <span class="opcode ">ldx</span>
-      <span class="operand">#$32</span>
+    <span class="line data"><a id="ADDR_fe_ea2c"></a><span class="address"><a href="#ADDR_fe_ea2c">fe/ea2c</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$84</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea3d"></a><span class="address"><a href="#ADDR_fe_ea3d">fe/ea3d</a></span>
-      <span class="opcode ">pha</span>
+    <span class="line data"><a id="ADDR_fe_ea2d"></a><span class="address"><a href="#ADDR_fe_ea2d">fe/ea2d</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$eb</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea3e"></a><span class="address"><a href="#ADDR_fe_ea3e">fe/ea3e</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand">#$03</span>
+    <span class="line data"><a id="ADDR_fe_ea2e"></a><span class="address"><a href="#ADDR_fe_ea2e">fe/ea2e</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$86</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea40"></a><span class="address"><a href="#ADDR_fe_ea40">fe/ea40</a></span>
-      <span class="opcode ">tax</span>
+    <span class="line data"><a id="ADDR_fe_ea2f"></a><span class="address"><a href="#ADDR_fe_ea2f">fe/ea2f</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$ea</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea41"></a><span class="address"><a href="#ADDR_fe_ea41">fe/ea41</a></span>
-      <span class="opcode ">pla</span>
+    <span class="line data"><a id="ADDR_fe_ea30"></a><span class="address"><a href="#ADDR_fe_ea30">fe/ea30</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$20</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea42"></a><span class="address"><a href="#ADDR_fe_ea42">fe/ea42</a></span>
-      <a id="LBLLK-LFEEA42"></a><span class="label" anno="none" id="LBL-LFEEA42">LFEEA42</span>
-      <span class="opcode ">rts</span>
+    <span class="line data"><a id="ADDR_fe_ea31"></a><span class="address"><a href="#ADDR_fe_ea31">fe/ea31</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$b6</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea32"></a><span class="address"><a href="#ADDR_fe_ea32">fe/ea32</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$e7</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea33"></a><span class="address"><a href="#ADDR_fe_ea33">fe/ea33</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a9</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea34"></a><span class="address"><a href="#ADDR_fe_ea34">fe/ea34</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$05</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea35"></a><span class="address"><a href="#ADDR_fe_ea35">fe/ea35</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$09</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea36"></a><span class="address"><a href="#ADDR_fe_ea36">fe/ea36</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$f0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea37"></a><span class="address"><a href="#ADDR_fe_ea37">fe/ea37</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$80</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea38"></a><span class="address"><a href="#ADDR_fe_ea38">fe/ea38</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$0d</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea39"></a><span class="address"><a href="#ADDR_fe_ea39">fe/ea39</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea3a"></a><span class="address"><a href="#ADDR_fe_ea3a">fe/ea3a</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$07</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea3b"></a><span class="address"><a href="#ADDR_fe_ea3b">fe/ea3b</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a2</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea3c"></a><span class="address"><a href="#ADDR_fe_ea3c">fe/ea3c</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$32</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea3d"></a><span class="address"><a href="#ADDR_fe_ea3d">fe/ea3d</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$48</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea3e"></a><span class="address"><a href="#ADDR_fe_ea3e">fe/ea3e</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a9</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea3f"></a><span class="address"><a href="#ADDR_fe_ea3f">fe/ea3f</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$03</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea40"></a><span class="address"><a href="#ADDR_fe_ea40">fe/ea40</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$aa</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea41"></a><span class="address"><a href="#ADDR_fe_ea41">fe/ea41</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$68</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea42"></a><span class="address"><a href="#ADDR_fe_ea42">fe/ea42</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$60</span>
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_ea43"></a><span class="address"><a href="#ADDR_fe_ea43">fe/ea43</a></span>
@@ -34715,7 +34732,6 @@
       <span class="comment">;TODO: make this relative to SYSVARS/VDUVARS</span>
     </span>
     <span class="line code"><a id="ADDR_fe_ea46"></a><span class="address"><a href="#ADDR_fe_ea46">fe/ea46</a></span>
-      <a id="LBLLK-LFEEA46"></a><span class="label" anno="none" id="LBL-LFEEA46">LFEEA46</span>
       <span class="opcode ">stx</span>
       <span class="operand">&lt;<a class="op-symbol" href="#LBLLK-DPSYS_OSB_X" title="ACEA" symbol-type="" symbol-source="">DPSYS_OSB_X</a></span>
       <span class="comment">;TODO: suspect this is superfluous?</span>
@@ -34768,7 +34784,6 @@
       <span class="opcode ">tay</span>
     </span>
     <span class="line code"><a id="ADDR_fe_ea60"></a><span class="address"><a href="#ADDR_fe_ea60">fe/ea60</a></span>
-      <a id="LBLLK-LFEEA60"></a><span class="label" anno="none" id="LBL-LFEEA60">LFEEA60</span>
       <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
@@ -34782,22 +34797,33 @@
       <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
-    <span class="long-comment">
-; TODO dead?</span>
-    <span class="line code"><a id="ADDR_fe_ea65"></a><span class="address"><a href="#ADDR_fe_ea65">fe/ea65</a></span>
-      <span class="opcode ">eor</span>
-      <span class="operand">#$8c</span>
+    <span class="line data"><a id="ADDR_fe_ea65"></a><span class="address"><a href="#ADDR_fe_ea65">fe/ea65</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$49</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea67"></a><span class="address"><a href="#ADDR_fe_ea67">fe/ea67</a></span>
-      <span class="opcode ">asl</span>
-      <span class="operand">A</span>
+    <span class="line data"><a id="ADDR_fe_ea66"></a><span class="address"><a href="#ADDR_fe_ea66">fe/ea66</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$8c</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea68"></a><span class="address"><a href="#ADDR_fe_ea68">fe/ea68</a></span>
-      <span class="opcode ">sta</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+71</span>
+    <span class="line data"><a id="ADDR_fe_ea67"></a><span class="address"><a href="#ADDR_fe_ea67">fe/ea67</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$0a</span>
     </span>
-    <span class="line code"><a id="ADDR_fe_ea6b"></a><span class="address"><a href="#ADDR_fe_ea6b">fe/ea6b</a></span>
-      <span class="opcode ">rts</span>
+    <span class="line data"><a id="ADDR_fe_ea68"></a><span class="address"><a href="#ADDR_fe_ea68">fe/ea68</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$8d</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea69"></a><span class="address"><a href="#ADDR_fe_ea69">fe/ea69</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$47</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea6a"></a><span class="address"><a href="#ADDR_fe_ea6a">fe/ea6a</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a5</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_ea6b"></a><span class="address"><a href="#ADDR_fe_ea6b">fe/ea6b</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$60</span>
     </span>
     <span class="line blank"></span>
     <span class="long-comment">
@@ -34962,7 +34988,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_eaa9"></a><span class="address"><a href="#ADDR_fe_eaa9">fe/eaa9</a></span>
-      <a id="LBLLK-LFEEAA9"></a><span class="label" anno="none" id="LBL-LFEEAA9">LFEEAA9</span>
+      <a id="LBLLK-callEVENTV"></a><span class="label" anno="none" id="LBL-callEVENTV">callEVENTV</span>
       <span class="opcode ">xba</span>
     </span>
     <span class="line code"><a id="ADDR_fe_eaaa"></a><span class="address"><a href="#ADDR_fe_eaaa">fe/eaaa</a></span>
@@ -34970,14 +34996,14 @@
     </span>
     <span class="line code"><a id="ADDR_fe_eaab"></a><span class="address"><a href="#ADDR_fe_eaab">fe/eaab</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+33</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_20_EVENTV" title="A520" symbol-type="" symbol-source="">SYSVAR_20_EVENTV</a>+1</span>
     </span>
     <span class="line code"><a id="ADDR_fe_eaae"></a><span class="address"><a href="#ADDR_fe_eaae">fe/eaae</a></span>
       <span class="opcode ">pha</span>
     </span>
     <span class="line code"><a id="ADDR_fe_eaaf"></a><span class="address"><a href="#ADDR_fe_eaaf">fe/eaaf</a></span>
       <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+32</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVAR_20_EVENTV" title="A520" symbol-type="" symbol-source="">SYSVAR_20_EVENTV</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_eab2"></a><span class="address"><a href="#ADDR_fe_eab2">fe/eab2</a></span>
       <span class="opcode ">pha</span>
@@ -35059,43 +35085,53 @@
       <span class="opcode ">rts</span>
     </span>
     <span class="line blank"></span>
-    <span class="long-comment">
-; TODO dead?</span>
-    <span class="line code"><a id="ADDR_fe_ead9"></a><span class="address"><a href="#ADDR_fe_ead9">fe/ead9</a></span>
-      <span class="opcode ">lda</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+135</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_eadc"></a><span class="address"><a href="#ADDR_fe_eadc">fe/eadc</a></span>
-      <span class="opcode ">eor</span>
-      <span class="operand">#$4c</span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_eade"></a><span class="address"><a href="#ADDR_fe_eade">fe/eade</a></span>
-      <span class="opcode ">bne</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEEAE4" title="FEEAE4" symbol-type="" symbol-source="">LFEEAE4</a></span>
-    </span>
-    <span class="line code"><a id="ADDR_fe_eae0"></a><span class="address"><a href="#ADDR_fe_eae0">fe/eae0</a></span>
-      <span class="opcode ">jml</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-SYSVARS" title="A500" symbol-type="" symbol-source="">SYSVARS</a>+135</span>
-    </span>
-    <span class="line blank"></span>
-    <span class="line code"><a id="ADDR_fe_eae4"></a><span class="address"><a href="#ADDR_fe_eae4">fe/eae4</a></span>
-      <a id="LBLLK-LFEEAE4"></a><span class="label" anno="none" id="LBL-LFEEAE4">LFEEAE4</span>
-      <span class="opcode ">rts</span>
-    </span>
-    <span class="line blank"></span>
-    <span class="line code"><a id="ADDR_fe_eae5"></a><span class="address"><a href="#ADDR_fe_eae5">fe/eae5</a></span>
-      <span class="opcode ">rts</span>
-    </span>
-    <span class="line blank"></span>
-    <span class="long-comment">
-; TODO: dead?</span>
-    <span class="line data"><a id="ADDR_fe_eae6"></a><span class="address"><a href="#ADDR_fe_eae6">fe/eae6</a></span>
-      <span class="opcode directive">str</span>
-      <span class="operand">“/!BO.”</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_eaeb"></a><span class="address"><a href="#ADDR_fe_eaeb">fe/eaeb</a></span>
+    <span class="line data"><a id="ADDR_fe_ead9"></a><span class="address"><a href="#ADDR_fe_ead9">fe/ead9</a></span>
       <span class="opcode directive">dd1</span>
-      <span class="operand">$0d</span>
+      <span class="operand">$ad</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eada"></a><span class="address"><a href="#ADDR_fe_eada">fe/eada</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$87</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eadb"></a><span class="address"><a href="#ADDR_fe_eadb">fe/eadb</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a5</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eadc"></a><span class="address"><a href="#ADDR_fe_eadc">fe/eadc</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$49</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eadd"></a><span class="address"><a href="#ADDR_fe_eadd">fe/eadd</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$4c</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eade"></a><span class="address"><a href="#ADDR_fe_eade">fe/eade</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$d0</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eadf"></a><span class="address"><a href="#ADDR_fe_eadf">fe/eadf</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$04</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eae0"></a><span class="address"><a href="#ADDR_fe_eae0">fe/eae0</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$5c</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eae1"></a><span class="address"><a href="#ADDR_fe_eae1">fe/eae1</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$87</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eae2"></a><span class="address"><a href="#ADDR_fe_eae2">fe/eae2</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$a5</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eae3"></a><span class="address"><a href="#ADDR_fe_eae3">fe/eae3</a></span>
+      <span class="opcode directive">dd1</span>
+      <span class="operand">$00</span>
+    </span>
+    <span class="line data"><a id="ADDR_fe_eae4"></a><span class="address"><a href="#ADDR_fe_eae4">fe/eae4</a></span>
+      <span class="opcode directive">str</span>
+      <span class="operand">“``/!BO.”,$0d</span>
     </span>
     <span class="line blank"></span>
     <span class="long-comment">
@@ -35271,7 +35307,7 @@
     </span>
     <span class="line blank"></span>
     <span class="line code"><a id="ADDR_fe_eb49"></a><span class="address"><a href="#ADDR_fe_eb49">fe/eb49</a></span>
-      <a id="LBLLK-LFEEB49"></a><span class="label" anno="none" id="LBL-LFEEB49">LFEEB49</span>
+      <a id="LBLLK-doSoundInterrupt"></a><span class="label" anno="none" id="LBL-doSoundInterrupt">doSoundInterrupt</span>
       <span class="opcode ">phb</span>
     </span>
     <span class="line code"><a id="ADDR_fe_eb4a"></a><span class="address"><a href="#ADDR_fe_eb4a">fe/eb4a</a></span>
@@ -36284,32 +36320,8 @@
     <span class="line blank"></span>
     <span class="line data"><a id="ADDR_fe_ed59"></a><span class="address"><a href="#ADDR_fe_ed59">fe/ed59</a></span>
       <a id="LBLLK-LFEED59"></a><span class="label" anno="none" id="LBL-LFEED59">LFEED59</span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$e3</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed5a"></a><span class="address"><a href="#ADDR_fe_ed5a">fe/ed5a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$d6</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed5b"></a><span class="address"><a href="#ADDR_fe_ed5b">fe/ed5b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$cb</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed5c"></a><span class="address"><a href="#ADDR_fe_ed5c">fe/ed5c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$bf</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed5d"></a><span class="address"><a href="#ADDR_fe_ed5d">fe/ed5d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$b5</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed5e"></a><span class="address"><a href="#ADDR_fe_ed5e">fe/ed5e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$aa</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed5f"></a><span class="address"><a href="#ADDR_fe_ed5f">fe/ed5f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$a0</span>
+      <span class="opcode directive">str</span>
+      <span class="operand">↑“cVK?5* ”</span>
     </span>
     <span class="line data"><a id="ADDR_fe_ed60"></a><span class="address"><a href="#ADDR_fe_ed60">fe/ed60</a></span>
       <span class="opcode directive">dd1</span>
@@ -36387,148 +36399,8 @@
       <span class="operand">$0f</span>
     </span>
     <span class="line data"><a id="ADDR_fe_ed72"></a><span class="address"><a href="#ADDR_fe_ed72">fe/ed72</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$75</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed73"></a><span class="address"><a href="#ADDR_fe_ed73">fe/ed73</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed74"></a><span class="address"><a href="#ADDR_fe_ed74">fe/ed74</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed75"></a><span class="address"><a href="#ADDR_fe_ed75">fe/ed75</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed76"></a><span class="address"><a href="#ADDR_fe_ed76">fe/ed76</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$43</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed77"></a><span class="address"><a href="#ADDR_fe_ed77">fe/ed77</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$4f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed78"></a><span class="address"><a href="#ADDR_fe_ed78">fe/ed78</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$50</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed79"></a><span class="address"><a href="#ADDR_fe_ed79">fe/ed79</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed7a"></a><span class="address"><a href="#ADDR_fe_ed7a">fe/ed7a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6e</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed7b"></a><span class="address"><a href="#ADDR_fe_ed7b">fe/ed7b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed7c"></a><span class="address"><a href="#ADDR_fe_ed7c">fe/ed7c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$74</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed7d"></a><span class="address"><a href="#ADDR_fe_ed7d">fe/ed7d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed7e"></a><span class="address"><a href="#ADDR_fe_ed7e">fe/ed7e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$63</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed7f"></a><span class="address"><a href="#ADDR_fe_ed7f">fe/ed7f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$61</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed80"></a><span class="address"><a href="#ADDR_fe_ed80">fe/ed80</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6c</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed81"></a><span class="address"><a href="#ADDR_fe_ed81">fe/ed81</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6c</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed82"></a><span class="address"><a href="#ADDR_fe_ed82">fe/ed82</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed83"></a><span class="address"><a href="#ADDR_fe_ed83">fe/ed83</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$74</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed84"></a><span class="address"><a href="#ADDR_fe_ed84">fe/ed84</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed85"></a><span class="address"><a href="#ADDR_fe_ed85">fe/ed85</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed86"></a><span class="address"><a href="#ADDR_fe_ed86">fe/ed86</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$61</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed87"></a><span class="address"><a href="#ADDR_fe_ed87">fe/ed87</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$62</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed88"></a><span class="address"><a href="#ADDR_fe_ed88">fe/ed88</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed89"></a><span class="address"><a href="#ADDR_fe_ed89">fe/ed89</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed8a"></a><span class="address"><a href="#ADDR_fe_ed8a">fe/ed8a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6c</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed8b"></a><span class="address"><a href="#ADDR_fe_ed8b">fe/ed8b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$75</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed8c"></a><span class="address"><a href="#ADDR_fe_ed8c">fe/ed8c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$74</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed8d"></a><span class="address"><a href="#ADDR_fe_ed8d">fe/ed8d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed8e"></a><span class="address"><a href="#ADDR_fe_ed8e">fe/ed8e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed8f"></a><span class="address"><a href="#ADDR_fe_ed8f">fe/ed8f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$61</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed90"></a><span class="address"><a href="#ADDR_fe_ed90">fe/ed90</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed91"></a><span class="address"><a href="#ADDR_fe_ed91">fe/ed91</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed92"></a><span class="address"><a href="#ADDR_fe_ed92">fe/ed92</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed93"></a><span class="address"><a href="#ADDR_fe_ed93">fe/ed93</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed94"></a><span class="address"><a href="#ADDR_fe_ed94">fe/ed94</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_ed95"></a><span class="address"><a href="#ADDR_fe_ed95">fe/ed95</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
+      <span class="opcode directive">str</span>
+      <span class="operand">“use COP not call to absolute address”</span>
     </span>
     <span class="line data"><a id="ADDR_fe_ed96"></a><span class="address"><a href="#ADDR_fe_ed96">fe/ed96</a></span>
       <span class="opcode directive">dd1</span>
@@ -41924,7 +41796,7 @@
     </span>
     <span class="line code"><a id="ADDR_fe_f7a7"></a><span class="address"><a href="#ADDR_fe_f7a7">fe/f7a7</a></span>
       <span class="opcode ">per</span>
-      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEFE64_anRTL" title="FEFE64" symbol-type="" symbol-source="">LFEFE64_anRTL</a>-1</span>
+      <span class="operand"><a class="op-symbol" href="#LBLLK-LFEFE63_anRTL" title="FEFE63" symbol-type="" symbol-source="">LFEFE63_anRTL</a></span>
     </span>
     <span class="line code"><a id="ADDR_fe_f7aa"></a><span class="address"><a href="#ADDR_fe_f7aa">fe/f7aa</a></span>
       <span class="opcode ">pea</span>
@@ -42714,152 +42586,8 @@
     </span>
     <span class="line blank"></span>
     <span class="line data"><a id="ADDR_fe_f8f7"></a><span class="address"><a href="#ADDR_fe_f8f7">fe/f8f7</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$4c</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8f8"></a><span class="address"><a href="#ADDR_fe_f8f8">fe/f8f8</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$69</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8f9"></a><span class="address"><a href="#ADDR_fe_f8f9">fe/f8f9</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8fa"></a><span class="address"><a href="#ADDR_fe_f8fa">fe/f8fa</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$74</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8fb"></a><span class="address"><a href="#ADDR_fe_f8fb">fe/f8fb</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8fc"></a><span class="address"><a href="#ADDR_fe_f8fc">fe/f8fc</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$68</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8fd"></a><span class="address"><a href="#ADDR_fe_f8fd">fe/f8fd</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8fe"></a><span class="address"><a href="#ADDR_fe_f8fe">fe/f8fe</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$61</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f8ff"></a><span class="address"><a href="#ADDR_fe_f8ff">fe/f8ff</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f900"></a><span class="address"><a href="#ADDR_fe_f900">fe/f900</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f901"></a><span class="address"><a href="#ADDR_fe_f901">fe/f901</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f902"></a><span class="address"><a href="#ADDR_fe_f902">fe/f902</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f903"></a><span class="address"><a href="#ADDR_fe_f903">fe/f903</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6e</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f904"></a><span class="address"><a href="#ADDR_fe_f904">fe/f904</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f905"></a><span class="address"><a href="#ADDR_fe_f905">fe/f905</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$74</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f906"></a><span class="address"><a href="#ADDR_fe_f906">fe/f906</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f907"></a><span class="address"><a href="#ADDR_fe_f907">fe/f907</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$66</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f908"></a><span class="address"><a href="#ADDR_fe_f908">fe/f908</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f909"></a><span class="address"><a href="#ADDR_fe_f909">fe/f909</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$75</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f90a"></a><span class="address"><a href="#ADDR_fe_f90a">fe/f90a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6e</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f90b"></a><span class="address"><a href="#ADDR_fe_f90b">fe/f90b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$64</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f90c"></a><span class="address"><a href="#ADDR_fe_f90c">fe/f90c</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f90d"></a><span class="address"><a href="#ADDR_fe_f90d">fe/f90d</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$2d</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f90e"></a><span class="address"><a href="#ADDR_fe_f90e">fe/f90e</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f90f"></a><span class="address"><a href="#ADDR_fe_f90f">fe/f90f</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f910"></a><span class="address"><a href="#ADDR_fe_f910">fe/f910</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f911"></a><span class="address"><a href="#ADDR_fe_f911">fe/f911</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f912"></a><span class="address"><a href="#ADDR_fe_f912">fe/f912</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$69</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f913"></a><span class="address"><a href="#ADDR_fe_f913">fe/f913</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f914"></a><span class="address"><a href="#ADDR_fe_f914">fe/f914</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$75</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f915"></a><span class="address"><a href="#ADDR_fe_f915">fe/f915</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$73</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f916"></a><span class="address"><a href="#ADDR_fe_f916">fe/f916</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$20</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f917"></a><span class="address"><a href="#ADDR_fe_f917">fe/f917</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$65</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f918"></a><span class="address"><a href="#ADDR_fe_f918">fe/f918</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f919"></a><span class="address"><a href="#ADDR_fe_f919">fe/f919</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f91a"></a><span class="address"><a href="#ADDR_fe_f91a">fe/f91a</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$6f</span>
-    </span>
-    <span class="line data"><a id="ADDR_fe_f91b"></a><span class="address"><a href="#ADDR_fe_f91b">fe/f91b</a></span>
-      <span class="opcode directive">dd1</span>
-      <span class="operand">$72</span>
+      <span class="opcode directive">str</span>
+      <span class="operand">“List header not found - serious error”</span>
     </span>
     <span class="line data"><a id="ADDR_fe_f91c"></a><span class="address"><a href="#ADDR_fe_f91c">fe/f91c</a></span>
       <span class="opcode directive">dd1</span>
@@ -45762,6 +45490,7 @@
       <span class="operand">(&lt;<a class="op-symbol" href="#LBLLK-DPSYS_DP_KEYBOARD" title="ACC7" symbol-type="" symbol-source="">DPSYS_DP_KEYBOARD</a>)</span>
     </span>
     <span class="line code"><a id="ADDR_fe_fe63"></a><span class="address"><a href="#ADDR_fe_fe63">fe/fe63</a></span>
+      <a id="LBLLK-LFEFE63_anRTL"></a><span class="label" anno="none" id="LBL-LFEFE63_anRTL">LFEFE63_anRTL</span>
       <span class="opcode ">rtl</span>
     </span>
     <span class="line blank"></span>

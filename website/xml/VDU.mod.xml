@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="dis65.xslt"?>
-<dis65 project-name="VDU.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-11-18T12:35:44.1547245+00:00">
+<dis65 project-name="VDU.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-12-11T12:24:16.0481689+00:00">
   <symbols>
     <symbol type="global-addr" label="allocDP" anno="none" source="user">$fe725f</symbol>
     <symbol type="global-addr" label="callMod_X_QRY" anno="none" source="user">$fe729d</symbol>
@@ -505,6 +505,9 @@
     <symbol type="global-addr" label="Serv0_BHAptstrVDU" anno="none" source="user">$fe7230</symbol>
     <symbol type="global-addr" label="Serv2" anno="none" source="user">$fe5ee5</symbol>
     <symbol type="global-addr" label="Serv4_VDU" anno="none" source="user">$fe6c48</symbol>
+    <symbol type="global-addr" label="Serv42" anno="none" source="user">$fe6fad</symbol>
+    <symbol type="global-addr" label="Serv4A" anno="none" source="user">$fe71f4</symbol>
+    <symbol type="global-addr" label="Serv4E" anno="none" source="user">$fe6c54</symbol>
     <symbol type="global-addr" label="ServiceRoutine" anno="none" source="user">$fe5513</symbol>
     <symbol type="global-addr" label="setMode" anno="none" source="user">$fe5f94</symbol>
     <symbol type="non-unique-local-addr" label="skqry§000aa3" anno="none" source="user">$fe5fa3</symbol>
@@ -525,7 +528,6 @@
     <symbol type="global-addr" label="TFE6A89" anno="generated" source="user">$fe6a89</symbol>
     <symbol type="global-addr" label="TFE6BDB" anno="generated" source="user">$fe6bdb</symbol>
     <symbol type="global-addr" label="TFE6C22" anno="generated" source="user">$fe6c22</symbol>
-    <symbol type="global-addr" label="TFE6C54" anno="generated" source="user">$fe6c54</symbol>
     <symbol type="global-addr" label="TFE6C6A" anno="generated" source="user">$fe6c6a</symbol>
     <symbol type="global-addr" label="TFE6C98" anno="generated" source="user">$fe6c98</symbol>
     <symbol type="global-addr" label="TFE6D18" anno="generated" source="user">$fe6d18</symbol>
@@ -536,12 +538,10 @@
     <symbol type="global-addr" label="TFE6E06" anno="generated" source="user">$fe6e06</symbol>
     <symbol type="global-addr" label="TFE6F36" anno="generated" source="user">$fe6f36</symbol>
     <symbol type="global-addr" label="TFE6F55" anno="generated" source="user">$fe6f55</symbol>
-    <symbol type="global-addr" label="TFE6FAD" anno="generated" source="user">$fe6fad</symbol>
     <symbol type="global-addr" label="TFE7037" anno="generated" source="user">$fe7037</symbol>
     <symbol type="global-addr" label="TFE708E" anno="generated" source="user">$fe708e</symbol>
     <symbol type="global-addr" label="TFE716E" anno="generated" source="user">$fe716e</symbol>
     <symbol type="global-addr" label="TFE71C5" anno="generated" source="user">$fe71c5</symbol>
-    <symbol type="global-addr" label="TFE71F4" anno="generated" source="user">$fe71f4</symbol>
     <symbol type="global-addr" label="TFE71FC" anno="generated" source="user">$fe71fc</symbol>
     <symbol type="global-addr" label="TFE720C" anno="generated" source="user">$fe720c</symbol>
     <symbol type="global-addr" label="TFE7210" anno="generated" source="user">$fe7210</symbol>
@@ -16413,7 +16413,7 @@
     </line>
     <line type="blank" />
     <line type="code" address="fe/6c54">
-      <label anno="none" id="TFE6C54">TFE6C54</label>
+      <label anno="none" id="Serv4E">Serv4E</label>
       <opcode>phy</opcode>
     </line>
     <line type="code" address="fe/6c55">
@@ -18342,8 +18342,12 @@
       <opcode>rts</opcode>
     </line>
     <line type="blank" />
+    <long-comment xml:space="preserve">
+********************************************************************************<br />
+* Seems to copy VDU variables to BHA called by OPSCX in MOS                    *<br />
+********************************************************************************</long-comment>
     <line type="code" address="fe/6fad">
-      <label anno="none" id="TFE6FAD">TFE6FAD</label>
+      <label anno="none" id="Serv42">Serv42</label>
       <opcode>sta</opcode>
       <operand>$32</operand>
     </line>
@@ -19612,7 +19616,7 @@
       <operand>shortm,shortx</operand>
     </line>
     <line type="code" address="fe/71f4">
-      <label anno="none" id="TFE71F4">TFE71F4</label>
+      <label anno="none" id="Serv4A">Serv4A</label>
       <opcode>lda</opcode>
       <operand>#$00</operand>
     </line>
@@ -20453,7 +20457,7 @@
     </line>
     <line type="data" address="fe/7349">
       <opcode type="directive">dd2</opcode>
-      <operand><op-symbol anno="generated" value="FE6FAD" symbol="TFE6FAD">TFE6FAD</op-symbol> &amp; $ffff</operand>
+      <operand><op-symbol anno="none" value="FE6FAD" symbol="Serv42">Serv42</op-symbol> &amp; $ffff</operand>
     </line>
     <line type="data" address="fe/734b">
       <opcode type="directive">dd2</opcode>
@@ -20469,7 +20473,7 @@
     </line>
     <line type="data" address="fe/7351">
       <opcode type="directive">dd2</opcode>
-      <operand><op-symbol anno="generated" value="FE71F4" symbol="TFE71F4">TFE71F4</op-symbol> &amp; $ffff</operand>
+      <operand><op-symbol anno="none" value="FE71F4" symbol="Serv4A">Serv4A</op-symbol> &amp; $ffff</operand>
     </line>
     <line type="data" address="fe/7353">
       <opcode type="directive">dd2</opcode>
@@ -20477,7 +20481,7 @@
     </line>
     <line type="data" address="fe/7355">
       <opcode type="directive">dd2</opcode>
-      <operand><op-symbol anno="generated" value="FE6C54" symbol="TFE6C54">TFE6C54</op-symbol> &amp; $ffff</operand>
+      <operand><op-symbol anno="none" value="FE6C54" symbol="Serv4E">Serv4E</op-symbol> &amp; $ffff</operand>
     </line>
     <line type="data" address="fe/7357">
       <opcode type="directive">dd2</opcode>

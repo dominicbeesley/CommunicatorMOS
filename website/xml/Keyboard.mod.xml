@@ -1,0 +1,4477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="dis65.xslt"?>
+<dis65 project-name="Keyboard.mod" app-version="1.8.5" expression-style="Unknown" current-date="2023-12-11T12:23:09.9857415+00:00">
+  <symbols>
+    <symbol type="global-addr" label="anRTS" anno="none" source="user">$ff8560</symbol>
+    <symbol type="global-addr" label="bratblServ" anno="none" source="user">$ff7e3f</symbol>
+    <symbol type="global-addr" label="callMOS" anno="none" source="user">$ff8561</symbol>
+    <symbol type="constant" label="COP_00_OPWRC" anno="none" source="project">$00</symbol>
+    <symbol type="constant" label="COP_01_OPWRS" anno="none" source="project">$01</symbol>
+    <symbol type="constant" label="COP_02_OPWRA" anno="none" source="project">$02</symbol>
+    <symbol type="constant" label="COP_03_OPNLI" anno="none" source="project">$03</symbol>
+    <symbol type="constant" label="COP_04_OPRDC" anno="none" source="project">$04</symbol>
+    <symbol type="constant" label="COP_06_OPOSB" anno="none" source="project">$06</symbol>
+    <symbol type="constant" label="COP_07_OPOSW" anno="none" source="project">$07</symbol>
+    <symbol type="constant" label="COP_0A_OPBGT" anno="none" source="project">$0a</symbol>
+    <symbol type="constant" label="COP_0B_OPBPT" anno="none" source="project">$0b</symbol>
+    <symbol type="constant" label="COP_0B_OPBPUT" anno="none" source="project">$0b</symbol>
+    <symbol type="constant" label="COP_0E_OPCOM" anno="none" source="project">$0e</symbol>
+    <symbol type="constant" label="COP_0F_OPERR" anno="none" source="project">$0f</symbol>
+    <symbol type="constant" label="COP_10_OPADP" anno="none" source="project">$10</symbol>
+    <symbol type="constant" label="COP_13_OPAST" anno="none" source="project">$13</symbol>
+    <symbol type="constant" label="COP_18_OPRLH" anno="none" source="project">$18</symbol>
+    <symbol type="external-addr" label="COP_1A_OPFZB" anno="none" source="project">$1a</symbol>
+    <symbol type="constant" label="COP_20_OPSEV" anno="none" source="project">$20</symbol>
+    <symbol type="constant" label="COP_21_OPPRE" anno="none" source="project">$21</symbol>
+    <symbol type="constant" label="COP_24_OPCVD" anno="none" source="project">$24</symbol>
+    <symbol type="constant" label="COP_26_OPBHA" anno="none" source="project">$26</symbol>
+    <symbol type="constant" label="COP_28_OPCMD" anno="none" source="project">$28</symbol>
+    <symbol type="constant" label="COP_29_OPRFR" anno="none" source="project">$29</symbol>
+    <symbol type="constant" label="COP_2C_OPFMA" anno="none" source="project">$2c</symbol>
+    <symbol type="constant" label="COP_2D_OPWRM" anno="none" source="project">$2d</symbol>
+    <symbol type="external-addr" label="COP_2E_OPFPO" anno="none" source="project">$2e</symbol>
+    <symbol type="constant" label="COP_2F_OPIIQ" anno="none" source="project">$2f</symbol>
+    <symbol type="external-addr" label="COP_31_OPMIQ" anno="none" source="project">$31</symbol>
+    <symbol type="constant" label="COP_32_OPSUM" anno="none" source="project">$32</symbol>
+    <symbol type="constant" label="COP_34_OPRMI" anno="none" source="project">$34</symbol>
+    <symbol type="constant" label="COP_36_OPNLU" anno="none" source="project">$36</symbol>
+    <symbol type="constant" label="COP_44_OPOPN" anno="none" source="project">$44</symbol>
+    <symbol type="constant" label="COP_45_OPCLS" anno="none" source="project">$45</symbol>
+    <symbol type="constant" label="COP_46_OPEND" anno="none" source="project">$46</symbol>
+    <symbol type="external-addr" label="COP_4E_OPLOD" anno="none" source="project">$4e</symbol>
+    <symbol type="constant" label="COP_4F_OPSAV" anno="none" source="project">$4f</symbol>
+    <symbol type="constant" label="COP_50_OPRLE" anno="none" source="project">$50</symbol>
+    <symbol type="constant" label="COP_51_OPWLE" anno="none" source="project">$51</symbol>
+    <symbol type="constant" label="COP_57_OPRLL" anno="none" source="project">$57</symbol>
+    <symbol type="constant" label="COP_59_OPRCH" anno="none" source="project">$59</symbol>
+    <symbol type="constant" label="COP_5A_OPRFN" anno="none" source="project">$5a</symbol>
+    <symbol type="external-addr" label="COP_5B_OPDEL" anno="none" source="project">$5b</symbol>
+    <symbol type="constant" label="COP_5C_OPREN" anno="none" source="project">$5c</symbol>
+    <symbol type="constant" label="COP_61_OPERC" anno="none" source="project">$61</symbol>
+    <symbol type="external-addr" label="DP_8_PTR_VID" anno="none" source="project">$08</symbol>
+    <symbol type="external-addr" label="DP_MOSREF" anno="none" source="project">$00</symbol>
+    <symbol type="non-unique-local-addr" label="exit§000036" anno="none" source="user">$ff7e36</symbol>
+    <symbol type="global-addr" label="getVidInd8" anno="none" source="user">$ff8258</symbol>
+    <symbol type="local-or-global-addr" label="LFF7E18" anno="none" source="auto">$ff7e18</symbol>
+    <symbol type="local-or-global-addr" label="LFF7E87" anno="none" source="auto">$ff7e87</symbol>
+    <symbol type="local-or-global-addr" label="LFF7EA1" anno="none" source="auto">$ff7ea1</symbol>
+    <symbol type="local-or-global-addr" label="LFF7EBD" anno="none" source="auto">$ff7ebd</symbol>
+    <symbol type="local-or-global-addr" label="LFF7ECF" anno="none" source="auto">$ff7ecf</symbol>
+    <symbol type="local-or-global-addr" label="LFF7ED9" anno="none" source="auto">$ff7ed9</symbol>
+    <symbol type="local-or-global-addr" label="LFF7EED" anno="none" source="auto">$ff7eed</symbol>
+    <symbol type="local-or-global-addr" label="LFF7EF6" anno="none" source="auto">$ff7ef6</symbol>
+    <symbol type="local-or-global-addr" label="LFF7EFA" anno="none" source="auto">$ff7efa</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F0D" anno="none" source="auto">$ff7f0d</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F18" anno="none" source="auto">$ff7f18</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F1F" anno="none" source="auto">$ff7f1f</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F28" anno="none" source="auto">$ff7f28</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F2A" anno="none" source="auto">$ff7f2a</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F30" anno="none" source="auto">$ff7f30</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F36" anno="none" source="auto">$ff7f36</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F37" anno="none" source="auto">$ff7f37</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F43" anno="none" source="auto">$ff7f43</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F4E" anno="none" source="auto">$ff7f4e</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F56" anno="none" source="auto">$ff7f56</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F5F" anno="none" source="auto">$ff7f5f</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F67" anno="none" source="auto">$ff7f67</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F6B" anno="none" source="auto">$ff7f6b</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F70" anno="none" source="auto">$ff7f70</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F78" anno="none" source="auto">$ff7f78</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F7C" anno="none" source="auto">$ff7f7c</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F88" anno="none" source="auto">$ff7f88</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F8C" anno="none" source="auto">$ff7f8c</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F94" anno="none" source="auto">$ff7f94</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F9A" anno="none" source="auto">$ff7f9a</symbol>
+    <symbol type="local-or-global-addr" label="LFF7F9D" anno="none" source="auto">$ff7f9d</symbol>
+    <symbol type="local-or-global-addr" label="LFF7FC5" anno="none" source="auto">$ff7fc5</symbol>
+    <symbol type="local-or-global-addr" label="LFF7FCD" anno="none" source="auto">$ff7fcd</symbol>
+    <symbol type="local-or-global-addr" label="LFF7FD3" anno="none" source="auto">$ff7fd3</symbol>
+    <symbol type="local-or-global-addr" label="LFF7FD6" anno="none" source="auto">$ff7fd6</symbol>
+    <symbol type="local-or-global-addr" label="LFF7FE4" anno="none" source="auto">$ff7fe4</symbol>
+    <symbol type="local-or-global-addr" label="LFF8010" anno="none" source="auto">$ff8010</symbol>
+    <symbol type="local-or-global-addr" label="LFF8011" anno="none" source="auto">$ff8011</symbol>
+    <symbol type="local-or-global-addr" label="LFF801E" anno="none" source="auto">$ff801e</symbol>
+    <symbol type="local-or-global-addr" label="LFF8025" anno="none" source="auto">$ff8025</symbol>
+    <symbol type="local-or-global-addr" label="LFF8026" anno="none" source="auto">$ff8026</symbol>
+    <symbol type="local-or-global-addr" label="LFF8033" anno="none" source="auto">$ff8033</symbol>
+    <symbol type="local-or-global-addr" label="LFF8034" anno="none" source="auto">$ff8034</symbol>
+    <symbol type="local-or-global-addr" label="LFF8041" anno="none" source="auto">$ff8041</symbol>
+    <symbol type="local-or-global-addr" label="LFF8045" anno="none" source="auto">$ff8045</symbol>
+    <symbol type="local-or-global-addr" label="LFF8046" anno="none" source="auto">$ff8046</symbol>
+    <symbol type="local-or-global-addr" label="LFF804D" anno="none" source="auto">$ff804d</symbol>
+    <symbol type="local-or-global-addr" label="LFF8054" anno="none" source="auto">$ff8054</symbol>
+    <symbol type="local-or-global-addr" label="LFF805D" anno="none" source="auto">$ff805d</symbol>
+    <symbol type="local-or-global-addr" label="LFF8062" anno="none" source="auto">$ff8062</symbol>
+    <symbol type="local-or-global-addr" label="LFF806C" anno="none" source="auto">$ff806c</symbol>
+    <symbol type="local-or-global-addr" label="LFF8074" anno="none" source="auto">$ff8074</symbol>
+    <symbol type="local-or-global-addr" label="LFF8080" anno="none" source="auto">$ff8080</symbol>
+    <symbol type="local-or-global-addr" label="LFF8086" anno="none" source="auto">$ff8086</symbol>
+    <symbol type="local-or-global-addr" label="LFF808E" anno="none" source="auto">$ff808e</symbol>
+    <symbol type="local-or-global-addr" label="LFF8091" anno="none" source="auto">$ff8091</symbol>
+    <symbol type="local-or-global-addr" label="LFF809D" anno="none" source="auto">$ff809d</symbol>
+    <symbol type="local-or-global-addr" label="LFF80A1" anno="none" source="auto">$ff80a1</symbol>
+    <symbol type="local-or-global-addr" label="LFF80AA" anno="none" source="auto">$ff80aa</symbol>
+    <symbol type="local-or-global-addr" label="LFF80B7" anno="none" source="auto">$ff80b7</symbol>
+    <symbol type="local-or-global-addr" label="LFF80C0" anno="none" source="auto">$ff80c0</symbol>
+    <symbol type="local-or-global-addr" label="LFF80C7" anno="none" source="auto">$ff80c7</symbol>
+    <symbol type="local-or-global-addr" label="LFF80D0" anno="none" source="auto">$ff80d0</symbol>
+    <symbol type="local-or-global-addr" label="LFF80D6" anno="none" source="auto">$ff80d6</symbol>
+    <symbol type="local-or-global-addr" label="LFF80DC" anno="none" source="auto">$ff80dc</symbol>
+    <symbol type="local-or-global-addr" label="LFF80FB" anno="none" source="auto">$ff80fb</symbol>
+    <symbol type="local-or-global-addr" label="LFF80FF" anno="none" source="auto">$ff80ff</symbol>
+    <symbol type="local-or-global-addr" label="LFF8105" anno="none" source="auto">$ff8105</symbol>
+    <symbol type="local-or-global-addr" label="LFF8108" anno="none" source="auto">$ff8108</symbol>
+    <symbol type="local-or-global-addr" label="LFF8110" anno="none" source="auto">$ff8110</symbol>
+    <symbol type="local-or-global-addr" label="LFF811A" anno="none" source="auto">$ff811a</symbol>
+    <symbol type="local-or-global-addr" label="LFF8121" anno="none" source="auto">$ff8121</symbol>
+    <symbol type="local-or-global-addr" label="LFF8134" anno="none" source="auto">$ff8134</symbol>
+    <symbol type="local-or-global-addr" label="LFF813A" anno="none" source="auto">$ff813a</symbol>
+    <symbol type="local-or-global-addr" label="LFF813E" anno="none" source="auto">$ff813e</symbol>
+    <symbol type="local-or-global-addr" label="LFF813F" anno="none" source="auto">$ff813f</symbol>
+    <symbol type="local-or-global-addr" label="LFF8145" anno="none" source="auto">$ff8145</symbol>
+    <symbol type="local-or-global-addr" label="LFF8154" anno="none" source="auto">$ff8154</symbol>
+    <symbol type="local-or-global-addr" label="LFF8156" anno="none" source="auto">$ff8156</symbol>
+    <symbol type="local-or-global-addr" label="LFF816F" anno="none" source="auto">$ff816f</symbol>
+    <symbol type="local-or-global-addr" label="LFF8175" anno="none" source="auto">$ff8175</symbol>
+    <symbol type="local-or-global-addr" label="LFF817B" anno="none" source="auto">$ff817b</symbol>
+    <symbol type="local-or-global-addr" label="LFF819E" anno="none" source="auto">$ff819e</symbol>
+    <symbol type="local-or-global-addr" label="LFF819F" anno="none" source="auto">$ff819f</symbol>
+    <symbol type="local-or-global-addr" label="LFF81A3" anno="none" source="auto">$ff81a3</symbol>
+    <symbol type="local-or-global-addr" label="LFF81AF" anno="none" source="auto">$ff81af</symbol>
+    <symbol type="local-or-global-addr" label="LFF81B3" anno="none" source="auto">$ff81b3</symbol>
+    <symbol type="local-or-global-addr" label="LFF81B9" anno="none" source="auto">$ff81b9</symbol>
+    <symbol type="local-or-global-addr" label="LFF81BB" anno="none" source="auto">$ff81bb</symbol>
+    <symbol type="local-or-global-addr" label="LFF81C9" anno="none" source="auto">$ff81c9</symbol>
+    <symbol type="local-or-global-addr" label="LFF81D6" anno="none" source="auto">$ff81d6</symbol>
+    <symbol type="local-or-global-addr" label="LFF81D7" anno="none" source="auto">$ff81d7</symbol>
+    <symbol type="local-or-global-addr" label="LFF81E1" anno="none" source="auto">$ff81e1</symbol>
+    <symbol type="local-or-global-addr" label="LFF81EE" anno="none" source="auto">$ff81ee</symbol>
+    <symbol type="local-or-global-addr" label="LFF81F0" anno="none" source="auto">$ff81f0</symbol>
+    <symbol type="local-or-global-addr" label="LFF820C" anno="none" source="auto">$ff820c</symbol>
+    <symbol type="local-or-global-addr" label="LFF8254" anno="none" source="auto">$ff8254</symbol>
+    <symbol type="local-or-global-addr" label="LFF8265" anno="none" source="auto">$ff8265</symbol>
+    <symbol type="local-or-global-addr" label="LFF8273" anno="none" source="auto">$ff8273</symbol>
+    <symbol type="local-or-global-addr" label="LFF8275" anno="none" source="auto">$ff8275</symbol>
+    <symbol type="local-or-global-addr" label="LFF8283" anno="none" source="auto">$ff8283</symbol>
+    <symbol type="local-or-global-addr" label="LFF8295" anno="none" source="auto">$ff8295</symbol>
+    <symbol type="local-or-global-addr" label="LFF829C" anno="none" source="auto">$ff829c</symbol>
+    <symbol type="local-or-global-addr" label="LFF82A4" anno="none" source="auto">$ff82a4</symbol>
+    <symbol type="local-or-global-addr" label="LFF82AA" anno="none" source="auto">$ff82aa</symbol>
+    <symbol type="local-or-global-addr" label="LFF82B4" anno="none" source="auto">$ff82b4</symbol>
+    <symbol type="local-or-global-addr" label="LFF82B6" anno="none" source="auto">$ff82b6</symbol>
+    <symbol type="local-or-global-addr" label="LFF82CA" anno="none" source="auto">$ff82ca</symbol>
+    <symbol type="local-or-global-addr" label="LFF82D0" anno="none" source="auto">$ff82d0</symbol>
+    <symbol type="local-or-global-addr" label="LFF82DA" anno="none" source="auto">$ff82da</symbol>
+    <symbol type="local-or-global-addr" label="LFF82DC" anno="none" source="auto">$ff82dc</symbol>
+    <symbol type="local-or-global-addr" label="LFF82EA" anno="none" source="auto">$ff82ea</symbol>
+    <symbol type="local-or-global-addr" label="LFF82EE" anno="none" source="auto">$ff82ee</symbol>
+    <symbol type="local-or-global-addr" label="LFF82F4" anno="none" source="auto">$ff82f4</symbol>
+    <symbol type="local-or-global-addr" label="LFF8376" anno="none" source="auto">$ff8376</symbol>
+    <symbol type="local-or-global-addr" label="LFF83AE" anno="none" source="auto">$ff83ae</symbol>
+    <symbol type="local-or-global-addr" label="LFF842E" anno="none" source="auto">$ff842e</symbol>
+    <symbol type="local-or-global-addr" label="LFF843B" anno="none" source="auto">$ff843b</symbol>
+    <symbol type="local-or-global-addr" label="LFF844F" anno="none" source="auto">$ff844f</symbol>
+    <symbol type="local-or-global-addr" label="LFF8455" anno="none" source="auto">$ff8455</symbol>
+    <symbol type="local-or-global-addr" label="LFF8462" anno="none" source="auto">$ff8462</symbol>
+    <symbol type="local-or-global-addr" label="LFF8465" anno="none" source="auto">$ff8465</symbol>
+    <symbol type="local-or-global-addr" label="LFF8474" anno="none" source="auto">$ff8474</symbol>
+    <symbol type="local-or-global-addr" label="LFF847D" anno="none" source="auto">$ff847d</symbol>
+    <symbol type="local-or-global-addr" label="LFF8496" anno="none" source="auto">$ff8496</symbol>
+    <symbol type="local-or-global-addr" label="LFF8498" anno="none" source="auto">$ff8498</symbol>
+    <symbol type="local-or-global-addr" label="LFF849B" anno="none" source="auto">$ff849b</symbol>
+    <symbol type="local-or-global-addr" label="LFF84AB" anno="none" source="auto">$ff84ab</symbol>
+    <symbol type="local-or-global-addr" label="LFF84B4" anno="none" source="auto">$ff84b4</symbol>
+    <symbol type="local-or-global-addr" label="LFF84BD" anno="none" source="auto">$ff84bd</symbol>
+    <symbol type="local-or-global-addr" label="LFF84C0" anno="none" source="auto">$ff84c0</symbol>
+    <symbol type="local-or-global-addr" label="LFF84DB" anno="none" source="auto">$ff84db</symbol>
+    <symbol type="local-or-global-addr" label="LFF84EA" anno="none" source="auto">$ff84ea</symbol>
+    <symbol type="local-or-global-addr" label="LFF84F8" anno="none" source="auto">$ff84f8</symbol>
+    <symbol type="local-or-global-addr" label="LFF84FA" anno="none" source="auto">$ff84fa</symbol>
+    <symbol type="local-or-global-addr" label="LFF84FB" anno="none" source="auto">$ff84fb</symbol>
+    <symbol type="local-or-global-addr" label="LFF851B" anno="none" source="auto">$ff851b</symbol>
+    <symbol type="local-or-global-addr" label="LFF8523" anno="none" source="auto">$ff8523</symbol>
+    <symbol type="local-or-global-addr" label="LFF8524" anno="none" source="auto">$ff8524</symbol>
+    <symbol type="local-or-global-addr" label="LFF8537" anno="none" source="auto">$ff8537</symbol>
+    <symbol type="local-or-global-addr" label="LFF853A" anno="none" source="auto">$ff853a</symbol>
+    <symbol type="global-addr" label="LFF8543" anno="none" source="user">$ff8543</symbol>
+    <symbol type="local-or-global-addr" label="LFF8546" anno="none" source="auto">$ff8546</symbol>
+    <symbol type="local-or-global-addr" label="LFF854B" anno="none" source="auto">$ff854b</symbol>
+    <symbol type="local-or-global-addr" label="LFF8556" anno="none" source="auto">$ff8556</symbol>
+    <symbol type="local-or-global-addr" label="LFF8557" anno="none" source="auto">$ff8557</symbol>
+    <symbol type="local-or-global-addr" label="LFF8559" anno="none" source="auto">$ff8559</symbol>
+    <symbol type="non-unique-local-addr" label="retsec§00003c" anno="none" source="user">$ff7e3c</symbol>
+    <symbol type="non-unique-local-addr" label="retsec§000047" anno="none" source="user">$ff7e47</symbol>
+    <symbol type="global-addr" label="Serv10" anno="none" source="user">$ff7eef</symbol>
+    <symbol type="global-addr" label="Serv14" anno="none" source="user">$ff8432</symbol>
+    <symbol type="global-addr" label="Serv18" anno="none" source="user">$ff80d1</symbol>
+    <symbol type="global-addr" label="Serv1C" anno="none" source="user">$ff7efc</symbol>
+    <symbol type="global-addr" label="Serv2" anno="none" source="user">$ff7e62</symbol>
+    <symbol type="global-addr" label="Serv20" anno="none" source="user">$ff7ea2</symbol>
+    <symbol type="global-addr" label="serv4" anno="none" source="user">$ff7f00</symbol>
+    <symbol type="global-addr" label="ServC" anno="none" source="user">$ff7f0a</symbol>
+    <symbol type="global-addr" label="tblQ1" anno="none" source="user">$ff8470</symbol>
+    <symbol type="global-addr" label="tblQQQ" anno="none" source="user">$ff8238</symbol>
+    <symbol type="global-addr" label="tblQQQ2" anno="none" source="user">$ff8246</symbol>
+    <symbol type="global-addr" label="tblXX" anno="none" source="user">$ff84a7</symbol>
+    <symbol type="global-addr" label="tblYY" anno="none" source="user">$ff84cb</symbol>
+    <symbol type="global-addr" label="tblZZ" anno="none" source="user">$ff8527</symbol>
+    <symbol type="global-addr" label="tblZZ2" anno="none" source="user">$ff852f</symbol>
+  </symbols>
+  <lines>
+    <long-comment xml:space="preserve">
+; 6502bench SourceGen v1.8.5</long-comment>
+    <line type="equ-directive">
+      <label anno="none" id="COP_10_OPADP">COP_10_OPADP</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$10    {const}</operand>
+      <comment>;Allocate direct page</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="COP_26_OPBHA">COP_26_OPBHA</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$26    {const}</operand>
+      <comment>;Set BHA to start of string immediate</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="COP_29_OPRFR">COP_29_OPRFR</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$29    {const}</operand>
+      <comment>;Find reference to module, entry BHA points name, X contains pointer in DP to 8 byte block</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="DP_MOSREF">DP_MOSREF</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$00    {addr/8}</operand>
+      <comment>;MOS module reference</comment>
+    </line>
+    <line type="equ-directive">
+      <label anno="none" id="DP_8_PTR_VID">DP_8_PTR_VID</label>
+      <opcode type="directive">eq</opcode>
+      <operand>$08    {addr/2}</operand>
+      <comment>;pointer into video memory area </comment>
+    </line>
+    <line type="blank" />
+    <line type="ar-start-directive">
+      <opcode type="directive">addrs</opcode>
+      <operand>$ff7e00</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="ff/7e00">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7E18" symbol="LFF7E18">LFF7E18</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/7e03">
+      <opcode type="directive">dd1</opcode>
+      <operand>$68</operand>
+    </line>
+    <line type="data" address="ff/7e04">
+      <opcode type="directive">dd1</opcode>
+      <operand>$07</operand>
+    </line>
+    <line type="data" address="ff/7e05">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/7e06">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/7e07">
+      <opcode type="directive">dd1</opcode>
+      <operand>$01</operand>
+    </line>
+    <line type="data" address="ff/7e08">
+      <opcode type="directive">dd1</opcode>
+      <operand>$03</operand>
+    </line>
+    <line type="data" address="ff/7e09">
+      <opcode type="directive">fill</opcode>
+      <operand>5,$00</operand>
+    </line>
+    <line type="data" address="ff/7e0e">
+      <opcode type="directive">str</opcode>
+      <operand>“Keyboard”</operand>
+    </line>
+    <line type="data" address="ff/7e16">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/7e17">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e18">
+      <label anno="none" id="LFF7E18">LFF7E18</label>
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="ff/7e19">
+      <opcode>phd</opcode>
+    </line>
+    <line type="code" address="ff/7e1a">
+      <opcode>pei</opcode>
+      <operand>(<op-symbol anno="none" value="0" symbol="DP_MOSREF">DP_MOSREF</op-symbol>+4)</operand>
+      <comment>;Get private workspace pointer into DP</comment>
+    </line>
+    <line type="code" address="ff/7e1c">
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="ff/7e1d">
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/7e1e">
+      <opcode>rep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="code" address="ff/7e20">
+      <opcode>cpx</opcode>
+      <operand>#$0023</operand>
+    </line>
+    <line type="code" address="ff/7e23">
+      <opcode>bcs</opcode>
+      <operand>@retsec</operand>
+    </line>
+    <line type="code" address="ff/7e25">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/7e26">
+      <opcode>per</opcode>
+      <operand>@exit-1</operand>
+    </line>
+    <line type="code" address="ff/7e29">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7E3F" symbol="bratblServ">bratblServ</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7e2c">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/7e2d">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/7e2e">
+      <opcode>adc</opcode>
+      <operand>$03,S</operand>
+    </line>
+    <line type="code" address="ff/7e30">
+      <opcode>sta</opcode>
+      <operand>$03,S</operand>
+    </line>
+    <line type="code" address="ff/7e32">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/7e33">
+      <opcode>sep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="ff/7e35">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e36">
+      <label anno="none" local-id="@exit">@exit</label>
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/7e37">
+      <opcode>bcs</opcode>
+      <operand>@retsec</operand>
+    </line>
+    <line type="code" address="ff/7e39">
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/7e3a">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/7e3b">
+      <opcode>rtl</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e3c">
+      <label anno="none" local-id="@retsec">@retsec</label>
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/7e3d">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/7e3e">
+      <opcode>rtl</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e3f">
+      <label anno="none" id="bratblServ">bratblServ</label>
+      <opcode>bra</opcode>
+      <operand>@retsec</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e41">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7E62" symbol="Serv2">Serv2</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e43">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7F00" symbol="serv4">serv4</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e46">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e47">
+      <label anno="none" local-id="@retsec">@retsec</label>
+      <opcode>sec</opcode>
+      <comment>;8</comment>
+    </line>
+    <line type="code" address="ff/7e48">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e49">
+      <opcode>nop</opcode>
+      <comment>;A</comment>
+    </line>
+    <line type="code" address="ff/7e4a">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e4b">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7F0A" symbol="ServC">ServC</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e4e">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e4f">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7EEF" symbol="Serv10">Serv10</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e52">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e53">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8432" symbol="Serv14">Serv14</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e56">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e57">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80D1" symbol="Serv18">Serv18</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e5a">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e5b">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7EFC" symbol="Serv1C">Serv1C</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e5e">
+      <opcode>nop</opcode>
+    </line>
+    <line type="code" address="ff/7e5f">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7EA2" symbol="Serv20">Serv20</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7e62">
+      <label anno="none" id="Serv2">Serv2</label>
+      <opcode>phd</opcode>
+    </line>
+    <line type="code" address="ff/7e63">
+      <opcode>pld</opcode>
+    </line>
+    <line type="code" address="ff/7e64">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7E87" symbol="LFF7E87">LFF7E87</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7e66">
+      <opcode>cop</opcode>
+      <operand><op-symbol anno="none" value="10" symbol="COP_10_OPADP">COP_10_OPADP</op-symbol></operand>
+      <comment>;allocate 17 bytes of DP</comment>
+    </line>
+    <line type="data" address="ff/7e68">
+      <opcode type="directive">dd2</opcode>
+      <operand>$0017</operand>
+    </line>
+    <line type="code" address="ff/7e6a">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF7EA1" symbol="LFF7EA1">LFF7EA1</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7e6c">
+      <opcode>rep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="ff/7e6e">
+      <opcode>pea</opcode>
+      <operand>$0000</operand>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="code" address="ff/7e71">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/7e72">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/7e73">
+      <opcode>ldy</opcode>
+      <operand>#$0004</operand>
+    </line>
+    <line type="code" address="ff/7e76">
+      <opcode>sta</opcode>
+      <operand>($05,S),y</operand>
+      <comment>;store allocated DP in private workspace pointer</comment>
+    </line>
+    <line type="code" address="ff/7e78">
+      <opcode>tcd</opcode>
+      <comment>;switch to new DP</comment>
+    </line>
+    <line type="code" address="ff/7e79">
+      <opcode>sep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="ff/7e7b">
+      <opcode>cop</opcode>
+      <operand><op-symbol anno="none" value="26" symbol="COP_26_OPBHA">COP_26_OPBHA</op-symbol></operand>
+    </line>
+    <line type="data" address="ff/7e7d">
+      <opcode type="directive">zstr</opcode>
+      <operand>“MOS”</operand>
+    </line>
+    <line type="code" address="ff/7e81">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/7e83">
+      <opcode>ldy</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/7e85">
+      <opcode>cop</opcode>
+      <operand><op-symbol anno="none" value="29" symbol="COP_29_OPRFR">COP_29_OPRFR</op-symbol></operand>
+      <comment>;get MOS module reference</comment>
+    </line>
+    <line type="code" address="ff/7e87">
+      <label anno="none" id="LFF7E87">LFF7E87</label>
+      <opcode>stz</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7e89">
+      <opcode>stz</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/7e8b">
+      <opcode>stz</opcode>
+      <operand>$12</operand>
+    </line>
+    <line type="code" address="ff/7e8d">
+      <opcode>stz</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/7e8f">
+      <opcode>stz</opcode>
+      <operand>$0c</operand>
+    </line>
+    <line type="code" address="ff/7e91">
+      <opcode>stz</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/7e93">
+      <opcode>stz</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/7e95">
+      <opcode>lda</opcode>
+      <operand>#$10</operand>
+    </line>
+    <line type="code" address="ff/7e97">
+      <opcode>sta</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7e99">
+      <opcode>lda</opcode>
+      <operand>#$32</operand>
+    </line>
+    <line type="code" address="ff/7e9b">
+      <opcode>sta</opcode>
+      <operand>$10</operand>
+    </line>
+    <line type="code" address="ff/7e9d">
+      <opcode>lda</opcode>
+      <operand>#$03</operand>
+    </line>
+    <line type="code" address="ff/7e9f">
+      <opcode>sta</opcode>
+      <operand>$11</operand>
+    </line>
+    <line type="code" address="ff/7ea1">
+      <label anno="none" id="LFF7EA1">LFF7EA1</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="ff/7ea2">
+      <label anno="none" id="Serv20">Serv20</label>
+      <opcode>lda</opcode>
+      <operand>$11</operand>
+    </line>
+    <line type="code" address="ff/7ea4">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/7ea5">
+      <opcode>lda</opcode>
+      <operand>$10</operand>
+    </line>
+    <line type="code" address="ff/7ea7">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/7ea8">
+      <opcode>eor</opcode>
+      <operand>#$f0ff</operand>
+    </line>
+    <line type="code" address="ff/7eab">
+      <opcode>tsb</opcode>
+      <operand>$49</operand>
+    </line>
+    <line type="code" address="ff/7ead">
+      <opcode>sbcl</opcode>
+      <operand>$eb1185,x</operand>
+    </line>
+    <line type="code" address="ff/7eb1">
+      <opcode>eor</opcode>
+      <operand>#$f0ff</operand>
+    </line>
+    <line type="code" address="ff/7eb4">
+      <opcode>tsb</opcode>
+      <operand>$49</operand>
+    </line>
+    <line type="code" address="ff/7eb6">
+      <opcode>sbcl</opcode>
+      <operand>$681085,x</operand>
+    </line>
+    <line type="code" address="ff/7eba">
+      <opcode>xba</opcode>
+    </line>
+    <line type="code" address="ff/7ebb">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/7ebc">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="ff/7ebd">
+      <label anno="none" id="LFF7EBD">LFF7EBD</label>
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/7ebe">
+      <opcode>lda</opcode>
+      <operand>$0c</operand>
+    </line>
+    <line type="code" address="ff/7ec0">
+      <opcode>and</opcode>
+      <operand>#$3f</operand>
+    </line>
+    <line type="code" address="ff/7ec2">
+      <opcode>ora</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7ec4">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/7ec5">
+      <opcode>lda</opcode>
+      <operand>#$10</operand>
+    </line>
+    <line type="code" address="ff/7ec7">
+      <opcode>bit</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7ec9">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF7ECF" symbol="LFF7ECF">LFF7ECF</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7ecb">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/7ecc">
+      <opcode>ora</opcode>
+      <operand>#$80</operand>
+    </line>
+    <line type="code" address="ff/7ece">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/7ecf">
+      <label anno="none" id="LFF7ECF">LFF7ECF</label>
+      <opcode>lda</opcode>
+      <operand>#$08</operand>
+    </line>
+    <line type="code" address="ff/7ed1">
+      <opcode>bit</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7ed3">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF7ED9" symbol="LFF7ED9">LFF7ED9</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7ed5">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/7ed6">
+      <opcode>and</opcode>
+      <operand>#$bf</operand>
+    </line>
+    <line type="code" address="ff/7ed8">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/7ed9">
+      <label anno="none" id="LFF7ED9">LFF7ED9</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/7eda">
+      <opcode>cmp</opcode>
+      <operand>$0c</operand>
+    </line>
+    <line type="code" address="ff/7edc">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF7EED" symbol="LFF7EED">LFF7EED</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7ede">
+      <opcode>sta</opcode>
+      <operand>$0c</operand>
+    </line>
+    <line type="code" address="ff/7ee0">
+      <opcode>phx</opcode>
+    </line>
+    <line type="code" address="ff/7ee1">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="ff/7ee2">
+      <opcode>and</opcode>
+      <operand>#$c0</operand>
+    </line>
+    <line type="code" address="ff/7ee4">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/7ee5">
+      <opcode>ldy</opcode>
+      <operand>#$3f</operand>
+    </line>
+    <line type="code" address="ff/7ee7">
+      <opcode>lda</opcode>
+      <operand>#$9a</operand>
+    </line>
+    <line type="code" address="ff/7ee9">
+      <opcode>cop</opcode>
+      <operand>$06</operand>
+    </line>
+    <line type="code" address="ff/7eeb">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/7eec">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/7eed">
+      <label anno="none" id="LFF7EED">LFF7EED</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/7eee">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7eef">
+      <label anno="none" id="Serv10">Serv10</label>
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/7ef0">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7EF6" symbol="LFF7EF6">LFF7EF6</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7ef3">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7ef6">
+      <label anno="none" id="LFF7EF6">LFF7EF6</label>
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF7EFA" symbol="LFF7EFA">LFF7EFA</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7ef8">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/7ef9">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7efa">
+      <label anno="none" id="LFF7EFA">LFF7EFA</label>
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/7efb">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7efc">
+      <label anno="none" id="Serv1C">Serv1C</label>
+      <opcode>clv</opcode>
+    </line>
+    <line type="code" address="ff/7efd">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/7efe">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7F0D" symbol="LFF7F0D">LFF7F0D</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f00">
+      <label anno="none" id="serv4">serv4</label>
+      <opcode>tyx</opcode>
+    </line>
+    <line type="code" address="ff/7f01">
+      <opcode>clv</opcode>
+    </line>
+    <line type="code" address="ff/7f02">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/7f03">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7F0D" symbol="LFF7F0D">LFF7F0D</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f05">
+      <opcode>sep</opcode>
+      <operand>#$40</operand>
+      <comment>;todo -dead?</comment>
+    </line>
+    <line type="code" address="ff/7f07">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/7f08">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7F0D" symbol="LFF7F0D">LFF7F0D</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f0a">
+      <label anno="none" id="ServC">ServC</label>
+      <opcode>sep</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7f0c">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/7f0d">
+      <label anno="none" id="LFF7F0D">LFF7F0D</label>
+      <opcode>bvc</opcode>
+      <operand><op-symbol anno="none" value="FF7F18" symbol="LFF7F18">LFF7F18</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f0f">
+      <opcode>lda</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7f11">
+      <opcode>ora</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/7f13">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7F37" symbol="LFF7F37">LFF7F37</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f15">
+      <opcode>jmp</opcode>
+      <operand><op-symbol anno="none" value="FF8091" symbol="LFF8091">LFF8091</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f18">
+      <label anno="none" id="LFF7F18">LFF7F18</label>
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/7f19">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F1F" symbol="LFF7F1F">LFF7F1F</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f1c">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8537" symbol="LFF8537">LFF8537</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f1f">
+      <label anno="none" id="LFF7F1F">LFF7F1F</label>
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/7f20">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF7F2A" symbol="LFF7F2A">LFF7F2A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f22">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F28" symbol="LFF7F28">LFF7F28</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f25">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7F37" symbol="LFF7F37">LFF7F37</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f28">
+      <label anno="none" id="LFF7F28">LFF7F28</label>
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7F30" symbol="LFF7F30">LFF7F30</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f2a">
+      <label anno="none" id="LFF7F2A">LFF7F2A</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F30" symbol="LFF7F30">LFF7F30</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f2d">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80D6" symbol="LFF80D6">LFF80D6</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f30">
+      <label anno="none" id="LFF7F30">LFF7F30</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F36" symbol="LFF7F36">LFF7F36</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f33">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8546" symbol="LFF8546">LFF8546</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f36">
+      <label anno="none" id="LFF7F36">LFF7F36</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f37">
+      <label anno="none" id="LFF7F37">LFF7F37</label>
+      <opcode>lda</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7f39">
+      <opcode>and</opcode>
+      <operand>#$1f</operand>
+    </line>
+    <line type="code" address="ff/7f3b">
+      <opcode>ldx</opcode>
+      <operand>#$57</operand>
+    </line>
+    <line type="code" address="ff/7f3d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F43" symbol="LFF7F43">LFF7F43</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f40">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f43">
+      <label anno="none" id="LFF7F43">LFF7F43</label>
+      <opcode>stx</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/7f45">
+      <opcode>clv</opcode>
+    </line>
+    <line type="code" address="ff/7f46">
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF7F4E" symbol="LFF7F4E">LFF7F4E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f48">
+      <opcode>ora</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7f4a">
+      <opcode>sep</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7f4c">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7F5F" symbol="LFF7F5F">LFF7F5F</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f4e">
+      <label anno="none" id="LFF7F4E">LFF7F4E</label>
+      <opcode>ldx</opcode>
+      <operand>#$55</operand>
+    </line>
+    <line type="code" address="ff/7f50">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F56" symbol="LFF7F56">LFF7F56</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f53">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f56">
+      <label anno="none" id="LFF7F56">LFF7F56</label>
+      <opcode>stx</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/7f58">
+      <opcode>clv</opcode>
+    </line>
+    <line type="code" address="ff/7f59">
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF7F5F" symbol="LFF7F5F">LFF7F5F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f5b">
+      <opcode>ora</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7f5d">
+      <opcode>sep</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7f5f">
+      <label anno="none" id="LFF7F5F">LFF7F5F</label>
+      <opcode>ldx</opcode>
+      <operand>#$17</operand>
+    </line>
+    <line type="code" address="ff/7f61">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F67" symbol="LFF7F67">LFF7F67</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f64">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f67">
+      <label anno="none" id="LFF7F67">LFF7F67</label>
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF7F6B" symbol="LFF7F6B">LFF7F6B</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f69">
+      <opcode>ora</opcode>
+      <operand>#$80</operand>
+    </line>
+    <line type="code" address="ff/7f6b">
+      <label anno="none" id="LFF7F6B">LFF7F6B</label>
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF7F70" symbol="LFF7F70">LFF7F70</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f6d">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7EBD" symbol="LFF7EBD">LFF7EBD</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f70">
+      <label anno="none" id="LFF7F70">LFF7F70</label>
+      <opcode>ldx</opcode>
+      <operand>#$53</operand>
+    </line>
+    <line type="code" address="ff/7f72">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F78" symbol="LFF7F78">LFF7F78</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f75">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f78">
+      <label anno="none" id="LFF7F78">LFF7F78</label>
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF7F7C" symbol="LFF7F7C">LFF7F7C</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f7a">
+      <opcode>ora</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="code" address="ff/7f7c">
+      <label anno="none" id="LFF7F7C">LFF7F7C</label>
+      <opcode>sta</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7f7e">
+      <opcode>ldx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7f80">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF7F9A" symbol="LFF7F9A">LFF7F9A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f82">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F88" symbol="LFF7F88">LFF7F88</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f85">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f88">
+      <label anno="none" id="LFF7F88">LFF7F88</label>
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF7F9D" symbol="LFF7F9D">LFF7F9D</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f8a">
+      <opcode>cpx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7f8c">
+      <label anno="none" id="LFF7F8C">LFF7F8C</label>
+      <opcode>stx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7f8e">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7F9A" symbol="LFF7F9A">LFF7F9A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7f90">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/7f92">
+      <opcode>stx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7f94">
+      <label anno="none" id="LFF7F94">LFF7F94</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF7F9A" symbol="LFF7F9A">LFF7F9A</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7f97">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80A1" symbol="LFF80A1">LFF80A1</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f9a">
+      <label anno="none" id="LFF7F9A">LFF7F9A</label>
+      <opcode>jmp</opcode>
+      <operand><op-symbol anno="none" value="FF8062" symbol="LFF8062">LFF8062</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7f9d">
+      <label anno="none" id="LFF7F9D">LFF7F9D</label>
+      <opcode>cpx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7f9f">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7F8C" symbol="LFF7F8C">LFF7F8C</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fa1">
+      <opcode>lda</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/7fa3">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF7FD3" symbol="LFF7FD3">LFF7FD3</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fa5">
+      <opcode>dec</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/7fa7">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7FD3" symbol="LFF7FD3">LFF7FD3</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fa9">
+      <opcode>lda</opcode>
+      <operand>$12</operand>
+    </line>
+    <line type="code" address="ff/7fab">
+      <opcode>sta</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/7fad">
+      <opcode>lda</opcode>
+      <operand>$11</operand>
+    </line>
+    <line type="code" address="ff/7faf">
+      <opcode>sta</opcode>
+      <operand>$12</operand>
+    </line>
+    <line type="code" address="ff/7fb1">
+      <opcode>lda</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7fb3">
+      <opcode>ldx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/7fb5">
+      <opcode>cpx</opcode>
+      <operand>#$9f</operand>
+    </line>
+    <line type="code" address="ff/7fb7">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7FC5" symbol="LFF7FC5">LFF7FC5</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fb9">
+      <opcode>eor</opcode>
+      <operand>#$10</operand>
+    </line>
+    <line type="code" address="ff/7fbb">
+      <opcode>and</opcode>
+      <operand>#$f3</operand>
+    </line>
+    <line type="code" address="ff/7fbd">
+      <opcode>bit</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/7fbf">
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF7FCD" symbol="LFF7FCD">LFF7FCD</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fc1">
+      <opcode>ora</opcode>
+      <operand>#$14</operand>
+    </line>
+    <line type="code" address="ff/7fc3">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF7FCD" symbol="LFF7FCD">LFF7FCD</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7fc5">
+      <label anno="none" id="LFF7FC5">LFF7FC5</label>
+      <opcode>cpx</opcode>
+      <operand>#$dc</operand>
+    </line>
+    <line type="code" address="ff/7fc7">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7FD6" symbol="LFF7FD6">LFF7FD6</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fc9">
+      <opcode>eor</opcode>
+      <operand>#$08</operand>
+    </line>
+    <line type="code" address="ff/7fcb">
+      <opcode>and</opcode>
+      <operand>#$eb</operand>
+    </line>
+    <line type="code" address="ff/7fcd">
+      <label anno="none" id="LFF7FCD">LFF7FCD</label>
+      <opcode>sta</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7fcf">
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/7fd1">
+      <opcode>sta</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/7fd3">
+      <label anno="none" id="LFF7FD3">LFF7FD3</label>
+      <opcode>jmp</opcode>
+      <operand><op-symbol anno="none" value="FF8062" symbol="LFF8062">LFF8062</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/7fd6">
+      <label anno="none" id="LFF7FD6">LFF7FD6</label>
+      <opcode>lda</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="code" address="ff/7fd8">
+      <opcode>bit</opcode>
+      <operand>#$48</operand>
+    </line>
+    <line type="code" address="ff/7fda">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF7FE4" symbol="LFF7FE4">LFF7FE4</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fdc">
+      <opcode>ora</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/7fde">
+      <opcode>bit</opcode>
+      <operand>#$04</operand>
+    </line>
+    <line type="code" address="ff/7fe0">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF7FE4" symbol="LFF7FE4">LFF7FE4</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fe2">
+      <opcode>and</opcode>
+      <operand>#$ef</operand>
+    </line>
+    <line type="code" address="ff/7fe4">
+      <label anno="none" id="LFF7FE4">LFF7FE4</label>
+      <opcode>sta</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/7fe6">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/7fe7">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/7fe8">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/7fe9">
+      <opcode>rep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="ff/7feb">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8273" symbol="LFF8273">LFF8273</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/7fee">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/7fef">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/7ff0">
+      <opcode>adc</opcode>
+      <operand>$01,S</operand>
+    </line>
+    <line type="code" address="ff/7ff2">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/7ff3">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/7ff4">
+      <opcode>lda</opcode>
+      <operand>a:$0000,x</operand>
+    </line>
+    <line type="code" address="ff/7ff7">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/7ff8">
+      <opcode>sep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="ff/7ffa">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/7ffb">
+      <opcode>cmp</opcode>
+      <operand>#$21</operand>
+    </line>
+    <line type="code" address="ff/7ffd">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8046" symbol="LFF8046">LFF8046</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/7fff">
+      <opcode>lda</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/8001">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8046" symbol="LFF8046">LFF8046</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8003">
+      <opcode>lda</opcode>
+      <operand>#$80</operand>
+    </line>
+    <line type="code" address="ff/8005">
+      <opcode>bit</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/8007">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8011" symbol="LFF8011">LFF8011</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8009">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/800a">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8010" symbol="LFF8010">LFF8010</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/800d">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8432" symbol="Serv14">Serv14</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8010">
+      <label anno="none" id="LFF8010">LFF8010</label>
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/8011">
+      <label anno="none" id="LFF8011">LFF8011</label>
+      <opcode>lda</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/8013">
+      <opcode>bit</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/8015">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8026" symbol="LFF8026">LFF8026</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8017">
+      <opcode>ldy</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/8019">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF801E" symbol="LFF801E">LFF801E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/801b">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF7F94" symbol="LFF7F94">LFF7F94</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/801e">
+      <label anno="none" id="LFF801E">LFF801E</label>
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/801f">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8025" symbol="LFF8025">LFF8025</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8022">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8474" symbol="LFF8474">LFF8474</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8025">
+      <label anno="none" id="LFF8025">LFF8025</label>
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/8026">
+      <label anno="none" id="LFF8026">LFF8026</label>
+      <opcode>lda</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="code" address="ff/8028">
+      <opcode>bit</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/802a">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8034" symbol="LFF8034">LFF8034</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/802c">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/802d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8033" symbol="LFF8033">LFF8033</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8030">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF84AB" symbol="LFF84AB">LFF84AB</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8033">
+      <label anno="none" id="LFF8033">LFF8033</label>
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/8034">
+      <label anno="none" id="LFF8034">LFF8034</label>
+      <opcode>lda</opcode>
+      <operand>#$10</operand>
+    </line>
+    <line type="code" address="ff/8036">
+      <opcode>bit</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/8038">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8046" symbol="LFF8046">LFF8046</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/803a">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/803b">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8041" symbol="LFF8041">LFF8041</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/803e">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF854B" symbol="LFF854B">LFF854B</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8041">
+      <label anno="none" id="LFF8041">LFF8041</label>
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF8045" symbol="LFF8045">LFF8045</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8043">
+      <opcode>eor</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="code" address="ff/8045">
+      <label anno="none" id="LFF8045">LFF8045</label>
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/8046">
+      <label anno="none" id="LFF8046">LFF8046</label>
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/8047">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF804D" symbol="LFF804D">LFF804D</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/804a">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF84DB" symbol="LFF84DB">LFF84DB</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/804d">
+      <label anno="none" id="LFF804D">LFF804D</label>
+      <opcode>tay</opcode>
+    </line>
+    <line type="code" address="ff/804e">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8054" symbol="LFF8054">LFF8054</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8051">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8254" symbol="LFF8254">LFF8254</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8054">
+      <label anno="none" id="LFF8054">LFF8054</label>
+      <opcode>tya</opcode>
+    </line>
+    <line type="code" address="ff/8055">
+      <opcode>ldx</opcode>
+      <operand>#$04</operand>
+    </line>
+    <line type="code" address="ff/8057">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF805D" symbol="LFF805D">LFF805D</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/805a">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8559" symbol="LFF8559">LFF8559</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/805d">
+      <label anno="none" id="LFF805D">LFF805D</label>
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/805e">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8062" symbol="LFF8062">LFF8062</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8060">
+      <opcode>stz</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/8062">
+      <label anno="none" id="LFF8062">LFF8062</label>
+      <opcode>ldx</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/8064">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8074" symbol="LFF8074">LFF8074</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8066">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF806C" symbol="LFF806C">LFF806C</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8069">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/806c">
+      <label anno="none" id="LFF806C">LFF806C</label>
+      <opcode>stx</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/806e">
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF8074" symbol="LFF8074">LFF8074</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8070">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8072">
+      <opcode>stx</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/8074">
+      <label anno="none" id="LFF8074">LFF8074</label>
+      <opcode>ldx</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/8076">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF8091" symbol="LFF8091">LFF8091</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8078">
+      <opcode>ldy</opcode>
+      <operand>#$0a</operand>
+    </line>
+    <line type="code" address="ff/807a">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8080" symbol="LFF8080">LFF8080</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/807d">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8265" symbol="LFF8265">LFF8265</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8080">
+      <label anno="none" id="LFF8080">LFF8080</label>
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF808E" symbol="LFF808E">LFF808E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8082">
+      <opcode>lda</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/8084">
+      <opcode>sta</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/8086">
+      <label anno="none" id="LFF8086">LFF8086</label>
+      <opcode>stx</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/8088">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF808E" symbol="LFF808E">LFF808E</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/808b">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80A1" symbol="LFF80A1">LFF80A1</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/808e">
+      <label anno="none" id="LFF808E">LFF808E</label>
+      <opcode>jmp</opcode>
+      <operand><op-symbol anno="none" value="FF7EBD" symbol="LFF7EBD">LFF7EBD</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8091">
+      <label anno="none" id="LFF8091">LFF8091</label>
+      <opcode>lda</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/8093">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF808E" symbol="LFF808E">LFF808E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8095">
+      <opcode>ldy</opcode>
+      <operand>#$0b</operand>
+    </line>
+    <line type="code" address="ff/8097">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF809D" symbol="LFF809D">LFF809D</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/809a">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8265" symbol="LFF8265">LFF8265</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/809d">
+      <label anno="none" id="LFF809D">LFF809D</label>
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF808E" symbol="LFF808E">LFF808E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/809f">
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF8086" symbol="LFF8086">LFF8086</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80a1">
+      <label anno="none" id="LFF80A1">LFF80A1</label>
+      <opcode>ldx</opcode>
+      <operand>#$01</operand>
+    </line>
+    <line type="code" address="ff/80a3">
+      <opcode>stx</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="code" address="ff/80a5">
+      <opcode>ldx</opcode>
+      <operand>$10</operand>
+    </line>
+    <line type="code" address="ff/80a7">
+      <opcode>stx</opcode>
+      <operand>$12</operand>
+    </line>
+    <line type="code" address="ff/80a9">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80aa">
+      <label anno="none" id="LFF80AA">LFF80AA</label>
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF80D0" symbol="LFF80D0">LFF80D0</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/80ac">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/80ad">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/80ae">
+      <opcode>and</opcode>
+      <operand>#$7f</operand>
+    </line>
+    <line type="code" address="ff/80b0">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/80b1">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF80B7" symbol="LFF80B7">LFF80B7</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/80b4">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF81F0" symbol="LFF81F0">LFF81F0</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80b7">
+      <label anno="none" id="LFF80B7">LFF80B7</label>
+      <opcode>sta</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/80b9">
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/80ba">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF80C0" symbol="LFF80C0">LFF80C0</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/80bd">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8258" symbol="getVidInd8">getVidInd8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80c0">
+      <label anno="none" id="LFF80C0">LFF80C0</label>
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/80c1">
+      <opcode>and</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/80c3">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF80C7" symbol="LFF80C7">LFF80C7</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/80c5">
+      <opcode>lda</opcode>
+      <operand>#$80</operand>
+    </line>
+    <line type="code" address="ff/80c7">
+      <label anno="none" id="LFF80C7">LFF80C7</label>
+      <opcode>sta</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/80c9">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/80ca">
+      <opcode>ora</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/80cc">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/80cd">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/80ce">
+      <opcode>ldy</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/80d0">
+      <label anno="none" id="LFF80D0">LFF80D0</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80d1">
+      <label anno="none" id="Serv18">Serv18</label>
+      <opcode>sta</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="code" address="ff/80d3">
+      <opcode>stz</opcode>
+      <operand>$0a</operand>
+    </line>
+    <line type="code" address="ff/80d5">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80d6">
+      <label anno="none" id="LFF80D6">LFF80D6</label>
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/80d7">
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF80DC" symbol="LFF80DC">LFF80DC</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/80d9">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8156" symbol="LFF8156">LFF8156</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80dc">
+      <label anno="none" id="LFF80DC">LFF80DC</label>
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/80dd">
+      <opcode>and</opcode>
+      <operand>#$7f</operand>
+    </line>
+    <line type="code" address="ff/80df">
+      <opcode>tay</opcode>
+    </line>
+    <line type="code" address="ff/80e0">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/80e1">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/80e2">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/80e3">
+      <opcode>rep</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm</operand>
+    </line>
+    <line type="code" address="ff/80e5">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF83AE" symbol="LFF83AE">LFF83AE</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/80e8">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/80ea">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/80eb">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/80ec">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/80ed">
+      <opcode>sep</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm</operand>
+    </line>
+    <line type="code" address="ff/80ef">
+      <opcode>cpx</opcode>
+      <operand>#$50</operand>
+    </line>
+    <line type="code" address="ff/80f1">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF80FF" symbol="LFF80FF">LFF80FF</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/80f3">
+      <opcode>ldx</opcode>
+      <operand>#$57</operand>
+    </line>
+    <line type="code" address="ff/80f5">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF80FB" symbol="LFF80FB">LFF80FB</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/80f8">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/80fb">
+      <label anno="none" id="LFF80FB">LFF80FB</label>
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF80FF" symbol="LFF80FF">LFF80FF</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/80fd">
+      <opcode>ldx</opcode>
+      <operand>#$55</operand>
+    </line>
+    <line type="code" address="ff/80ff">
+      <label anno="none" id="LFF80FF">LFF80FF</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8105" symbol="LFF8105">LFF8105</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8102">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF80AA" symbol="LFF80AA">LFF80AA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8105">
+      <label anno="none" id="LFF8105">LFF8105</label>
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/8106">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/8107">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8108">
+      <label anno="none" id="LFF8108">LFF8108</label>
+      <opcode>bvc</opcode>
+      <operand><op-symbol anno="none" value="FF811A" symbol="LFF811A">LFF811A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/810a">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8110" symbol="LFF8110">LFF8110</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/810d">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8145" symbol="LFF8145">LFF8145</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8110">
+      <label anno="none" id="LFF8110">LFF8110</label>
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF811A" symbol="LFF811A">LFF811A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8112">
+      <opcode>bit</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/8114">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF811A" symbol="LFF811A">LFF811A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8116">
+      <opcode>eor</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/8118">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF813E" symbol="LFF813E">LFF813E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/811a">
+      <label anno="none" id="LFF811A">LFF811A</label>
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/811b">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8121" symbol="LFF8121">LFF8121</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/811e">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF81B9" symbol="LFF81B9">LFF81B9</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8121">
+      <label anno="none" id="LFF8121">LFF8121</label>
+      <opcode>cmp</opcode>
+      <operand>#$57</operand>
+    </line>
+    <line type="code" address="ff/8123">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF813F" symbol="LFF813F">LFF813F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8125">
+      <opcode>cmp</opcode>
+      <operand>#$55</operand>
+    </line>
+    <line type="code" address="ff/8127">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF813F" symbol="LFF813F">LFF813F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8129">
+      <opcode>cmp</opcode>
+      <operand>#$17</operand>
+    </line>
+    <line type="code" address="ff/812b">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF813F" symbol="LFF813F">LFF813F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/812d">
+      <opcode>cmp</opcode>
+      <operand>#$53</operand>
+    </line>
+    <line type="code" address="ff/812f">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF813F" symbol="LFF813F">LFF813F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8131">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8132">
+      <opcode>ldx</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/8134">
+      <label anno="none" id="LFF8134">LFF8134</label>
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/8135">
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/8136">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8134" symbol="LFF8134">LFF8134</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8138">
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/813a">
+      <label anno="none" id="LFF813A">LFF813A</label>
+      <opcode>rol</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/813b">
+      <opcode>dex</opcode>
+    </line>
+    <line type="code" address="ff/813c">
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF813A" symbol="LFF813A">LFF813A</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/813e">
+      <label anno="none" id="LFF813E">LFF813E</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/813f">
+      <label anno="none" id="LFF813F">LFF813F</label>
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8141">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8142">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8144">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8145">
+      <label anno="none" id="LFF8145">LFF8145</label>
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/8146">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/8147">
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8149">
+      <opcode>eor</opcode>
+      <operand>$15</operand>
+    </line>
+    <line type="code" address="ff/814b">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF8154" symbol="LFF8154">LFF8154</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/814d">
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/814f">
+      <opcode>eor</opcode>
+      <operand>$16</operand>
+    </line>
+    <line type="code" address="ff/8151">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF8154" symbol="LFF8154">LFF8154</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8153">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/8154">
+      <label anno="none" id="LFF8154">LFF8154</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8155">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8156">
+      <label anno="none" id="LFF8156">LFF8156</label>
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/8157">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/8158">
+      <opcode>and</opcode>
+      <operand>#$7f</operand>
+    </line>
+    <line type="code" address="ff/815a">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/815b">
+      <opcode>sei</opcode>
+    </line>
+    <line type="code" address="ff/815c">
+      <opcode>lda</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/815e">
+      <opcode>tay</opcode>
+    </line>
+    <line type="code" address="ff/815f">
+      <opcode>sta</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/8161">
+      <opcode>stx</opcode>
+      <operand>$15</operand>
+    </line>
+    <line type="code" address="ff/8163">
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/8165">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF81AF" symbol="LFF81AF">LFF81AF</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8167">
+      <opcode>sty</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8169">
+      <opcode>ldx</opcode>
+      <operand>#$9f</operand>
+    </line>
+    <line type="code" address="ff/816b">
+      <opcode>stx</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/816d">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/816f">
+      <label anno="none" id="LFF816F">LFF816F</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8175" symbol="LFF8175">LFF8175</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8172">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8258" symbol="getVidInd8">getVidInd8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8175">
+      <label anno="none" id="LFF8175">LFF8175</label>
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/8177">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF81B3" symbol="LFF81B3">LFF81B3</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8179">
+      <opcode>ldy</opcode>
+      <operand>#$04</operand>
+    </line>
+    <line type="code" address="ff/817b">
+      <label anno="none" id="LFF817B">LFF817B</label>
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/817c">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF819F" symbol="LFF819F">LFF819F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/817e">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/817f">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/8180">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/8181">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8182">
+      <opcode>phx</opcode>
+    </line>
+    <line type="code" address="ff/8183">
+      <opcode>rep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longm,longx</operand>
+    </line>
+    <line type="code" address="ff/8185">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8376" symbol="LFF8376">LFF8376</op-symbol></operand>
+      <comment>;TODO: this sequence could be replaced with lda LFF8376,X?</comment>
+    </line>
+    <line type="code" address="ff/8188">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/8189">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/818a">
+      <opcode>adc</opcode>
+      <operand>$01,S</operand>
+    </line>
+    <line type="code" address="ff/818c">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/818d">
+      <opcode>lda</opcode>
+      <operand>a:$0000,x</operand>
+    </line>
+    <line type="code" address="ff/8190">
+      <opcode>sep</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortm,shortx</operand>
+    </line>
+    <line type="code" address="ff/8192">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8193">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8194">
+      <opcode>cmp</opcode>
+      <operand>$15</operand>
+    </line>
+    <line type="code" address="ff/8196">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF819E" symbol="LFF819E">LFF819E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8198">
+      <opcode>cmp</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/819a">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF819E" symbol="LFF819E">LFF819E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/819c">
+      <opcode>sta</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/819e">
+      <label anno="none" id="LFF819E">LFF819E</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/819f">
+      <label anno="none" id="LFF819F">LFF819F</label>
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81a0">
+      <opcode>dey</opcode>
+    </line>
+    <line type="code" address="ff/81a1">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF817B" symbol="LFF817B">LFF817B</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81a3">
+      <label anno="none" id="LFF81A3">LFF81A3</label>
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/81a5">
+      <opcode>eor</opcode>
+      <operand>#$c0</operand>
+    </line>
+    <line type="code" address="ff/81a7">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/81a8">
+      <opcode>ror</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81a9">
+      <opcode>ror</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81ab">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/81ad">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF816F" symbol="LFF816F">LFF816F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81af">
+      <label anno="none" id="LFF81AF">LFF81AF</label>
+      <opcode>ldx</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/81b1">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/81b2">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/81b3">
+      <label anno="none" id="LFF81B3">LFF81B3</label>
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81b4">
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81b5">
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81b6">
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81b7">
+      <opcode>bpl</opcode>
+      <operand><op-symbol anno="none" value="FF81A3" symbol="LFF81A3">LFF81A3</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81b9">
+      <label anno="none" id="LFF81B9">LFF81B9</label>
+      <opcode>ldx</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/81bb">
+      <label anno="none" id="LFF81BB">LFF81BB</label>
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81bc">
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81bd">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF81BB" symbol="LFF81BB">LFF81BB</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81bf">
+      <opcode>stx</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/81c1">
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81c3">
+      <opcode>eor</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/81c5">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF81D7" symbol="LFF81D7">LFF81D7</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81c7">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/81c9">
+      <label anno="none" id="LFF81C9">LFF81C9</label>
+      <opcode>inx</opcode>
+    </line>
+    <line type="code" address="ff/81ca">
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81cb">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF81C9" symbol="LFF81C9">LFF81C9</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81cd">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/81ce">
+      <opcode>asl</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81cf">
+      <opcode>asl</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81d0">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF81D6" symbol="LFF81D6">LFF81D6</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/81d3">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF81E1" symbol="LFF81E1">LFF81E1</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/81d6">
+      <label anno="none" id="LFF81D6">LFF81D6</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/81d7">
+      <label anno="none" id="LFF81D7">LFF81D7</label>
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/81d9">
+      <opcode>and</opcode>
+      <operand>#$3f</operand>
+    </line>
+    <line type="code" address="ff/81db">
+      <opcode>eor</opcode>
+      <operand>#$3f</operand>
+    </line>
+    <line type="code" address="ff/81dd">
+      <opcode>ldx</opcode>
+      <operand>#$08</operand>
+    </line>
+    <line type="code" address="ff/81df">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF81C9" symbol="LFF81C9">LFF81C9</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/81e1">
+      <label anno="none" id="LFF81E1">LFF81E1</label>
+      <opcode>ora</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="code" address="ff/81e3">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/81e4">
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/81e6">
+      <opcode>and</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="code" address="ff/81e8">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF81EE" symbol="LFF81EE">LFF81EE</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/81ea">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/81eb">
+      <opcode>ora</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/81ed">
+      <opcode>tax</opcode>
+    </line>
+    <line type="code" address="ff/81ee">
+      <label anno="none" id="LFF81EE">LFF81EE</label>
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/81ef">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/81f0">
+      <label anno="none" id="LFF81F0">LFF81F0</label>
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/81f1">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="ff/81f2">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/81f3">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/81f4">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/81f5">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/81f6">
+      <opcode>and</opcode>
+      <operand>#$3f</operand>
+    </line>
+    <line type="code" address="ff/81f8">
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81f9">
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/81fa">
+      <opcode>tay</opcode>
+    </line>
+    <line type="code" address="ff/81fb">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/81fc">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/81fd">
+      <opcode>and</opcode>
+      <operand>#$7f</operand>
+    </line>
+    <line type="code" address="ff/81ff">
+      <opcode>cmp</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/8201">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8238" symbol="tblQQQ">tblQQQ</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8204">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/8206">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8207">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8208">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF820C" symbol="LFF820C">LFF820C</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/820a">
+      <opcode>and</opcode>
+      <operand>#$df</operand>
+    </line>
+    <line type="code" address="ff/820c">
+      <label anno="none" id="LFF820C">LFF820C</label>
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/820e">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/820f">
+      <opcode>pea</opcode>
+      <operand>$0000</operand>
+    </line>
+    <line type="code" address="ff/8212">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8213">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8214">
+      <opcode>sta</opcode>
+      <operand>$16</operand>
+    </line>
+    <line type="code" address="ff/8216">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8217">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8246" symbol="tblQQQ2">tblQQQ2</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/821a">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/821c">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/821d">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/821e">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8220">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/8221">
+      <opcode>pea</opcode>
+      <operand>$0000</operand>
+    </line>
+    <line type="code" address="ff/8224">
+      <opcode>plb</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="code" address="ff/8225">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8226">
+      <opcode>sta</opcode>
+      <operand>$15</operand>
+    </line>
+    <line type="code" address="ff/8228">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8229">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/822a">
+      <opcode>and</opcode>
+      <operand>#$03</operand>
+    </line>
+    <line type="code" address="ff/822c">
+      <opcode>tay</opcode>
+    </line>
+    <line type="code" address="ff/822d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF842E" symbol="LFF842E">LFF842E</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8230">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/8232">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8233">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8234">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8235">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8236">
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/8237">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/8238">
+      <label anno="none" id="tblQQQ">tblQQQ</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/8239">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/823a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/823b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/823c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/823d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/823e">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/823f">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/8240">
+      <opcode type="directive">dd1</opcode>
+      <operand>$be</operand>
+    </line>
+    <line type="data" address="ff/8241">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bd</operand>
+    </line>
+    <line type="data" address="ff/8242">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bb</operand>
+    </line>
+    <line type="data" address="ff/8243">
+      <opcode type="directive">dd1</opcode>
+      <operand>$b7</operand>
+    </line>
+    <line type="data" address="ff/8244">
+      <opcode type="directive">dd1</opcode>
+      <operand>$af</operand>
+    </line>
+    <line type="data" address="ff/8245">
+      <opcode type="directive">dd1</opcode>
+      <operand>$9f</operand>
+    </line>
+    <line type="data" address="ff/8246">
+      <label anno="none" id="tblQQQ2">tblQQQ2</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$fe</operand>
+    </line>
+    <line type="data" address="ff/8247">
+      <opcode type="directive">dd1</opcode>
+      <operand>$fd</operand>
+    </line>
+    <line type="data" address="ff/8248">
+      <opcode type="directive">dd1</opcode>
+      <operand>$fb</operand>
+    </line>
+    <line type="data" address="ff/8249">
+      <opcode type="directive">dd1</opcode>
+      <operand>$f7</operand>
+    </line>
+    <line type="data" address="ff/824a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ef</operand>
+    </line>
+    <line type="data" address="ff/824b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$df</operand>
+    </line>
+    <line type="data" address="ff/824c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$bf</operand>
+    </line>
+    <line type="data" address="ff/824d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$7f</operand>
+    </line>
+    <line type="data" address="ff/824e">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/824f">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/8250">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/8251">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/8252">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/8253">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="code" address="ff/8254">
+      <label anno="none" id="LFF8254">LFF8254</label>
+      <opcode>cli</opcode>
+    </line>
+    <line type="code" address="ff/8255">
+      <opcode>sei</opcode>
+    </line>
+    <line type="code" address="ff/8256">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/8257">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8258">
+      <label anno="none" id="getVidInd8">getVidInd8</label>
+      <opcode>phx</opcode>
+    </line>
+    <line type="code" address="ff/8259">
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/825a">
+      <opcode>rep</opcode>
+      <operand>#$10</operand>
+    </line>
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>longx</operand>
+    </line>
+    <line type="code" address="ff/825c">
+      <opcode>ldx</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/825e">
+      <opcode>ldal</opcode>
+      <operand>$450000,x</operand>
+    </line>
+    <line type="code" address="ff/8262">
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/8263">
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8264">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="reg-width-directive">
+      <opcode type="directive">rwid</opcode>
+      <operand>shortx</operand>
+    </line>
+    <line type="code" address="ff/8265">
+      <label anno="none" id="LFF8265">LFF8265</label>
+      <opcode>clv</opcode>
+    </line>
+    <line type="code" address="ff/8266">
+      <opcode>tyx</opcode>
+    </line>
+    <line type="code" address="ff/8267">
+      <opcode>lda</opcode>
+      <operand>$00,x</operand>
+    </line>
+    <line type="code" address="ff/8269">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8275" symbol="LFF8275">LFF8275</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/826b">
+      <opcode>sep</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/826d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8273" symbol="LFF8273">LFF8273</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8270">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF81F0" symbol="LFF81F0">LFF81F0</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8273">
+      <label anno="none" id="LFF8273">LFF8273</label>
+      <opcode>sta</opcode>
+      <operand>$14</operand>
+    </line>
+    <line type="code" address="ff/8275">
+      <label anno="none" id="LFF8275">LFF8275</label>
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8277">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8279">
+      <opcode>lda</opcode>
+      <operand>#$a0</operand>
+    </line>
+    <line type="code" address="ff/827b">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/827d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8283" symbol="LFF8283">LFF8283</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8280">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8258" symbol="getVidInd8">getVidInd8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8283">
+      <label anno="none" id="LFF8283">LFF8283</label>
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/8285">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF829C" symbol="LFF829C">LFF829C</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8287">
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8289">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/828b">
+      <opcode>lda</opcode>
+      <operand>#$80</operand>
+    </line>
+    <line type="code" address="ff/828d">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/828f">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8295" symbol="LFF8295">LFF8295</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8292">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8258" symbol="getVidInd8">getVidInd8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8295">
+      <label anno="none" id="LFF8295">LFF8295</label>
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/8297">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF829C" symbol="LFF829C">LFF829C</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8299">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF82EA" symbol="LFF82EA">LFF82EA</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/829c">
+      <label anno="none" id="LFF829C">LFF829C</label>
+      <opcode>ldy</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/829e">
+      <opcode>sty</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82a0">
+      <opcode>ldx</opcode>
+      <operand>#$af</operand>
+    </line>
+    <line type="code" address="ff/82a2">
+      <opcode>stx</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/82a4">
+      <label anno="none" id="LFF82A4">LFF82A4</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF82AA" symbol="LFF82AA">LFF82AA</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/82a7">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8258" symbol="getVidInd8">getVidInd8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/82aa">
+      <label anno="none" id="LFF82AA">LFF82AA</label>
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/82ac">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF82B6" symbol="LFF82B6">LFF82B6</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82ae">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF82B4" symbol="LFF82B4">LFF82B4</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/82b1">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8108" symbol="LFF8108">LFF8108</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/82b4">
+      <label anno="none" id="LFF82B4">LFF82B4</label>
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF82EE" symbol="LFF82EE">LFF82EE</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82b6">
+      <label anno="none" id="LFF82B6">LFF82B6</label>
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/82b8">
+      <opcode>eor</opcode>
+      <operand>#$c0</operand>
+    </line>
+    <line type="code" address="ff/82ba">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/82bb">
+      <opcode>ror</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/82bc">
+      <opcode>ror</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82be">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/82c0">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF82A4" symbol="LFF82A4">LFF82A4</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82c2">
+      <opcode>ldy</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/82c4">
+      <opcode>sty</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82c6">
+      <opcode>ldx</opcode>
+      <operand>#$8f</operand>
+    </line>
+    <line type="code" address="ff/82c8">
+      <opcode>stx</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/82ca">
+      <label anno="none" id="LFF82CA">LFF82CA</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF82D0" symbol="LFF82D0">LFF82D0</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/82cd">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8258" symbol="getVidInd8">getVidInd8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/82d0">
+      <label anno="none" id="LFF82D0">LFF82D0</label>
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/82d2">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF82DC" symbol="LFF82DC">LFF82DC</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82d4">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF82DA" symbol="LFF82DA">LFF82DA</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/82d7">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8108" symbol="LFF8108">LFF8108</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/82da">
+      <label anno="none" id="LFF82DA">LFF82DA</label>
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF82EE" symbol="LFF82EE">LFF82EE</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82dc">
+      <label anno="none" id="LFF82DC">LFF82DC</label>
+      <opcode>lda</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/82de">
+      <opcode>eor</opcode>
+      <operand>#$e0</operand>
+    </line>
+    <line type="code" address="ff/82e0">
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/82e1">
+      <opcode>ror</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/82e2">
+      <opcode>ror</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82e4">
+      <opcode>and</opcode>
+      <operand>#$df</operand>
+    </line>
+    <line type="code" address="ff/82e6">
+      <opcode>sta</opcode>
+      <operand><op-symbol anno="none" value="8" symbol="DP_8_PTR_VID">DP_8_PTR_VID</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/82e8">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF82CA" symbol="LFF82CA">LFF82CA</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/82ea">
+      <label anno="none" id="LFF82EA">LFF82EA</label>
+      <opcode>ldx</opcode>
+      <operand>#$80</operand>
+    </line>
+    <line type="code" address="ff/82ec">
+      <opcode>bmi</opcode>
+      <operand><op-symbol anno="none" value="FF82F4" symbol="LFF82F4">LFF82F4</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/82ee">
+      <label anno="none" id="LFF82EE">LFF82EE</label>
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF82F4" symbol="LFF82F4">LFF82F4</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/82f1">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF81B9" symbol="LFF81B9">LFF81B9</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/82f4">
+      <label anno="none" id="LFF82F4">LFF82F4</label>
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/82f5">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/82f6">
+      <opcode type="directive">str</opcode>
+      <operand>“:^[;l0okg6tf???”</operand>
+    </line>
+    <line type="data" address="ff/8305">
+      <opcode type="directive">dd1</opcode>
+      <operand>$cf</operand>
+    </line>
+    <line type="data" address="ff/8306">
+      <opcode type="directive">str</opcode>
+      <operand>“????d4esa2q?j8uh????”</operand>
+    </line>
+    <line type="data" address="ff/831a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$8d</operand>
+    </line>
+    <line type="data" address="ff/831b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$89</operand>
+    </line>
+    <line type="data" address="ff/831c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$8f</operand>
+    </line>
+    <line type="data" address="ff/831d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$8c</operand>
+    </line>
+    <line type="data" address="ff/831e">
+      <opcode type="directive">str</opcode>
+      <operand>↑“HBEGM”</operand>
+    </line>
+    <line type="data" address="ff/8323">
+      <opcode type="directive">dd1</opcode>
+      <operand>$20</operand>
+    </line>
+    <line type="data" address="ff/8324">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ce</operand>
+    </line>
+    <line type="data" address="ff/8325">
+      <opcode type="directive">dd1</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="data" address="ff/8326">
+      <opcode type="directive">dd1</opcode>
+      <operand>$86</operand>
+    </line>
+    <line type="data" address="ff/8327">
+      <opcode type="directive">dd1</opcode>
+      <operand>$88</operand>
+    </line>
+    <line type="data" address="ff/8328">
+      <opcode type="directive">dd1</opcode>
+      <operand>$87</operand>
+    </line>
+    <line type="data" address="ff/8329">
+      <opcode type="directive">dd1</opcode>
+      <operand>$83</operand>
+    </line>
+    <line type="data" address="ff/832a">
+      <opcode type="directive">str</opcode>
+      <operand>“????????????/p_-,i.9vrb5????????xwc3?”</operand>
+    </line>
+    <line type="data" address="ff/834f">
+      <opcode type="directive">dd1</opcode>
+      <operand>$09</operand>
+    </line>
+    <line type="data" address="ff/8350">
+      <opcode type="directive">str</opcode>
+      <operand>“z1nym7”</operand>
+    </line>
+    <line type="data" address="ff/8356">
+      <opcode type="directive">str</opcode>
+      <operand>↑“IFKC”</operand>
+    </line>
+    <line type="data" address="ff/835a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$7f</operand>
+    </line>
+    <line type="data" address="ff/835b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$8b</operand>
+    </line>
+    <line type="data" address="ff/835c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$8e</operand>
+    </line>
+    <line type="data" address="ff/835d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$80</operand>
+    </line>
+    <line type="data" address="ff/835e">
+      <opcode type="directive">str</opcode>
+      <operand>↑“JD@A”</operand>
+    </line>
+    <line type="data" address="ff/8362">
+      <opcode type="directive">dd1</opcode>
+      <operand>$5c</operand>
+    </line>
+    <line type="data" address="ff/8363">
+      <opcode type="directive">dd1</opcode>
+      <operand>$5d</operand>
+    </line>
+    <line type="data" address="ff/8364">
+      <opcode type="directive">dd1</opcode>
+      <operand>$cc</operand>
+    </line>
+    <line type="data" address="ff/8365">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1b</operand>
+    </line>
+    <line type="data" address="ff/8366">
+      <opcode type="directive">dd1</opcode>
+      <operand>$84</operand>
+    </line>
+    <line type="data" address="ff/8367">
+      <opcode type="directive">dd1</opcode>
+      <operand>$82</operand>
+    </line>
+    <line type="data" address="ff/8368">
+      <opcode type="directive">dd1</opcode>
+      <operand>$85</operand>
+    </line>
+    <line type="data" address="ff/8369">
+      <opcode type="directive">dd1</opcode>
+      <operand>$81</operand>
+    </line>
+    <line type="data" address="ff/836a">
+      <opcode type="directive">str</opcode>
+      <operand>“????????????”</operand>
+    </line>
+    <line type="data" address="ff/8376">
+      <label anno="none" id="LFF8376">LFF8376</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$70</operand>
+    </line>
+    <line type="data" address="ff/8377">
+      <opcode type="directive">dd1</opcode>
+      <operand>$40</operand>
+    </line>
+    <line type="data" address="ff/8378">
+      <opcode type="directive">dd1</opcode>
+      <operand>$01</operand>
+    </line>
+    <line type="data" address="ff/8379">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/837a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$30</operand>
+    </line>
+    <line type="data" address="ff/837b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$10</operand>
+    </line>
+    <line type="data" address="ff/837c">
+      <opcode type="directive">str</opcode>
+      <operand>“Aa1!QB”</operand>
+    </line>
+    <line type="data" address="ff/8382">
+      <opcode type="directive">dd1</opcode>
+      <operand>$11</operand>
+    </line>
+    <line type="data" address="ff/8383">
+      <opcode type="directive">dd1</opcode>
+      <operand>$22</operand>
+    </line>
+    <line type="data" address="ff/8384">
+      <opcode type="directive">dd1</opcode>
+      <operand>$32</operand>
+    </line>
+    <line type="data" address="ff/8385">
+      <opcode type="directive">dd1</opcode>
+      <operand>$52</operand>
+    </line>
+    <line type="data" address="ff/8386">
+      <opcode type="directive">dd1</opcode>
+      <operand>$12</operand>
+    </line>
+    <line type="data" address="ff/8387">
+      <opcode type="directive">dd1</opcode>
+      <operand>$33</operand>
+    </line>
+    <line type="data" address="ff/8388">
+      <opcode type="directive">dd1</opcode>
+      <operand>$43</operand>
+    </line>
+    <line type="data" address="ff/8389">
+      <opcode type="directive">dd1</opcode>
+      <operand>$63</operand>
+    </line>
+    <line type="data" address="ff/838a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="data" address="ff/838b">
+      <opcode type="directive">str</opcode>
+      <operand>“#Sd4DTU$5Ee”</operand>
+    </line>
+    <line type="data" address="ff/8396">
+      <opcode type="directive">dd1</opcode>
+      <operand>$15</operand>
+    </line>
+    <line type="data" address="ff/8397">
+      <opcode type="directive">str</opcode>
+      <operand>“%Ff&amp;6Vg'7Wh”</operand>
+    </line>
+    <line type="data" address="ff/83a2">
+      <opcode type="directive">dd1</opcode>
+      <operand>$17</operand>
+    </line>
+    <line type="data" address="ff/83a3">
+      <opcode type="directive">dd1</opcode>
+      <operand>$39</operand>
+    </line>
+    <line type="data" address="ff/83a4">
+      <opcode type="directive">dd1</opcode>
+      <operand>$48</operand>
+    </line>
+    <line type="data" address="ff/83a5">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/83a6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$19</operand>
+    </line>
+    <line type="data" address="ff/83a7">
+      <opcode type="directive">str</opcode>
+      <operand>“)IYyi”</operand>
+    </line>
+    <line type="data" address="ff/83ac">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ff</operand>
+    </line>
+    <line type="data" address="ff/83ad">
+      <opcode type="directive">dd1</opcode>
+      <operand>$62</operand>
+    </line>
+    <line type="data" address="ff/83ae">
+      <label anno="none" id="LFF83AE">LFF83AE</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$50</operand>
+    </line>
+    <line type="data" address="ff/83af">
+      <opcode type="directive">dd1</opcode>
+      <operand>$17</operand>
+    </line>
+    <line type="data" address="ff/83b0">
+      <opcode type="directive">dd1</opcode>
+      <operand>$57</operand>
+    </line>
+    <line type="data" address="ff/83b1">
+      <opcode type="directive">dd1</opcode>
+      <operand>$55</operand>
+    </line>
+    <line type="data" address="ff/83b2">
+      <opcode type="directive">dd1</opcode>
+      <operand>$53</operand>
+    </line>
+    <line type="data" address="ff/83b3">
+      <opcode type="directive">dd1</opcode>
+      <operand>$13</operand>
+    </line>
+    <line type="data" address="ff/83b4">
+      <opcode type="directive">dd1</opcode>
+      <operand>$72</operand>
+    </line>
+    <line type="data" address="ff/83b5">
+      <opcode type="directive">dd1</opcode>
+      <operand>$30</operand>
+    </line>
+    <line type="data" address="ff/83b6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$32</operand>
+    </line>
+    <line type="data" address="ff/83b7">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/83b8">
+      <opcode type="directive">str</opcode>
+      <operand>“'%$&amp;”</operand>
+    </line>
+    <line type="data" address="ff/83bc">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/83bd">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/83be">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1e</operand>
+    </line>
+    <line type="data" address="ff/83bf">
+      <opcode type="directive">dd1</opcode>
+      <operand>$5b</operand>
+    </line>
+    <line type="data" address="ff/83c0">
+      <opcode type="directive">dd1</opcode>
+      <operand>$19</operand>
+    </line>
+    <line type="data" address="ff/83c1">
+      <opcode type="directive">str</opcode>
+      <operand>“Ot!6G”</operand>
+    </line>
+    <line type="data" address="ff/83c6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$05</operand>
+    </line>
+    <line type="data" address="ff/83c7">
+      <opcode type="directive">dd1</opcode>
+      <operand>$2b</operand>
+    </line>
+    <line type="data" address="ff/83c8">
+      <opcode type="directive">fill</opcode>
+      <operand>7,$00</operand>
+    </line>
+    <line type="data" address="ff/83cf">
+      <opcode type="directive">dd1</opcode>
+      <operand>$59</operand>
+    </line>
+    <line type="data" address="ff/83d0">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1a</operand>
+    </line>
+    <line type="data" address="ff/83d1">
+      <opcode type="directive">dd1</opcode>
+      <operand>$0e</operand>
+    </line>
+    <line type="data" address="ff/83d2">
+      <opcode type="directive">dd1</opcode>
+      <operand>$63</operand>
+    </line>
+    <line type="data" address="ff/83d3">
+      <opcode type="directive">dd1</opcode>
+      <operand>$49</operand>
+    </line>
+    <line type="data" address="ff/83d4">
+      <opcode type="directive">dd1</opcode>
+      <operand>$4b</operand>
+    </line>
+    <line type="data" address="ff/83d5">
+      <opcode type="directive">dd1</opcode>
+      <operand>$09</operand>
+    </line>
+    <line type="data" address="ff/83d6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$46</operand>
+    </line>
+    <line type="data" address="ff/83d7">
+      <opcode type="directive">dd1</opcode>
+      <operand>$6a</operand>
+    </line>
+    <line type="data" address="ff/83d8">
+      <opcode type="directive">fill</opcode>
+      <operand>6,$00</operand>
+    </line>
+    <line type="data" address="ff/83de">
+      <opcode type="directive">dd1</opcode>
+      <operand>$5f</operand>
+    </line>
+    <line type="data" address="ff/83df">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1d</operand>
+    </line>
+    <line type="data" address="ff/83e0">
+      <opcode type="directive">dd1</opcode>
+      <operand>$18</operand>
+    </line>
+    <line type="data" address="ff/83e1">
+      <opcode type="directive">str</opcode>
+      <operand>“M”,$0d,“"”,$0a,“E”</operand>
+    </line>
+    <line type="data" address="ff/83e6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$06</operand>
+    </line>
+    <line type="data" address="ff/83e7">
+      <opcode type="directive">dd1</opcode>
+      <operand>$2a</operand>
+    </line>
+    <line type="data" address="ff/83e8">
+      <opcode type="directive">fill</opcode>
+      <operand>6,$00</operand>
+    </line>
+    <line type="data" address="ff/83ee">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1f</operand>
+    </line>
+    <line type="data" address="ff/83ef">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1c</operand>
+    </line>
+    <line type="data" address="ff/83f0">
+      <opcode type="directive">dd1</opcode>
+      <operand>$58</operand>
+    </line>
+    <line type="data" address="ff/83f1">
+      <opcode type="directive">dd1</opcode>
+      <operand>$0f</operand>
+    </line>
+    <line type="data" address="ff/83f2">
+      <opcode type="directive">dd1</opcode>
+      <operand>$61</operand>
+    </line>
+    <line type="data" address="ff/83f3">
+      <opcode type="directive">dd1</opcode>
+      <operand>$20</operand>
+    </line>
+    <line type="data" address="ff/83f4">
+      <opcode type="directive">dd1</opcode>
+      <operand>$0b</operand>
+    </line>
+    <line type="data" address="ff/83f5">
+      <opcode type="directive">dd1</opcode>
+      <operand>$46</operand>
+    </line>
+    <line type="data" address="ff/83f6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$04</operand>
+    </line>
+    <line type="data" address="ff/83f7">
+      <opcode type="directive">dd1</opcode>
+      <operand>$33</operand>
+    </line>
+    <line type="data" address="ff/83f8">
+      <opcode type="directive">fill</opcode>
+      <operand>6,$00</operand>
+    </line>
+    <line type="data" address="ff/83fe">
+      <opcode type="directive">dd1</opcode>
+      <operand>$5c</operand>
+    </line>
+    <line type="data" address="ff/83ff">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1b</operand>
+    </line>
+    <line type="data" address="ff/8400">
+      <opcode type="directive">dd1</opcode>
+      <operand>$5a</operand>
+    </line>
+    <line type="data" address="ff/8401">
+      <opcode type="directive">dd1</opcode>
+      <operand>$0c</operand>
+    </line>
+    <line type="data" address="ff/8402">
+      <opcode type="directive">dd1</opcode>
+      <operand>$23</operand>
+    </line>
+    <line type="data" address="ff/8403">
+      <opcode type="directive">dd1</opcode>
+      <operand>$60</operand>
+    </line>
+    <line type="data" address="ff/8404">
+      <opcode type="directive">dd1</opcode>
+      <operand>$08</operand>
+    </line>
+    <line type="data" address="ff/8405">
+      <opcode type="directive">str</opcode>
+      <operand>$07,“qho-gm.e]^1LNbHJDi/,dnflswu7v45”</operand>
+    </line>
+    <line type="data" address="ff/8425">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/8426">
+      <opcode type="directive">str</opcode>
+      <operand>“q(k)”</operand>
+    </line>
+    <line type="data" address="ff/842a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/842b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/842c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/842d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/842e">
+      <label anno="none" id="LFF842E">LFF842E</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$01</operand>
+    </line>
+    <line type="data" address="ff/842f">
+      <opcode type="directive">dd1</opcode>
+      <operand>$02</operand>
+    </line>
+    <line type="data" address="ff/8430">
+      <opcode type="directive">dd1</opcode>
+      <operand>$04</operand>
+    </line>
+    <line type="data" address="ff/8431">
+      <opcode type="directive">dd1</opcode>
+      <operand>$08</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8432">
+      <label anno="none" id="Serv14">Serv14</label>
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/8433">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="ff/8434">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/8435">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8436">
+      <opcode>ldy</opcode>
+      <operand>#$02</operand>
+    </line>
+    <line type="code" address="ff/8438">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8470" symbol="tblQ1">tblQ1</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/843b">
+      <label anno="none" id="LFF843B">LFF843B</label>
+      <opcode>cmp</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/843d">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8465" symbol="LFF8465">LFF8465</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/843f">
+      <opcode>dey</opcode>
+    </line>
+    <line type="code" address="ff/8440">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF843B" symbol="LFF843B">LFF843B</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8442">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8443">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8444">
+      <opcode>cmp</opcode>
+      <operand>#$7f</operand>
+    </line>
+    <line type="code" address="ff/8446">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8462" symbol="LFF8462">LFF8462</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8448">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF844F" symbol="LFF844F">LFF844F</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/844a">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/844b">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/844c">
+      <opcode>eor</opcode>
+      <operand>#$20</operand>
+    </line>
+    <line type="code" address="ff/844e">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/844f">
+      <label anno="none" id="LFF844F">LFF844F</label>
+      <opcode>cmp</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/8451">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8462" symbol="LFF8462">LFF8462</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8453">
+      <opcode>and</opcode>
+      <operand>#$1f</operand>
+    </line>
+    <line type="code" address="ff/8455">
+      <label anno="none" id="LFF8455">LFF8455</label>
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/8456">
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8458">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/8459">
+      <opcode>pea</opcode>
+      <operand>$0000</operand>
+    </line>
+    <line type="code" address="ff/845c">
+      <opcode>plb</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="code" address="ff/845d">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/845e">
+      <opcode>sta</opcode>
+      <operand>$0d</operand>
+    </line>
+    <line type="code" address="ff/8460">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8461">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8462">
+      <label anno="none" id="LFF8462">LFF8462</label>
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8463">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8464">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8465">
+      <label anno="none" id="LFF8465">LFF8465</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8466">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8467">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8470" symbol="tblQ1">tblQ1</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/846a">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/846c">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/846d">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/846e">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF8455" symbol="LFF8455">LFF8455</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/8470">
+      <label anno="none" id="tblQ1">tblQ1</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$5f</operand>
+    </line>
+    <line type="data" address="ff/8471">
+      <opcode type="directive">dd1</opcode>
+      <operand>$2f</operand>
+    </line>
+    <line type="data" address="ff/8472">
+      <opcode type="directive">dd1</opcode>
+      <operand>$00</operand>
+    </line>
+    <line type="data" address="ff/8473">
+      <opcode type="directive">dd1</opcode>
+      <operand>$1f</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8474">
+      <label anno="none" id="LFF8474">LFF8474</label>
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/8475">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="ff/8476">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/8477">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/8478">
+      <opcode>ldy</opcode>
+      <operand>#$02</operand>
+    </line>
+    <line type="code" address="ff/847a">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF84A7" symbol="tblXX">tblXX</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/847d">
+      <label anno="none" id="LFF847D">LFF847D</label>
+      <opcode>cmp</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/847f">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF849B" symbol="LFF849B">LFF849B</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8481">
+      <opcode>dey</opcode>
+    </line>
+    <line type="code" address="ff/8482">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF847D" symbol="LFF847D">LFF847D</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8484">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8485">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8486">
+      <opcode>cmp</opcode>
+      <operand>#$7f</operand>
+    </line>
+    <line type="code" address="ff/8488">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF8498" symbol="LFF8498">LFF8498</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/848a">
+      <opcode>bcs</opcode>
+      <operand><op-symbol anno="none" value="FF8496" symbol="LFF8496">LFF8496</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/848c">
+      <opcode>cmp</opcode>
+      <operand>#$21</operand>
+    </line>
+    <line type="code" address="ff/848e">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8498" symbol="LFF8498">LFF8498</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8490">
+      <opcode>cmp</opcode>
+      <operand>#$40</operand>
+    </line>
+    <line type="code" address="ff/8492">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8496" symbol="LFF8496">LFF8496</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8494">
+      <opcode>eor</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="code" address="ff/8496">
+      <label anno="none" id="LFF8496">LFF8496</label>
+      <opcode>eor</opcode>
+      <operand>#$10</operand>
+    </line>
+    <line type="code" address="ff/8498">
+      <label anno="none" id="LFF8498">LFF8498</label>
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8499">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/849a">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/849b">
+      <label anno="none" id="LFF849B">LFF849B</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/849c">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/849d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF84A7" symbol="tblXX">tblXX</op-symbol>+1</operand>
+    </line>
+    <line type="code" address="ff/84a0">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/84a2">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84a3">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84a4">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84a5">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/84a6">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/84a7">
+      <label anno="none" id="tblXX">tblXX</label>
+      <opcode type="directive">str</opcode>
+      <operand>“_0@`”</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/84ab">
+      <label anno="none" id="LFF84AB">LFF84AB</label>
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/84ac">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="ff/84ad">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/84ae">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/84af">
+      <opcode>ldy</opcode>
+      <operand>#$08</operand>
+    </line>
+    <line type="code" address="ff/84b1">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF84CB" symbol="tblYY">tblYY</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/84b4">
+      <label anno="none" id="LFF84B4">LFF84B4</label>
+      <opcode>cmp</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/84b6">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF84C0" symbol="LFF84C0">LFF84C0</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/84b8">
+      <opcode>dey</opcode>
+    </line>
+    <line type="code" address="ff/84b9">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF84B4" symbol="LFF84B4">LFF84B4</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/84bb">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84bc">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84bd">
+      <label anno="none" id="LFF84BD">LFF84BD</label>
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84be">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/84bf">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/84c0">
+      <label anno="none" id="LFF84C0">LFF84C0</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/84c1">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/84c2">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF84CB" symbol="tblYY">tblYY</op-symbol>+7</operand>
+    </line>
+    <line type="code" address="ff/84c5">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/84c7">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84c8">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84c9">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF84BD" symbol="LFF84BD">LFF84BD</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/84cb">
+      <label anno="none" id="tblYY">tblYY</label>
+      <opcode type="directive">str</opcode>
+      <operand>“12345678”</operand>
+    </line>
+    <line type="data" address="ff/84d3">
+      <opcode type="directive">dd1</opcode>
+      <operand>$81</operand>
+    </line>
+    <line type="data" address="ff/84d4">
+      <opcode type="directive">dd1</opcode>
+      <operand>$82</operand>
+    </line>
+    <line type="data" address="ff/84d5">
+      <opcode type="directive">dd1</opcode>
+      <operand>$83</operand>
+    </line>
+    <line type="data" address="ff/84d6">
+      <opcode type="directive">dd1</opcode>
+      <operand>$84</operand>
+    </line>
+    <line type="data" address="ff/84d7">
+      <opcode type="directive">dd1</opcode>
+      <operand>$85</operand>
+    </line>
+    <line type="data" address="ff/84d8">
+      <opcode type="directive">dd1</opcode>
+      <operand>$86</operand>
+    </line>
+    <line type="data" address="ff/84d9">
+      <opcode type="directive">dd1</opcode>
+      <operand>$87</operand>
+    </line>
+    <line type="data" address="ff/84da">
+      <opcode type="directive">dd1</opcode>
+      <operand>$88</operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/84db">
+      <label anno="none" id="LFF84DB">LFF84DB</label>
+      <opcode>cmp</opcode>
+      <operand>#$c0</operand>
+    </line>
+    <line type="code" address="ff/84dd">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF84FA" symbol="LFF84FA">LFF84FA</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/84df">
+      <opcode>phb</opcode>
+    </line>
+    <line type="code" address="ff/84e0">
+      <opcode>phy</opcode>
+    </line>
+    <line type="code" address="ff/84e1">
+      <opcode>phk</opcode>
+    </line>
+    <line type="data-bank-directive">
+      <opcode type="directive">dbank</opcode>
+      <operand>K (auto)</operand>
+    </line>
+    <line type="code" address="ff/84e2">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/84e3">
+      <opcode>and</opcode>
+      <operand>#$cf</operand>
+    </line>
+    <line type="code" address="ff/84e5">
+      <opcode>ldy</opcode>
+      <operand>#$08</operand>
+    </line>
+    <line type="code" address="ff/84e7">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8527" symbol="tblZZ">tblZZ</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/84ea">
+      <label anno="none" id="LFF84EA">LFF84EA</label>
+      <opcode>cmp</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/84ec">
+      <opcode>beq</opcode>
+      <operand><op-symbol anno="none" value="FF84FB" symbol="LFF84FB">LFF84FB</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/84ee">
+      <opcode>dey</opcode>
+    </line>
+    <line type="code" address="ff/84ef">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF84EA" symbol="LFF84EA">LFF84EA</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/84f1">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84f2">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84f3">
+      <opcode>and</opcode>
+      <operand>#$0f</operand>
+    </line>
+    <line type="code" address="ff/84f5">
+      <opcode>clc</opcode>
+    </line>
+    <line type="code" address="ff/84f6">
+      <opcode>adc</opcode>
+      <operand>#$30</operand>
+    </line>
+    <line type="code" address="ff/84f8">
+      <label anno="none" id="LFF84F8">LFF84F8</label>
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/84f9">
+      <opcode>plb</opcode>
+    </line>
+    <line type="code" address="ff/84fa">
+      <label anno="none" id="LFF84FA">LFF84FA</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/84fb">
+      <label anno="none" id="LFF84FB">LFF84FB</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/84fc">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/84fd">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF852F" symbol="tblZZ2">tblZZ2</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8500">
+      <opcode>lda</opcode>
+      <operand>($01,S),y</operand>
+    </line>
+    <line type="code" address="ff/8502">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8503">
+      <opcode>ply</opcode>
+    </line>
+    <line type="code" address="ff/8504">
+      <opcode>php</opcode>
+    </line>
+    <line type="code" address="ff/8505">
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/8506">
+      <opcode>lda</opcode>
+      <operand>#$ac</operand>
+    </line>
+    <line type="code" address="ff/8508">
+      <opcode>ldx</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/850a">
+      <opcode>ldy</opcode>
+      <operand>#$ff</operand>
+    </line>
+    <line type="code" address="ff/850c">
+      <opcode>cop</opcode>
+      <operand>$06</operand>
+    </line>
+    <line type="code" address="ff/850e">
+      <opcode>txa</opcode>
+    </line>
+    <line type="code" address="ff/850f">
+      <opcode>lsr</opcode>
+      <operand>A</operand>
+    </line>
+    <line type="code" address="ff/8510">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8523" symbol="LFF8523">LFF8523</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8512">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8513">
+      <opcode>cmp</opcode>
+      <operand>#$2e</operand>
+    </line>
+    <line type="code" address="ff/8515">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF851B" symbol="LFF851B">LFF851B</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8517">
+      <opcode>lda</opcode>
+      <operand>#$2a</operand>
+    </line>
+    <line type="code" address="ff/8519">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF8524" symbol="LFF8524">LFF8524</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/851b">
+      <label anno="none" id="LFF851B">LFF851B</label>
+      <opcode>cmp</opcode>
+      <operand>#$3d</operand>
+    </line>
+    <line type="code" address="ff/851d">
+      <opcode>bne</opcode>
+      <operand><op-symbol anno="none" value="FF8524" symbol="LFF8524">LFF8524</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/851f">
+      <opcode>lda</opcode>
+      <operand>#$23</operand>
+    </line>
+    <line type="code" address="ff/8521">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF8524" symbol="LFF8524">LFF8524</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8523">
+      <label anno="none" id="LFF8523">LFF8523</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8524">
+      <label anno="none" id="LFF8524">LFF8524</label>
+      <opcode>plp</opcode>
+    </line>
+    <line type="code" address="ff/8525">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF84F8" symbol="LFF84F8">LFF84F8</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/8527">
+      <label anno="none" id="tblZZ">tblZZ</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$80</operand>
+    </line>
+    <line type="data" address="ff/8528">
+      <opcode type="directive">dd1</opcode>
+      <operand>$89</operand>
+    </line>
+    <line type="data" address="ff/8529">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ca</operand>
+    </line>
+    <line type="data" address="ff/852a">
+      <opcode type="directive">dd1</opcode>
+      <operand>$cb</operand>
+    </line>
+    <line type="data" address="ff/852b">
+      <opcode type="directive">dd1</opcode>
+      <operand>$cf</operand>
+    </line>
+    <line type="data" address="ff/852c">
+      <opcode type="directive">dd1</opcode>
+      <operand>$cc</operand>
+    </line>
+    <line type="data" address="ff/852d">
+      <opcode type="directive">dd1</opcode>
+      <operand>$cd</operand>
+    </line>
+    <line type="data" address="ff/852e">
+      <opcode type="directive">dd1</opcode>
+      <operand>$ce</operand>
+    </line>
+    <line type="data" address="ff/852f">
+      <label anno="none" id="tblZZ2">tblZZ2</label>
+      <opcode type="directive">dd1</opcode>
+      <operand>$1e</operand>
+    </line>
+    <line type="data" address="ff/8530">
+      <opcode type="directive">dd1</opcode>
+      <operand>$2d</operand>
+    </line>
+    <line type="data" address="ff/8531">
+      <opcode type="directive">dd1</opcode>
+      <operand>$2e</operand>
+    </line>
+    <line type="data" address="ff/8532">
+      <opcode type="directive">dd1</opcode>
+      <operand>$3d</operand>
+    </line>
+    <line type="data" address="ff/8533">
+      <opcode type="directive">dd1</opcode>
+      <operand>$f4</operand>
+    </line>
+    <line type="data" address="ff/8534">
+      <opcode type="directive">dd1</opcode>
+      <operand>$f0</operand>
+    </line>
+    <line type="data" address="ff/8535">
+      <opcode type="directive">dd1</opcode>
+      <operand>$f1</operand>
+    </line>
+    <line type="data" address="ff/8536">
+      <opcode type="directive">dd1</opcode>
+      <operand>$f2</operand>
+    </line>
+    <line type="code" address="ff/8537">
+      <label anno="none" id="LFF8537">LFF8537</label>
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/8538">
+      <opcode>lda</opcode>
+      <operand>#$02</operand>
+    </line>
+    <line type="code" address="ff/853a">
+      <label anno="none" id="LFF853A">LFF853A</label>
+      <opcode>phx</opcode>
+    </line>
+    <line type="code" address="ff/853b">
+      <opcode>ldx</opcode>
+      <operand>#$06</operand>
+    </line>
+    <line type="code" address="ff/853d">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8543" symbol="LFF8543">LFF8543</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/8540">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8559" symbol="LFF8559">LFF8559</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8543">
+      <label anno="none" id="LFF8543">LFF8543</label>
+      <opcode>plx</opcode>
+    </line>
+    <line type="code" address="ff/8544">
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8545">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8546">
+      <label anno="none" id="LFF8546">LFF8546</label>
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/8547">
+      <opcode>lda</opcode>
+      <operand>#$00</operand>
+    </line>
+    <line type="code" address="ff/8549">
+      <opcode>bra</opcode>
+      <operand><op-symbol anno="none" value="FF853A" symbol="LFF853A">LFF853A</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/854b">
+      <label anno="none" id="LFF854B">LFF854B</label>
+      <opcode>pha</opcode>
+    </line>
+    <line type="code" address="ff/854c">
+      <opcode>and</opcode>
+      <operand>#$df</operand>
+    </line>
+    <line type="code" address="ff/854e">
+      <opcode>cmp</opcode>
+      <operand>#$41</operand>
+    </line>
+    <line type="code" address="ff/8550">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8556" symbol="LFF8556">LFF8556</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8552">
+      <opcode>cmp</opcode>
+      <operand>#$5b</operand>
+    </line>
+    <line type="code" address="ff/8554">
+      <opcode>bcc</opcode>
+      <operand><op-symbol anno="none" value="FF8557" symbol="LFF8557">LFF8557</op-symbol></operand>
+    </line>
+    <line type="code" address="ff/8556">
+      <label anno="none" id="LFF8556">LFF8556</label>
+      <opcode>sec</opcode>
+    </line>
+    <line type="code" address="ff/8557">
+      <label anno="none" id="LFF8557">LFF8557</label>
+      <opcode>pla</opcode>
+    </line>
+    <line type="code" address="ff/8558">
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8559">
+      <label anno="none" id="LFF8559">LFF8559</label>
+      <opcode>phk</opcode>
+    </line>
+    <line type="code" address="ff/855a">
+      <opcode>per</opcode>
+      <operand><op-symbol anno="none" value="FF8560" symbol="anRTS">anRTS</op-symbol>-1</operand>
+    </line>
+    <line type="code" address="ff/855d">
+      <opcode>brl</opcode>
+      <operand><op-symbol anno="none" value="FF8561" symbol="callMOS">callMOS</op-symbol></operand>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8560">
+      <label anno="none" id="anRTS">anRTS</label>
+      <opcode>rts</opcode>
+    </line>
+    <line type="blank" />
+    <line type="code" address="ff/8561">
+      <label anno="none" id="callMOS">callMOS</label>
+      <opcode>pei</opcode>
+      <operand>(<op-symbol anno="none" value="0" symbol="DP_MOSREF">DP_MOSREF</op-symbol>+4)</operand>
+    </line>
+    <line type="code" address="ff/8563">
+      <opcode>pei</opcode>
+      <operand>(<op-symbol anno="none" value="0" symbol="DP_MOSREF">DP_MOSREF</op-symbol>+2)</operand>
+    </line>
+    <line type="code" address="ff/8565">
+      <opcode>pei</opcode>
+      <operand>(<op-symbol anno="none" value="0" symbol="DP_MOSREF">DP_MOSREF</op-symbol>)</operand>
+    </line>
+    <line type="code" address="ff/8567">
+      <opcode>rtl</opcode>
+    </line>
+    <line type="blank" />
+    <line type="data" address="ff/8568">
+      <opcode type="directive">dd2</opcode>
+      <operand>$58ed</operand>
+      <comment>;crc</comment>
+    </line>
+    <line type="data" address="ff/856a">
+      <opcode type="directive">fill</opcode>
+      <operand>150,$ff</operand>
+    </line>
+    <line type="ar-end-directive">
+      <opcode type="directive">adrend</opcode>
+      <operand>↑ $ff7e00</operand>
+    </line>
+  </lines>
+</dis65>

@@ -1,6 +1,6 @@
 XSLT=xsltproc
 
-TARGETS=MOS.mod VDU.mod ViewData.mod
+TARGETS=MOS.mod VDU.mod ViewData.mod Keyboard.mod
 
 
 all::$(addsuffix .html, $(TARGETS))
