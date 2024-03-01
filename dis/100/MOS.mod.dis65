@@ -1177,6 +1177,23 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"block_FE20":{
+"DataDescriptor":{
+"Length":16,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"block QRY",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"block_FE20",
+"Value":65056,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "CO_off_8_BRKBLOCK":{
 "DataDescriptor":{
 "Length":1,
@@ -7215,6 +7232,8 @@
 "8493":"compare to passed in X",
 "8498":"move backwards through handle list",
 "8507":"zero out the entry and return clc",
+"8555":"block length",
+"8581":"block length",
 "8666":"ST 0 - return string \"SYSTEM\"",
 "8668":"ST 2 - return B0 FF80 table vector after re-indexing",
 "8670":"ST 4 - update B0 FF80 table vector after re-indexing",
@@ -7729,7 +7748,7 @@
 "BackgroundColor":0},
 
 "11803":{
-"Text":"CRS - co-routine call sibling QRY",
+"Text":"CRS - Resume a sibling coroutine\r\n\r\nThis acts as a CWT, but instead of returning control back to the parent, it passes control to a dormant sibling (ie another child of its parent). It acts effectively as if the calling coroutine did a CWT and the parent immediately \r\ndid a CCO to the sibling coroutine. When the sibling subseqttently does a CWT, control returns to the parent\r\n\r\nEntry: \r\n   Y     Handle of siUing coroutine\r\nBHA,X,C  Arguments to sibling routine\r\n\r\nOut: \r\n\r\nBHA,X,C  Arguments from next call by parent\r\nD        As determined by set environment",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -9206,6 +9225,12 @@
 
 "12571":{
 "Text":"TODO: dead code?",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8605":{
+"Text":"On Entry:\r\n    BHA points at a \"block\" where the first two bytes contain the block length\r\n\r\nThe block is zeroed from BHA+[BHA]-1 downto BHA+2",
 "BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
@@ -14140,6 +14165,62 @@
 "Value":16695197,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8619":{
+"Label":"lp",
+"Value":16699307,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8629":{
+"Label":"sk",
+"Value":16699317,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8605":{
+"Label":"blockClear",
+"Value":16699293,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"11867":{
+"Label":"_CCO_INT_QRY",
+"Value":16702555,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1256":{
+"Label":"HERE_SPIN",
+"Value":16691944,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1258":{
+"Label":"tblQRY",
+"Value":16691946,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1267":{
+"Label":"call_KB_10",
+"Value":16691955,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"16465":{
+"Label":"brlGetOrCreateModCallBlock",
+"Value":16707153,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -18095,6 +18176,60 @@
 "Label":"EXSYS_HANDLEBLOCK_LONGPTR",
 "Part":"Low"}},
 
+"8562":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"block_FE20",
+"Part":"Low"}},
+
+"8577":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"8581":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"8584":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CO_A_SAVE",
+"Part":"Low"}},
+
+"8591":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"8593":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CO_A_SAVE",
+"Part":"Low"}},
+
+"8596":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
 "8647":{
 "Length":3,
 "Format":"NumericLE",
@@ -19589,6 +19724,70 @@
 "Label":"EXSYS_CUR_COROUTINE",
 "Part":"Low"}},
 
+"11812":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"11816":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"11818":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
+"11820":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_CUR_COROUTINE",
+"Part":"Low"}},
+
+"11823":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
+
+"11825":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"CO_off_Parent",
+"Part":"Low"}},
+
+"11837":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS",
+"Part":"Low"}},
+
+"11841":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Part":"Low"}},
+
 "11856":{
 "Length":3,
 "Format":"NumericLE",
@@ -19624,8 +19823,18 @@
 "11872":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_off_B_type",
+"Part":"Low"}},
+
+"11877":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HND_type_6_CBCO",
+"Part":"Low"}},
 
 "11884":{
 "Length":25,
