@@ -990,6 +990,57 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
+"B0B_offs_B_type":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Offset of the type byte in a handle block",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0B_offs_B_type",
+"Value":11,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"B0B_TYPE_LL_IRQ":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Handle type - Interrupt handler",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0B_TYPE_LL_IRQ",
+"Value":14,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
+"B0LL_IRQ_BLOCKS":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"looks to be a list of interrupt handlers",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0LL_IRQ_BLOCKS",
+"Value":65030,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "B0LST_FREE_BLOCKS":{
 "DataDescriptor":{
 "Length":2,
@@ -1003,23 +1054,6 @@
 "MultiMask":null,
 "Label":"B0LST_FREE_BLOCKS",
 "Value":65024,
-"Source":"Project",
-"Type":"ExternalAddr",
-"LabelAnno":"None"},
-
-"B0LST_IRQ_HANDLER":{
-"DataDescriptor":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"looks to be a list of interrupt handlers",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"B0LST_IRQ_HANDLER",
-"Value":65030,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -1190,6 +1224,210 @@
 "MultiMask":null,
 "Label":"block_FE20",
 "Value":65056,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_pri__fpand":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_pri__fpand",
+"Value":9,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_pri__irqf":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_pri__irqf",
+"Value":2,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_pri__mand":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_pri__mand",
+"Value":5,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_pri__meor":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_pri__meor",
+"Value":6,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_pri__next":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_pri__next",
+"Value":0,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_pri__psec":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_pri__psec",
+"Value":7,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_sec__dp":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_sec__dp",
+"Value":1,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_sec__flags":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_sec__flags",
+"Value":3,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_sec__fphand":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_sec__fphand",
+"Value":4,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_sec__hitct":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_sec__hitct",
+"Value":7,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_sec__prior":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_sec__prior",
+"Value":0,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"bob_ll_irq_sec__type":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"bob_ll_irq_sec__type",
+"Value":11,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2639,7 +2877,7 @@
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
 
-"EXSYS_HANDLEBLOCK_LONGPTR":{
+"EXSYS_FpHandles":{
 "DataDescriptor":{
 "Length":3,
 "Format":"NumericLE",
@@ -2650,7 +2888,7 @@
 "HasWidth":true,
 "Direction":"ReadWrite",
 "MultiMask":null,
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Value":65282,
 "Source":"Project",
 "Type":"ExternalAddr",
@@ -2686,23 +2924,6 @@
 "MultiMask":null,
 "Label":"HDMMW",
 "Value":7,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"HND_off_B_type":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"Offset of the type byte in a handle block",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"HND_off_B_type",
-"Value":11,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -2839,23 +3060,6 @@
 "MultiMask":null,
 "Label":"HND_type_C_CBMOD",
 "Value":12,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"HND_type_E_CBIQ":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"Handle type - Interrupt handler",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"HND_type_E_CBIQ",
-"Value":14,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -7579,7 +7783,8 @@
 "19923":"push phoney flags (0x04) and bank to be discarded in restore",
 "19926":"push A (contains stack top)",
 "19927":"push X (original stack)",
-"19942":"DP is now address of the list head",
+"19937":"point at list head in B0",
+"19942":"pop list header address or previous primary block",
 "19943":"get address of next item",
 "19945":"into DP",
 "19946":"read hardware test register into A",
@@ -7601,6 +7806,8 @@
 "19998":"restore irq stack address",
 "20002":"restore original stack",
 "20003":"exit to outer vector",
+"20054":"ensure interrupt flags are set, rest of flags will be as P on entry",
+"20109":"default the pointer to and to point at FF",
 "20153":"push original Y parameter",
 "20155":"push DP of COP handler stack frame",
 "20156":"push current flags/mode",
@@ -7634,7 +7841,7 @@
 "20237":"get second block pointer",
 "20241":"put it in X",
 "20242":"get type byte in to AH",
-"20246":"get back 2st block pointer",
+"20246":"get back 1st block pointer",
 "20247":"mask off type",
 "20250":"check that this is correct type",
 "20253":"fail",
@@ -8396,7 +8603,7 @@
 "BackgroundColor":0},
 
 "20007":{
-"Text":"COP 2F - OPIIQ - Add interrupt handler\r\n\r\nAction: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n          BHA points to the start address of the interrupt routine.\r\n          X contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n          Y contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n          D is set to the direct page required whilst in the interrupt \r\n          routine.\r\n          P flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
+"Text":"COP 2F - OPIIQ - Add interrupt handler\r\n\r\nAction: This call is used to add a device\u0027s interrupt service to the list of such services maintained by the operating system.\r\n\r\nOn entry: \r\n          Inline 3 byte hardware address of the device which requires\r\n          servicing\u0027s status register.\r\n          Inline 1 byte EOR mask, allowing inversion of bits to the correct\r\n          logic level if necessary.\r\n BHA      points to the start address of the interrupt routine.\r\n X        contains an AND mask to discriminate between different devices\r\n          causing interrupts. (X must be set to zero if a call to OPMIQ is\r\n          required.)\r\n Y        contains the priority (range 1 to 255). This will be the \r\n          position within the list of devices which the new entry will occupy.\r\n          The lower the value the higher the priority.\r\n DP       is set to the direct page required whilst in the interrupt \r\n          routine.\r\n P        flags are set to give the mode required in the interrupt routine.\r\n          (The operating system sets the I flag.)\r\nOn exit:  If C = O then the call succeeded. Y = handle and HA = handle.\r\n          If C = 1 then the call failed. Y = 0 and HA = O.\r\n          No registers preserved",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8408,7 +8615,7 @@
 "BackgroundColor":0},
 
 "20231":{
-"Text":"COP 31 - OPMIQ - Modify interrupt intercept\r\n\r\nAction: This call allows the modification of the address of the AND mask (by default set to a location containing \u0026FF), and the value of the AND mask contained in X. (X should be set to zero by OPIIQ before using OPMIQ. OPMIQ is then used to specify the required mask.)\r\n\r\nOn entry: Y = handle returned by OPIIQ.\r\n          BHA = 0 means do not modify the address of the AND mask.\r\n          BHA \u003c\u003e 0 means BHA is the new address of the AND mask.\r\n          X = 0 means do not modify the AND mask.\r\n          X \u003c\u003e 0 means X is the new AND mask.\r\nOn exit:  C = 0 means that the inieirupt intercept was modified.\r\n          C = 1 means that the interrupt intercept was not modified.\r\n          No registers preserved\r\n",
+"Text":"COP 31 - OPMIQ - Modify interrupt intercept\r\n\r\nAction: This call allows the modification of the address of the AND mask (by default set to a location containing \u0026FF), and the value of the AND mask contained in X. (X should be set to zero by OPIIQ before using OPMIQ. OPMIQ is then used to specify the required mask.)\r\n\r\nOn entry: Y = handle returned by OPIIQ.\r\n          BHA = 0 means do not modify the address of the AND mask.\r\n          BHA \u003c\u003e 0 means BHA is the new address of the AND mask.\r\n          X = 0 means do not modify the AND mask.\r\n          X \u003c\u003e 0 means X is the new AND mask.\r\nOn exit:  C = 0 means that the interrupt intercept was modified.\r\n          C = 1 means that the interrupt intercept was not modified.\r\n          No registers preserved\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -8852,7 +9059,7 @@
 "BackgroundColor":0},
 
 "11489":{
-"Text":"__CO E - COCBH - Cancel break haniUer Tor Ibis coroutine\r\n\r\nThis call resets the break handler for the current coroutine to a \u0027no handler\u0027 state (as when the coroutine is created). If a BRK occurs in a routine with no BRK handler, the operating system will attempt to use its parent\u0027s handler. This carries on up the hierarchy until a valid BRK handler is found or the top level is reached. In the latter case, an OPERR COP instruction is executed.\r\n\r\nEntry: \r\n   X   COCBH\r\nExit: \r\n   B,D Preserved\r\n   C=0 Break handler was cancelled\r\n   BHA Address of old break handler\r\nor C=1 There was no break handler to cancel",
+"Text":"__CO E - COCBH - Cancel break handler for This coroutine\r\n\r\nThis call resets the break handler for the current coroutine to a \u0027no handler\u0027 state (as when the coroutine is created). If a BRK occurs in a routine with no BRK handler, the operating system will attempt to use its parent\u0027s handler. This carries on up the hierarchy until a valid BRK handler is found or the top level is reached. In the latter case, an OPERR COP instruction is executed.\r\n\r\nEntry: \r\n   X   COCBH\r\nExit: \r\n   B,D Preserved\r\n   C=0 Break handler was cancelled\r\n   BHA Address of old break handler\r\nor C=1 There was no break handler to cancel",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -9020,32 +9227,32 @@
 "BackgroundColor":0},
 
 "8410":{
-"Text":"Given a handle in Y returns the [Handle Block]. For odd numbered handles (well known handles) the block is returned for valid handles. For even numbered handles, searches the [Handle Allocation Table].\r\n\r\nOn Entry:\r\n   Y   Contains a handle\r\n\r\nOn Exit:\r\n   C=0 Found\r\n   DP  the address of the handle block\r\nor C=1 Failed - no such handle allocated\r\n\r\nTODO: corrupts X unnecessarily, lots of tax etc that is unnecessary",
-"BoxMode":false,
+"Text":"Given a handle in Y returns the B0Block pointer. For odd numbered handles (well known handles) the block is returned for valid handles. For even numbered handles, searches the [Handle Allocation Table].\r\n\r\nOn Entry:\r\n   Y   Contains a handle\r\n\r\nOn Exit:\r\n   C=0 Found\r\n   DP  the address of the handle block\r\nor C=1 Failed - no such handle allocated\r\n\r\nTODO: corrupts X unnecessarily, lots of tax etc that is unnecessary",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8478":{
 "Text":"The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched for this entry and its entry is zeroed if found\r\n\r\nOn entry:\r\n   X    contains a handle block pointer\r\n\r\nOn exit:\r\n   C=0  indicates block found\r\n   Y    contains the index of the entry (handle ? QRY?)\r\n   X,D  preserved\r\nor C=1  the pointer was not found\r\n   Y    contains the index of the last entry (entries are allocated descending\r\n        so the first in address order)\r\n\r\nTODO: why not use the find method below!",
-"BoxMode":false,
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8512":{
 "Text":"The [Handle Allocation Table] pointed to by long pointer at $FF02 is searched for an entry that contains X\r\n\r\nOn entry:\r\n   X    contains a handle block pointer\r\n\r\nOn exit:\r\n   C=0  indicates block found\r\n   Y    contains the index of the entry (handle)\r\nor C=1  the pointer was not found\r\n   Y    contains the index of the last entry (entries are allocated descending\r\n        so the first in address order)\r\n\r\n   X    preserved\r\n   D,A  corrupted   \r\n",
-"BoxMode":false,
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8154":{
-"Text":"QRY Appears to return the block pointed to X to the free list\r\n\r\nOn Entry:\r\n   X   is a pointer to a handle block\r\n",
-"BoxMode":false,
+"Text":"Return the block pointed to X to the free list\r\n\r\nOn Entry:\r\n   X   is a pointer to a B0Block\r\n",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "8193":{
-"Text":"Appears to allocate a block from the free list\r\n\r\nOn entry A contains the type - QRY\r\n",
-"BoxMode":false,
+"Text":"Allocate a B0Block from the free list\r\nOn entry:\r\n     A   contains the B0B type\r\n\r\n On exit:\r\n If Cy=1:\r\n     X=A on entry there was an error not allocated\r\n If Cy=0:\r\n     X=A=B0 pointer to 12 byte block with type set, other fields = $FF\r\n",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
@@ -9074,7 +9281,7 @@
 "BackgroundColor":0},
 
 "19906":{
-"Text":"Main interrupt handler\r\n\r\nThis setups (after preserving some registers) setups up an IRQ handler stack then scans through the priority list if registered IRQ handlers calling ones which have a pending irq (detected by using their registered hardware address and masks)",
+"Text":"Main interrupt handler\r\n\r\nThis (after preserving some registers) sets up an IRQ handler stack then scans through the priority list of registered IRQ handlers calling ones which have a pending irq (detected by using their registered hardware address and masks)",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -9232,6 +9439,42 @@
 "8605":{
 "Text":"On Entry:\r\n    BHA points at a \"block\" where the first two bytes contain the block length\r\n\r\nThe block is zeroed from BHA+[BHA]-1 downto BHA+2",
 "BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19908":{
+"Text":"Stack\r\n+2..4  rti return address\r\n+1     Caller flags",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19911":{
+"Text":"Stack\r\n+7..8   rti return address\r\n+6      Caller flags\r\n+5      Caller B\r\n+3..4   Caller A (16bit)\r\n+1..2   Caller X\r\nThis is the exit stack should there be no stack swap below",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19935":{
+"Text":"IRQ private Stack\r\n+7..9   far rti address to @restoreOrgStack\r\n+6      flags = 04\r\n+5      bank = 00\r\n+3..4   B0_IRQ_STACK contents - IRQ private stack pointer\r\n+1..2   Caller stack pointer (16)\r\nThis is the exit stack after a stack swap",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"19994":{
+"Text":"Depending on whether a stack swap occurred this will pop the caller\r\nregisters and do and RTI _OR_ if there was a stack swap will set\r\n  X = Caller\u0027s stack pointer\r\n  A = top of IRQ stack (original contents of B0_IRQ_STACK)\r\n  B = 0\r\n  RTI will jump to @restoreOrgStack\r\n",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"20046":{
+"Text":"set secondary block contents first",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"8353":{
+"Text":"Allocate a Handle\r\n\r\nOn Entry\r\n  X     The B0Block address to store in the handle\r\n\r\nOn Exit\r\n  If Cy=1:\r\n        No handle allocated, run out of handles\r\n  If Cy=0:\r\n  Y     The handle\r\n\r\nOthers preserved",
+"BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -13027,7 +13270,7 @@
 "LabelAnno":"None"},
 
 "8353":{
-"Label":"allocHandleQRY",
+"Label":"allocHandle",
 "Value":16699041,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -13384,7 +13627,7 @@
 "LabelAnno":"None"},
 
 "8410":{
-"Label":"getHandleYinDP",
+"Label":"getHandleYtoX",
 "Value":16699098,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -13419,7 +13662,7 @@
 "LabelAnno":"None"},
 
 "8478":{
-"Label":"freeHandlePointerX",
+"Label":"freeHandleForB0BlockX",
 "Value":16699166,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -13440,14 +13683,14 @@
 "LabelAnno":"None"},
 
 "8154":{
-"Label":"returnXToFreeList",
+"Label":"freeB0Block",
 "Value":16698842,
 "Source":"User",
 "Type":"GlobalAddr",
 "LabelAnno":"None"},
 
 "8193":{
-"Label":"obtainFreeBlock",
+"Label":"allocB0B",
 "Value":16698881,
 "Source":"User",
 "Type":"GlobalAddr",
@@ -14221,6 +14464,41 @@
 "Value":16707153,
 "Source":"User",
 "Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8575":{
+"Label":"initEXSYS_QRY",
+"Value":16699263,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1276":{
+"Label":"allocWorkspacesQry",
+"Value":16691964,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1293":{
+"Label":"cop0FAllocMemory",
+"Value":16691981,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1324":{
+"Label":"skAllocWorkspacesOK",
+"Value":16692012,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"1359":{
+"Label":"cllp",
+"Value":16692047,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -15062,6 +15340,14 @@
 "Label":"EXSYS",
 "Part":"Low"}},
 
+"1334":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"MM_HANDLE_TAB",
+"Part":"Low"}},
+
 "1337":{
 "Length":3,
 "Format":"NumericLE",
@@ -15073,20 +15359,42 @@
 "1346":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "1349":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "1351":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
+
+"1359":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
+
+"1372":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "1442":{
 "Length":2,
@@ -18033,7 +18341,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_off_B_type",
+"Label":"B0B_offs_B_type",
 "Part":"Low"}},
 
 "8307":{
@@ -18063,20 +18371,24 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "8374":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8379":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8395":{
 "Length":4,
@@ -18095,8 +18407,10 @@
 "8424":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8468":{
 "Length":2,
@@ -18139,20 +18453,26 @@
 "8486":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8491":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8507":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8512":{
 "Length":3,
@@ -18165,15 +18485,17 @@
 "8519":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"EXSYS_FpHandles",
+"Part":"Low"}},
 
 "8525":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "8562":{
@@ -18211,23 +18533,21 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "8593":{
 "Length":3,
 "Format":"NumericLE",
-"SubFormat":"Symbol",
-"SymbolRef":{
-"Label":"EXSYS_CO_A_SAVE",
-"Part":"Low"}},
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "8596":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "8647":{
@@ -19499,7 +19819,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "11477":{
@@ -19745,7 +20065,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "11820":{
@@ -19785,7 +20105,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "11856":{
@@ -19809,7 +20129,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"EXSYS_HANDLEBLOCK_LONGPTR",
+"Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
 "11865":{
@@ -19825,7 +20145,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_off_B_type",
+"Label":"B0B_offs_B_type",
 "Part":"Low"}},
 
 "11877":{
@@ -22301,7 +22621,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_off_B_type",
+"Label":"B0B_offs_B_type",
 "Part":"Low"}},
 
 "18263":{
@@ -23169,32 +23489,48 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"B0LST_IRQ_HANDLER",
+"Label":"B0LL_IRQ_BLOCKS",
+"Part":"Low"}},
+
+"19943":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__next",
 "Part":"Low"}},
 
 "19946":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__irqf",
+"Part":"Low"}},
 
 "19949":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__fpand",
+"Part":"Low"}},
 
 "19951":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__meor",
+"Part":"Low"}},
 
 "19953":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__mand",
+"Part":"Low"}},
 
 "19959":{
 "Length":3,
@@ -23207,57 +23543,73 @@
 "19962":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__psec",
+"Part":"Low"}},
 
 "19965":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__hitct",
+"Part":"Low"}},
 
 "19969":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__hitct",
+"Part":"Low"}},
 
 "19973":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__hitct",
+"Part":"Low"}},
 
 "19977":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__hitct",
+"Part":"Low"}},
 
 "19979":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__fphand",
+"Part":"Low"}},
 
 "19981":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__flags",
+"Part":"Low"}},
 
 "19983":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__dp",
+"Part":"Low"}},
 
 "20021":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_type_E_CBIQ",
+"Label":"B0B_TYPE_LL_IRQ",
 "Part":"Low"}},
 
 "20033":{
@@ -23265,74 +23617,128 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_type_E_CBIQ",
+"Label":"B0B_TYPE_LL_IRQ",
+"Part":"Low"}},
+
+"20046":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_Y",
+"Part":"Low"}},
+
+"20048":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__prior",
 "Part":"Low"}},
 
 "20056":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__flags",
+"Part":"Low"}},
+
+"20062":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_AH",
+"Part":"Low"}},
 
 "20064":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__fphand",
+"Part":"Low"}},
+
+"20068":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_AH",
+"Part":"Low"}},
 
 "20070":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__fphand",
+"Part":"Low"}},
 
 "20076":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__dp",
+"Part":"Low"}},
 
 "20083":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__hitct",
+"Part":"Low"}},
 
 "20087":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__hitct",
+"Part":"Low"}},
 
 "20093":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__psec",
+"Part":"Low"}},
 
 "20102":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__irqf",
+"Part":"Low"}},
 
 "20109":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__irqf",
+"Part":"Low"}},
 
 "20119":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__meor",
+"Part":"Low"}},
 
 "20125":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__mand",
+"Part":"Low"}},
 
 "20131":{
 "Length":3,
@@ -23345,86 +23751,162 @@
 "20134":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__fpand",
+"Part":"Low"}},
 
 "20142":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__fpand",
+"Part":"Low"}},
+
+"20153":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_Y",
+"Part":"Low"}},
 
 "20159":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"B0LST_IRQ_HANDLER",
+"Label":"B0LL_IRQ_BLOCKS",
 "Part":"Low"}},
 
 "20169":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__psec",
+"Part":"Low"}},
 
 "20202":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__psec",
+"Part":"Low"}},
 
 "20237":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__psec",
+"Part":"Low"}},
 
 "20242":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_sec__type",
+"Part":"Low"}},
 
 "20250":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"HND_type_E_CBIQ",
+"Label":"B0B_TYPE_LL_IRQ",
+"Part":"Low"}},
+
+"20263":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_AH",
 "Part":"Low"}},
 
 "20265":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__fpand",
+"Part":"Low"}},
+
+"20269":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_AH",
+"Part":"Low"}},
 
 "20271":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__fpand",
+"Part":"Low"}},
+
+"20275":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"DPCOP_X",
+"Part":"Low"}},
 
 "20281":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__mand",
+"Part":"Low"}},
+
+"20300":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__next",
+"Part":"Low"}},
 
 "20305":{
 "Length":3,
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"B0LST_IRQ_HANDLER",
+"Label":"B0LL_IRQ_BLOCKS",
+"Part":"Low"}},
+
+"20309":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__next",
+"Part":"Low"}},
+
+"20320":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__next",
 "Part":"Low"}},
 
 "20330":{
 "Length":4,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"bob_ll_irq_pri__psec",
+"Part":"Low"}},
 
 "20353":{
 "Length":2,
