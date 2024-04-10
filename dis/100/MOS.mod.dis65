@@ -531,6 +531,23 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"__MMAX":{
+"DataDescriptor":{
+"Length":1,
+"Format":"NumericLE",
+"SubFormat":"Decimal",
+"SymbolRef":null},
+
+"Comment":"MMAX - 4 - Allocate an explicit region within a pool",
+"HasWidth":false,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"__MMAX",
+"Value":4,
+"Source":"Project",
+"Type":"Constant",
+"LabelAnno":"None"},
+
 "__MMAZB":{
 "DataDescriptor":{
 "Length":1,
@@ -561,23 +578,6 @@
 "MultiMask":null,
 "Label":"__MMBAS",
 "Value":14,
-"Source":"Project",
-"Type":"Constant",
-"LabelAnno":"None"},
-
-"__MMBP":{
-"DataDescriptor":{
-"Length":1,
-"Format":"NumericLE",
-"SubFormat":"Decimal",
-"SymbolRef":null},
-
-"Comment":"Undocumented mm call - TODO check for deprecated",
-"HasWidth":false,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"__MMBP",
-"Value":4,
 "Source":"Project",
 "Type":"Constant",
 "LabelAnno":"None"},
@@ -973,6 +973,74 @@
 "Type":"Constant",
 "LabelAnno":"None"},
 
+"B0_B0Block_HDMMC":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"CMOS ram pool B0Block",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0_B0Block_HDMMC",
+"Value":65032,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0_B0Block_HDMMM":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Whole memory B0Block",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0_B0Block_HDMMM",
+"Value":65028,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0_B0Block_HDMMV":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"QRY see fe/d355",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0_B0Block_HDMMV",
+"Value":65036,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0_B0Block_HDMMW":{
+"DataDescriptor":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Entire memory map pool",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0_B0Block_HDMMW",
+"Value":65034,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
 "B0_IRQ_STACK":{
 "DataDescriptor":{
 "Length":2,
@@ -986,6 +1054,23 @@
 "MultiMask":null,
 "Label":"B0_IRQ_STACK",
 "Value":65040,
+"Source":"Project",
+"Type":"ExternalAddr",
+"LabelAnno":"None"},
+
+"B0B_BASE":{
+"DataDescriptor":{
+"Length":7416,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"Comment":"Area reserved for B0Blocks",
+"HasWidth":true,
+"Direction":"ReadWrite",
+"MultiMask":null,
+"Label":"B0B_BASE",
+"Value":57344,
 "Source":"Project",
 "Type":"ExternalAddr",
 "LabelAnno":"None"},
@@ -2297,23 +2382,6 @@
 "Value":97,
 "Source":"Project",
 "Type":"Constant",
-"LabelAnno":"None"},
-
-"DP_HANDLE_VIDEO_QRY":{
-"DataDescriptor":{
-"Length":2,
-"Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
-
-"Comment":"QRY see fe/d355",
-"HasWidth":true,
-"Direction":"ReadWrite",
-"MultiMask":null,
-"Label":"DP_HANDLE_VIDEO_QRY",
-"Value":65036,
-"Source":"Project",
-"Type":"ExternalAddr",
 "LabelAnno":"None"},
 
 "DPCOP_AH":{
@@ -7427,8 +7495,9 @@
 "8230":"blank out the block",
 "8260":"set the type byte",
 "8362":"getHandleBlockSize",
-"8468":"HDMMM",
-"8470":"HDMM0 - QRY",
+"8456":"load the value at the table entry",
+"8468":"HDMMM - 1",
+"8470":"ERROR marker",
 "8472":"HDMMC",
 "8474":"HDMMW",
 "8476":"HDMMV",
@@ -7468,7 +7537,7 @@
 "9218":"TODO: check - think this does nothing",
 "9372":"0 - __MMNXT - return string \"SYSTEM\"?",
 "9374":"2 - __MMINIT - initialise memory management routines",
-"9376":"4 - __MMBP - ???",
+"9376":"4 - __MMAX - Allocate Specific Area?",
 "9378":"6 - __MMASD - allocate small descending area",
 "9380":"8 - __MMALD - allocate large descending",
 "9382":"A - __MMASA - allocate a small ascending",
@@ -7480,10 +7549,43 @@
 "9394":"16 - __MMCHK - check integrity of memory system",
 "9396":"18 - __MMAZB - Allocate Bank 0",
 "9398":"1A - __MMMRG - merge two pools",
+"9479":"save pointer (X=A anyway?!)",
+"9531":"pool base = 46000",
+"9534":"pool size = 8000",
 "9557":"TODO: shift!",
+"9591":"reserve 6 bytes on stack",
+"9595":"set DP at stack base",
+"9597":"point A at 1st byte on stack\u0027s offset",
+"9599":"top bank to probe+1",
+"9604":"decrement bank",
+"9606":"didn\u0027t find a bank?",
+"9653":"get current value in current bank",
+"9655":"save it",
+"9656":"flip it",
+"9659":"save back",
+"9661":"check still same",
+"9663":"not the same return with Cy=0 - no memory here!",
+"9665":"move to lower bank",
+"9667":"get value from lower bank",
+"9669":"save it",
+"9670":"flip it",
+"9673":"store flipped",
+"9675":"check same",
+"9677":"save result",
+"9678":"restore bank pointer",
+"9681":"not the same - bank below is not ram",
+"9683":"get back original value from lower bank",
+"9685":"store in current bank",
+"9687":"decrement bank",
+"9689":"eor with lower bank",
+"9691":"set Cy=1 if banks aren\u0027t aliased",
+"9695":"restore lower bank\u0027s value",
+"9700":"restore current bank\u0027s value",
 "9729":"BHA now contains a size rounded up to pages",
+"9761":"DP on entry to __MM",
 "10074":"TODO: pointless ?",
 "10349":"TODO: pointless before syserr",
+"10483":"get memory pool in X",
 "11067":"free the handle",
 "11307":"COPAR - 2 - initialize QRY",
 "11309":"COENV - 4 - set coroutine environment",
@@ -8909,13 +9011,13 @@
 "BackgroundColor":0},
 
 "9916":{
-"Text":"__MM 2 - MMINIT - initialise MM routines\r\n",
+"Text":"__MM 2 - MMINIT - initialise MM routines\r\n\r\n\r\nTODO: OR IS IT MMFP - Free pool!?",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
 
 "9750":{
-"Text":"__MM 4 - MMBP - ????\r\n",
+"Text":"__MM 4 - MMAX - Allocate an explicit region within a pool\r\n\r\nThis call allocates a sub-pool within a specified pool. \r\nThe base address of the new pool and the handle of the pool from which to take the new area are passed to the routine. The length of the new pool must be less than 64K bytes.\r\nEntry:\r\n   Y    Handle of memory pool\r\n   BHA  Base address of new pool\r\n   D    Length of new pool\r\n   X    MMAX\r\n\r\nExit C=0 Pool allocated successfully\r\n   BHA  Address of new pool\r\n   Y    Handle of newly allocated pool or C=1 Failed to allocate n\r\n",
 "BoxMode":true,
 "MaxWidth":80,
 "BackgroundColor":0},
@@ -9475,6 +9577,18 @@
 "8353":{
 "Text":"Allocate a Handle\r\n\r\nOn Entry\r\n  X     The B0Block address to store in the handle\r\n\r\nOn Exit\r\n  If Cy=1:\r\n        No handle allocated, run out of handles\r\n  If Cy=0:\r\n  Y     The handle\r\n\r\nOthers preserved",
 "BoxMode":true,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9596":{
+"Text":"A is now incremented to point at the 1st reserved word on the stack and the long pointer at 3,S is set to bank 9, offset \"A\"\r\n\r\nThe memory test will poke stuff into each bank to test it and by reserving on the stack like this it will make sure that this doesn\u0027t interfere with this procedure\u0027s long pointer at 3,S",
+"BoxMode":false,
+"MaxWidth":80,
+"BackgroundColor":0},
+
+"9653":{
+"Text":"This appears to be probing for memory by checking if a value can be stored then checking to see if it aliases - but it only checks the immediately lower bank..not all banks which seems odd! Bug possibly?",
+"BoxMode":false,
 "MaxWidth":80,
 "BackgroundColor":0}},
 
@@ -14499,6 +14613,153 @@
 "Value":16692047,
 "Source":"User",
 "Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8117":{
+"Label":"initB0Blocks",
+"Value":16698805,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"8137":{
+"Label":"lp",
+"Value":16698825,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"8389":{
+"Label":"checkHandleYIsMemPoolSetX",
+"Value":16699077,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"10522":{
+"Label":"ret",
+"Value":16701210,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9901":{
+"Label":"__MM_setStackedB",
+"Value":16700589,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"10494":{
+"Label":"con",
+"Value":16701182,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"10471":{
+"Label":"getPoolBaseX",
+"Value":16701159,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"10534":{
+"Label":"getPoolTopX",
+"Value":16701222,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9703":{
+"Label":"rp2",
+"Value":16700391,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9704":{
+"Label":"rp1",
+"Value":16700392,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9588":{
+"Label":"memSizeTest",
+"Value":16700276,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9646":{
+"Label":"retsec",
+"Value":16700334,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9653":{
+"Label":"probeBank",
+"Value":16700341,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9526":{
+"Label":"MMinitHDMMCPool",
+"Value":16700214,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"10344":{
+"Label":"exitCk",
+"Value":16701032,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"10341":{
+"Label":"exitPullCk",
+"Value":16701029,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9400":{
+"Label":"MMInitialiseQ",
+"Value":16700088,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9507":{
+"Label":"ret",
+"Value":16700195,
+"Source":"User",
+"Type":"NonUniqueLocalAddr",
+"LabelAnno":"None"},
+
+"9471":{
+"Label":"MMInitHDMMWPool",
+"Value":16700159,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"9508":{
+"Label":"MMInitHDMMMPool",
+"Value":16700196,
+"Source":"User",
+"Type":"GlobalAddr",
+"LabelAnno":"None"},
+
+"10455":{
+"Label":"f000002_XeqA",
+"Value":16701143,
+"Source":"User",
+"Type":"GlobalAddr",
 "LabelAnno":"None"}},
 
 "OperandFormats":{
@@ -15048,6 +15309,14 @@
 "SubFormat":"Symbol",
 "SymbolRef":{
 "Label":"B0LST_MODULES_QRY",
+"Part":"Low"}},
+
+"685":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_OPEN_FILES",
 "Part":"Low"}},
 
 "792":{
@@ -18292,6 +18561,22 @@
 "Label":"SYSVAR_66_KB_SEMAPHORE",
 "Part":"Low"}},
 
+"8127":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0LST_FREE_BLOCKS",
+"Part":"Low"}},
+
+"8134":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0B_BASE",
+"Part":"Low"}},
+
 "8169":{
 "Length":4,
 "Format":"NumericLE",
@@ -18412,11 +18697,19 @@
 "Label":"EXSYS_FpHandles",
 "Part":"Low"}},
 
-"8468":{
+"8456":{
 "Length":2,
 "Format":"NumericLE",
 "SubFormat":"Hex",
 "SymbolRef":null},
+
+"8468":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0_B0Block_HDMMM",
+"Part":"Low"}},
 
 "8470":{
 "Length":2,
@@ -18427,20 +18720,26 @@
 "8472":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0_B0Block_HDMMC",
+"Part":"Low"}},
 
 "8474":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0_B0Block_HDMMW",
+"Part":"Low"}},
 
 "8476":{
 "Length":2,
 "Format":"NumericLE",
-"SubFormat":"Hex",
-"SymbolRef":null},
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0_B0Block_HDMMV",
+"Part":"Low"}},
 
 "8479":{
 "Length":3,
@@ -19344,6 +19643,42 @@
 "Label":"HND_type_2_CBMEM",
 "Part":"Low"}},
 
+"9490":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9497":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9508":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"B0_B0Block_HDMMW",
+"Part":"Low"}},
+
+"9538":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"HDMMW",
+"Part":"Low"}},
+
+"9541":{
+"Length":3,
+"Format":"NumericLE",
+"SubFormat":"Symbol",
+"SymbolRef":{
+"Label":"__MMAX",
+"Part":"Low"}},
+
 "9557":{
 "Length":3,
 "Format":"NumericLE",
@@ -19381,7 +19716,7 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"__MMBP",
+"Label":"__MMAX",
 "Part":"Low"}},
 
 "9583":{
@@ -19389,8 +19724,152 @@
 "Format":"NumericLE",
 "SubFormat":"Symbol",
 "SymbolRef":{
-"Label":"DP_HANDLE_VIDEO_QRY",
+"Label":"B0_B0Block_HDMMV",
 "Part":"Low"}},
+
+"9597":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9602":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9604":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9613":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9617":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9626":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9628":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9630":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9636":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9653":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9659":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9661":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9665":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9667":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9673":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9675":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9678":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9685":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9687":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9689":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9695":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9697":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9700":{
+"Length":2,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"9772":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
 
 "9869":{
 "Length":2,
@@ -19434,6 +19913,12 @@
 "SubFormat":"Ascii",
 "SymbolRef":null},
 
+"10217":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
 "10299":{
 "Length":3,
 "Format":"NumericLE",
@@ -19454,6 +19939,24 @@
 "Length":55,
 "Format":"StringNullTerm",
 "SubFormat":"Ascii",
+"SymbolRef":null},
+
+"10455":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"10471":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
+"SymbolRef":null},
+
+"10534":{
+"Length":4,
+"Format":"NumericLE",
+"SubFormat":"Hex",
 "SymbolRef":null},
 
 "10657":{
